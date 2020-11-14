@@ -1,4 +1,4 @@
-package controler;
+package controller;
 
 //importi :
 import model.Profesor;
