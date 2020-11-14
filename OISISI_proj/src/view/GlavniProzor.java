@@ -28,6 +28,11 @@ public class GlavniProzor extends JFrame {
 		//Toolbar :
 		Toolbar toolbar = new Toolbar();
 		add(toolbar,BorderLayout.NORTH);
+		
+		// Status bar
+		JPanel statusBar = new StatusBar();
+		add(statusBar, BorderLayout.SOUTH);
+		
 	}
 	
 }

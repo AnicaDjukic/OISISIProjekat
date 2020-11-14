@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
@@ -42,6 +43,7 @@ public class Toolbar  extends JToolBar{
 		JButton btnSrch = new JButton();
 		btnSrch.setToolTipText("Search");
 		btnSrch.setIcon(new ImageIcon("images/search_button.png"));
-		add(btnSrch);	
+		add(btnSrch);
+		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 }
