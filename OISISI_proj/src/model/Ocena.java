@@ -26,6 +26,8 @@ public class Ocena {
 	public void setBrVrednost(int brVrednost) {
 		if(brVrednost >= 6 && brVrednost <= 10)
 			this.brVrednost = brVrednost;
+		else 
+			this.brVrednost = 6;
 	}
 	public String getDatumPolaganja() {
 		return datumPolaganja;
@@ -50,6 +52,8 @@ public class Ocena {
 		this.predmet = predmet;
 		if(brVrednost >= 6 && brVrednost <= 10)
 			this.brVrednost = brVrednost;
+		else
+			this.brVrednost = 6;
 		this.datumPolaganja = datumPolaganja;
 	}
 	@Override
