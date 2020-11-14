@@ -15,10 +15,10 @@ public class StatusBar extends JPanel {
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(10,23));
 		
-		JLabel lab = new JLabel("Studentska služba");
+		JLabel lab = new JLabel("  Studentska služba");
 		
 		
-		DateFormat timeFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy  ");
 		
 		String currentTime = timeFormat.format(Calendar.getInstance().getTime());
 		JLabel timeLab = new JLabel(currentTime);
@@ -39,10 +39,7 @@ public class StatusBar extends JPanel {
         timer.start();
         
 		lab.setFont(lab.getFont().deriveFont(16f));
-		timeLab.setFont(lab.getFont().deriveFont(16f));
-		
-		setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
+		timeLab.setFont(lab.getFont().deriveFont(16f));		
 		
 		add(lab,BorderLayout.WEST);
 		add(timeLab,BorderLayout.EAST);

@@ -44,6 +44,5 @@ public class Toolbar  extends JToolBar{
 		btnSrch.setToolTipText("Search");
 		btnSrch.setIcon(new ImageIcon("images/search_button.png"));
 		add(btnSrch);
-		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 }

@@ -13,6 +13,12 @@ public class test_main {
 		// Komentarisati linije ispisa koje nisu bitne
 		// Viselinijski komentar se brise kada se testiraju stvari, a stoji cisto kako se ne bi ispisivalo nista suvišno za DOMACI-I
 		
+		
+		//Glavni prozor :
+		
+		GlavniProzor glavniProzor = new GlavniProzor();
+		glavniProzor.setVisible(true);
+		
 		/* TEST:
 		Profesor p1 = new Profesor();
 		//System.out.println(p1.toString());
@@ -65,10 +71,7 @@ public class test_main {
 		
 		*/
 		
-		//Glavni prozor :
-		
-		GlavniProzor glavniProzor = new GlavniProzor();
-		glavniProzor.setVisible(true);		
+				
 	}
 
 }
