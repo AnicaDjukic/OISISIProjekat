@@ -1,8 +1,9 @@
 package controller;
 
 //importi :
-import model.Profesor;
-import model.Predmet;
+import model.*;
+import view.*;
+import java.awt.*;
 
 public class test_main {
 
@@ -26,6 +27,16 @@ public class test_main {
 		Predmet a2 = new Predmet("OISISI", "Osnove informacionih sistema...",
 				     "lEtNJi", 3,p2,8);
 		System.out.println(a2.toString());
+		
+		//Glavni prozor :
+		
+		GlavniProzor glavniProzor = new GlavniProzor();
+		glavniProzor.setVisible(true);
+		
+		//Toolbar :
+		
+		Toolbar toolbar = new Toolbar();
+		glavniProzor.add(toolbar,BorderLayout.NORTH);
 	}
 
 }
