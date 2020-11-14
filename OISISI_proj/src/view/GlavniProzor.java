@@ -21,9 +21,13 @@ public class GlavniProzor extends JFrame {
 		
 		setLocationRelativeTo(null);
 		
-		// Menu Bar:
-		JMenuBar menu = new MenuBar();
-		setJMenuBar(menu);
+		//Menu bar :
+	    view.MenuBar menu = new view.MenuBar();
+	    setJMenuBar(menu);
+		
+		//Toolbar :
+		Toolbar toolbar = new Toolbar();
+		add(toolbar,BorderLayout.NORTH);
 	}
 	
 }

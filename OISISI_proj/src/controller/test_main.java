@@ -68,14 +68,7 @@ public class test_main {
 		//Glavni prozor :
 		
 		GlavniProzor glavniProzor = new GlavniProzor();
-		glavniProzor.setVisible(true);
-		
-		
-		//Toolbar :
-		
-		Toolbar toolbar = new Toolbar();
-		glavniProzor.add(toolbar,BorderLayout.NORTH);
-		
+		glavniProzor.setVisible(true);		
 	}
 
 }
