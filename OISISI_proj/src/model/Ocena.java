@@ -48,7 +48,8 @@ public class Ocena {
 		super();
 		this.polozioIspit = polozioIspit;
 		this.predmet = predmet;
-		this.brVrednost = brVrednost;
+		if(brVrednost >= 6 && brVrednost <= 10)
+			this.brVrednost = brVrednost;
 		this.datumPolaganja = datumPolaganja;
 	}
 	@Override
