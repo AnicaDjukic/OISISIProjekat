@@ -2,6 +2,7 @@ package view;
 
 //importi :
 import javax.swing.*;
+
 import java.awt.*;
 
 public class GlavniProzor extends JFrame {
@@ -19,6 +20,10 @@ public class GlavniProzor extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setLocationRelativeTo(null);
+		
+		// Menu Bar:
+		JMenuBar menu = new MenuBar();
+		setJMenuBar(menu);
 	}
 	
 }
