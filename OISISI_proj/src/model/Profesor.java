@@ -14,7 +14,7 @@ public class Profesor {
 	private String brLicKart;            //broj licne karte
 	private String titula;
 	private String zvanje;
-	//private ArrayList<Predmet> spis_pred //spisak predmeta
+	private ArrayList<Predmet> spisPred; //spisak predmeta
 	
 	//auto generisani geteri i seteri za polja :
 	
@@ -91,6 +91,7 @@ public class Profesor {
 		this.brLicKart = "";
 		this.titula = "";
 		this.zvanje = "";
+		this.spisPred = new ArrayList<Predmet>();
 	}
 	
 	public Profesor(String pr, String im, String dr, String ads,
@@ -105,9 +106,23 @@ public class Profesor {
 		this.brLicKart = blk;
 		this.titula = tit;
 		this.zvanje = zv;
+		this.spisPred = new ArrayList<Predmet>();
 	}
 	
 	//Dodatne metode :
+	
+	public boolean dodajPredmet(Predmet p) {
+		if(spisPred.contains(p) == false)
+			if(spisPred.add(p))
+				return true;
+		return false;
+	}
+	public boolean ukloniPredmet(Predmet p) {
+		if(spisPred.contains(p) == true)
+			if(spisPred.remove(p))
+			return true;
+		return false;
+	}
 	
 	public String toString() {
 		String out = "Ime : " + this.ime + "\n";
@@ -120,6 +135,16 @@ public class Profesor {
 		out += "Broj licne karte : " + this.brLicKart + "\n";
 		out += "Titula : " + this.titula + "\n";
 		out += "Zvanje : " + this.zvanje + "\n";
+		out += "Predmeti na kojima predaje : ";
+		if(!spisPred.isEmpty()) {
+			for(Predmet p : spisPred) {
+				out += p.getNaziv() + ", ";
+			}
+			out = out.substring(0,out.length() - 2);  //uklanjanje poslednjeg zareza
+			out += "\n";
+		} else {
+			out += "Ne predaje ni na jednom predmetu\n"; 
+		}
 		return out;
 	}
 	

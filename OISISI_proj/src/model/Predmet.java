@@ -16,8 +16,8 @@ public class Predmet {
 	private Profesor prof;   //predmetni profesor
 	private int espbBod;    //espb bodovi
 	
-	//private ArrayList<Student> lista_p //lista studenata koji su polozili
-	//private ArrayList<Student> lista_np //lista studenata koji nisu polozili
+	private ArrayList<Student> listaPolozenih; //lista studenata koji su polozili
+	private ArrayList<Student> listaNepolozenih; //lista studenata koji nisu polozili
 	
 	//auto generisani geteri i seteri za polja :
 	
@@ -67,6 +67,8 @@ public class Predmet {
 		this.godIzv = GodIzv.PRVA;
 		this.prof = new Profesor();
 		this.espbBod = 0;
+		this.listaNepolozenih = new ArrayList<Student>();
+		this.listaPolozenih = new ArrayList<Student>();
 	}
 	public Predmet(String s_p, String n, String sem,
 				   int gi,Profesor p,int eb) {
@@ -86,10 +88,45 @@ public class Predmet {
 		}
 		this.prof = p;
 		this.espbBod = eb;
+		this.listaNepolozenih = new ArrayList<Student>();
+		this.listaPolozenih = new ArrayList<Student>();
 	}
 	
 	
 	//Dodatne metode :
+	
+	public boolean dodajUListPolo(Student s) {
+		if(!listaPolozenih.contains(s))                           //ako se vec ne nalazi u polozenim, onda se tek dodaje
+			if(listaPolozenih.add(s)) {                           //u listu polozenih i, paralelno, ako se nalazio u listi
+				if(listaNepolozenih.contains(s))                  //onih koji nisu polozili onda se iz te brise
+					listaNepolozenih.remove(s);
+				return true;
+			}
+		return false;
+	}
+	
+	public boolean dodajUListNepolo(Student s) {
+		if(!listaNepolozenih.contains(s))                         //Isto kao i gore, redosled akcija je isti samo su liste
+			if(listaNepolozenih.add(s)) {                         //zamenjene
+				if(listaPolozenih.contains(s))
+					listaPolozenih.remove(s);
+				return true;
+			}
+		return false;
+	}
+	
+	public boolean dodajStudenta(Student s) {
+		if(listaPolozenih.contains(s) || listaNepolozenih.contains(s))      //Ako nije ni u jednoj listi dodaje se inicijalno
+			return false;			                                        //u listu nepolozenih
+		return dodajUListNepolo(s);
+	}
+	
+	public boolean obrisiStudentaSaPredmeta(Student s) {
+		if(listaNepolozenih.remove(s) || listaPolozenih.remove(s))
+			return true;
+		return false;
+	}
+
 	
 	private String outGodIzv(GodIzv g) {
 		String out = "";
@@ -114,8 +151,29 @@ public class Predmet {
 			out += "Zimski" + "\n";
 		out += "Godina izvodjenja : " + this.outGodIzv(this.godIzv) + "\n";
 		out += "Profesor : " + this.prof.getIme() + " " + prof.getPrezime() + "\n";
-		out += "Espb : " + this.espbBod;
+		out += "Espb : " + this.espbBod + "\n";
 		
+		out += "Studenti koji su položili (" + listaPolozenih.size() + ") : ";
+		if(!listaPolozenih.isEmpty()) {
+			for(Student s : listaPolozenih)
+				out += s.getBrIndexa() + ", ";
+			
+			out = out.substring(0,out.length() - 2);              //Odseca poslednji zarez
+			out += "\n";
+		} else {
+			out += "Niko nije položio predmet\n";
+		}
+		
+		out += "Studenti koji nisu položili (" + listaNepolozenih.size() + ") : ";
+		if(!listaNepolozenih.isEmpty()) {
+			for(Student s : listaNepolozenih)
+				out += s.getBrIndexa() + ", ";
+			
+			out = out.substring(0,out.length() - 2);
+			out += "\n";
+		} else {
+			out += "Niko nije pao predmet\n";
+		}
 		return out;
 	}
 	
