@@ -3,6 +3,7 @@ package controller;
 //importi :
 import model.*;
 import view.*;
+
 import java.awt.*;
 
 public class test_main {
@@ -33,10 +34,12 @@ public class test_main {
 		GlavniProzor glavniProzor = new GlavniProzor();
 		glavniProzor.setVisible(true);
 		
+		
 		//Toolbar :
 		
 		Toolbar toolbar = new Toolbar();
 		glavniProzor.add(toolbar,BorderLayout.NORTH);
+		
 	}
 
 }
