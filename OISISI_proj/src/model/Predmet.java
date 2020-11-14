@@ -9,12 +9,12 @@ public class Predmet {
 	public enum Semestar {LETNJI,ZIMSKI};
 	public enum GodIzv {PRVA,DRUGA,TRECA,CETVRTA};
 	
-	private String sif_pred; //sifra predmeta
+	private String sifPred; //sifra predmeta
 	private String naziv;    //naziv predmeta
 	private Semestar semestar; 
 	private GodIzv godIzv;   //godina izvodjenja
 	private Profesor prof;   //predmetni profesor
-	private int espb_bod;    //espb bodovi
+	private int espbBod;    //espb bodovi
 	
 	//private ArrayList<Student> lista_p //lista studenata koji su polozili
 	//private ArrayList<Student> lista_np //lista studenata koji nisu polozili
@@ -22,10 +22,10 @@ public class Predmet {
 	//auto generisani geteri i seteri za polja :
 	
 	public String getSif_pred() {
-		return sif_pred;
+		return sifPred;
 	}
 	public void setSif_pred(String sif_pred) {
-		this.sif_pred = sif_pred;
+		this.sifPred = sif_pred;
 	}
 	public String getNaziv() {
 		return naziv;
@@ -52,25 +52,25 @@ public class Predmet {
 		this.prof = prof;
 	}
 	public int getEspb_bod() {
-		return espb_bod;
+		return espbBod;
 	}
 	public void setEspb_bod(int espb_bod) {
-		this.espb_bod = espb_bod;
+		this.espbBod = espb_bod;
 	}
 	
 	//konstruktori :
 	
 	public Predmet() {
-		this.sif_pred = "";
+		this.sifPred = "";
 		this.naziv = "";
 		this.semestar = Semestar.LETNJI;
 		this.godIzv = GodIzv.PRVA;
 		this.prof = new Profesor();
-		this.espb_bod = 0;
+		this.espbBod = 0;
 	}
 	public Predmet(String s_p, String n, String sem,
 				   int gi,Profesor p,int eb) {
-		this.sif_pred = s_p;
+		this.sifPred = s_p;
 		this.naziv = n;
 		if(sem.toLowerCase().equals("letnji"))
 			this.semestar = Semestar.LETNJI;
@@ -85,7 +85,7 @@ public class Predmet {
 			this.godIzv = GodIzv.values()[gi]; 
 		}
 		this.prof = p;
-		this.espb_bod = eb;
+		this.espbBod = eb;
 	}
 	
 	
@@ -106,7 +106,7 @@ public class Predmet {
 	
 	public String toString() {
 		String out = "Naziv : " + this.naziv + "\n";
-		out += "Sifra predmeta : " + this.sif_pred + "\n";
+		out += "Sifra predmeta : " + this.sifPred + "\n";
 		out += "Semestar : ";
 		if(this.semestar.equals(Semestar.LETNJI))
 			out += "Letnji" + "\n";
@@ -114,7 +114,7 @@ public class Predmet {
 			out += "Zimski" + "\n";
 		out += "Godina izvodjenja : " + this.outGodIzv(this.godIzv) + "\n";
 		out += "Profesor : " + this.prof.getIme() + " " + prof.getPrezime() + "\n";
-		out += "Espb : " + this.espb_bod;
+		out += "Espb : " + this.espbBod;
 		
 		return out;
 	}

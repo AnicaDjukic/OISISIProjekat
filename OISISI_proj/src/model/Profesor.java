@@ -7,11 +7,11 @@ public class Profesor {
 	private String prezime;
 	private String ime;
 	private String drp;                    //datum rodjenja prof
-	private String adr_stan;               //adresa stanovanja
-	private String kon_tel;                //kontakt telefon
+	private String adrStan;               //adresa stanovanja
+	private String konTel;                //kontakt telefon
 	private String email;
-	private String adr_kanc;               //adresa kancelarije
-	private String br_lic_kart;            //broj licne karte
+	private String adrKanc;               //adresa kancelarije
+	private String brLicKart;            //broj licne karte
 	private String titula;
 	private String zvanje;
 	//private ArrayList<Predmet> spis_pred //spisak predmeta
@@ -37,16 +37,16 @@ public class Profesor {
 		this.drp = drp;
 	}
 	public String getAdr_stan() {
-		return adr_stan;
+		return adrStan;
 	}
 	public void setAdr_stan(String adr_stan) {
-		this.adr_stan = adr_stan;
+		this.adrStan = adr_stan;
 	}
 	public String getKon_tel() {
-		return kon_tel;
+		return konTel;
 	}
 	public void setKon_tel(String kon_tel) {
-		this.kon_tel = kon_tel;
+		this.konTel = kon_tel;
 	}
 	public String getEmail() {
 		return email;
@@ -55,16 +55,16 @@ public class Profesor {
 		this.email = email;
 	}
 	public String getAdr_kanc() {
-		return adr_kanc;
+		return adrKanc;
 	}
 	public void setAdr_kanc(String adr_kanc) {
-		this.adr_kanc = adr_kanc;
+		this.adrKanc = adr_kanc;
 	}
 	public String getBr_lic_kart() {
-		return br_lic_kart;
+		return brLicKart;
 	}
 	public void setBr_lic_kart(String br_lic_kart) {
-		this.br_lic_kart = br_lic_kart;
+		this.brLicKart = br_lic_kart;
 	}
 	public String getTitula() {
 		return titula;
@@ -84,11 +84,11 @@ public class Profesor {
 		this.prezime = "";
 		this.ime = "";
 		this.drp = "";
-		this.adr_stan = "";
-		this.adr_kanc = "";
-		this.kon_tel = "";
+		this.adrStan = "";
+		this.adrKanc = "";
+		this.konTel = "";
 		this.email = "";
-		this.br_lic_kart = "";
+		this.brLicKart = "";
 		this.titula = "";
 		this.zvanje = "";
 	}
@@ -98,11 +98,11 @@ public class Profesor {
 		this.prezime = pr;
 		this.ime = im;
 		this.drp = dr;
-		this.adr_stan = ads;
-		this.adr_kanc = adk;
-		this.kon_tel = kt;
+		this.adrStan = ads;
+		this.adrKanc = adk;
+		this.konTel = kt;
 		this.email = em;
-		this.br_lic_kart = blk;
+		this.brLicKart = blk;
 		this.titula = tit;
 		this.zvanje = zv;
 	}
@@ -113,11 +113,11 @@ public class Profesor {
 		String out = "Ime : " + this.ime + "\n";
 		out += "Prezime : " + this.prezime + "\n";
 		out += "Datum rodjenja : " + this.drp + "\n";
-		out += "Adresa stanovanja : " + this.adr_stan + "\n";
-		out += "Kontakt telefon : " + this.kon_tel + "\n";
+		out += "Adresa stanovanja : " + this.adrStan + "\n";
+		out += "Kontakt telefon : " + this.konTel + "\n";
 		out += "Email : " + this.email + "\n";
-		out += "Adresa kancelarije : " + this.adr_kanc + "\n";
-		out += "Broj licne karte : " + this.br_lic_kart + "\n";
+		out += "Adresa kancelarije : " + this.adrKanc + "\n";
+		out += "Broj licne karte : " + this.brLicKart + "\n";
 		out += "Titula : " + this.titula + "\n";
 		out += "Zvanje : " + this.zvanje + "\n";
 		return out;
