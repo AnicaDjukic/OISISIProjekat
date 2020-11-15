@@ -20,7 +20,8 @@ public class TabbedPane extends JTabbedPane{
 		JScrollPane tabPaneProfesor = new JScrollPane(tabelaProfesora);
 		this.addTab("Profesori", tabPaneProfesor);
 		
-		JScrollPane tabPanePredmet = new JScrollPane();
+		TabelaPredmeti tabelaPredmeta = new TabelaPredmeti();
+		JScrollPane tabPanePredmet = new JScrollPane(tabelaPredmeta);
 		this.addTab("Predmeti", tabPanePredmet);		
 	}
 	
