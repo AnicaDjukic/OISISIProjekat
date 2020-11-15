@@ -33,6 +33,21 @@ public class GlavniProzor extends JFrame {
 		JPanel statusBar = new StatusBar();
 		add(statusBar, BorderLayout.SOUTH);
 		
+		//Sminkanje izgleda prozora :
+		Dimension d = statusBar.getSize();
+		
+		JPanel separatorEast = new JPanel();
+		separatorEast.setSize(d.height, 200);
+		add(separatorEast,BorderLayout.EAST);
+		
+		JPanel separatorWest = new JPanel();
+		separatorWest.setSize(d.height,200);
+		add(separatorWest,BorderLayout.WEST);		
+		
+		// Tabbed pane :
+		JTabbedPane tabbedPane = new TabbedPane();
+		add(tabbedPane, BorderLayout.CENTER);
+		
 	}
 	
 }
