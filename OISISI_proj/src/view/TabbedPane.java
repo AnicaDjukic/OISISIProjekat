@@ -13,8 +13,9 @@ public class TabbedPane extends JTabbedPane{
 	
 	TabbedPane(){
 		super();
-		this.setSize(500,500);
-		JPanel tabPaneStudent = new JPanel();
+		
+		TabelaStudenti tabelaStudenata = new TabelaStudenti();
+		JScrollPane tabPaneStudent = new JScrollPane(tabelaStudenata);
 		this.addTab("Studenti", tabPaneStudent);
 		
 		JPanel tabPaneProfesor = new JPanel();
