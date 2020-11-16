@@ -71,7 +71,32 @@ public class test_main {
 		
 		*/
 		
-				
+		// Testiranje klase Student
+		/*Student s1 = new Student();
+		//System.out.println(s1);
+		
+		Student s2 = new Student("Pera", "Peric", "26.6.1998", "Puskinova 6", "0218887656",
+				   				"pp@gmail.com", "RA15/2017", "2017", 4 , "b" , 9.56);
+		
+		Profesor p = new Profesor("Mikic","Mika","1.1.1990",
+			      "Micurinova 25","Micurinova 22","0655026516",
+			      "blabla@gmail.com","00756612","Doktor","Stalni profesor");
+		
+		Predmet p3 = new Predmet("MATA", "Analiza1",
+				     "lEtNJi", 3,p,8);
+		
+		s2.dodajNepolozeniIspit(p3);
+		System.out.println(s2);
+		s2.obrisiNepolozeniIspit(p3);
+		System.out.println(s2);
+		s2.dodajNepolozeniIspit(p3);
+		System.out.println(s2);
+		Ocena o3 = new Ocena(s2,p3,9,"19.01.2018.");
+		s2.dodajPolozenIspit(o3);
+		System.out.println(s2);
+		s2.obrisiPolozeniIspit(o3);
+		System.out.println(s2); */
+		
 	}
 
 }
