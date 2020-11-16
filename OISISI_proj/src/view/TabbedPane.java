@@ -13,7 +13,8 @@ public class TabbedPane extends JTabbedPane{
 	
 	TabbedPane(){
 		super();
-		JScrollPane tabPaneStudent = new JScrollPane();
+		TabelaStudenti tabelaStudenti = new TabelaStudenti();
+		JScrollPane tabPaneStudent = new JScrollPane(tabelaStudenti);
 		this.addTab("Studenti", tabPaneStudent);
 		
 		TabelaProfesora tabelaProfesora = new TabelaProfesora();
@@ -22,7 +23,8 @@ public class TabbedPane extends JTabbedPane{
 		
 		TabelaPredmeti tabelaPredmeta = new TabelaPredmeti();
 		JScrollPane tabPanePredmet = new JScrollPane(tabelaPredmeta);
-		this.addTab("Predmeti", tabPanePredmet);		
+		this.addTab("Predmeti", tabPanePredmet);
+		
 	}
 	
 }
