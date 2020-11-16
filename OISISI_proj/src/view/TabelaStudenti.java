@@ -9,7 +9,12 @@ public class TabelaStudenti extends JTable {
 	
 	public TabelaStudenti () {
 		Object[] cols = {"Indeks", "Ime", "Prezime", "Godina studija", "Status", "Prosek"};
-		DefaultTableModel tabela = new DefaultTableModel();
+		DefaultTableModel tabela = new DefaultTableModel() {
+			
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
 		tabela.setColumnIdentifiers(cols);
 		setModel(tabela);
 		
@@ -25,7 +30,7 @@ public class TabelaStudenti extends JTable {
 		}
 		
 		// Primer
-		String[] prvi = {"RA15/2018", "Pera", "Peric", "3", "Budzet", "9.5"};
+		Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "Budzet", "9.5"};
 		tabela.addRow(prvi);
 	}
 }
