@@ -5,6 +5,7 @@ package view;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import model.Student;
@@ -15,23 +16,34 @@ import java.util.*;
 public class TabelaProfesora extends JTable { 
 	
 	public TabelaProfesora() {
-		Object[] colNames = {"Ime : ", "Prezime : ", "Titula : ", "Zvanje : "};
-		DefaultTableModel model = new DefaultTableModel();
+		Object[] colNames = {"Ime : ", "Prezime : ", "Datum rodjenja : ", "Adresa stanovanja : ",
+				             "Kontakt telefon : ", "Email : ", "Adresa kancelarije : ", "Broj licne karte : ",
+				             "Titula : ", "Zvanje : ", "Spisak predmeta : "};
+		DefaultTableModel model = new DefaultTableModel(){
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		model.setColumnIdentifiers(colNames);
 		this.setModel(model);
 		
-		this.setRowHeight(25);
+		this.setRowHeight(35);
 		this.setAutoCreateRowSorter(true);
 		this.setFont(this.getFont().deriveFont(16F));
-		
+	
 		//Poravnanje :
-		DefaultTableCellRenderer poravnanje = new DefaultTableCellRenderer();
-		poravnanje.setHorizontalAlignment(SwingConstants.CENTER);
+		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PROFESOR_RENDER);
 		for(int i = 0; i < colNames.length; i++)
 			getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		//Test primer!
 		
-;		Object[] row = {"Nikola", "Milosavljevic", "Stalni profesor", "Doktor"};
+		TableCellRenderer buttonRenderer = new TableButtonRenderer();
+		getColumn("Spisak predmeta : ").setCellRenderer(buttonRenderer);
+		
+		JButton btn = new JButton("Dugme");
+		
+;		Object[] row = {"Nikola", "Milosavljevic", "-", "-", "-", "-", "-", "-", "-", "-", btn};
 		model.addRow(row);
 		
 	}
