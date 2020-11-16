@@ -58,8 +58,11 @@ public class Ocena {
 	}
 	@Override
 	public String toString() {
-		return "Ocena [polozioIspit=" + polozioIspit + ", predmet=" + predmet + ", brVrednost=" + brVrednost
-				+ ", datumPolaganja=" + datumPolaganja + "]";
+		String out = "Polozio Ispit: " + polozioIspit.getBrIndexa() + "\n";
+		out += "Predmet: " + predmet.getNaziv() + "\n";
+		out += "Brojna vrednost: " + brVrednost + "\n";
+		out	+= "Datum polaganja: " + datumPolaganja + "\n";
+		return out;
 	}
 	
 	

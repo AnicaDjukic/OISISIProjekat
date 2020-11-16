@@ -97,6 +97,19 @@ public class test_main {
 		s2.obrisiPolozeniIspit(o3);
 		System.out.println(s2); */
 		
+		
+		// Testiranje klase Ocena
+		/*Ocena o = new Ocena();
+		System.out.println(o);
+		Student s = new Student("Pera", "Peric", "26.6.1998", "Puskinova 6", "0218887656",
+   				"pp@gmail.com", "RA15/2017", "2017", 4 , "b" , 9.56);
+		Profesor prof = new Profesor("Mikic","Mika","1.1.1990",
+			      "Micurinova 25","Micurinova 22","0655026516",
+			      "blabla@gmail.com","00756612","Doktor","Stalni profesor");
+		Predmet p = new Predmet("MATA", "Analiza1", "lEtNJi", 3, prof , 8);
+		Ocena o2 = new Ocena(s, p, 9, "19.01.2018");
+		System.out.println(o2);*/
+		
 	}
 
 }
