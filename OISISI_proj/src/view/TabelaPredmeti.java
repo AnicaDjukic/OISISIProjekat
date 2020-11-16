@@ -15,9 +15,11 @@ import java.util.*;
 
 public class TabelaPredmeti extends JTable { 
 	
+	private static Object[] colNames = {"Sifra predmeta : ", "Naziv predmeta : ", "ESPB : ", "Godina : ", "Semestar : "};
+	private DefaultTableModel model;
+	
 	public TabelaPredmeti() {
-		Object[] colNames = {"Sifra predmeta : ", "Naziv predmeta : ", "ESPB : ", "Godina : ", "Semestar : ", "Profesor : ", "Studenti : "};
-		DefaultTableModel model = new DefaultTableModel() {
+		model = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -36,14 +38,8 @@ public class TabelaPredmeti extends JTable {
 			getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		//Test primer!
 		
-		TableCellRenderer buttonRenderer = new TableButtonRenderer();
-		getColumn("Studenti : ").setCellRenderer(buttonRenderer);
-		
-		JButton btn = new JButton("Dugme");
-		
-;		Object[] row = {"OISISI", "Oisisi", "8", "3", "5", "Nikola Milosavljevic", btn};
+;		Object[] row = {"OISISI", "Oisisi", "8", "3", "5"};
 		model.addRow(row);
-		
 	}
 
 }

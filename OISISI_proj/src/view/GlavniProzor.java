@@ -7,8 +7,10 @@ import java.awt.*;
 
 public class GlavniProzor extends JFrame {
 	
+	private Toolkit kit;
+	
 	public GlavniProzor() {
-		Toolkit kit = Toolkit.getDefaultToolkit();
+		kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height * 3/4;
 		int screenWidth = screenSize.width * 3/4;
@@ -22,7 +24,7 @@ public class GlavniProzor extends JFrame {
 		setLocationRelativeTo(null);
 		
 		//Menu bar :
-	    view.MenuBar menu = new view.MenuBar();
+	    MenuBar menu = new view.MenuBar();
 	    setJMenuBar(menu);
 		
 		//Toolbar :

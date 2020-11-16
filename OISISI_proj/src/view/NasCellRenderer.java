@@ -34,10 +34,7 @@ public class NasCellRenderer extends DefaultTableCellRenderer{
 			//ovo ti doimplementiraj samo pazi column brojanje ide od 0
 		}
 		case NasCellRenderer.PROFESOR_RENDER:{
-			if(column == 2 || column == 4 || column == 7)
-				this.setHorizontalAlignment(SwingConstants.CENTER);
-			else
-				this.setHorizontalAlignment(SwingConstants.LEFT);
+			this.setHorizontalAlignment(SwingConstants.LEFT);
 			break;
 		}
 		case NasCellRenderer.PREDMET_RENDER:{

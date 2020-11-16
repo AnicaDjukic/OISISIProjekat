@@ -9,24 +9,27 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 public class Toolbar  extends JToolBar{
+	private JButton btnAdd,btnEdit,btnBin,btnSrch;
+	private JTextField srchField;
+	
 	public Toolbar() {
 		super(SwingConstants.HORIZONTAL);
 		
-		JButton btnAdd = new JButton();
+		btnAdd = new JButton();
 		btnAdd.setToolTipText("Add");
 		btnAdd.setIcon(new ImageIcon("images/add_button.png"));
 		add(btnAdd);
 		
 		addSeparator();
 		
-		JButton btnEdit = new JButton();
+		btnEdit = new JButton();
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setIcon(new ImageIcon("images/edit_button.png"));
 		add(btnEdit);
 		
 		addSeparator();
 		
-		JButton btnBin = new JButton();
+		btnBin = new JButton();
 		btnBin.setToolTipText("Delete");
 		btnBin.setIcon(new ImageIcon("images/bin_button.png"));
 		add(btnBin);
@@ -34,13 +37,13 @@ public class Toolbar  extends JToolBar{
 		add(Box.createHorizontalGlue());
 		addSeparator();
 		
-		JTextField srchField = new JTextField(20);
+		srchField = new JTextField(20);
 		srchField.setMaximumSize(new Dimension(350,25));
 		srchField.setMinimumSize(new Dimension(350,25));
 		add(srchField);	
 		addSeparator();
 		
-		JButton btnSrch = new JButton();
+		btnSrch = new JButton();
 		btnSrch.setToolTipText("Search");
 		btnSrch.setIcon(new ImageIcon("images/search_button.png"));
 		add(btnSrch);
