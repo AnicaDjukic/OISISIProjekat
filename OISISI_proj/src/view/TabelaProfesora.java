@@ -20,8 +20,8 @@ public class TabelaProfesora extends JTable {
 	DefaultTableModel model;
 	ControllerProfesor controllerProfesor;
 	
-	public TabelaProfesora() {
-		controllerProfesor = new ControllerProfesor();
+	public TabelaProfesora(ControllerProfesor cProf) {
+		controllerProfesor = cProf;
 		model = new DefaultTableModel(){
 			@Override
 			public boolean isCellEditable(int row, int column) {

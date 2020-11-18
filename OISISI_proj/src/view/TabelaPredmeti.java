@@ -21,8 +21,8 @@ public class TabelaPredmeti extends JTable {
 	private DefaultTableModel model;
 	private ControllerPredmet controllerPredmet;
 	
-	public TabelaPredmeti() {
-		controllerPredmet = new ControllerPredmet();
+	public TabelaPredmeti(ControllerPredmet cPred) {
+		controllerPredmet = cPred;
 		model = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {

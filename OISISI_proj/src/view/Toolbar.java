@@ -4,20 +4,29 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
-
-//importi
 import javax.swing.*;
+
+import controller.*;
 
 public class Toolbar  extends JToolBar{
 	private JButton btnAdd,btnEdit,btnBin,btnSrch;
 	private JTextField srchField;
 	
-	public Toolbar() {
+	ControllerProfesor cProf;
+	ControllerPredmet cPred;
+	ControllerStudent cStud;
+	
+	public Toolbar(ControllerProfesor cProf, ControllerPredmet cPred, ControllerStudent cStud) {		
 		super(SwingConstants.HORIZONTAL);
+		
+		this.cProf = cProf;
+		this.cPred = cPred;
+		this.cStud = cStud;
 		
 		btnAdd = new JButton();
 		btnAdd.setToolTipText("Add");
 		btnAdd.setIcon(new ImageIcon("images/add_button.png"));
+		btnAdd.addActionListener(new AddButtonListener(cProf, cPred, cStud));
 		add(btnAdd);
 		
 		addSeparator();

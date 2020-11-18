@@ -2,12 +2,21 @@ package view;
 
 //importi :
 import javax.swing.*;
-
 import java.awt.*;
+
+import controller.*;
 
 public class GlavniProzor extends JFrame {
 	
 	private Toolkit kit;
+	static view.MenuBar menu;
+	static Toolbar toolbar;
+	static JPanel statusBar;
+	static TabbedPane tabbedPane;
+	
+	static ControllerProfesor cProf;
+	static ControllerPredmet cPred;
+	static ControllerStudent cStud;
 	
 	public GlavniProzor() {
 		kit = Toolkit.getDefaultToolkit();
@@ -16,23 +25,25 @@ public class GlavniProzor extends JFrame {
 		int screenWidth = screenSize.width * 3/4;
 		
 		setSize(screenWidth,screenHeight);
-		
 		setTitle("Studentska služba");
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		setLocationRelativeTo(null);
 		
+		//Incijalizacija kontrolera:
+		cProf = new ControllerProfesor();
+		cPred = new ControllerPredmet();
+		cStud = new ControllerStudent();
+		
 		//Menu bar :
-	    MenuBar menu = new view.MenuBar();
+	    menu = new MenuBar(cProf,cPred, cStud);
 	    setJMenuBar(menu);
 		
 		//Toolbar :
-		Toolbar toolbar = new Toolbar();
+		toolbar = new Toolbar(cProf, cPred, cStud);
 		add(toolbar,BorderLayout.NORTH);
 		
 		// Status bar
-		JPanel statusBar = new StatusBar();
+		statusBar = new StatusBar();
 		add(statusBar, BorderLayout.SOUTH);
 		
 		//Sminkanje :
@@ -46,9 +57,14 @@ public class GlavniProzor extends JFrame {
 		separatorWest.setSize(d.height,200);
 		add(separatorWest,BorderLayout.WEST);
 		
-		//Tabbed pane:
-		JTabbedPane tabbedPane = new TabbedPane();
+		//Tabbed pane:		
+		tabbedPane = new TabbedPane(cProf,cPred);
 		add(tabbedPane, BorderLayout.CENTER);
 	}
 	
+	public static TabbedPane getTabbedPane() {
+		if(tabbedPane == null)
+			tabbedPane = new TabbedPane(cProf, cPred);
+		return tabbedPane;
+	}
 }

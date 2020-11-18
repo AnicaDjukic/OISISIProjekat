@@ -4,6 +4,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import controller.*;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -14,11 +16,16 @@ import javax.swing.JMenu;
 
 public class MenuBar extends JMenuBar {
 	
-	public MenuBar() {
+	ControllerProfesor cProf;
+	ControllerPredmet cPred;
+	ControllerStudent cStud;
+	
+	public MenuBar(ControllerProfesor cProf, ControllerPredmet cPred, ControllerStudent cStud) {
 		
 		JMenu mFile = new JMenu("File");
 		JMenuItem miNew = new JMenuItem("New", new ImageIcon("images/add_button.png"));
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+		miNew.addActionListener(new AddButtonListener(cProf,cPred,cStud));
 		JMenuItem miClose = new JMenuItem("Close", new ImageIcon("images/close_button.png"));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		
