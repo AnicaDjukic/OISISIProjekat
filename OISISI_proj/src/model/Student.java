@@ -190,6 +190,5 @@ public class Student {
 			out += "Nema nepolozenih ispita.\n"; 
 		}
 		return out;
-	}
-	
+	}	
 }
