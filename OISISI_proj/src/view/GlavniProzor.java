@@ -13,12 +13,14 @@ public class GlavniProzor extends JFrame {
 	static Toolbar toolbar;
 	static JPanel statusBar;
 	static TabbedPane tabbedPane;
+	static GlavniProzor inst;
 	
 	static ControllerProfesor cProf;
 	static ControllerPredmet cPred;
 	static ControllerStudent cStud;
 	
 	public GlavniProzor() {
+		inst = this;
 		kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height * 3/4;
@@ -66,5 +68,10 @@ public class GlavniProzor extends JFrame {
 		if(tabbedPane == null)
 			tabbedPane = new TabbedPane(cProf, cPred);
 		return tabbedPane;
+	}
+	public static GlavniProzor getGlavniProzor() {
+		if(inst == null)
+			inst = new GlavniProzor();
+		return inst;
 	}
 }

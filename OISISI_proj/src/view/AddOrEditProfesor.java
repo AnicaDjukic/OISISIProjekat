@@ -1,6 +1,9 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 import model.Profesor;
@@ -13,9 +16,11 @@ public class AddOrEditProfesor extends JPanel{
 	private Profesor profesor;
 	private JButton ok,cancel;
 	private ControllerProfesor controllerProfesor;
+	private AddOrEditDialog d;
 	
-	public AddOrEditProfesor(ControllerProfesor cp, int mode) {
+	public AddOrEditProfesor(ControllerProfesor cp, int mode, AddOrEditDialog d) {
 		controllerProfesor = cp;
+	    this.d = d;
 		setLayout(new BorderLayout());
 		setSize(400,500);
 		
@@ -52,5 +57,23 @@ public class AddOrEditProfesor extends JPanel{
 		
 		add(gornji,BorderLayout.NORTH);
 		add(donji,BorderLayout.SOUTH);
+		
+		//Button listeneri : 
+		cancel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				d.setVisible(false);
+			}
+		});
+		
+		ok.addActionListener(new ActionListener() {
+			
+			//Treba doimplementirati
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				d.setVisible(false);
+			}
+		});
 	}
 }

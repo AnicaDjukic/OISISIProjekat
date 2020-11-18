@@ -30,9 +30,8 @@ public class AddButtonListener implements ActionListener{
 			break;
 		case 1:
 			//Add za profesore
-			AddOrEditDialog aoed = new AddOrEditDialog(cProf,1);
+			AddOrEditDialog aoed = new AddOrEditDialog(cProf,1,GlavniProzor.getGlavniProzor());
 			aoed.setVisible(true);
-			System.out.println("Stisnut add");
 			break;
 		case 2:
 			//Add za predmete

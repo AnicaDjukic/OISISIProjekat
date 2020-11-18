@@ -1,6 +1,8 @@
 package controller;
 
 import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 
@@ -53,4 +55,52 @@ public class ControllerProfesor {
 		
 		return ret;
 	}
+	
+	//Validator da je profesor ispravno napravljen :
+	public boolean Validate(Profesor p) {
+		String regEx = "[A-Z][a-z]*";
+		
+		if(!p.getIme().matches(regEx))
+			return false;
+		
+		if(!p.getPrezime().matches(regEx))
+			return false;
+		
+		regEx = "([A-Z][a-z]*[ ]){1,5}[1-9][0-9]?";
+		if(!p.getAdr_stan().matches(regEx))
+			return false;
+		
+		if(!p.getAdr_kanc().matches(regEx))
+			return false;
+		
+		if(!isValidDate(p.getDrp()))
+			return false;
+		
+		
+		return true;
+	}
+	
+	boolean isValidDate(String input) {
+		SimpleDateFormat dateValidaterCol = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dateValidaterDot = new SimpleDateFormat("dd.MM.yyyy");
+		boolean suc = false;
+		try {
+	    	 dateValidaterCol.parse(input);
+	         suc = true;
+	     }
+	     catch(ParseException e){
+	          suc = false;
+	     }
+		
+		try {
+			dateValidaterDot.parse(input);
+	         suc = true;
+	     }
+	     catch(ParseException e){
+	          suc = false;
+	     }
+		
+		return suc;
+	}
 }
+
