@@ -4,8 +4,7 @@ package view;
 
 import javax.swing.*;
 
-import controller.ControllerPredmet;
-import controller.ControllerProfesor;
+import controller.*;
 
 import java.awt.*;
 
@@ -15,9 +14,9 @@ public class TabbedPane extends JTabbedPane{
 	 * 
 	 */
 	
-	public TabbedPane(ControllerProfesor cProf, ControllerPredmet cPred){
+	public TabbedPane(ControllerProfesor cProf, ControllerPredmet cPred, ControllerStudent cStud){
 		super();
-		TabelaStudenti tabelaStudenti = new TabelaStudenti();
+		TabelaStudenti tabelaStudenti = new TabelaStudenti(cStud);
 		JScrollPane tabPaneStudent = new JScrollPane(tabelaStudenti);
 		this.addTab("Studenti", tabPaneStudent);
 		

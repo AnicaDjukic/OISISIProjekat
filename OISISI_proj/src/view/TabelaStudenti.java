@@ -5,9 +5,11 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import controller.ControllerStudent;
+
 public class TabelaStudenti extends JTable {
 	
-	public TabelaStudenti () {
+	public TabelaStudenti (ControllerStudent cStud) {
 		Object[] cols = {"Indeks", "Ime", "Prezime", "Godina studija", "Status", "Prosek"};
 		DefaultTableModel tabela = new DefaultTableModel() {
 			

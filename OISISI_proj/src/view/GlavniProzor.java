@@ -60,13 +60,13 @@ public class GlavniProzor extends JFrame {
 		add(separatorWest,BorderLayout.WEST);
 		
 		//Tabbed pane:		
-		tabbedPane = new TabbedPane(cProf,cPred);
+		tabbedPane = new TabbedPane(cProf,cPred,cStud);
 		add(tabbedPane, BorderLayout.CENTER);
 	}
 	
 	public static TabbedPane getTabbedPane() {
 		if(tabbedPane == null)
-			tabbedPane = new TabbedPane(cProf, cPred);
+			tabbedPane = new TabbedPane(cProf, cPred,cStud);
 		return tabbedPane;
 	}
 	public static GlavniProzor getGlavniProzor() {
