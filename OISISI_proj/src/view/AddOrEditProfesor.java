@@ -8,6 +8,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
+import model.GlobalConstants;
 import model.Profesor;
 import controller.*;
 
@@ -34,61 +35,61 @@ public class AddOrEditProfesor extends JPanel{
 		gornji.setLayout(new BoxLayout(gornji, BoxLayout.Y_AXIS));
 		
 		txtPrezime = new JTextField();
-		txtPrezime.setName("prezime");
-		txtPrezime.setToolTipText("Samo slova su dozvoljena");
+		txtPrezime.setName(GlobalConstants.przLab);
+		txtPrezime.setToolTipText(GlobalConstants.przImeToolTip);
 		
 		txtIme = new JTextField();
-		txtIme.setName("ime");
-		txtIme.setToolTipText("Samo slova su dozvoljena");
+		txtIme.setName(GlobalConstants.imeLab);
+		txtIme.setToolTipText(GlobalConstants.przImeToolTip);
 		
 		txtDrp = new JTextField();
-		txtDrp.setName("drp");
-		txtDrp.setToolTipText("dd.MM.yyyy format");
+		txtDrp.setName(GlobalConstants.drLab);
+		txtDrp.setToolTipText(GlobalConstants.drpToolTip);
 		
 		txtAdrKanc = new JTextField();
-		txtAdrKanc.setName("adrKanc");
-		txtAdrKanc.setToolTipText("Adresa se sastoji iz imena ulice i broja zgrade");
+		txtAdrKanc.setName(GlobalConstants.adrKancLab);
+		txtAdrKanc.setToolTipText(GlobalConstants.adrToolTip);
 		
 		txtKonTel = new JTextField();
-		txtKonTel.setName("kontel");
-		txtKonTel.setToolTipText("Samo brojevi su dozvoljeni");
+		txtKonTel.setName(GlobalConstants.konTelLab);
+		txtKonTel.setToolTipText(GlobalConstants.konTelToolTip);  
 		
 		txtEmail = new JTextField();
-		txtEmail.setName("email");
-		txtEmail.setToolTipText("Standardni email format : ...@...");
+		txtEmail.setName(GlobalConstants.emailLab);
+		txtEmail.setToolTipText(GlobalConstants.emailToolTip);
 		
 		txtAdrStan = new JTextField();
-		txtAdrStan.setName("adrStan");
-		txtAdrStan.setToolTipText("Adresa se sastoji iz imena ulice i broja zgrade");
+		txtAdrStan.setName(GlobalConstants.adrStanLab);
+		txtAdrStan.setToolTipText(GlobalConstants.adrToolTip);
 		
 		txtBrLicKart = new JTextField();
-		txtBrLicKart.setName("brLicKart");
-		txtBrLicKart.setToolTipText("Samo brojevi su dozvoljni");
+		txtBrLicKart.setName(GlobalConstants.brLicKartLab);
+		txtBrLicKart.setToolTipText(GlobalConstants.brLicKartToolTip);
 		
 		txtTitula = new JTextField();
-		txtTitula.setName("titula");
-		txtTitula.setToolTipText("Dozvoljeno je jedna ili vise reci");
+		txtTitula.setName(GlobalConstants.titulaLab);
+		txtTitula.setToolTipText(GlobalConstants.titZvToolTip);
 		
 		txtZvanje = new JTextField();
-		txtZvanje.setName("zvanje");
-		txtZvanje.setToolTipText("Dozvoljeno je jedna ili vise reci");
+		txtZvanje.setName(GlobalConstants.zvanjeLab);
+		txtZvanje.setToolTipText(GlobalConstants.titZvToolTip);
 		
-		gornji.add(cp.createPanel(labPrezime, this.txtPrezime, "Prezime : "));
-		gornji.add(cp.createPanel(labIme, this.txtIme, "Ime : "));
-		gornji.add(cp.createPanel(labDrp, this.txtDrp, "Datum rodjenja : "));
-		gornji.add(cp.createPanel(labAdrKanc, this.txtAdrKanc, "Adresa kancelarije : "));
-		gornji.add(cp.createPanel(labKonTel, this.txtKonTel, "Kontakt telefon : "));
-		gornji.add(cp.createPanel(labEmail, this.txtEmail, "Email : "));
-		gornji.add(cp.createPanel(labAdrStan, this.txtAdrStan, "Adresa stanovanja : "));
-		gornji.add(cp.createPanel(labBrLicKart, this.txtBrLicKart, "Broj licne karte"));
-		gornji.add(cp.createPanel(labTitula, this.txtTitula, "Titula : "));
-		gornji.add(cp.createPanel(labZvanje, this.txtZvanje, "Zvanje : "));
+		gornji.add(cp.createPanel(labPrezime, this.txtPrezime, GlobalConstants.przLab));
+		gornji.add(cp.createPanel(labIme, this.txtIme, GlobalConstants.imeLab));
+		gornji.add(cp.createPanel(labDrp, this.txtDrp, GlobalConstants.drLab));
+		gornji.add(cp.createPanel(labAdrKanc, this.txtAdrKanc, GlobalConstants.adrKancLab));
+		gornji.add(cp.createPanel(labKonTel, this.txtKonTel, GlobalConstants.konTelLab));
+		gornji.add(cp.createPanel(labEmail, this.txtEmail, GlobalConstants.emailLab));
+		gornji.add(cp.createPanel(labAdrStan, this.txtAdrStan, GlobalConstants.adrStanLab));
+		gornji.add(cp.createPanel(labBrLicKart, this.txtBrLicKart, GlobalConstants.brLicKartLab));
+		gornji.add(cp.createPanel(labTitula, this.txtTitula, GlobalConstants.titulaLab));
+		gornji.add(cp.createPanel(labZvanje, this.txtZvanje, GlobalConstants.zvanjeLab));
 		
 		JPanel donji = new JPanel();
-		ok = new JButton("Potvrdi");
+		ok = new JButton(GlobalConstants.btnOkName);
 		ok.setEnabled(false);
 		donji.add(ok);
-		cancel = new JButton("Odustani");
+		cancel = new JButton(GlobalConstants.btnCncName);
 		donji.add(cancel);	
 		
 		add(gornji,BorderLayout.NORTH);
@@ -137,7 +138,7 @@ public class AddOrEditProfesor extends JPanel{
 				
 				p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
 				if(!cp.dodajProfesora(p)) 
-					er = new ErrorDialog("Neuspesno dodat profesor!");
+					er = new ErrorDialog(GlobalConstants.errAddProf);
 				
 				TabelaProfesora.azurirajTabelu();
 				

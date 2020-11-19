@@ -5,6 +5,7 @@ package view;
 import javax.swing.*;
 
 import controller.*;
+import model.GlobalConstants;
 
 import java.awt.*;
 
@@ -18,14 +19,14 @@ public class TabbedPane extends JTabbedPane{
 		super();
 		TabelaStudenti tabelaStudenti = new TabelaStudenti();
 		JScrollPane tabPaneStudent = new JScrollPane(tabelaStudenti);
-		this.addTab("Studenti", tabPaneStudent);
+		this.addTab(GlobalConstants.tabStudentName, tabPaneStudent);
 		
 		TabelaProfesora tabelaProfesora = new TabelaProfesora();
 		JScrollPane tabPaneProfesor = new JScrollPane(tabelaProfesora);
-		this.addTab("Profesori", tabPaneProfesor);
+		this.addTab(GlobalConstants.tabProfesorName, tabPaneProfesor);
 		
 		TabelaPredmeti tabelaPredmeta = new TabelaPredmeti();
 		JScrollPane tabPanePredmet = new JScrollPane(tabelaPredmeta);
-		this.addTab("Predmeti", tabPanePredmet);
+		this.addTab(GlobalConstants.tabPredmetName, tabPanePredmet);
 	}
 }

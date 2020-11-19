@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import model.GlobalConstants;
 import model.Profesor;
 import controller.ControllerProfesor;
 
@@ -16,7 +17,7 @@ import java.util.*;
 
 public class TabelaProfesora extends JTable { 
 	
-	private static Object[] colNames = {"Ime : ", "Prezime : ", "Titula : ", "Zvanje : "};
+	private static Object[] colNames = {GlobalConstants.imeLab, GlobalConstants.przLab, GlobalConstants.titulaLab, GlobalConstants.zvanjeLab};
 	static DefaultTableModel model;
 	static ControllerProfesor controllerProfesor;
 	static TabelaProfesora inst;
@@ -32,9 +33,6 @@ public class TabelaProfesora extends JTable {
 		for(int i = 0; i < colNames.length; i++)
 			getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		//Test primer!
-		
-		Object[] row = {"Nikola", "Milosavljevic", "-", "-"};
-		model.addRow(row);
 		
 		azurirajTabelu();
 	}

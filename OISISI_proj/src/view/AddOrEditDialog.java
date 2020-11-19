@@ -4,6 +4,7 @@ import java.awt.Frame;
 import javax.swing.JDialog;
 
 import controller.*;
+import model.GlobalConstants;
 
 public class AddOrEditDialog extends JDialog{
 	
@@ -14,7 +15,7 @@ public class AddOrEditDialog extends JDialog{
 		super();
 		
 		this.setResizable(false);
-		this.setSize(400,500);
+		this.setSize(GlobalConstants.aoedw,GlobalConstants.aoedh);
 		this.setModal(true);
 		this.setLocationRelativeTo(GlavniProzor.getGlavniProzor());
 		
@@ -27,9 +28,9 @@ public class AddOrEditDialog extends JDialog{
 		case 1 :
 			//za profesore
 			if(mode == add_mode)
-				this.setTitle("Dodavanje profesora");
+				this.setTitle(GlobalConstants.profAdd);
 			else
-				this.setTitle("Izmena profeosra");
+				this.setTitle(GlobalConstants.profEdit);
 			this.add(new AddOrEditProfesor(mode, this));
 			break;
 		case 2 :

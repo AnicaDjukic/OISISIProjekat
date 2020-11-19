@@ -123,6 +123,60 @@ public class Profesor {
 	
 	public Profesor(String pr, String im, String dr, String ads,
 			String adk, String kt, String em, String blk, String tit, String zv) {
+		String temp;
+		String[] parts;
+		
+		//Sredjivanje izgleda karaktera :
+		pr = pr.toLowerCase();
+		temp = pr.substring(0,1);
+		temp = temp.toUpperCase();
+		pr = temp + pr.substring(1);
+		
+		im = im.toLowerCase();
+		temp = im.substring(0,1);
+		temp = temp.toUpperCase();
+		im = temp + im.substring(1);
+		
+		parts = ads.split(" ");
+		ads = "";
+		for(String s : parts) {
+			s = s.toLowerCase();
+			temp = s.substring(0,1);
+			temp = temp.toUpperCase();
+			s = temp + s.substring(1);
+			ads += s;
+		}
+		
+		parts = adk.split(" ");
+		adk = "";
+		for(String s : parts) {
+			s = s.toLowerCase();
+			temp = s.substring(0,1);
+			temp = temp.toUpperCase();
+			s = temp + s.substring(1);
+			adk += s;
+		}
+		
+		parts = tit.split(" ");
+		tit = "";
+		for(String s : parts) {
+			s = s.toLowerCase();
+			temp = s.substring(0,1);
+			temp = temp.toUpperCase();
+			s = temp + s.substring(1);
+			tit += s;
+		}
+		
+		parts = zv.split(" ");
+		zv = "";
+		for(String s : parts) {
+			s = s.toLowerCase();
+			temp = s.substring(0,1);
+			temp = temp.toUpperCase();
+			s = temp + s.substring(1);
+			zv += s;
+		}
+		
 		this.prezime = pr;
 		this.ime = im;
 		this.drp = dr;

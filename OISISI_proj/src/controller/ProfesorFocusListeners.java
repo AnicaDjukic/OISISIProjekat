@@ -6,6 +6,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JTextField;
 
+import model.GlobalConstants;
 import view.*;
 
 public class ProfesorFocusListeners implements FocusListener{
@@ -49,22 +50,24 @@ public class ProfesorFocusListeners implements FocusListener{
 			AddOrEditProfesor.ok.setEnabled(false);
 		
 		if(input.equals(""))
-			tx.setText("Obavezno polje!");
+			tx.setText(GlobalConstants.obvPolje);
 	}
 	
 	public boolean getValue(String input0) {
 		boolean ret = false;
-		if(name.equals("ime") || name.equals("prezime"))
+		if(name.equals(GlobalConstants.imeLab) || name.equals(GlobalConstants.przLab))
 			ret = Checker.isNameOrSurename(input);
-		if(name.equals("drp"))
+		if(name.equals(GlobalConstants.drLab))
 			ret = Checker.isValidDate(input);
-		if(name.equals("adrKanc") || name.equals("adrStan"))
+		if(name.equals(GlobalConstants.adrKancLab) || name.equals(GlobalConstants.adrStanLab))
 			ret = Checker.isValidAdrress(input);
-		if(name.equals("kontel") || name.equals("brLicKart"))
-			ret = Checker.isValidNumber(input);
-		if(name.equals("email"))
+		if(name.equals(GlobalConstants.konTelLab))
+			ret = Checker.isValidNumber(input,0);
+		if(name.equals(GlobalConstants.brLicKartLab))
+			ret = Checker.isValidNumber(input,1);
+		if(name.equals(GlobalConstants.emailLab))
 			ret = Checker.isValidEmail(input);
-		if(name.equals("titula") || name.equals("zvanje"))
+		if(name.equals(GlobalConstants.titulaLab) || name.equals(GlobalConstants.zvanjeLab))
 			ret = Checker.isValidTitOrMaj(input);
 		
 		return ret;

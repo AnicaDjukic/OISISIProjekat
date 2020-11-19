@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import model.GlobalConstants;
 import model.Predmet;
 import model.Profesor;
 import controller.ControllerPredmet;
@@ -17,7 +18,7 @@ import java.util.*;
 
 public class TabelaPredmeti extends JTable { 
 	
-	private static Object[] colNames = {"Sifra predmeta : ", "Naziv predmeta : ", "ESPB : ", "Godina : ", "Semestar : "};
+	private static Object[] colNames = {GlobalConstants.spr, GlobalConstants.npr, GlobalConstants.espb,GlobalConstants.god, GlobalConstants.sem};
 	static DefaultTableModel model;
 	static ControllerPredmet controllerPredmet;
 	static TabelaPredmeti inst;

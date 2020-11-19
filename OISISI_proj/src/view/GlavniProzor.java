@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import controller.*;
+import model.GlobalConstants;
 
 public class GlavniProzor extends JFrame {
 	
@@ -27,7 +28,7 @@ public class GlavniProzor extends JFrame {
 		int screenWidth = screenSize.width * 3/4;
 		
 		setSize(screenWidth,screenHeight);
-		setTitle("Studentska služba");
+		setTitle(GlobalConstants.mfName);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		

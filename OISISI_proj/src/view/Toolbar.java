@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 import controller.*;
+import model.GlobalConstants;
 
 public class Toolbar  extends JToolBar{
 	private JButton btnAdd,btnEdit,btnBin,btnSrch;
@@ -20,23 +21,23 @@ public class Toolbar  extends JToolBar{
 		super(SwingConstants.HORIZONTAL);
 		
 		btnAdd = new JButton();
-		btnAdd.setToolTipText("Add");
-		btnAdd.setIcon(new ImageIcon("images/add_button.png"));
+		btnAdd.setToolTipText(GlobalConstants.addBtnToolTipTxt);
+		btnAdd.setIcon(new ImageIcon(GlobalConstants.addImg));
 		btnAdd.addActionListener(new AddButtonListener());
 		add(btnAdd);
 		
 		addSeparator();
 		
 		btnEdit = new JButton();
-		btnEdit.setToolTipText("Edit");
-		btnEdit.setIcon(new ImageIcon("images/edit_button.png"));
+		btnEdit.setToolTipText(GlobalConstants.editBtnToolTipTxt);
+		btnEdit.setIcon(new ImageIcon(GlobalConstants.editImg));
 		add(btnEdit);
 		
 		addSeparator();
 		
 		btnBin = new JButton();
-		btnBin.setToolTipText("Delete");
-		btnBin.setIcon(new ImageIcon("images/bin_button.png"));
+		btnBin.setToolTipText(GlobalConstants.delBtnToolTipTxt);
+		btnBin.setIcon(new ImageIcon(GlobalConstants.delImg));
 		add(btnBin);
 		
 		add(Box.createHorizontalGlue());
@@ -45,12 +46,13 @@ public class Toolbar  extends JToolBar{
 		srchField = new JTextField(20);
 		srchField.setMaximumSize(new Dimension(350,25));
 		srchField.setMinimumSize(new Dimension(350,25));
+		srchField.setToolTipText(GlobalConstants.srchFieldToolTipTxt);
 		add(srchField);	
 		addSeparator();
 		
 		btnSrch = new JButton();
-		btnSrch.setToolTipText("Search");
-		btnSrch.setIcon(new ImageIcon("images/search_button.png"));
+		btnSrch.setToolTipText(GlobalConstants.srchBtnToolTipTxt);
+		btnSrch.setIcon(new ImageIcon(GlobalConstants.srcImg));
 		add(btnSrch);
 	}
 }
