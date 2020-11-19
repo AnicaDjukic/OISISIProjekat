@@ -20,19 +20,18 @@ public class TabelaStudenti extends JTable {
 		tabela.setColumnIdentifiers(cols);
 		setModel(tabela);
 		
-		setRowHeight(25);
+		setRowHeight(35);
 		setAutoCreateRowSorter(true);
 		setFont(getFont().deriveFont(16f));
 		
 		// Centriranje
-		DefaultTableCellRenderer prikaz = new DefaultTableCellRenderer();
-		prikaz.setHorizontalAlignment(SwingConstants.CENTER);
+		NasCellRenderer prikaz = new NasCellRenderer(NasCellRenderer.STUDENT_RENDER);
 		for(Object o : cols) {
 			getColumn(o).setCellRenderer(prikaz);
 		}
 		
 		// Primer
-		Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "Budzet", "9.5"};
+		Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "B" , "9.5"};
 		tabela.addRow(prvi);
 	}
 }
