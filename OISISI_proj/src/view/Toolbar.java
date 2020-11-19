@@ -16,17 +16,13 @@ public class Toolbar  extends JToolBar{
 	ControllerPredmet cPred;
 	ControllerStudent cStud;
 	
-	public Toolbar(ControllerProfesor cProf, ControllerPredmet cPred, ControllerStudent cStud) {		
+	public Toolbar() {		
 		super(SwingConstants.HORIZONTAL);
-		
-		this.cProf = cProf;
-		this.cPred = cPred;
-		this.cStud = cStud;
 		
 		btnAdd = new JButton();
 		btnAdd.setToolTipText("Add");
 		btnAdd.setIcon(new ImageIcon("images/add_button.png"));
-		btnAdd.addActionListener(new AddButtonListener(cProf, cPred, cStud));
+		btnAdd.addActionListener(new AddButtonListener());
 		add(btnAdd);
 		
 		addSeparator();

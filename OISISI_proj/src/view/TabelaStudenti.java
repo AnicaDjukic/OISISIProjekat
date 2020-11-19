@@ -9,7 +9,7 @@ import controller.ControllerStudent;
 
 public class TabelaStudenti extends JTable {
 	
-	public TabelaStudenti (ControllerStudent cStud) {
+	public TabelaStudenti () {
 		Object[] cols = {"Indeks", "Ime", "Prezime", "Godina studija", "Status", "Prosek"};
 		DefaultTableModel tabela = new DefaultTableModel() {
 			

@@ -18,11 +18,19 @@ import java.util.*;
 public class TabelaPredmeti extends JTable { 
 	
 	private static Object[] colNames = {"Sifra predmeta : ", "Naziv predmeta : ", "ESPB : ", "Godina : ", "Semestar : "};
-	private DefaultTableModel model;
-	private ControllerPredmet controllerPredmet;
+	static DefaultTableModel model;
+	static ControllerPredmet controllerPredmet;
+	static TabelaPredmeti inst;
 	
-	public TabelaPredmeti(ControllerPredmet cPred) {
-		controllerPredmet = cPred;
+	public TabelaPredmeti() {
+		inst = this;
+		controllerPredmet = GlavniProzor.getControllerPredmet();
+		
+		azurirajTabelu();
+	}
+	
+	//Inicijalizacija modela tabele :
+	public static void tableInitialize(TabelaPredmeti t) {
 		model = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -30,25 +38,24 @@ public class TabelaPredmeti extends JTable {
 			}
 		};
 		model.setColumnIdentifiers(colNames);
-		this.setModel(model);
+		t.setModel(model);
 		
-		this.setRowHeight(35);
-		this.setAutoCreateRowSorter(true);
-		this.setFont(this.getFont().deriveFont(16F));
+		t.setRowHeight(35);
+		t.setAutoCreateRowSorter(true);
+		t.setFont(t.getFont().deriveFont(16F));
 		
 		//Poravnanje :
 		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PREDMET_RENDER);
-		for(int i = 0; i < colNames.length; i++)
-			getColumnModel().getColumn(i).setCellRenderer(poravnanje);
-		//Test primer!
-		
-;		azurirajTabelu();
+			for(int i = 0; i < colNames.length; i++)
+				t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 	}
 
 	//Metoda za izlistavanje profesora : 
 	
-	void azurirajTabelu() {
+	public static void azurirajTabelu() {
 		ArrayList<Predmet> listaPredmeta = controllerPredmet.getListaPredmeta();
+		
+		tableInitialize(inst);
 		
 		String sifra,naziv,espb,godina,semestar;
 		Object[] row = {"", "", "", "", ""};

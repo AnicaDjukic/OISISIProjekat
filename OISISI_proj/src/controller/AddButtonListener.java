@@ -8,17 +8,6 @@ import controller.*;
 
 public class AddButtonListener implements ActionListener{
 	
-	
-	ControllerProfesor cProf;
-	ControllerPredmet cPred;
-	ControllerStudent cStud;
-	
-	public AddButtonListener(ControllerProfesor cProf, ControllerPredmet cPred, ControllerStudent cStud) {
-		this.cProf = cProf;
-		this.cPred = cPred;		
-		this.cStud = cStud;
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -30,7 +19,7 @@ public class AddButtonListener implements ActionListener{
 			break;
 		case 1:
 			//Add za profesore
-			AddOrEditDialog aoed = new AddOrEditDialog(cProf,1,GlavniProzor.getGlavniProzor());
+			AddOrEditDialog aoed = new AddOrEditDialog(1);
 			aoed.setVisible(true);
 			break;
 		case 2:

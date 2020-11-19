@@ -10,10 +10,13 @@ public class AddOrEditDialog extends JDialog{
 	public static int add_mode = 1;
 	public static int edit_mode = 2;
 	
-	public AddOrEditDialog(ControllerProfesor cp,int mode, GlavniProzor parent) {
+	public AddOrEditDialog(int mode) {
 		super();
 		
 		this.setResizable(false);
+		this.setSize(400,500);
+		this.setModal(true);
+		this.setLocationRelativeTo(GlavniProzor.getGlavniProzor());
 		
 		int tab = GlavniProzor.getTabbedPane().getSelectedIndex();
 		
@@ -27,11 +30,7 @@ public class AddOrEditDialog extends JDialog{
 				this.setTitle("Dodavanje profesora");
 			else
 				this.setTitle("Izmena profeosra");
-			
-			this.setSize(400,500);
-			this.setModal(true);
-			this.add(new AddOrEditProfesor(cp,mode, this));
-			this.setLocationRelativeTo(parent);
+			this.add(new AddOrEditProfesor(mode, this));
 			break;
 		case 2 :
 			//za predmete

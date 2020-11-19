@@ -17,24 +17,16 @@ import java.util.*;
 public class TabelaProfesora extends JTable { 
 	
 	private static Object[] colNames = {"Ime : ", "Prezime : ", "Titula : ", "Zvanje : "};
-	DefaultTableModel model;
-	ControllerProfesor controllerProfesor;
+	static DefaultTableModel model;
+	static ControllerProfesor controllerProfesor;
+	static TabelaProfesora inst;
 	
-	public TabelaProfesora(ControllerProfesor cProf) {
-		controllerProfesor = cProf;
-		model = new DefaultTableModel(){
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		model.setColumnIdentifiers(colNames);
-		this.setModel(model);
+	public TabelaProfesora() {
+		inst = this;
+		controllerProfesor = GlavniProzor.getControllerProfesor();
 		
-		this.setRowHeight(35);
-		this.setAutoCreateRowSorter(true);
-		this.setFont(this.getFont().deriveFont(16F));
-	
+		tableInitialize(inst);
+		
 		//Poravnanje :
 		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PROFESOR_RENDER);
 		for(int i = 0; i < colNames.length; i++)
@@ -45,13 +37,30 @@ public class TabelaProfesora extends JTable {
 		model.addRow(row);
 		
 		azurirajTabelu();
+	}
+	
+	//Inicijalizacija modela tabele :
+	public static void tableInitialize(TabelaProfesora t) {
+		model = new DefaultTableModel(){
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		model.setColumnIdentifiers(colNames);
+		t.setModel(model);
 		
+		t.setRowHeight(35);
+		t.setAutoCreateRowSorter(true);
+		t.setFont(t.getFont().deriveFont(16F));
 	}
 	
 	//Metoda za izlistavanje profesora : 
 	
-	void azurirajTabelu() {
+	public static void azurirajTabelu() {
 		ArrayList<Profesor> listaProfesora = controllerProfesor.getListaProfesora();
+		
+		tableInitialize(inst);
 		
 		String ime,prezime,titula,zvanje;
 		Object[] row = {"", "", "", ""};

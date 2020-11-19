@@ -24,16 +24,18 @@ public class ControllerProfesor {
 	
 	//Doimplementirati kada se bude imao data sample
 	public void Initialize() {
-		for(int i = 0; i < 10; i++) {
-			Profesor p = new Profesor();
-			p.setIme("" + i);
-			dodajProfesora(p);
-		}
 	}
 	
-	public void dodajProfesora(Profesor p) {
-		if(!listaProfesora.contains(p))
+	public boolean dodajProfesora(Profesor p) {
+		if(listaProfesora.isEmpty()) {
 			listaProfesora.add(p);
+			return true;
+		}
+		for(Profesor temp : listaProfesora)
+			if(temp.getBrLicKart().equals(p.getBrLicKart()))
+				return false;
+		listaProfesora.add(p);		
+		return true;
 	}
 	
 	public void ukloniProfesora(Profesor p) {
@@ -54,53 +56,6 @@ public class ControllerProfesor {
 		ret.add(txt);
 		
 		return ret;
-	}
-	
-	//Validator da je profesor ispravno napravljen :
-	public boolean Validate(Profesor p) {
-		String regEx = "[A-Z][a-z]*";
-		
-		if(!p.getIme().matches(regEx))
-			return false;
-		
-		if(!p.getPrezime().matches(regEx))
-			return false;
-		
-		regEx = "([A-Z][a-z]*[ ]){1,5}[1-9][0-9]?";
-		if(!p.getAdr_stan().matches(regEx))
-			return false;
-		
-		if(!p.getAdr_kanc().matches(regEx))
-			return false;
-		
-		if(!isValidDate(p.getDrp()))
-			return false;
-		
-		
-		return true;
-	}
-	
-	boolean isValidDate(String input) {
-		SimpleDateFormat dateValidaterCol = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat dateValidaterDot = new SimpleDateFormat("dd.MM.yyyy");
-		boolean suc = false;
-		try {
-	    	 dateValidaterCol.parse(input);
-	         suc = true;
-	     }
-	     catch(ParseException e){
-	          suc = false;
-	     }
-		
-		try {
-			dateValidaterDot.parse(input);
-	         suc = true;
-	     }
-	     catch(ParseException e){
-	          suc = false;
-	     }
-		
-		return suc;
 	}
 }
 

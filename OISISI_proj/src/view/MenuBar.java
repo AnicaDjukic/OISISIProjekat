@@ -20,12 +20,12 @@ public class MenuBar extends JMenuBar {
 	ControllerPredmet cPred;
 	ControllerStudent cStud;
 	
-	public MenuBar(ControllerProfesor cProf, ControllerPredmet cPred, ControllerStudent cStud) {
+	public MenuBar() {
 		
 		JMenu mFile = new JMenu("File");
 		JMenuItem miNew = new JMenuItem("New", new ImageIcon("images/add_button.png"));
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-		miNew.addActionListener(new AddButtonListener(cProf,cPred,cStud));
+		miNew.addActionListener(new AddButtonListener());
 		JMenuItem miClose = new JMenuItem("Close", new ImageIcon("images/close_button.png"));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		

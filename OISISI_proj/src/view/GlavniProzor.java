@@ -37,11 +37,11 @@ public class GlavniProzor extends JFrame {
 		cStud = new ControllerStudent();
 		
 		//Menu bar :
-	    menu = new MenuBar(cProf,cPred, cStud);
+	    menu = new MenuBar();
 	    setJMenuBar(menu);
 		
 		//Toolbar :
-		toolbar = new Toolbar(cProf, cPred, cStud);
+		toolbar = new Toolbar();
 		add(toolbar,BorderLayout.NORTH);
 		
 		// Status bar
@@ -60,18 +60,29 @@ public class GlavniProzor extends JFrame {
 		add(separatorWest,BorderLayout.WEST);
 		
 		//Tabbed pane:		
-		tabbedPane = new TabbedPane(cProf,cPred,cStud);
+		tabbedPane = new TabbedPane();
 		add(tabbedPane, BorderLayout.CENTER);
 	}
-	
+	//Geteri : 
 	public static TabbedPane getTabbedPane() {
 		if(tabbedPane == null)
-			tabbedPane = new TabbedPane(cProf, cPred,cStud);
+			tabbedPane = new TabbedPane();
 		return tabbedPane;
 	}
 	public static GlavniProzor getGlavniProzor() {
 		if(inst == null)
 			inst = new GlavniProzor();
 		return inst;
+	}
+	
+	//Geteri za kontrolere :
+	public static ControllerProfesor getControllerProfesor() {
+		return cProf;
+	}
+	public static ControllerPredmet getControllerPredmet() {
+		return cPred;
+	}
+	public static ControllerStudent getControllerStudent() {
+		return cStud;
 	}
 }
