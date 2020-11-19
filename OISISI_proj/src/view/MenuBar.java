@@ -34,10 +34,10 @@ public class MenuBar extends JMenuBar {
 		mFile.addSeparator();
 		mFile.add(miClose);
 		
-		JMenu mEdit = new JMenu("Edit");
-		JMenuItem miEdit = new JMenuItem("Edit", new ImageIcon("images/edit_button.png"));
+		JMenu mEdit = new JMenu("Izmeni");
+		JMenuItem miEdit = new JMenuItem("Izmeni", new ImageIcon("images/edit_button.png"));
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		JMenuItem miDelete = new JMenuItem("Delete", new ImageIcon("images/bin_button.png"));
+		JMenuItem miDelete = new JMenuItem("Obrisi", new ImageIcon("images/bin_button.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
 		mEdit.setMnemonic(KeyEvent.VK_E);
