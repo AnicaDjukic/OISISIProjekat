@@ -23,7 +23,7 @@ public class MenuBar extends JMenuBar {
 	public MenuBar() {
 		
 		JMenu mFile = new JMenu("File");
-		JMenuItem miNew = new JMenuItem("New", new ImageIcon("images/add_button.png"));
+		JMenuItem miNew = new JMenuItem("Dodaj novog", new ImageIcon("images/add_button.png"));
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		miNew.addActionListener(new AddButtonListener());
 		JMenuItem miClose = new JMenuItem("Close", new ImageIcon("images/close_button.png"));
