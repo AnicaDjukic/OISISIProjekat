@@ -10,7 +10,7 @@ import model.GlobalConstants;
 public class GlavniProzor extends JFrame {
 	
 	private Toolkit kit;
-	static view.MenuBar menu;
+	static view.MyMenuBar menu;
 	static Toolbar toolbar;
 	static JPanel statusBar;
 	static TabbedPane tabbedPane;
@@ -38,7 +38,7 @@ public class GlavniProzor extends JFrame {
 		cStud = new ControllerStudent();
 		
 		//Menu bar :
-	    menu = new MenuBar();
+	    menu = new MyMenuBar();
 	    setJMenuBar(menu);
 		
 		//Toolbar :

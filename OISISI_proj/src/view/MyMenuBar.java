@@ -14,13 +14,13 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 
-public class MenuBar extends JMenuBar {
+public class MyMenuBar extends JMenuBar {
 	
 	ControllerProfesor cProf;
 	ControllerPredmet cPred;
 	ControllerStudent cStud;
 	
-	public MenuBar() {
+	public MyMenuBar() {
 		
 		JMenu mFile = new JMenu("File");
 		JMenuItem miNew = new JMenuItem("Dodaj novog", new ImageIcon("images/add_button.png"));
