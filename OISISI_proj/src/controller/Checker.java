@@ -4,11 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import model.GlobalConstants;
+
 public class Checker {
 	
 	public static boolean isNameOrSurename(String str) {
 		str = str.toLowerCase();
-		String regEx = "[a-z]+";
+		String regEx = GlobalConstants.regExNameOrSurename;
 		if(str.matches(regEx))
 			return true;
 		return false;
@@ -43,7 +45,7 @@ public class Checker {
 	
 	public static boolean isValidAdrress(String str) {
 		str = str.toLowerCase();
-		String regEx = "([a-z]+[\\s])+[1-9][0-9]{0,2}";
+		String regEx = GlobalConstants.regExAddress;
 		
 		if(str.matches(regEx))
 			return true;
@@ -51,7 +53,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidNumber(String str, int isLicKart) {
-		String regEx = "[0-9]+";
+		String regEx = GlobalConstants.regExNumber;
 		
 		if(isLicKart == 0)
 			if(str.matches(regEx) && (str.length() >= 6 && str.length() <= 10))
@@ -65,7 +67,7 @@ public class Checker {
 	
 	public static boolean isValidEmail(String str) {
 		str = str.toLowerCase();
-		String regEx = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
+		String regEx = GlobalConstants.regExEmail;
 		if(str.matches(regEx))
 			return true;
 		return false;
@@ -73,7 +75,7 @@ public class Checker {
 	
 	public static boolean isValidTitOrMaj(String str) {
 		str = str.toLowerCase();
-		String regEx = "[a-z]+([\\s][a-z]+)*";
+		String regEx = GlobalConstants.regExTitOrMaj;
 		if(str.matches(regEx))
 			return true;
 		return false;
