@@ -26,7 +26,7 @@ public class MenuBar extends JMenuBar {
 		JMenuItem miNew = new JMenuItem("Dodaj novog", new ImageIcon("images/add_button.png"));
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		miNew.addActionListener(new AddButtonListener());
-		JMenuItem miClose = new JMenuItem("Close", new ImageIcon("images/close_button.png"));
+		JMenuItem miClose = new JMenuItem("Zatvori", new ImageIcon("images/close_button.png"));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		
 		mFile.setMnemonic(KeyEvent.VK_F);
@@ -37,7 +37,7 @@ public class MenuBar extends JMenuBar {
 		JMenu mEdit = new JMenu("Izmeni");
 		JMenuItem miEdit = new JMenuItem("Izmeni", new ImageIcon("images/edit_button.png"));
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		JMenuItem miDelete = new JMenuItem("Obrisi", new ImageIcon("images/bin_button.png"));
+		JMenuItem miDelete = new JMenuItem("Obriši", new ImageIcon("images/bin_button.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
 		mEdit.setMnemonic(KeyEvent.VK_E);
@@ -45,10 +45,10 @@ public class MenuBar extends JMenuBar {
 		mEdit.addSeparator();
 		mEdit.add(miDelete);
 		
-		JMenu mHelp = new JMenu("Help");
-		JMenuItem miHelp = new JMenuItem("Help", new ImageIcon("images/help_button.png"));
+		JMenu mHelp = new JMenu("Pomoæ");
+		JMenuItem miHelp = new JMenuItem("Pomoæ", new ImageIcon("images/help_button.png"));
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
-		JMenuItem miAbout = new JMenuItem("About", new ImageIcon("images/about_button.png"));
+		JMenuItem miAbout = new JMenuItem("O aplikaciji", new ImageIcon("images/about_button.png"));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 		
 		mHelp.setMnemonic(KeyEvent.VK_H);
