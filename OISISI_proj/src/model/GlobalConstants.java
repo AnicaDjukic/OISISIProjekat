@@ -17,6 +17,14 @@ public class GlobalConstants {
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
 	
+	public static String indexLab = "Broj indeksa: ";
+	public static String upisLab = "Godina upisa: ";
+	public static String trenutnaLab = "Trenutna godina studija: ";
+	public static String finansLab = "Naèin finansiranja: ";
+	
+	public static String dodajStud = "Dodaj studenta";
+	public static String editStud = "Izmeni studenta";
+	
 	//Label tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
 	public static String drpToolTip = "dd.MM.yyyy format";

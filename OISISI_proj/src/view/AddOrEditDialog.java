@@ -24,6 +24,12 @@ public class AddOrEditDialog extends JDialog{
 		switch(tab) {
 		case 0 : 
 			//za studente
+			if(mode == add_mode)
+				this.setTitle(GlobalConstants.dodajStud);
+			else 
+				this.setTitle(GlobalConstants.editStud);
+		
+			this.add(new AddOrEditStudent(mode, this));
 			break;
 		case 1 :
 			//za profesore
