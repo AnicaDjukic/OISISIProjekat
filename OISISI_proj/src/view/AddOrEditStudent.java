@@ -22,7 +22,6 @@ public class AddOrEditStudent extends JPanel {
 	public static JButton potvrdi, odustani;
 	private ControllerStudent control;
 	private AddOrEditDialog dialog;
-	private String ime, prezime, datRodj, adrStan, brTel, email, brIndexa, godUpisa, trenutnaGod, finansiranje;
 	private ErrorDialog err;
 	
 	public AddOrEditStudent(int mode, AddOrEditDialog d) {
@@ -46,6 +45,12 @@ public class AddOrEditStudent extends JPanel {
 		lAdrStan = new JLabel(GlobalConstants.adrStanLab);
 		tAdrStan = new JTextField();
 		
+		lBrTel = new JLabel(GlobalConstants.konTelLab);
+		tBrTel = new JTextField();
+		
+		lEmail = new JLabel(GlobalConstants.emailLab);
+		tEmail = new JTextField();
+		
 		lBrIndexa = new JLabel(GlobalConstants.indexLab);
 		tBrIndexa = new JTextField();
 		
@@ -62,6 +67,8 @@ public class AddOrEditStudent extends JPanel {
 		glavni.add(control.createPanel(lPrezime, tPrezime));
 		glavni.add(control.createPanel(lDatRodj, tDatRodj));
 		glavni.add(control.createPanel(lAdrStan, tAdrStan));
+		glavni.add(control.createPanel(lBrTel, tBrTel));
+		glavni.add(control.createPanel(lEmail, tEmail));
 		glavni.add(control.createPanel(lBrIndexa, tBrIndexa));
 		glavni.add(control.createPanel(lGodUpisa, tGodUpisa));
 		glavni.add(control.createPanel(lTrenutnaGod, tTrenutnaGod));
