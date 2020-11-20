@@ -29,7 +29,10 @@ public class GlobalConstants {
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
-	
+	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
+	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
+	public static String yesOpt = "Da";
+	public static String noOpt = "Ne";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "Dodaj novog";
