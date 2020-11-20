@@ -4,6 +4,8 @@ package view;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class GlavniProzor extends JFrame {
 	
@@ -19,7 +21,7 @@ public class GlavniProzor extends JFrame {
 		
 		setTitle("Studentska služba");
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(new MyWindowListener());
 		
 		setLocationRelativeTo(null);
 		
@@ -35,6 +37,39 @@ public class GlavniProzor extends JFrame {
 		JPanel statusBar = new StatusBar();
 		add(statusBar, BorderLayout.SOUTH);
 		
+	}
+	
+	public class MyWindowListener implements WindowListener{
+
+		@Override
+		public void windowOpened(WindowEvent e) {}
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+		
+			JFrame mainFrame = (JFrame) e.getComponent();
+			String [] options = {"Da","Ne"};
+			int code = JOptionPane.showOptionDialog(mainFrame, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+			if(code == JOptionPane.YES_OPTION) {
+				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			} else
+				mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		}
+		@Override
+		public void windowClosed(WindowEvent e) {}
+
+		@Override
+		public void windowIconified(WindowEvent e) {}
+
+		@Override
+		public void windowDeiconified(WindowEvent e) {}
+
+		@Override
+		public void windowActivated(WindowEvent e) {}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
 	}
 	
 }
