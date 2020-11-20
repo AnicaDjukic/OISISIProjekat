@@ -79,7 +79,7 @@ public class Student {
 		return status;
 	}
 	public void setStatus(String status) {
-		if(status.toUpperCase().equals("B"))
+		if(status.toUpperCase().equals("B") || status.toUpperCase().equals("Budzet"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;
@@ -122,7 +122,7 @@ public class Student {
 		this.brIndexa = brIndexa;
 		this.godUpisa = godUpisa;
 		this.trenutnaGodStud = trenutnaGodStud;
-		if(status.toUpperCase().equals("B"))
+		if(status.toUpperCase().equals("B") || status.toUpperCase().equals("Budzet"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;

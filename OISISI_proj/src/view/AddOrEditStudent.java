@@ -109,6 +109,9 @@ public class AddOrEditStudent extends JPanel {
 				student.setGodUpisa(tGodUpisa.getText());
 				student.setTrenutnaGodStud(Integer.parseInt(tTrenutnaGod.getText()));
 				student.setStatus(tFinans.getText());
+				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
+				student.setPosecnaOcena(9.5);
+				
 				
 			}
 		});
