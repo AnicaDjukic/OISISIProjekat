@@ -6,11 +6,9 @@ import javax.swing.KeyStroke;
 
 import controller.*;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 
@@ -47,11 +45,11 @@ public class MyMenuBar extends JMenuBar {
 		
 		JMenu mHelp = new JMenu("Pomoæ");
 		JMenuItem miHelp = new JMenuItem("Pomoæ", new ImageIcon("images/help_button.png"));
-		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
+		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
 		JMenuItem miAbout = new JMenuItem("O aplikaciji", new ImageIcon("images/about_button.png"));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 		
-		mHelp.setMnemonic(KeyEvent.VK_H);
+		mHelp.setMnemonic(KeyEvent.VK_P);
 		mHelp.add(miHelp);
 		mHelp.addSeparator();
 		mHelp.add(miAbout);
