@@ -4,6 +4,8 @@ import model.GlobalConstants;
 import model.Student;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.invoke.ConstantCallSite;
 
 import javax.swing.BoxLayout;
@@ -21,15 +23,12 @@ public class AddOrEditStudent extends JPanel {
 	private Student student;
 	public static JButton potvrdi, odustani;
 	private ControllerStudent control;
-	private AddOrEditDialog dialog;
 	private ErrorDialog err;
 	
 	public AddOrEditStudent(int mode, AddOrEditDialog d) {
 		control = GlavniProzor.getControllerStudent();
-		dialog = d;
 		setLayout(new BorderLayout());
-		setSize(GlobalConstants.aoedw,GlobalConstants.aoedh);
-		
+				
 		JPanel glavni = new JPanel();
 		glavni.setLayout(new BoxLayout(glavni, BoxLayout.Y_AXIS));
 		
@@ -86,6 +85,33 @@ public class AddOrEditStudent extends JPanel {
 		dugmad.add(odustani);
 		
 		add(dugmad,BorderLayout.SOUTH);
+		
+		odustani.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				d.setVisible(false);
+			}
+		});
+		
+		potvrdi.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				student = new Student();
+				student.setIme(tIme.getText());
+				student.setPrezime(tPrezime.getText());
+				student.setDatumRodj(tDatRodj.getText());
+				student.setAdresaStan(tAdrStan.getText());
+				student.setKonTel(tBrTel.getText());
+				student.setEmail(tEmail.getText());
+				student.setBrIndexa(tBrIndexa.getText());
+				student.setGodUpisa(tGodUpisa.getText());
+				student.setTrenutnaGodStud(Integer.parseInt(tTrenutnaGod.getText()));
+				student.setStatus(tFinans.getText());
+				
+			}
+		});
 		
 	}
 	

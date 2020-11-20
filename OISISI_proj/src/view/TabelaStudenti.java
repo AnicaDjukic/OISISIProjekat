@@ -1,11 +1,13 @@
 package view;
 
+//import controller.ControllerStudent;
+import java.util.ArrayList;
+
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ControllerStudent;
+import model.Student;
 
 public class TabelaStudenti extends JTable {
 	

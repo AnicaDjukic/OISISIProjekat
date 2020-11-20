@@ -78,8 +78,11 @@ public class Student {
 	public StatusStudenta getStatus() {
 		return status;
 	}
-	public void setStatus(StatusStudenta status) {
-		this.status = status;
+	public void setStatus(String status) {
+		if(status.toUpperCase().equals("B"))
+			this.status = StatusStudenta.B;
+		else
+			this.status = StatusStudenta.S;
 	}
 	public double getPosecnaOcena() {
 		return posecnaOcena;
