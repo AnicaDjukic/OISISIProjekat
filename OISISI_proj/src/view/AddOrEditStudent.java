@@ -10,7 +10,9 @@ import java.lang.invoke.ConstantCallSite;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,8 +20,9 @@ import controller.ControllerStudent;
 
 public class AddOrEditStudent extends JPanel {
 	
-	private JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa, tTrenutnaGod, tFinans;
+	private JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
 	private JLabel lIme, lPrezime, lDatRodj, lAdrStan, lBrTel, lEmail, lBrIndexa, lGodUpisa, lTrenutnaGod, lFinans;
+	private JComboBox  tTrenutnaGod, tFinans;
 	private Student student;
 	public static JButton potvrdi, odustani;
 	private ControllerStudent control;
@@ -57,10 +60,12 @@ public class AddOrEditStudent extends JPanel {
 		tGodUpisa = new JTextField();
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
-		tTrenutnaGod = new JTextField();
+		String[] godStud = {"1", "2", "3", "4"};
+		tTrenutnaGod = new JComboBox(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
-		tFinans = new JTextField();
+		String[] data = {"Budzet", "Samofinansiranje"};
+		tFinans = new JComboBox(data);
 		
 		glavni.add(control.createPanel(lIme, tIme));
 		glavni.add(control.createPanel(lPrezime, tPrezime));
@@ -70,8 +75,8 @@ public class AddOrEditStudent extends JPanel {
 		glavni.add(control.createPanel(lEmail, tEmail));
 		glavni.add(control.createPanel(lBrIndexa, tBrIndexa));
 		glavni.add(control.createPanel(lGodUpisa, tGodUpisa));
-		glavni.add(control.createPanel(lTrenutnaGod, tTrenutnaGod));
-		glavni.add(control.createPanel(lFinans, tFinans));
+		glavni.add(control.createListPanel(lTrenutnaGod, tTrenutnaGod));
+		glavni.add(control.createListPanel(lFinans, tFinans));
 		
 		add(glavni, BorderLayout.NORTH);
 		
@@ -107,11 +112,12 @@ public class AddOrEditStudent extends JPanel {
 				student.setEmail(tEmail.getText());
 				student.setBrIndexa(tBrIndexa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
-				student.setTrenutnaGodStud(Integer.parseInt(tTrenutnaGod.getText()));
-				student.setStatus(tFinans.getText());
+				String godStud = (String) tTrenutnaGod.getSelectedItem();
+				student.setTrenutnaGodStud(Integer.parseInt(godStud));
+				String finans = (String)(tFinans.getSelectedItem());
+				student.setStatus(finans);
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
 				student.setPosecnaOcena(9.5);
-				
 				
 			}
 		});

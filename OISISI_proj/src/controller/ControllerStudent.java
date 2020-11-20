@@ -43,4 +43,16 @@ public class ControllerStudent {
 		return panel;
 	}
 	
+	public JPanel createListPanel(JLabel label, JComboBox text) {
+		JPanel panel = new JPanel();
+		
+		label.setPreferredSize(new Dimension(150, 25));
+		panel.add(label);
+		
+		text.setPreferredSize(new Dimension(200, 25));
+		panel.add(text);
+		
+		return panel;
+	}
+	
 }
