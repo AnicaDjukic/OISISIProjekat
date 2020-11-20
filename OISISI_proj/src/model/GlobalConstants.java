@@ -20,7 +20,7 @@ public class GlobalConstants {
 	public static String indexLab = "Broj indeksa: ";
 	public static String upisLab = "Godina upisa: ";
 	public static String trenutnaLab = "Trenutna godina studija: ";
-	public static String finansLab = "Naèin finansiranja: ";
+	public static String finansLab = "NaÄin finansiranja: ";
 	
 	public static String dodajStud = "Dodaj studenta";
 	public static String editStud = "Izmeni studenta";
