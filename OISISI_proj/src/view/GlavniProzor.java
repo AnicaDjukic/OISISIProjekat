@@ -3,6 +3,8 @@ package view;
 //importi :
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import controller.*;
 import model.GlobalConstants;
@@ -29,8 +31,8 @@ public class GlavniProzor extends JFrame {
 		
 		setSize(screenWidth,screenHeight);
 		setTitle(GlobalConstants.mfName);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		addWindowListener(new MyWindowListener());
 		
 		//Incijalizacija kontrolera:
 		cProf = new ControllerProfesor();
@@ -85,5 +87,39 @@ public class GlavniProzor extends JFrame {
 	}
 	public static ControllerStudent getControllerStudent() {
 		return cStud;
+	}
+	
+	//Window listeneri : 
+	public class MyWindowListener implements WindowListener{
+
+		@Override
+		public void windowOpened(WindowEvent e) {}
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+		
+			JFrame mainFrame = (JFrame) e.getComponent();
+			String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+			int code = JOptionPane.showOptionDialog(mainFrame, GlobalConstants.upitZatvaranjeMF, GlobalConstants.upitZatvaranjeTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+			if(code == JOptionPane.YES_OPTION) {
+				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			} else
+				mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		}
+		@Override
+		public void windowClosed(WindowEvent e) {}
+
+		@Override
+		public void windowIconified(WindowEvent e) {}
+
+		@Override
+		public void windowDeiconified(WindowEvent e) {}
+
+		@Override
+		public void windowActivated(WindowEvent e) {}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
 	}
 }
