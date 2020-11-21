@@ -39,16 +39,16 @@ public class TabelaStudenti extends JTable {
 		Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "B" , "9.5"};
 		tabela.addRow(prvi);
 		
+		azurirajTabelu();
 	}
 	
-	public static void dodajStudenta(Student s) {
+	public static void dodajStudenta(Student s, ControllerStudent cs) {
 		String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
 		data[3] = Integer.toString(s.getTrenutnaGodStud());;
 		data[4] = s.getStatus();
 		data[5] = Double.toString(s.getPosecnaOcena());
 		tabela.addRow(data);
 		
-		ControllerStudent cs = new ControllerStudent();
 		cs.dodajStudentaUListu(s);
 	}
 	

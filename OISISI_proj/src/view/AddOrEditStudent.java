@@ -121,7 +121,8 @@ public class AddOrEditStudent extends JPanel {
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
 				student.setPosecnaOcena(9.5);
 				
-				TabelaStudenti.dodajStudenta(student);
+				ControllerStudent cs = new ControllerStudent();
+				TabelaStudenti.dodajStudenta(student, cs);
 				TabelaStudenti.azurirajTabelu();
 				
 			}
