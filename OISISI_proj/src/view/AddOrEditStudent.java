@@ -23,7 +23,6 @@ public class AddOrEditStudent extends JPanel {
 	private ControllerStudent control;
 	private ErrorDialog err;
 	
-	public static int brPunih = 0;
 	
 	public AddOrEditStudent(int mode, AddOrEditDialog d) {
 		control = GlavniProzor.getControllerStudent();
@@ -111,7 +110,6 @@ public class AddOrEditStudent extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				d.setVisible(false);
-				brPunih = 0;
 			}
 		});
 		
@@ -139,8 +137,6 @@ public class AddOrEditStudent extends JPanel {
 				
 				if(!TabelaStudenti.dodajStudentaUTabelu(student,control))
 					err = new ErrorDialog(GlobalConstants.errAddStud);
-				
-				brPunih = 0;
 				
 			}
 		});
