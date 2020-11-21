@@ -15,7 +15,7 @@ public class ControllerStudent {
 	public ControllerStudent() {
 		listaStudenti = new ArrayList<Student>();
 		
-		Initialize();
+		//Initialize();
 	}
 	
 	public ArrayList<Student> getListaStudenta() {
@@ -23,21 +23,26 @@ public class ControllerStudent {
 	}
 	
 	public void Initialize() {
-		for(int i = 0; i < 10; i++) {
+		/*for(int i = 0; i < 10; i++) {
 			Student p = new Student();
 			p.setIme("" + i);
 			listaStudenti.add(p);
-		}
+		}*/
 	}
 	
-	public boolean dodajStudentaUListu(Student s) {
+	public boolean dodajStudenta(Student s) {
 		if(listaStudenti.isEmpty()) {
 			listaStudenti.add(s);
 			return true;
 		}
-		for(Student student: listaStudenti)
-			if(student.getBrIndexa().equals(s.getBrIndexa()))
+		
+		for(Student student: listaStudenti) {
+			if(student.getBrIndexa().equals(s.getBrIndexa())) {
 				return false;
+			}
+				
+		}
+
 		listaStudenti.add(s);
 		return true;
 	}

@@ -42,29 +42,18 @@ public class TabelaStudenti extends JTable {
 		azurirajTabelu();*/
 	}
 	
-	public static boolean dodajStudenta(Student s, ControllerStudent cs) {
+	public static boolean dodajStudentaUTabelu(Student s, ControllerStudent cs) {
 		String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
 		data[3] = Integer.toString(s.getTrenutnaGodStud());;
 		data[4] = s.getStatus();
 		data[5] = Double.toString(s.getPosecnaOcena());
-		tabela.addRow(data);
 		
-		if(!cs.dodajStudentaUListu(s))
+		System.out.println("DODAJ");
+		if(!cs.dodajStudenta(s))
 			return false;
 		
+		tabela.addRow(data);
 		return true;
 	}
 	
-	public static void azurirajTabelu() {
-		ControllerStudent cs = new ControllerStudent();
-		ArrayList<Student> studenti = cs.getListaStudenta();
-		
-		for(Student s: studenti) {
-			String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
-			data[3] = Integer.toString(s.getTrenutnaGodStud());
-			data[4] = s.getStatus();
-			data[5] = Double.toString(s.getPosecnaOcena());
-			tabela.addRow(data);
-		}
-	}
 }
