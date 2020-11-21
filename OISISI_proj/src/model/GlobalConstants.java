@@ -22,9 +22,6 @@ public class GlobalConstants {
 	public static String trenutnaLab = "Trenutna godina studija : ";
 	public static String finansLab = "Način finansiranja : ";
 	
-	public static String dodajStud = "Dodaj studenta";
-	public static String editStud = "Izmeni studenta";
-	
 	//Label tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
 	public static String drpToolTip = "dd.MM.yyyy format";
@@ -37,7 +34,7 @@ public class GlobalConstants {
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
-	public static String errAddStud = "Neuspešno dodavanje studenta!";
+	public static String errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
 	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
 	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
 	public static String yesOpt = "Da";
@@ -59,6 +56,8 @@ public class GlobalConstants {
 	
 	public static String profAdd = "Dodavanje profesora";
 	public static String profEdit = "Izmeni profeosra";
+	public static String dodajStud = "Dodavanje studenta";
+	public static String editStud = "Izmeni studenta";
 	public static String errName = "Greška";
 	
 	//Clomun names predmet : 
@@ -85,4 +84,6 @@ public class GlobalConstants {
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 
+	public static int brPraznihStud = -8;
+	
 }

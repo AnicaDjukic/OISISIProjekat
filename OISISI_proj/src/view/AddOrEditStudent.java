@@ -8,8 +8,10 @@ import java.awt.event.*;
 
 
 import javax.swing.*;
+import javax.swing.SpringLayout.Constraints;
 
 import controller.ControllerStudent;
+import controller.StudentFocusListeners;
 
 public class AddOrEditStudent extends JPanel {
 	
@@ -21,6 +23,8 @@ public class AddOrEditStudent extends JPanel {
 	private ControllerStudent control;
 	private ErrorDialog err;
 	
+	public static int brPraznih = GlobalConstants.brPraznihStud;
+	
 	public AddOrEditStudent(int mode, AddOrEditDialog d) {
 		control = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
@@ -30,27 +34,36 @@ public class AddOrEditStudent extends JPanel {
 		
 		lIme = new JLabel(GlobalConstants.imeLab);
 		tIme = new JTextField();
+		tIme.setName(GlobalConstants.imeLab);
 		
 		lPrezime = new JLabel(GlobalConstants.przLab);
 		tPrezime = new JTextField();
+		tPrezime.setName(GlobalConstants.przLab);
+		
 		
 		lDatRodj = new JLabel(GlobalConstants.drLab);
 		tDatRodj = new JTextField();
+		tDatRodj.setName(GlobalConstants.drLab);
 		
 		lAdrStan = new JLabel(GlobalConstants.adrStanLab);
 		tAdrStan = new JTextField();
+		tAdrStan.setName(GlobalConstants.adrStanLab);
 		
 		lBrTel = new JLabel(GlobalConstants.konTelLab);
 		tBrTel = new JTextField();
+		tBrTel.setName(GlobalConstants.konTelLab);
 		
 		lEmail = new JLabel(GlobalConstants.emailLab);
 		tEmail = new JTextField();
+		tEmail.setName(GlobalConstants.emailLab);
 		
 		lBrIndexa = new JLabel(GlobalConstants.indexLab);
 		tBrIndexa = new JTextField();
+		tBrIndexa.setName(GlobalConstants.indexLab);
 		
 		lGodUpisa = new JLabel(GlobalConstants.upisLab);
 		tGodUpisa = new JTextField();
+		tGodUpisa.setName(GlobalConstants.upisLab);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
 		String[] godStud = {"1", "2", "3", "4"};
@@ -73,6 +86,15 @@ public class AddOrEditStudent extends JPanel {
 		
 		add(glavni, BorderLayout.NORTH);
 		
+		// Focus listeners
+		tIme.addFocusListener(new StudentFocusListeners());
+		tPrezime.addFocusListener(new StudentFocusListeners());
+		tDatRodj.addFocusListener(new StudentFocusListeners());
+		tAdrStan.addFocusListener(new StudentFocusListeners());
+		tBrTel.addFocusListener(new StudentFocusListeners());
+		tEmail.addFocusListener(new StudentFocusListeners());
+		tBrIndexa.addFocusListener(new StudentFocusListeners());
+		tGodUpisa.addFocusListener(new StudentFocusListeners());
 		
 		JPanel dugmad = new JPanel();
 		
@@ -89,6 +111,7 @@ public class AddOrEditStudent extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				d.setVisible(false);
+				brPraznih = GlobalConstants.brPraznihStud;
 			}
 		});
 		
@@ -108,7 +131,6 @@ public class AddOrEditStudent extends JPanel {
 				String godStud = (String) tTrenutnaGod.getSelectedItem();
 				student.setTrenutnaGodStud(Integer.parseInt(godStud));
 				String finans = (String)(tFinans.getSelectedItem());
-				System.out.println(finans);
 				student.setStatus(finans);
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
 				student.setPosecnaOcena(9.5);
@@ -117,6 +139,8 @@ public class AddOrEditStudent extends JPanel {
 				
 				if(!TabelaStudenti.dodajStudentaUTabelu(student,control))
 					err = new ErrorDialog(GlobalConstants.errAddStud);
+				
+				brPraznih = GlobalConstants.brPraznihStud;
 				
 			}
 		});

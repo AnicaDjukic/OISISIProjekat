@@ -47,8 +47,7 @@ public class TabelaStudenti extends JTable {
 		data[3] = Integer.toString(s.getTrenutnaGodStud());;
 		data[4] = s.getStatus();
 		data[5] = Double.toString(s.getPosecnaOcena());
-		
-		System.out.println("DODAJ");
+
 		if(!cs.dodajStudenta(s))
 			return false;
 		
