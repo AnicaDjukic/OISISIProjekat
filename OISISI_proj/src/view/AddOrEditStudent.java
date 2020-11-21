@@ -114,7 +114,8 @@ public class AddOrEditStudent extends JPanel {
 				student.setPosecnaOcena(9.5);
 				
 				ControllerStudent cs = new ControllerStudent();
-				TabelaStudenti.dodajStudenta(student, cs);
+				if(!TabelaStudenti.dodajStudenta(student, cs))
+					err = new ErrorDialog(GlobalConstants.errAddStud);
 				//TabelaStudenti.azurirajTabelu();
 				
 				d.setVisible(false);
