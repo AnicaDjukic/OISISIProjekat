@@ -83,5 +83,5 @@ public class GlobalConstants {
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
-	
+	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}/20[0-9]{2}";
 }

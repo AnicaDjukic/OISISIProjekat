@@ -56,7 +56,9 @@ public class StudentFocusListeners implements FocusListener {
 			return Checker.isValidNumber(input, 0);
 		if(name.equals(GlobalConstants.emailLab))
 			return Checker.isValidEmail(input);
-		if(name.equals(GlobalConstants.indexLab) || name.equals(GlobalConstants.upisLab))
+		if(name.equals(GlobalConstants.indexLab))
+			return Checker.isValidIndex(input);
+		if(name.equals(GlobalConstants.upisLab))
 			return true;
 		
 		return false;

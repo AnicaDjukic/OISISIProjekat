@@ -80,4 +80,12 @@ public class Checker {
 			return true;
 		return false;
 	}
+	
+	public static boolean isValidIndex(String str) {
+		String regEx = GlobalConstants.regExBrIndexa;
+		if(str.matches(regEx))
+			return true;
+		return false;
+		
+	}
 }
