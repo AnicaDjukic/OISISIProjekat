@@ -15,7 +15,7 @@ import controller.StudentFocusListeners;
 
 public class AddOrEditStudent extends JPanel {
 	
-	private JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
+	public static JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
 	private JLabel lIme, lPrezime, lDatRodj, lAdrStan, lBrTel, lEmail, lBrIndexa, lGodUpisa, lTrenutnaGod, lFinans;
 	private JComboBox<String>  tTrenutnaGod, tFinans;
 	private Student student;
@@ -23,7 +23,7 @@ public class AddOrEditStudent extends JPanel {
 	private ControllerStudent control;
 	private ErrorDialog err;
 	
-	public static int brPraznih = GlobalConstants.brPraznihStud;
+	public static int brPunih = 0;
 	
 	public AddOrEditStudent(int mode, AddOrEditDialog d) {
 		control = GlavniProzor.getControllerStudent();
@@ -111,7 +111,7 @@ public class AddOrEditStudent extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				d.setVisible(false);
-				brPraznih = GlobalConstants.brPraznihStud;
+				brPunih = 0;
 			}
 		});
 		
@@ -140,7 +140,7 @@ public class AddOrEditStudent extends JPanel {
 				if(!TabelaStudenti.dodajStudentaUTabelu(student,control))
 					err = new ErrorDialog(GlobalConstants.errAddStud);
 				
-				brPraznih = GlobalConstants.brPraznihStud;
+				brPunih = 0;
 				
 			}
 		});
