@@ -1,6 +1,8 @@
 package view;
 
+import view.TabelaStudenti;
 import model.GlobalConstants;
+
 import model.Student;
 
 import java.awt.BorderLayout;
@@ -118,6 +120,9 @@ public class AddOrEditStudent extends JPanel {
 				student.setStatus(finans);
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
 				student.setPosecnaOcena(9.5);
+				
+				TabelaStudenti.dodajStudenta(student);
+				TabelaStudenti.azurirajTabelu();
 				
 			}
 		});

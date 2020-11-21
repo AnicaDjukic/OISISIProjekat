@@ -11,9 +11,12 @@ import model.Student;
 
 public class TabelaStudenti extends JTable {
 	
+	
+	private static DefaultTableModel tabela;
+	
 	public TabelaStudenti () {
 		Object[] cols = {"Indeks", "Ime", "Prezime", "Godina studija", "Status", "Prosek"};
-		DefaultTableModel tabela = new DefaultTableModel() {
+		tabela = new DefaultTableModel() {
 			
 			public boolean isCellEditable(int row, int col) {
 				return false;
@@ -36,5 +39,29 @@ public class TabelaStudenti extends JTable {
 		Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "B" , "9.5"};
 		tabela.addRow(prvi);
 		
+	}
+	
+	public static void dodajStudenta(Student s) {
+		String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
+		data[3] = Integer.toString(s.getTrenutnaGodStud());;
+		data[4] = s.getStatus();
+		data[5] = Double.toString(s.getPosecnaOcena());
+		tabela.addRow(data);
+		
+		ControllerStudent cs = new ControllerStudent();
+		cs.dodajStudentaUListu(s);
+	}
+	
+	public static void azurirajTabelu() {
+		ControllerStudent cs = new ControllerStudent();
+		ArrayList<Student> studenti = cs.getListaStudenta();
+		
+		for(Student s: studenti) {
+			String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
+			data[3] = Integer.toString(s.getTrenutnaGodStud());
+			data[4] = s.getStatus();
+			data[5] = Double.toString(s.getPosecnaOcena());
+			tabela.addRow(data);
+		}
 	}
 }

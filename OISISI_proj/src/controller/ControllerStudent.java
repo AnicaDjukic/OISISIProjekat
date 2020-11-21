@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
-import model.Profesor;
 import model.Student;
 
 public class ControllerStudent {
@@ -29,6 +28,18 @@ public class ControllerStudent {
 			p.setIme("" + i);
 			listaStudenti.add(p);
 		}
+	}
+	
+	public boolean dodajStudentaUListu(Student s) {
+		if(listaStudenti.isEmpty()) {
+			listaStudenti.add(s);
+			return true;
+		}
+		for(Student student: listaStudenti)
+			if(student.getBrIndexa().equals(s.getBrIndexa()))
+				return false;
+		listaStudenti.add(s);
+		return true;
 	}
 	
 	public JPanel createPanel(JLabel label, JTextField text) {

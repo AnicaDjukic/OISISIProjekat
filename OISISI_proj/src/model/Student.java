@@ -75,8 +75,11 @@ public class Student {
 	public void setTrenutnaGodStud(int trenutnaGodStud) {
 		this.trenutnaGodStud = trenutnaGodStud;
 	}
-	public StatusStudenta getStatus() {
-		return status;
+	public String getStatus() {
+		if(status.equals(StatusStudenta.B))
+			return "Budzet";
+		return "Samofinansiranje";
+		
 	}
 	public void setStatus(String status) {
 		if(status.toUpperCase().equals("B") || status.toUpperCase().equals("Budzet"))
