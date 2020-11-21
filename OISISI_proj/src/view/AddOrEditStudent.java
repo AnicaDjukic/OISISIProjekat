@@ -1,22 +1,13 @@
 package view;
 
-import view.TabelaStudenti;
-import model.GlobalConstants;
 
-import model.Student;
+import model.*;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.lang.invoke.ConstantCallSite;
+import java.awt.event.*;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+
+import javax.swing.*;
 
 import controller.ControllerStudent;
 
@@ -24,7 +15,7 @@ public class AddOrEditStudent extends JPanel {
 	
 	private JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
 	private JLabel lIme, lPrezime, lDatRodj, lAdrStan, lBrTel, lEmail, lBrIndexa, lGodUpisa, lTrenutnaGod, lFinans;
-	private JComboBox  tTrenutnaGod, tFinans;
+	private JComboBox<String>  tTrenutnaGod, tFinans;
 	private Student student;
 	public static JButton potvrdi, odustani;
 	private ControllerStudent control;
@@ -63,11 +54,11 @@ public class AddOrEditStudent extends JPanel {
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
 		String[] godStud = {"1", "2", "3", "4"};
-		tTrenutnaGod = new JComboBox(godStud);
+		tTrenutnaGod = new JComboBox<String>(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
-		String[] data = {"Budzet", "Samofinansiranje"};
-		tFinans = new JComboBox(data);
+		String[] data = {"Budžet", "Samofinansiranje"};
+		tFinans = new JComboBox<String>(data);
 		
 		glavni.add(control.createPanel(lIme, tIme));
 		glavni.add(control.createPanel(lPrezime, tPrezime));
@@ -117,13 +108,16 @@ public class AddOrEditStudent extends JPanel {
 				String godStud = (String) tTrenutnaGod.getSelectedItem();
 				student.setTrenutnaGodStud(Integer.parseInt(godStud));
 				String finans = (String)(tFinans.getSelectedItem());
+				System.out.println(finans);
 				student.setStatus(finans);
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
 				student.setPosecnaOcena(9.5);
 				
 				ControllerStudent cs = new ControllerStudent();
 				TabelaStudenti.dodajStudenta(student, cs);
-				TabelaStudenti.azurirajTabelu();
+				//TabelaStudenti.azurirajTabelu();
+				
+				d.setVisible(false);
 				
 			}
 		});

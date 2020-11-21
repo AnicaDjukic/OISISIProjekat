@@ -54,7 +54,7 @@ public class ControllerStudent {
 		return panel;
 	}
 	
-	public JPanel createListPanel(JLabel label, JComboBox text) {
+	public JPanel createListPanel(JLabel label, JComboBox<String> text) {
 		JPanel panel = new JPanel();
 		
 		label.setPreferredSize(new Dimension(150, 25));

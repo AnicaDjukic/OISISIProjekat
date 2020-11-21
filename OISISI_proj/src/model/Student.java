@@ -77,12 +77,12 @@ public class Student {
 	}
 	public String getStatus() {
 		if(status.equals(StatusStudenta.B))
-			return "Budzet";
-		return "Samofinansiranje";
+			return "B";
+		return "S";
 		
 	}
 	public void setStatus(String status) {
-		if(status.toUpperCase().equals("B") || status.toUpperCase().equals("Budzet"))
+		if(status.toUpperCase().equals("B") || status.equals("Budžet"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;

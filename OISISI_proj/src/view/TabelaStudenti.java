@@ -36,10 +36,10 @@ public class TabelaStudenti extends JTable {
 		}
 		
 		// Primer
-		Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "B" , "9.5"};
+		/*Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "B" , "9.5"};
 		tabela.addRow(prvi);
 		
-		azurirajTabelu();
+		azurirajTabelu();*/
 	}
 	
 	public static void dodajStudenta(Student s, ControllerStudent cs) {
