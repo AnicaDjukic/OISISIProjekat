@@ -87,6 +87,12 @@ public class Student {
 	public void setPosecnaOcena(double posecnaOcena) {
 		this.posecnaOcena = posecnaOcena;
 	}
+	public ArrayList<Ocena> getPolozeniIspiti() {
+		return polozeniIspiti;
+	}
+	public ArrayList<Predmet> getNepolozeniIspiti() {
+		return nepolozeniIspiti;
+	}	
 	
 	
 	// konstruktori
@@ -190,5 +196,5 @@ public class Student {
 			out += "Nema nepolozenih ispita.\n"; 
 		}
 		return out;
-	}	
+	}
 }

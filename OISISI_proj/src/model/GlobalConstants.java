@@ -34,6 +34,8 @@ public class GlobalConstants {
 	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
 	public static String yesOpt = "Da";
 	public static String noOpt = "Ne";
+	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
+	public static String upitBrisanjePredTitle = "Brisanje predmeta";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "Dodaj novog";

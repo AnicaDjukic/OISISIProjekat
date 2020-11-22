@@ -2,6 +2,7 @@ package controller;
 
 import java.util.*;
 import model.Predmet;
+import view.GlavniProzor;
 
 public class ControllerPredmet {
 	
@@ -42,6 +43,22 @@ public class ControllerPredmet {
 			if(p.getSif_pred().equals(sp))
 				ret = p;
 		return ret;
+	}
+	
+	public void obrisiPredmet(String sp) {
+		//Obrise se kod svih profesora prvo:
+		GlavniProzor.getControllerProfesor().obrisiPredmetKodSvihProf(sp);		
+		
+		//Potom kod svih studenata :
+		GlavniProzor.getControllerStudent().obrisiPredmetKodSvihStud(sp);
+		
+		//Potom iz konacne liste : 
+		for(Predmet p : listaPredmeta) {
+			if(p.getSif_pred().equals(sp)) {
+				listaPredmeta.remove(p);
+				break;
+			}
+		}
 	}
 	
 }

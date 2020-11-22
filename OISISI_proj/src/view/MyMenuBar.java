@@ -38,6 +38,7 @@ public class MyMenuBar extends JMenuBar {
 		miEdit.addActionListener(new EditButtonListener());
 		JMenuItem miDelete = new JMenuItem("Obriši", new ImageIcon("images/bin_button.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+		miDelete.addActionListener(new DeleteButtonListener());
 		
 		mEdit.setMnemonic(KeyEvent.VK_E);
 		mEdit.add(miEdit);

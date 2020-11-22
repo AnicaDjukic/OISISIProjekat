@@ -39,6 +39,7 @@ public class Toolbar  extends JToolBar{
 		btnBin = new JButton();
 		btnBin.setToolTipText(GlobalConstants.delBtnToolTipTxt);
 		btnBin.setIcon(new ImageIcon(GlobalConstants.delImg));
+		btnBin.addActionListener(new DeleteButtonListener());
 		add(btnBin);
 		
 		add(Box.createHorizontalGlue());

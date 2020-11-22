@@ -75,6 +75,15 @@ public class ControllerProfesor {
 		p.getSpisPred().add(pr);
 	}
 	
+	public void obrisiPredmetKodSvihProf(String spr) {
+		for(Profesor p : listaProfesora) 
+			for(Predmet pr : p.getSpisPred())
+				if(pr.getSif_pred().equals(spr)) {
+					p.getSpisPred().remove(pr);
+					break;
+				}
+	}
+	
 	//AddOrEditProfesor panel create : 
 	public JPanel createPanel(JLabel lab, JTextField txt, String ime) {
 		JPanel ret = new JPanel();

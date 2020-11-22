@@ -21,10 +21,11 @@ public class TabelaPredmeti extends JTable {
 	private static Object[] colNames = {GlobalConstants.spr, GlobalConstants.npr, GlobalConstants.espb,GlobalConstants.god, GlobalConstants.sem};
 	static DefaultTableModel model;
 	static ControllerPredmet controllerPredmet;
-	static TabelaPredmeti inst;
+	public static TabelaPredmeti inst;
 	
 	public TabelaPredmeti() {
 		inst = this;
+		this.getTableHeader().setReorderingAllowed(false);
 		controllerPredmet = GlavniProzor.getControllerPredmet();
 		
 		azurirajTabelu();
