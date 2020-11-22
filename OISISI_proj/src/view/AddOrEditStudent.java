@@ -71,7 +71,7 @@ public class AddOrEditStudent extends JPanel {
 		tGodUpisa.setName(GlobalConstants.upisLab);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
-		String[] godStud = {"I (prva)", "II (druga)", "III (treæa)", "IV (èetvrta)"};
+		String[] godStud = {"1", "2", "3", "4"};
 		tTrenutnaGod = new JComboBox<String>(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
