@@ -134,6 +134,11 @@ public class AddOrEditProfesor extends JPanel{
 			txtTitula.setText(p.getTitula());
 			txtZvanje.setText(p.getZvanje());
 			
+			//Provera tacnosti polja : 
+			numCorrectFields();
+			if(brPraznihPolja == 0)
+				ok.setEnabled(true);
+			
 			JTabbedPane tabovi = new JTabbedPane();
 			add(tabovi);
 			
@@ -211,9 +216,13 @@ public class AddOrEditProfesor extends JPanel{
 						er = new ErrorDialog(GlobalConstants.errAddProf);
 				}else {
 					String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0);
+					Profesor ptemp = cp.nadjiProfesora(editProfBrLic);
 					cp.ukloniProfesora(editProfBrLic);
 					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
-					cp.dodajProfesora(p);
+					if(!cp.dodajProfesora(p)) {
+						cp.dodajProfesora(ptemp);
+						er = new ErrorDialog(GlobalConstants.errEditProf);
+					}
 				}
 				
 				TabelaProfesora.azurirajTabelu();
@@ -230,19 +239,19 @@ public class AddOrEditProfesor extends JPanel{
 			brPraznihPolja++;
 		if(Checker.isValidDate(txtDrp.getText()))
 			brPraznihPolja++;
-		if(Checker.isValidAdrress(adrStan))
+		if(Checker.isValidAdrress(txtAdrStan.getText()))
 			brPraznihPolja++;
-		if(Checker.isValidAdrress(adrKanc))
+		if(Checker.isValidAdrress(txtAdrKanc.getText()))
 			brPraznihPolja++;
-		if(Checker.isValidEmail(email))
+		if(Checker.isValidEmail(txtEmail.getText()))
 			brPraznihPolja++;
-		if(Checker.isValidNumber(brLic, 1))
+		if(Checker.isValidNumber(txtBrLicKart.getText(), 1))
 			brPraznihPolja++;
-		if(Checker.isValidNumber(konTel, 0))
+		if(Checker.isValidNumber(txtKonTel.getText(), 0))
 			brPraznihPolja++;
-		if(Checker.isValidTitOrMaj(tit))
+		if(Checker.isValidTitOrMaj(txtTitula.getText()))
 			brPraznihPolja++;
-		if(Checker.isValidTitOrMaj(zva))
+		if(Checker.isValidTitOrMaj(txtZvanje.getText()))
 			brPraznihPolja++;		
 		
 		System.out.println(brPraznihPolja);

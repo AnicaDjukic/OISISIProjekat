@@ -144,8 +144,12 @@ public class Profesor {
 			temp = s.substring(0,1);
 			temp = temp.toUpperCase();
 			s = temp + s.substring(1);
-			ads += s;
+			if(parts.length != 1)
+				ads += " " + s;
+			else
+				ads = s;
 		}
+		ads = ads.substring(1,ads.length());
 		
 		parts = adk.split(" ");
 		adk = "";
@@ -154,8 +158,12 @@ public class Profesor {
 			temp = s.substring(0,1);
 			temp = temp.toUpperCase();
 			s = temp + s.substring(1);
-			adk += s;
+			if(parts.length != 1)
+				adk += " " + s;
+			else
+				adk = s;
 		}
+		adk = adk.substring(1,adk.length());
 		
 		parts = tit.split(" ");
 		tit = "";
@@ -164,8 +172,12 @@ public class Profesor {
 			temp = s.substring(0,1);
 			temp = temp.toUpperCase();
 			s = temp + s.substring(1);
-			tit += s;
+			if(parts.length != 1)
+				tit += " " + s;
+			else
+				tit = s;
 		}
+		tit = tit.substring(1,tit.length());
 		
 		parts = zv.split(" ");
 		zv = "";
@@ -174,8 +186,12 @@ public class Profesor {
 			temp = s.substring(0,1);
 			temp = temp.toUpperCase();
 			s = temp + s.substring(1);
-			zv += s;
+			if(parts.length != 1)
+				zv += " " + s;
+			else
+				zv = s;
 		}
+		zv = zv.substring(1,zv.length());
 		
 		this.prezime = pr;
 		this.ime = im;
