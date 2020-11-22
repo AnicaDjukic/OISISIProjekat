@@ -26,6 +26,7 @@ public class TabelaProfesora extends JTable {
 		inst = this;
 		controllerProfesor = GlavniProzor.getControllerProfesor();
 		inst.getTableHeader().setReorderingAllowed(false);
+		inst.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		tableInitialize(inst);
 		

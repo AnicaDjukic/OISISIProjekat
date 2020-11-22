@@ -71,8 +71,8 @@ public class GlobalConstants {
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
 	public static String btnCncName = "Odustani";
-	public static String btnDodPred = "Dodaj";
-	public static String btnUklPred = "Ukloni";
+	public static String btnDodPred = "Dodaj predmet";
+	public static String btnUklPred = "Ukloni predmet";
 	
 	//Regex :
 	public static String regExNameOrSurename = "[a-z]+";

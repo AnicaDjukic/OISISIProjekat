@@ -17,6 +17,7 @@ public class DeleteButtonListener implements ActionListener{
 		
 		int tab = GlavniProzor.getTabbedPane().getSelectedIndex();
 		
+		
 		switch(tab) {
 		case 0 :
 			//brisanje studenta
@@ -27,6 +28,8 @@ public class DeleteButtonListener implements ActionListener{
 		case 2:
 			//brisanje predmeta
 			int selectedPred = TabelaPredmeti.inst.getSelectedRow();
+
+			System.out.println("Pressed " + selectedPred);
 			if(selectedPred != -1) {
 				String [] options = {GlobalConstants.yesOpt, GlobalConstants.noOpt};
 				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjePred, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);

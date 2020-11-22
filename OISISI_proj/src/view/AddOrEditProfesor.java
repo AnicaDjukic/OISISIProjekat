@@ -148,37 +148,36 @@ public class AddOrEditProfesor extends JPanel{
 			tabOsn.add(donji,BorderLayout.SOUTH);
 			tabovi.addTab(GlobalConstants.profEditTabOsnInf, tabOsn);
 			
-			ArrayList<Predmet> profPred = p.getSpisPred();
-			
 			
 			//Tab predmeti :
 			JPanel tabPrd = new JPanel();
 			
 			JButton dodajPred = new JButton(GlobalConstants.btnDodPred);
 			JButton uklPred = new JButton(GlobalConstants.btnUklPred);
-			JPanel southPom = new JPanel();
-			southPom.add(dodajPred);
-			southPom.add(uklPred);
+			JPanel northPom = new JPanel();
+			northPom.setLayout(new BoxLayout(northPom, BoxLayout.X_AXIS));
+			northPom.add(dodajPred);
+			JSeparator sep = new JSeparator(SwingConstants.VERTICAL);
+			sep.setMaximumSize(new Dimension(5,0));
+			northPom.add(sep);
+			northPom.add(uklPred);
 			
 			JPanel pom = new JPanel();
 			pom.setLayout(new BorderLayout());
-			pom.add(southPom, BorderLayout.SOUTH);
+			pom.add(northPom, BorderLayout.NORTH);
 			
-			ScrollPane listPane = new ScrollPane();
-			listPane.setPreferredSize(new Dimension(350,350));
+			TabelaPredmeti tabelaPredmetaProf = new TabelaPredmeti(true);
+			tabelaPredmetaProf.azurirajTabeluProf(p);
 			
-			DefaultListModel modelListe = new DefaultListModel();
-			for(Predmet pr : profPred) {
-				modelListe.addElement(pr.getSif_pred() + ", " + pr.getNaziv());
-			}
-			JList<Predmet> lista = new JList(modelListe);
-			lista.setLayoutOrientation(JList.VERTICAL);
-			lista.setSize(listPane.getSize());
-			listPane.add(lista);
-			pom.add(listPane,BorderLayout.NORTH);
+			JScrollPane listPane = new JScrollPane(tabelaPredmetaProf);
+			listPane.setPreferredSize(new Dimension(350,370));
+			pom.add(listPane,BorderLayout.SOUTH);
+			
+			JPanel seph = new JPanel();
+			seph.setMaximumSize(new Dimension(350,5));
+			pom.add(seph,BorderLayout.CENTER);
 			
 			tabPrd.add(pom);
-			
 			tabovi.add(GlobalConstants.profEditTabPrd, tabPrd);
 		}
 		
@@ -258,7 +257,5 @@ public class AddOrEditProfesor extends JPanel{
 			brPraznihPolja++;
 		if(Checker.isValidTitOrMaj(txtZvanje.getText()))
 			brPraznihPolja++;		
-		
-		System.out.println(brPraznihPolja);
 	}
 }
