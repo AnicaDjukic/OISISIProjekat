@@ -68,6 +68,8 @@ public class GlobalConstants {
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
 	public static String btnCncName = "Odustani";
+	public static String btnDodPred = "Dodaj";
+	public static String btnUklPred = "Ukloni";
 	
 	//Regex :
 	public static String regExNameOrSurename = "[a-z]+";
@@ -76,4 +78,8 @@ public class GlobalConstants {
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 
+	
+	//Edit tab names :
+	public static String profEditTabOsnInf = "Informacije";
+	public static String profEditTabPrd = "Predmeti";
 }

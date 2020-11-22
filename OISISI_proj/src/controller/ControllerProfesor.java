@@ -11,7 +11,7 @@ import model.Profesor;
 public class ControllerProfesor {
 	
 	private ArrayList<Profesor> listaProfesora;
-	
+ 	
 	public ControllerProfesor() {
 		listaProfesora = new ArrayList<Profesor>();
 		
@@ -24,6 +24,17 @@ public class ControllerProfesor {
 	
 	//Doimplementirati kada se bude imao data sample
 	public void Initialize() {
+		for(int i = 0; i < 10; i++) {
+			Profesor temp = new Profesor();
+			temp.setIme(""+i+"-prof");
+			temp.setPrezime(""+i+"-profPrez");
+			temp.setDrp(""+i+"-profDrp");
+			temp.setAdrKanc(""+i+"profAdrS");
+			temp.setBrLicKart(""+i+"00000000");
+			temp.setZvanje(""+i+"-profZva");
+			temp.setTitula(""+i+"-profTit");
+			dodajProfesora(temp);
+		}
 	}
 	
 	public boolean dodajProfesora(Profesor p) {
@@ -41,6 +52,14 @@ public class ControllerProfesor {
 	public void ukloniProfesora(Profesor p) {
 		if(listaProfesora.contains(p))
 			listaProfesora.remove(p);
+	}
+	
+	public Profesor nadjiProfesora(String brLicKarte) {
+		Profesor ret = null;
+		for(Profesor s : listaProfesora)
+			if(s.getBrLicKart().equals(brLicKarte))
+				ret = s;
+		return ret;
 	}
 	
 	//AddOrEditProfesor panel create : 

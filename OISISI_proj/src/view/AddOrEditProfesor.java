@@ -9,6 +9,7 @@ import java.awt.event.FocusListener;
 import javax.swing.*;
 
 import model.GlobalConstants;
+import model.Predmet;
 import model.Profesor;
 import controller.*;
 
@@ -24,6 +25,7 @@ public class AddOrEditProfesor extends JPanel{
 	private ErrorDialog er;
 	
 	public static int brPraznihPolja = -10;
+	public static int rowNumEdited;
 	
 	public AddOrEditProfesor(int mode, AddOrEditDialog d) {
 		cp = GlavniProzor.getControllerProfesor();
@@ -92,8 +94,11 @@ public class AddOrEditProfesor extends JPanel{
 		cancel = new JButton(GlobalConstants.btnCncName);
 		donji.add(cancel);	
 		
-		add(gornji,BorderLayout.NORTH);
-		add(donji,BorderLayout.SOUTH);
+		
+		if(mode == AddOrEditDialog.add_mode) {
+			add(gornji,BorderLayout.NORTH);
+			add(donji,BorderLayout.SOUTH);
+		}
 		
 		
 		//Textfield listeneri :
@@ -107,6 +112,59 @@ public class AddOrEditProfesor extends JPanel{
 		txtBrLicKart.addFocusListener(new ProfesorFocusListeners());
 		txtTitula.addFocusListener(new ProfesorFocusListeners());
 		txtZvanje.addFocusListener(new ProfesorFocusListeners());
+		
+		if(mode == AddOrEditDialog.edit_mode) {
+			
+			rowNumEdited = TabelaProfesora.inst.getSelectedRow();
+			System.out.println(rowNumEdited);
+			String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0); 
+			
+			Profesor p = cp.nadjiProfesora(editProfBrLic);
+			//Setting the text to selected prof:
+			txtPrezime.setText(p.getPrezime());
+			txtIme.setText(p.getIme());
+			txtDrp.setText(p.getDrp());
+			txtAdrKanc.setText(p.getAdrKanc());
+			txtAdrStan.setText(p.getAdrStan());
+			txtKonTel.setText(p.getKonTel());
+			txtEmail.setText(p.getEmail());
+			txtBrLicKart.setText(p.getBrLicKart());
+			txtTitula.setText(p.getTitula());
+			txtZvanje.setText(p.getZvanje());
+			
+			JTabbedPane tabovi = new JTabbedPane();
+			add(tabovi);
+			
+			JPanel tabOsn = new JPanel();
+			tabOsn.setLayout(new BorderLayout());
+			tabOsn.add(gornji,BorderLayout.NORTH);
+			tabOsn.add(donji,BorderLayout.SOUTH);
+			tabovi.addTab(GlobalConstants.profEditTabOsnInf, tabOsn);
+			
+			
+			//Tab predmeti :
+			JPanel tabPrd = new JPanel();
+			
+			JButton dodajPred = new JButton(GlobalConstants.btnDodPred);
+			JButton uklPred = new JButton(GlobalConstants.btnUklPred);
+			JPanel southPom = new JPanel();
+			southPom.add(dodajPred);
+			southPom.add(uklPred);
+			
+			JPanel pom = new JPanel();
+			pom.setLayout(new BorderLayout());
+			pom.add(southPom, BorderLayout.SOUTH);
+			
+			ScrollPane listPane = new ScrollPane();
+			listPane.setPreferredSize(new Dimension(400,350));
+			JList<Predmet> lista = new JList<Predmet>();
+			listPane.add(lista);
+			pom.add(listPane,BorderLayout.NORTH);
+			
+			tabPrd.add(pom);
+			
+			tabovi.add(GlobalConstants.profEditTabPrd, tabPrd);
+		}
 		
 		
 		//Button listeneri : 

@@ -17,10 +17,10 @@ import java.util.*;
 
 public class TabelaProfesora extends JTable { 
 	
-	private static Object[] colNames = {GlobalConstants.imeLab, GlobalConstants.przLab, GlobalConstants.titulaLab, GlobalConstants.zvanjeLab};
+	private static Object[] colNames = {GlobalConstants.brLicKartLab,GlobalConstants.imeLab, GlobalConstants.przLab, GlobalConstants.titulaLab, GlobalConstants.zvanjeLab};
 	static DefaultTableModel model;
 	static ControllerProfesor controllerProfesor;
-	static TabelaProfesora inst;
+	public static TabelaProfesora inst;
 	
 	public TabelaProfesora() {
 		inst = this;
@@ -60,19 +60,21 @@ public class TabelaProfesora extends JTable {
 		
 		tableInitialize(inst);
 		
-		String ime,prezime,titula,zvanje;
-		Object[] row = {"", "", "", ""};
+		String brLicKart,ime,prezime,titula,zvanje;
+		Object[] row = {"", "", "", "",""};
 		
 		for(Profesor p : listaProfesora) {
+			brLicKart = p.getBrLicKart();
 			ime = p.getIme();
 			prezime = p.getPrezime();
 			titula = p.getTitula();
 			zvanje = p.getZvanje();
 			
-			row[0] = ime;
-			row[1] = prezime;
-			row[2] = titula;
-			row[3] = zvanje;
+			row[0] = brLicKart;
+			row[1] = ime;
+			row[2] = prezime;
+			row[3] = titula;
+			row[4] = zvanje;
 			
 			model.addRow(row);
 		}
