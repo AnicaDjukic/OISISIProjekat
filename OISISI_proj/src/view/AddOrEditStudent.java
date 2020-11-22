@@ -143,11 +143,12 @@ public class AddOrEditStudent extends JPanel {
 				broj = broj.substring(brNula);
 				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
+				
 				switch((String) tTrenutnaGod.getSelectedItem()) {
-				case "I (prva)" : student.setTrenutnaGodStud(1); break;
-				case "II (druga)" : student.setTrenutnaGodStud(2); break;
-				case "III (treæa)" : student.setTrenutnaGodStud(3); break;
-				case "IV (èetvrta)" : student.setTrenutnaGodStud(4); break;
+					case "I (prva)" : student.setTrenutnaGodStud(1); break;
+					case "II (druga)" : student.setTrenutnaGodStud(2); break;
+					case "III (treæa)" : student.setTrenutnaGodStud(3); break;
+					case "IV (èetvrta)" : student.setTrenutnaGodStud(4); break;
 				}
 				String finans = (String)(tFinans.getSelectedItem());
 				student.setStatus(finans);

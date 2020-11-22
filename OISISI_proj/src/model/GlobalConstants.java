@@ -90,10 +90,12 @@ public class GlobalConstants {
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
+	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
+	public static String regGodUpisa = "[1,2]{1}[0,9]{1}[0-9]+";
 
 	
 	//Edit tab names :
 	public static String profEditTabOsnInf = "Informacije";
 	public static String profEditTabPrd = "Predmeti";
-	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
+	
 }
