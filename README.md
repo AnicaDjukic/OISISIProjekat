@@ -1,2 +1,2 @@
 # OISISIProjekat
-Student 1 - Anica, Student 2 - Nikola
+Student 1 - Anica Đukić (I grupa), Student 2 - Nikola Milosavljević (I grupa)
