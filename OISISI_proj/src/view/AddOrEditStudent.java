@@ -34,31 +34,37 @@ public class AddOrEditStudent extends JPanel {
 		lIme = new JLabel(GlobalConstants.imeLab);
 		tIme = new JTextField();
 		tIme.setName(GlobalConstants.imeLab);
+		tIme.setToolTipText(GlobalConstants.przImeToolTip);
 		
 		lPrezime = new JLabel(GlobalConstants.przLab);
 		tPrezime = new JTextField();
 		tPrezime.setName(GlobalConstants.przLab);
-		
+		tPrezime.setToolTipText(GlobalConstants.przImeToolTip);
 		
 		lDatRodj = new JLabel(GlobalConstants.drLab);
 		tDatRodj = new JTextField();
 		tDatRodj.setName(GlobalConstants.drLab);
+		tDatRodj.setToolTipText(GlobalConstants.drpToolTip);
 		
 		lAdrStan = new JLabel(GlobalConstants.adrStanLab);
 		tAdrStan = new JTextField();
 		tAdrStan.setName(GlobalConstants.adrStanLab);
+		tAdrStan.setToolTipText(GlobalConstants.adrToolTip);
 		
 		lBrTel = new JLabel(GlobalConstants.konTelLab);
 		tBrTel = new JTextField();
 		tBrTel.setName(GlobalConstants.konTelLab);
+		tBrTel.setToolTipText(GlobalConstants.konTelToolTip);
 		
 		lEmail = new JLabel(GlobalConstants.emailLab);
 		tEmail = new JTextField();
 		tEmail.setName(GlobalConstants.emailLab);
+		tEmail.setToolTipText(GlobalConstants.emailToolTip);
 		
 		lBrIndexa = new JLabel(GlobalConstants.indexLab);
 		tBrIndexa = new JTextField();
 		tBrIndexa.setName(GlobalConstants.indexLab);
+		tBrIndexa.setToolTipText(GlobalConstants.brIndexaToolTip);
 		
 		lGodUpisa = new JLabel(GlobalConstants.upisLab);
 		tGodUpisa = new JTextField();

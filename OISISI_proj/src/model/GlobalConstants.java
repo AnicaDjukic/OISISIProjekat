@@ -30,6 +30,7 @@ public class GlobalConstants {
 	public static String emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
 	public static String brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
 	public static String titZvToolTip = "Dozvoljeno je jedna ili više reči";
+	public static String brIndexaToolTip = "SSxyz/yyyy, SS-smer, xyz-broj, yyyy-god.upisa";
 	
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
