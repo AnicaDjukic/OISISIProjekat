@@ -82,4 +82,20 @@ public class Checker {
 			return true;
 		return false;
 	}
+	
+	public static boolean isValidIndex(String str) {
+		String regEx = GlobalConstants.regExBrIndexa;
+		if(str.matches(regEx))
+			return true;
+		return false;
+		
+	}
+	
+	public static boolean isValidYear(String str) {
+		int year = Integer.parseInt(str);
+		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+		if(1990 <= year && year <= thisYear)
+			return true;
+		return false;
+	}
 }
