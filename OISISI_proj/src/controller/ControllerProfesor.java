@@ -6,12 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
 
-import model.Profesor;
+import model.*;
+import view.GlavniProzor;
 
 public class ControllerProfesor {
 	
 	private ArrayList<Profesor> listaProfesora;
-	
+ 	
 	public ControllerProfesor() {
 		listaProfesora = new ArrayList<Profesor>();
 		
@@ -24,6 +25,19 @@ public class ControllerProfesor {
 	
 	//Doimplementirati kada se bude imao data sample
 	public void Initialize() {
+		for(int i = 0; i < 10; i++) {
+			Profesor temp = new Profesor();
+			temp.setIme(""+i+"-prof");
+			temp.setPrezime(""+i+"-profPrez");
+			temp.setDrp(""+i+"-profDrp");
+			temp.setAdrKanc(""+i+"profAdrS");
+			temp.setBrLicKart(""+i+"00000000");
+			temp.setZvanje(""+i+"-profZva");
+			temp.setTitula(""+i+"-profTit");
+			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+i));
+			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+4));
+			dodajProfesora(temp);
+		}
 	}
 	
 	public boolean dodajProfesora(Profesor p) {
@@ -38,9 +52,27 @@ public class ControllerProfesor {
 		return true;
 	}
 	
-	public void ukloniProfesora(Profesor p) {
-		if(listaProfesora.contains(p))
-			listaProfesora.remove(p);
+	public void ukloniProfesora(String brLicKart) {
+		for(Profesor temp : listaProfesora)
+			if(temp.getBrLicKart().equals(brLicKart)) {
+				listaProfesora.remove(temp);
+				break;
+			}
+	}
+	
+	public Profesor nadjiProfesora(String brLicKarte) {
+		Profesor ret = null;
+		for(Profesor s : listaProfesora)
+			if(s.getBrLicKart().equals(brLicKarte))
+				ret = s;
+		return ret;
+	}
+	
+	public void dodajProfPred(Profesor p, Predmet pr) {
+		for(Predmet temp : p.getSpisPred())
+			if(temp.getSif_pred().equals(pr.getSif_pred()))
+				return;
+		p.getSpisPred().add(pr);
 	}
 	
 	//AddOrEditProfesor panel create : 

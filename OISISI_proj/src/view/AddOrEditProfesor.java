@@ -5,10 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
 import model.GlobalConstants;
+import model.Predmet;
 import model.Profesor;
 import controller.*;
 
@@ -24,8 +26,11 @@ public class AddOrEditProfesor extends JPanel{
 	private ErrorDialog er;
 	
 	public static int brPraznihPolja = -10;
+	public static int rowNumEdited;
+	public static int currMode;
 	
 	public AddOrEditProfesor(int mode, AddOrEditDialog d) {
+		currMode = mode;
 		cp = GlavniProzor.getControllerProfesor();
 	    this.d = d;
 		setLayout(new BorderLayout());
@@ -92,8 +97,11 @@ public class AddOrEditProfesor extends JPanel{
 		cancel = new JButton(GlobalConstants.btnCncName);
 		donji.add(cancel);	
 		
-		add(gornji,BorderLayout.NORTH);
-		add(donji,BorderLayout.SOUTH);
+		
+		if(mode == AddOrEditDialog.add_mode) {
+			add(gornji,BorderLayout.NORTH);
+			add(donji,BorderLayout.SOUTH);
+		}
 		
 		
 		//Textfield listeneri :
@@ -107,6 +115,72 @@ public class AddOrEditProfesor extends JPanel{
 		txtBrLicKart.addFocusListener(new ProfesorFocusListeners());
 		txtTitula.addFocusListener(new ProfesorFocusListeners());
 		txtZvanje.addFocusListener(new ProfesorFocusListeners());
+		
+		if(currMode == AddOrEditDialog.edit_mode) {
+			
+			rowNumEdited = TabelaProfesora.inst.getSelectedRow();
+			String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0); 
+			
+			Profesor p = cp.nadjiProfesora(editProfBrLic);
+			//Setting the text to selected prof:
+			txtPrezime.setText(p.getPrezime());
+			txtIme.setText(p.getIme());
+			txtDrp.setText(p.getDrp());
+			txtAdrKanc.setText(p.getAdrKanc());
+			txtAdrStan.setText(p.getAdrStan());
+			txtKonTel.setText(p.getKonTel());
+			txtEmail.setText(p.getEmail());
+			txtBrLicKart.setText(p.getBrLicKart());
+			txtTitula.setText(p.getTitula());
+			txtZvanje.setText(p.getZvanje());
+			
+			//Provera tacnosti polja : 
+			numCorrectFields();
+			if(brPraznihPolja == 0)
+				ok.setEnabled(true);
+			
+			JTabbedPane tabovi = new JTabbedPane();
+			add(tabovi);
+			
+			JPanel tabOsn = new JPanel();
+			tabOsn.setLayout(new BorderLayout());
+			tabOsn.add(gornji,BorderLayout.NORTH);
+			tabOsn.add(donji,BorderLayout.SOUTH);
+			tabovi.addTab(GlobalConstants.profEditTabOsnInf, tabOsn);
+			
+			ArrayList<Predmet> profPred = p.getSpisPred();
+			
+			
+			//Tab predmeti :
+			JPanel tabPrd = new JPanel();
+			
+			JButton dodajPred = new JButton(GlobalConstants.btnDodPred);
+			JButton uklPred = new JButton(GlobalConstants.btnUklPred);
+			JPanel southPom = new JPanel();
+			southPom.add(dodajPred);
+			southPom.add(uklPred);
+			
+			JPanel pom = new JPanel();
+			pom.setLayout(new BorderLayout());
+			pom.add(southPom, BorderLayout.SOUTH);
+			
+			ScrollPane listPane = new ScrollPane();
+			listPane.setPreferredSize(new Dimension(350,350));
+			
+			DefaultListModel modelListe = new DefaultListModel();
+			for(Predmet pr : profPred) {
+				modelListe.addElement(pr.getSif_pred() + ", " + pr.getNaziv());
+			}
+			JList<Predmet> lista = new JList(modelListe);
+			lista.setLayoutOrientation(JList.VERTICAL);
+			lista.setSize(listPane.getSize());
+			listPane.add(lista);
+			pom.add(listPane,BorderLayout.NORTH);
+			
+			tabPrd.add(pom);
+			
+			tabovi.add(GlobalConstants.profEditTabPrd, tabPrd);
+		}
 		
 		
 		//Button listeneri : 
@@ -136,14 +210,55 @@ public class AddOrEditProfesor extends JPanel{
 				
 				d.setVisible(false);
 				
-				p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
-				if(!cp.dodajProfesora(p)) 
-					er = new ErrorDialog(GlobalConstants.errAddProf);
+				if(AddOrEditDialog.add_mode == currMode) {
+					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
+					if(!cp.dodajProfesora(p)) 
+						er = new ErrorDialog(GlobalConstants.errAddProf);
+				}else {
+					String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0);
+					Profesor ptemp = cp.nadjiProfesora(editProfBrLic);
+					cp.ukloniProfesora(editProfBrLic);
+					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
+					
+					for(Predmet pr : ptemp.getSpisPred())
+						cp.dodajProfPred(p, pr);
+						
+					
+					if(!cp.dodajProfesora(p)) {
+						cp.dodajProfesora(ptemp);
+						er = new ErrorDialog(GlobalConstants.errEditProf);
+					}
+				}
 				
 				TabelaProfesora.azurirajTabelu();
 				
 				brPraznihPolja = -10;
 			}
 		});
+	}
+	
+	public void numCorrectFields() {
+		if(Checker.isNameOrSurename(txtIme.getText()))
+			brPraznihPolja++;
+		if(Checker.isNameOrSurename(txtPrezime.getText()))
+			brPraznihPolja++;
+		if(Checker.isValidDate(txtDrp.getText()))
+			brPraznihPolja++;
+		if(Checker.isValidAdrress(txtAdrStan.getText()))
+			brPraznihPolja++;
+		if(Checker.isValidAdrress(txtAdrKanc.getText()))
+			brPraznihPolja++;
+		if(Checker.isValidEmail(txtEmail.getText()))
+			brPraznihPolja++;
+		if(Checker.isValidNumber(txtBrLicKart.getText(), 1))
+			brPraznihPolja++;
+		if(Checker.isValidNumber(txtKonTel.getText(), 0))
+			brPraznihPolja++;
+		if(Checker.isValidTitOrMaj(txtTitula.getText()))
+			brPraznihPolja++;
+		if(Checker.isValidTitOrMaj(txtZvanje.getText()))
+			brPraznihPolja++;		
+		
+		System.out.println(brPraznihPolja);
 	}
 }

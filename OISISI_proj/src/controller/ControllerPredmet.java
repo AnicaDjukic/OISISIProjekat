@@ -22,13 +22,26 @@ public class ControllerPredmet {
 		for (int i = 0; i < 20; i++) {
 			Predmet p = new Predmet();
 			p.setNaziv(""+i);
+			p.setSif_pred(""+i);
 			dodajPredmet(p);
 		}
 	}
 	
-	public void dodajPredmet(Predmet p) {
+	public boolean dodajPredmet(Predmet p) {
 		if(!listaPredmeta.contains(p))
-			listaPredmeta.add(p);
+			for(Predmet pr : listaPredmeta)
+				if(pr.getSif_pred().equals(p.getSif_pred()))
+					return false;
+		listaPredmeta.add(p);
+		return true;
+	}
+	
+	public Predmet nadjiPredmet(String sp) {
+		Predmet ret = null;
+		for(Predmet p : listaPredmeta)
+			if(p.getSif_pred().equals(sp))
+				ret = p;
+		return ret;
 	}
 	
 }

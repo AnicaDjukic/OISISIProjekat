@@ -35,8 +35,8 @@ public class GlavniProzor extends JFrame {
 		addWindowListener(new MyWindowListener());
 		
 		//Incijalizacija kontrolera:
-		cProf = new ControllerProfesor();
 		cPred = new ControllerPredmet();
+		cProf = new ControllerProfesor();
 		cStud = new ControllerStudent();
 		
 		//Menu bar :

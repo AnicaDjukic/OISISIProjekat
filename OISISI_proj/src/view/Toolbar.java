@@ -31,6 +31,7 @@ public class Toolbar  extends JToolBar{
 		btnEdit = new JButton();
 		btnEdit.setToolTipText(GlobalConstants.editBtnToolTipTxt);
 		btnEdit.setIcon(new ImageIcon(GlobalConstants.editImg));
+		btnEdit.addActionListener(new EditButtonListener());
 		add(btnEdit);
 		
 		addSeparator();

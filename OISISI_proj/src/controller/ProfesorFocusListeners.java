@@ -19,6 +19,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		JTextField tx = (JTextField) e.getComponent();
 		if(tx.getForeground() == Color.RED) {
 			tx.setForeground(Color.BLACK);
+			tx.setText("");
 		}
 		
 		input = tx.getText();
@@ -72,5 +73,4 @@ public class ProfesorFocusListeners implements FocusListener{
 		
 		return ret;
 	}
-
 }

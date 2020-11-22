@@ -25,7 +25,8 @@ public class Checker {
 		try {
 	    	 d = dateValidaterCol.parse(str);
 	    	 if(d.after(new Date(0,0,1)))                        //Pošto je po novim kalendarima pa se na godinu doda 1900
-	    		 suc = true;
+	    		 if(d.before(new Date()))
+	    			 suc = true;
 	     }
 	     catch(ParseException e){
 	          suc = false;
@@ -34,7 +35,8 @@ public class Checker {
 		try {
 			d = dateValidaterDot.parse(str);
 			if(d.after(new Date(0,0,1)))
-				suc = true;
+				if(d.before(new Date()))
+					suc = true;
 	     }
 	     catch(ParseException e){
 	          suc = false;
