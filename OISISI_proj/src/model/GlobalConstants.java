@@ -30,7 +30,8 @@ public class GlobalConstants {
 	public static String emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
 	public static String brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
 	public static String titZvToolTip = "Dozvoljeno je jedna ili više reči";
-	public static String brIndexaToolTip = "SSxxx/yyyy, SS-smer, xxx-broj, yyyy-god.upisa";
+	public static String brIndexaToolTip = "SSxxx format, SS-smer, xxx-broj(najmanje 1 cifra)";
+	public static String godUpisaToolTip = "yyyy format";
 	
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
@@ -84,5 +85,5 @@ public class GlobalConstants {
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
-	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}/20[0-9]{2}";
+	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
 }

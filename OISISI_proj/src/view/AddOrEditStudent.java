@@ -69,6 +69,7 @@ public class AddOrEditStudent extends JPanel {
 		lGodUpisa = new JLabel(GlobalConstants.upisLab);
 		tGodUpisa = new JTextField();
 		tGodUpisa.setName(GlobalConstants.upisLab);
+		tGodUpisa.setToolTipText(GlobalConstants.godUpisaToolTip);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
 		String[] godStud = {"1", "2", "3", "4"};
@@ -124,13 +125,23 @@ public class AddOrEditStudent extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				student = new Student();
-				student.setIme(tIme.getText());
-				student.setPrezime(tPrezime.getText());
+				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1));
+				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1));
 				student.setDatumRodj(tDatRodj.getText());
-				student.setAdresaStan(tAdrStan.getText());
+				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
 				student.setKonTel(tBrTel.getText());
 				student.setEmail(tEmail.getText());
-				student.setBrIndexa(tBrIndexa.getText());
+				String smer = tBrIndexa.getText().substring(0,2);
+				String broj = tBrIndexa.getText().substring(2);
+				int brNula = 0;
+				for(int i = 0; i < broj.length(); i++) {
+					if(broj.charAt(i) == '0')
+						brNula++;
+					else
+						break;
+				}
+				broj = broj.substring(brNula);
+				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
 				String godStud = (String) tTrenutnaGod.getSelectedItem();
 				student.setTrenutnaGodStud(Integer.parseInt(godStud));

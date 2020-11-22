@@ -59,7 +59,7 @@ public class StudentFocusListeners implements FocusListener {
 		if(name.equals(GlobalConstants.indexLab))
 			return Checker.isValidIndex(input);
 		if(name.equals(GlobalConstants.upisLab))
-			return true;
+			return Checker.isValidYear(input);
 		
 		return false;
 	}
