@@ -72,7 +72,7 @@ public class AddOrEditStudent extends JPanel {
 		tGodUpisa.setToolTipText(GlobalConstants.godUpisaToolTip);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
-		String[] godStud = {"1", "2", "3", "4"};
+		String[] godStud = {"I (prva)", "II (druga)", "III (treæa)", "IV (èetvrta)"};
 		tTrenutnaGod = new JComboBox<String>(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
@@ -143,8 +143,12 @@ public class AddOrEditStudent extends JPanel {
 				broj = broj.substring(brNula);
 				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
-				String godStud = (String) tTrenutnaGod.getSelectedItem();
-				student.setTrenutnaGodStud(Integer.parseInt(godStud));
+				switch((String) tTrenutnaGod.getSelectedItem()) {
+				case "I (prva)" : student.setTrenutnaGodStud(1); break;
+				case "II (druga)" : student.setTrenutnaGodStud(2); break;
+				case "III (treæa)" : student.setTrenutnaGodStud(3); break;
+				case "IV (èetvrta)" : student.setTrenutnaGodStud(4); break;
+				}
 				String finans = (String)(tFinans.getSelectedItem());
 				student.setStatus(finans);
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
