@@ -25,6 +25,7 @@ public class TabelaProfesora extends JTable {
 	public TabelaProfesora() {
 		inst = this;
 		controllerProfesor = GlavniProzor.getControllerProfesor();
+		inst.getTableHeader().setReorderingAllowed(false);
 		
 		tableInitialize(inst);
 		

@@ -177,7 +177,8 @@ public class Profesor {
 			else
 				tit = s;
 		}
-		tit = tit.substring(1,tit.length());
+		if(parts.length != 1)
+			tit = tit.substring(1,tit.length());
 		
 		parts = zv.split(" ");
 		zv = "";
@@ -191,7 +192,8 @@ public class Profesor {
 			else
 				zv = s;
 		}
-		zv = zv.substring(1,zv.length());
+		if(parts.length != 1)
+			zv = zv.substring(1,zv.length());
 		
 		this.prezime = pr;
 		this.ime = im;

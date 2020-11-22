@@ -219,6 +219,11 @@ public class AddOrEditProfesor extends JPanel{
 					Profesor ptemp = cp.nadjiProfesora(editProfBrLic);
 					cp.ukloniProfesora(editProfBrLic);
 					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
+					
+					for(Predmet pr : ptemp.getSpisPred())
+						cp.dodajProfPred(p, pr);
+						
+					
 					if(!cp.dodajProfesora(p)) {
 						cp.dodajProfesora(ptemp);
 						er = new ErrorDialog(GlobalConstants.errEditProf);
