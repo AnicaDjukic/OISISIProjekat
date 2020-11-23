@@ -90,6 +90,9 @@ public class Checker {
 	}
 	
 	public static boolean isValidYear(String str) {
+		String regEx = GlobalConstants.regGodUpisa;
+		if(!str.matches(regEx))
+			return false;
 		int year = Integer.parseInt(str);
 		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
 		if(1990 <= year && year <= thisYear)
