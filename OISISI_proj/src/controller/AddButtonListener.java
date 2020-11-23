@@ -15,11 +15,13 @@ public class AddButtonListener implements ActionListener{
 		
 		switch(tab) {
 		case 0:
-			//Add za studente da se otvori
+			//Add za studente
+			AddOrEditDialog dialog = new AddOrEditDialog(AddOrEditDialog.add_mode);
+			dialog.setVisible(true);
 			break;
 		case 1:
 			//Add za profesore
-			AddOrEditDialog aoed = new AddOrEditDialog(1);
+			AddOrEditDialog aoed = new AddOrEditDialog(AddOrEditDialog.add_mode);
 			aoed.setVisible(true);
 			break;
 		case 2:

@@ -17,6 +17,11 @@ public class GlobalConstants {
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
 	
+	public static String indexLab = "Broj indeksa : ";
+	public static String upisLab = "Godina upisa : ";
+	public static String trenutnaLab = "Trenutna godina studija : ";
+	public static String finansLab = "Način finansiranja : ";
+	
 	//Label tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
 	public static String drpToolTip = "dd.MM.yyyy format";
@@ -25,10 +30,13 @@ public class GlobalConstants {
 	public static String emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
 	public static String brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
 	public static String titZvToolTip = "Dozvoljeno je jedna ili više reči";
+	public static String brIndexaToolTip = "SSxxx format, SS-smer, xxx-broj(najmanje 1 cifra)";
+	public static String godUpisaToolTip = "yyyy format";
 	
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
+	public static String errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
 	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
 	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
 	public static String yesOpt = "Da";
@@ -50,6 +58,8 @@ public class GlobalConstants {
 	
 	public static String profAdd = "Dodavanje profesora";
 	public static String profEdit = "Izmeni profeosra";
+	public static String dodajStud = "Dodavanje studenta";
+	public static String editStud = "Izmeni studenta";
 	public static String errName = "Greška";
 	
 	//Clomun names predmet : 
@@ -75,5 +85,5 @@ public class GlobalConstants {
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
-
+	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
 }

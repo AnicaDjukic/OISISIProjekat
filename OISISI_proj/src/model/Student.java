@@ -75,11 +75,17 @@ public class Student {
 	public void setTrenutnaGodStud(int trenutnaGodStud) {
 		this.trenutnaGodStud = trenutnaGodStud;
 	}
-	public StatusStudenta getStatus() {
-		return status;
+	public String getStatus() {
+		if(status.equals(StatusStudenta.B))
+			return "B";
+		return "S";
+		
 	}
-	public void setStatus(StatusStudenta status) {
-		this.status = status;
+	public void setStatus(String status) {
+		if(status.toUpperCase().equals("B") || status.equals("Budžet"))
+			this.status = StatusStudenta.B;
+		else
+			this.status = StatusStudenta.S;
 	}
 	public double getPosecnaOcena() {
 		return posecnaOcena;
@@ -119,7 +125,7 @@ public class Student {
 		this.brIndexa = brIndexa;
 		this.godUpisa = godUpisa;
 		this.trenutnaGodStud = trenutnaGodStud;
-		if(status.toUpperCase().equals("B"))
+		if(status.toUpperCase().equals("B") || status.toUpperCase().equals("Budzet"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;
