@@ -60,5 +60,13 @@ public class ControllerPredmet {
 			}
 		}
 	}
+
+	public ArrayList<String> pretraziPred(String text) {
+		ArrayList<String> foundSifPred = new ArrayList<String>();
+		for(Predmet p : listaPredmeta)
+			if(p.getSif_pred().toLowerCase().indexOf(text) != -1)
+				foundSifPred.add(p.getSif_pred());
+		return foundSifPred;
+	}
 	
 }

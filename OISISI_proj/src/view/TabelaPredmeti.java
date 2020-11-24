@@ -83,6 +83,8 @@ public class TabelaPredmeti extends JTable {
 	public static void azurirajTabelu() {
 		ArrayList<Predmet> listaPredmeta = controllerPredmet.getListaPredmeta();
 		
+		System.out.println("Azuriram");
+		
 		tableInitialize(inst,false);
 		
 		String sifra,naziv,espb,godina,semestar;
@@ -124,6 +126,36 @@ public class TabelaPredmeti extends JTable {
 			row[3] = semestar;
 			
 			modelProf.addRow(row);
+		}
+	}
+	
+	//Metoda za izlistavanje predmeta : 
+	
+	public static void izlistajPredmete(ArrayList<String> foundSifP) {
+		ArrayList<Predmet> listaPredmeta = controllerPredmet.getListaPredmeta();
+		
+		tableInitialize(inst, false);
+		
+		String sifra,naziv,espb,godina,semestar;
+		Object[] row = {"", "", "", "", ""};
+		for(Predmet pr : listaPredmeta) {
+			for(String sp : foundSifP) {
+				if(sp.equals(pr.getSif_pred())) {
+					sifra = pr.getSif_pred();
+					naziv = pr.getNaziv();
+					espb = ""+pr.getEspb_bod();
+					godina = ""+pr.getGodIzv();
+					semestar = ""+pr.getSemestar();
+					
+					row[0] = sifra;
+					row[1] = naziv;
+					row[2] = espb;
+					row[3] = godina;
+					row[4] = semestar;
+					
+					model.addRow(row);
+				}
+			}
 		}
 	}
 	

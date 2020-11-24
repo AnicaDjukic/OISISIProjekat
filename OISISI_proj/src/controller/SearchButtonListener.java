@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class SearchButtonListener implements ActionListener{
 			break;
 		case 2:
 			//search za predmete
+			prikaziPredmete();
 			break;
 		}
 		
@@ -38,7 +40,8 @@ public class SearchButtonListener implements ActionListener{
 		String words[] = text.split(" ");
 		ArrayList<String> foundP = new ArrayList<String>();
 		if(words.length != 1 && words.length != 2) {
-			TabelaProfesora.inst = new TabelaProfesora();
+			TabelaProfesora.azurirajTabelu();
+			Toolbar.srchField.setForeground(Color.red);
 			return;
 		}
 			
@@ -47,6 +50,23 @@ public class SearchButtonListener implements ActionListener{
 		}
 		
 		TabelaProfesora.izlistajProfesore(foundP);
+	}
+	
+	void prikaziPredmete() {
+		String text = Toolbar.srchField.getText();
+		text = text.trim();
+		text = text.toLowerCase();
+		ArrayList<String> foundP = new ArrayList<String>();
+		if(text.indexOf(" ") != -1) {
+			TabelaPredmeti.azurirajTabelu();
+			Toolbar.srchField.setForeground(Color.red);
+			return;
+		}
+		else {
+			foundP = GlavniProzor.getControllerPredmet().pretraziPred(text);
+		}
+		
+		TabelaPredmeti.izlistajPredmete(foundP);
 	}
 }
 
