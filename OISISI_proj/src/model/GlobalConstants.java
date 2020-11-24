@@ -22,7 +22,7 @@ public class GlobalConstants {
 	public static String trenutnaLab = "Trenutna godina studija : ";
 	public static String finansLab = "Način finansiranja : ";
 	
-	//Label tooltips :
+	//TextField tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
 	public static String drpToolTip = "dd.MM.yyyy format";
 	public static String adrToolTip = "Adresa se sastoji iz imena ulice i broja zgrade";
@@ -32,6 +32,9 @@ public class GlobalConstants {
 	public static String titZvToolTip = "Dozvoljeno je jedna ili više reči";
 	public static String brIndexaToolTip = "SSxxx format, SS-smer, xxx-broj(najmanje 1 cifra)";
 	public static String godUpisaToolTip = "yyyy format";
+	
+	public static String srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
+	public static String srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
 	
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";

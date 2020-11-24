@@ -84,6 +84,24 @@ public class ControllerProfesor {
 				}
 	}
 	
+	public ArrayList<String> pretraziProf(String words[]) {
+		ArrayList<String> foundBrLicKart = new ArrayList<String>();
+		if(words.length == 1) {
+			for(Profesor p : listaProfesora) {
+				if(p.getPrezime().toLowerCase().indexOf(words[0]) != -1)
+					foundBrLicKart.add(p.getBrLicKart());
+			}
+		}
+		if(words.length == 2) {
+			for(Profesor p : listaProfesora)
+				if(p.getPrezime().toLowerCase().indexOf(words[0]) != -1)
+					if(p.getIme().toLowerCase().indexOf(words[1]) != -1)
+						foundBrLicKart.add(p.getBrLicKart());
+		}
+		
+		return foundBrLicKart;
+	}
+	
 	//AddOrEditProfesor panel create : 
 	public JPanel createPanel(JLabel lab, JTextField txt, String ime) {
 		JPanel ret = new JPanel();

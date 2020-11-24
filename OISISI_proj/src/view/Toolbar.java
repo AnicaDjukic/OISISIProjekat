@@ -8,7 +8,7 @@ import model.GlobalConstants;
 
 public class Toolbar  extends JToolBar{
 	private JButton btnAdd,btnEdit,btnBin,btnSrch;
-	private JTextField srchField;
+	public static JTextField srchField;
 	
 	ControllerProfesor cProf;
 	ControllerPredmet cPred;
@@ -46,12 +46,14 @@ public class Toolbar  extends JToolBar{
 		srchField.setMaximumSize(new Dimension(350,25));
 		srchField.setMinimumSize(new Dimension(350,25));
 		srchField.setToolTipText(GlobalConstants.srchFieldToolTipTxt);
+		srchField.addMouseListener(new SearchFieldMouseListener());
 		add(srchField);	
 		addSeparator();
 		
 		btnSrch = new JButton();
 		btnSrch.setToolTipText(GlobalConstants.srchBtnToolTipTxt);
 		btnSrch.setIcon(new ImageIcon(GlobalConstants.srcImg));
+		btnSrch.addActionListener(new SearchButtonListener());
 		add(btnSrch);
 	}
 }

@@ -30,10 +30,6 @@ public class TabelaProfesora extends JTable {
 		
 		tableInitialize(inst);
 		
-		//Poravnanje :
-		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PROFESOR_RENDER);
-		for(int i = 0; i < colNames.length; i++)
-			getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		//Test primer!
 		
 		azurirajTabelu();
@@ -53,6 +49,11 @@ public class TabelaProfesora extends JTable {
 		t.setRowHeight(35);
 		t.setAutoCreateRowSorter(true);
 		t.setFont(t.getFont().deriveFont(16F));
+
+		//Poravnanje :
+		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PROFESOR_RENDER);
+		for(int i = 0; i < colNames.length; i++)
+			t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 	}
 	
 	//Metoda za izlistavanje profesora : 
@@ -79,6 +80,36 @@ public class TabelaProfesora extends JTable {
 			row[4] = zvanje;
 			
 			model.addRow(row);
+		}
+	}
+	
+	public static void izlistajProfesore(ArrayList<String> foundBrLic) {
+		
+		ArrayList<Profesor> listaProfesora = controllerProfesor.getListaProfesora();
+		
+		tableInitialize(inst);
+		
+		String brLicKart,ime,prezime,titula,zvanje;
+		Object[] row = {"", "", "", "",""};
+		for(Profesor p : listaProfesora) {
+			for(String br : foundBrLic) {
+				if(br.equals(p.getBrLicKart())) {
+					brLicKart = p.getBrLicKart();
+					ime = p.getIme();
+					prezime = p.getPrezime();
+					titula = p.getTitula();
+					zvanje = p.getZvanje();
+					
+					row[0] = brLicKart;
+					row[1] = ime;
+					row[2] = prezime;
+					row[3] = titula;
+					row[4] = zvanje;
+					
+					model.addRow(row);
+				}
+					
+			}
 		}
 	}
 	
