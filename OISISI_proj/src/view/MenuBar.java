@@ -5,6 +5,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -30,13 +31,13 @@ public class MenuBar extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int dialogButton = JOptionPane.YES_NO_OPTION;
 				String [] options = {"Da","Ne"};
-				JOptionPane.showOptionDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				int code = JOptionPane.showOptionDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 
-		         if(dialogButton == JOptionPane.YES_OPTION){
-		            System.exit(0);
+		         if(code == JOptionPane.YES_OPTION){
+		        	System.exit(0);
 		         }
+		        	 
 				
 			}
 		});
