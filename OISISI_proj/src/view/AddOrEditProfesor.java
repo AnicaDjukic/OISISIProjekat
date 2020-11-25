@@ -29,7 +29,10 @@ public class AddOrEditProfesor extends JPanel{
 	public static int rowNumEdited;
 	public static int currMode;
 	
+	public static AddOrEditProfesor inst;
+	
 	public AddOrEditProfesor(int mode, AddOrEditDialog d) {
+		inst = this;
 		currMode = mode;
 		cp = GlavniProzor.getControllerProfesor();
 	    this.d = d;
@@ -153,6 +156,7 @@ public class AddOrEditProfesor extends JPanel{
 			JPanel tabPrd = new JPanel();
 			
 			JButton dodajPred = new JButton(GlobalConstants.btnDodPred);
+			dodajPred.addActionListener(new AddPredToProfListener(p));
 			JButton uklPred = new JButton(GlobalConstants.btnUklPred);
 			JPanel northPom = new JPanel();
 			northPom.setLayout(new BoxLayout(northPom, BoxLayout.X_AXIS));
@@ -167,7 +171,7 @@ public class AddOrEditProfesor extends JPanel{
 			pom.add(northPom, BorderLayout.NORTH);
 			
 			TabelaPredmeti tabelaPredmetaProf = new TabelaPredmeti(true);
-			tabelaPredmetaProf.azurirajTabeluProf(p);
+			TabelaPredmeti.azurirajTabeluProf(p);
 			
 			JScrollPane listPane = new JScrollPane(tabelaPredmetaProf);
 			listPane.setPreferredSize(new Dimension(350,370));

@@ -83,8 +83,6 @@ public class TabelaPredmeti extends JTable {
 	public static void azurirajTabelu() {
 		ArrayList<Predmet> listaPredmeta = controllerPredmet.getListaPredmeta();
 		
-		System.out.println("Azuriram");
-		
 		tableInitialize(inst,false);
 		
 		String sifra,naziv,espb,godina,semestar;
@@ -157,6 +155,14 @@ public class TabelaPredmeti extends JTable {
 				}
 			}
 		}
+	}
+	
+	//Metoda za vracanje selektovanih sifra predmeta :
+	public static ArrayList<String> selektovaniPredmeti(){
+		ArrayList<String> listaPredmetaDatogProf = new ArrayList<String>();
+		
+		int selectedRows[];
+		return listaPredmetaDatogProf;
 	}
 	
 }

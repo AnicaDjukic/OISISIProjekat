@@ -47,6 +47,8 @@ public class GlobalConstants {
 	public static String noOpt = "Ne";
 	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
 	public static String upitBrisanjePredTitle = "Brisanje predmeta";
+	public static String dodavanjePredProfDialog = "Dodaj predmet";
+	public static String predmetiTekst = "Predmeti :";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "Dodaj novog";

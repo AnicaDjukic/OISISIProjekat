@@ -101,6 +101,19 @@ public class ControllerProfesor {
 		
 		return foundBrLicKart;
 	}
+	public void dodajVisePredmetaProf(String brLic, ArrayList<String> pids) {
+		ArrayList<Predmet> prds = new ArrayList<Predmet>();
+		for(String id : pids) {
+			for(Predmet pr : GlavniProzor.getControllerPredmet().getListaPredmeta())
+				if(pr.getSif_pred().equals(id))
+					prds.add(pr);
+		}
+		System.out.println(prds.size());
+		for(Profesor p : listaProfesora)
+			if(p.getBrLicKart().equals(brLic))
+				for(Predmet pr : prds)
+					p.getSpisPred().add(pr);
+	}
 	
 	//AddOrEditProfesor panel create : 
 	public JPanel createPanel(JLabel lab, JTextField txt, String ime) {
