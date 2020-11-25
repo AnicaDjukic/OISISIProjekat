@@ -69,9 +69,11 @@ public class MenuBar extends JMenuBar {
 		    	JLabel label16 = new JLabel("\t 3. Delete (Ctrl + D)\n", new ImageIcon("images/bin_button.png"), SwingConstants.LEFT);
 		    	JLabel label17 = new JLabel("Njihovim izborom se ostvaruju iste funkcionalnosti kao i izborom stavki menu bara sa istim imenom.");
 		    	JLabel label18 = new JLabel("Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.");
+		    	JLabel label19 = new JLabel("Kako se aplikacija bude dalje razvijala tako æe ovaj Help dijalog biti naknadno proširen.");
+		    	
 		    	JLabel[] arr = {label1, label2, label3, label4, label5, label6, label7,
 		    			label8, label9, label10, label11, label12, label13, label14,
-		    			        label15, label16, label17, label18};
+		    			        label15, label16, label17, label18, label19};
 		    	Font font = new Font("Arial", Font.PLAIN, 16);
 		    	
 		    	for(JLabel l : arr) {
