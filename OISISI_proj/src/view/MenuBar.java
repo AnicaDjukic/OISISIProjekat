@@ -26,6 +26,20 @@ public class MenuBar extends JMenuBar {
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		JMenuItem miClose = new JMenuItem("Close", new ImageIcon("images/close_button.png"));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		miClose.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+				String [] options = {"Da","Ne"};
+				JOptionPane.showOptionDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+
+		         if(dialogButton == JOptionPane.YES_OPTION){
+		            System.exit(0);
+		         }
+				
+			}
+		});
 		
 		mFile.setMnemonic(KeyEvent.VK_F);
 		mFile.add(miNew);
