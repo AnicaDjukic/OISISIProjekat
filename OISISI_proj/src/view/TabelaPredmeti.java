@@ -46,7 +46,7 @@ public class TabelaPredmeti extends JTable {
 		t.setFont(t.getFont().deriveFont(16F));
 		
 		//Poravnanje :
-		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PREDMET_RENDER);
+		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
 			for(int i = 0; i < colNames.length; i++)
 				t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 	}
@@ -62,9 +62,9 @@ public class TabelaPredmeti extends JTable {
 		Object[] row = {"", "", "", "", ""};
 		
 		for(Predmet p : listaPredmeta) {
-			sifra = p.getSif_pred();
+			sifra = p.getSifPred();
 			naziv = p.getNaziv();
-			espb = ""+p.getEspb_bod();
+			espb = ""+p.getEspbBod();
 			godina = ""+p.getGodIzv();
 			semestar = ""+p.getSemestar();
 			

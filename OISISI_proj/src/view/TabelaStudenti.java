@@ -30,7 +30,7 @@ public class TabelaStudenti extends JTable {
 		setFont(getFont().deriveFont(16f));
 		
 		// Centriranje
-		NasCellRenderer prikaz = new NasCellRenderer(NasCellRenderer.STUDENT_RENDER);
+		NasCellRenderer prikaz = new NasCellRenderer(NasCellRenderer.studentRenderer);
 		for(Object o : cols) {
 			getColumn(o).setCellRenderer(prikaz);
 		}

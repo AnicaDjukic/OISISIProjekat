@@ -29,7 +29,7 @@ public class TabelaProfesora extends JTable {
 		tableInitialize(inst);
 		
 		//Poravnanje :
-		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PROFESOR_RENDER);
+		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.profesorRenderer);
 		for(int i = 0; i < colNames.length; i++)
 			getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		//Test primer!
