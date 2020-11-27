@@ -23,7 +23,7 @@ public class ControllerPredmet {
 		for (int i = 0; i < 20; i++) {
 			Predmet p = new Predmet();
 			p.setNaziv(""+i);
-			p.setSif_pred(""+i);
+			p.setSifPred(""+i);
 			dodajPredmet(p);
 		}
 	}
@@ -31,7 +31,7 @@ public class ControllerPredmet {
 	public boolean dodajPredmet(Predmet p) {
 		if(!listaPredmeta.contains(p))
 			for(Predmet pr : listaPredmeta)
-				if(pr.getSif_pred().equals(p.getSif_pred()))
+				if(pr.getSifPred().equals(p.getSifPred()))
 					return false;
 		listaPredmeta.add(p);
 		return true;
@@ -40,7 +40,7 @@ public class ControllerPredmet {
 	public Predmet nadjiPredmet(String sp) {
 		Predmet ret = null;
 		for(Predmet p : listaPredmeta)
-			if(p.getSif_pred().equals(sp))
+			if(p.getSifPred().equals(sp))
 				ret = p;
 		return ret;
 	}
@@ -54,7 +54,7 @@ public class ControllerPredmet {
 		
 		//Potom iz konacne liste : 
 		for(Predmet p : listaPredmeta) {
-			if(p.getSif_pred().equals(sp)) {
+			if(p.getSifPred().equals(sp)) {
 				listaPredmeta.remove(p);
 				break;
 			}
@@ -64,8 +64,8 @@ public class ControllerPredmet {
 	public ArrayList<String> pretraziPred(String text) {
 		ArrayList<String> foundSifPred = new ArrayList<String>();
 		for(Predmet p : listaPredmeta)
-			if(p.getSif_pred().toLowerCase().indexOf(text) != -1)
-				foundSifPred.add(p.getSif_pred());
+			if(p.getSifPred().toLowerCase().indexOf(text) != -1)
+				foundSifPred.add(p.getSifPred());
 		return foundSifPred;
 	}
 	

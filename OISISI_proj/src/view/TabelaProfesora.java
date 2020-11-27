@@ -51,7 +51,7 @@ public class TabelaProfesora extends JTable {
 		t.setFont(t.getFont().deriveFont(16F));
 
 		//Poravnanje :
-		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PROFESOR_RENDER);
+		NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.profesorRenderer);
 		for(int i = 0; i < colNames.length; i++)
 			t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 	}

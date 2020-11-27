@@ -56,7 +56,7 @@ public class TabelaPredmeti extends JTable {
 			t.setFont(t.getFont().deriveFont(16F));
 			
 			//Poravnanje :
-			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PREDMET_RENDER);
+			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
 				for(int i = 0; i < colNames.length; i++)
 					t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		} else {
@@ -72,7 +72,7 @@ public class TabelaPredmeti extends JTable {
 			t.setAutoCreateRowSorter(true);
 			
 			//Poravnanje : 
-			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.PREDMET_RENDER);
+			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
 			for(int i = 0; i < colNamesProf.length; i++)
 				t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		}
@@ -89,9 +89,9 @@ public class TabelaPredmeti extends JTable {
 		Object[] row = {"", "", "", "", ""};
 		
 		for(Predmet p : listaPredmeta) {
-			sifra = p.getSif_pred();
+			sifra = p.getSifPred();
 			naziv = p.getNaziv();
-			espb = ""+p.getEspb_bod();
+			espb = ""+p.getEspbBod();
 			godina = ""+p.getGodIzv();
 			semestar = ""+p.getSemestar();
 			
@@ -113,7 +113,7 @@ public class TabelaPredmeti extends JTable {
 		String sifra,naziv,godina,semestar;
 		Object[] row = {"","","","",""};
 		for(Predmet pr : p.getSpisPred()) {
-			sifra = pr.getSif_pred();
+			sifra = pr.getSifPred();
 			naziv = pr.getNaziv();
 			godina = ""+pr.getGodIzv();
 			semestar = ""+pr.getSemestar();
@@ -138,10 +138,10 @@ public class TabelaPredmeti extends JTable {
 		Object[] row = {"", "", "", "", ""};
 		for(Predmet pr : listaPredmeta) {
 			for(String sp : foundSifP) {
-				if(sp.equals(pr.getSif_pred())) {
-					sifra = pr.getSif_pred();
+				if(sp.equals(pr.getSifPred())) {
+					sifra = pr.getSifPred();
 					naziv = pr.getNaziv();
-					espb = ""+pr.getEspb_bod();
+					espb = ""+pr.getEspbBod();
 					godina = ""+pr.getGodIzv();
 					semestar = ""+pr.getSemestar();
 					
@@ -155,14 +155,5 @@ public class TabelaPredmeti extends JTable {
 				}
 			}
 		}
-	}
-	
-	//Metoda za vracanje selektovanih sifra predmeta :
-	public static ArrayList<String> selektovaniPredmeti(){
-		ArrayList<String> listaPredmetaDatogProf = new ArrayList<String>();
-		
-		int selectedRows[];
-		return listaPredmetaDatogProf;
-	}
-	
+	}	
 }

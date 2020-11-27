@@ -8,8 +8,8 @@ import model.GlobalConstants;
 
 public class AddOrEditDialog extends JDialog{
 	
-	public static int add_mode = 1;
-	public static int edit_mode = 2;
+	public static int addMode = 1;
+	public static int editMode = 2;
 	
 	public AddOrEditDialog(int mode) {
 		super();
@@ -24,7 +24,7 @@ public class AddOrEditDialog extends JDialog{
 		switch(tab) {
 		case 0 : 
 			//za studente
-			if(mode == add_mode)
+			if(mode == addMode)
 				this.setTitle(GlobalConstants.dodajStud);
 			else 
 				this.setTitle(GlobalConstants.editStud);
@@ -33,7 +33,7 @@ public class AddOrEditDialog extends JDialog{
 			break;
 		case 1 :
 			//za profesore
-			if(mode == add_mode)
+			if(mode == addMode)
 				this.setTitle(GlobalConstants.profAdd);
 			else
 				this.setTitle(GlobalConstants.profEdit);

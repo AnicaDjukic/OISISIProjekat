@@ -64,12 +64,12 @@ public class ControllerStudent {
 	public void obrisiPredmetKodSvihStud(String spr) {
 		for(Student s : listaStudenti) {
 			for(Ocena o : s.getPolozeniIspiti()) 
-				if(o.getPredmet().getSif_pred().equals(spr)) {
+				if(o.getPredmet().getSifPred().equals(spr)) {
 					s.getPolozeniIspiti().remove(o);
 					break;
 				}
 			for(Predmet p : s.getNepolozeniIspiti())
-				if(p.getSif_pred().equals(spr)) {
+				if(p.getSifPred().equals(spr)) {
 					s.getNepolozeniIspiti().remove(p);
 					break;
 				}

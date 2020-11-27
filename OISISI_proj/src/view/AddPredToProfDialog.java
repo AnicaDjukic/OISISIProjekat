@@ -81,7 +81,7 @@ public class AddPredToProfDialog extends JDialog{
 		String row;
 		for(Predmet p : GlavniProzor.getControllerPredmet().getListaPredmeta()) {
 			if(!currProf.getSpisPred().contains(p)) {
-				row = p.getSif_pred() + " - " + p.getNaziv();
+				row = p.getSifPred() + " - " + p.getNaziv();
 				model.addElement(row);
 			}
 		}

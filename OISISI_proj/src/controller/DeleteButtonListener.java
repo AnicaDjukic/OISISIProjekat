@@ -29,7 +29,6 @@ public class DeleteButtonListener implements ActionListener{
 			//brisanje predmeta
 			int selectedPred = TabelaPredmeti.inst.getSelectedRow();
 
-			System.out.println("Pressed " + selectedPred);
 			if(selectedPred != -1) {
 				String [] options = {GlobalConstants.yesOpt, GlobalConstants.noOpt};
 				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjePred, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
@@ -37,7 +36,7 @@ public class DeleteButtonListener implements ActionListener{
 				if(code == JOptionPane.YES_OPTION) {
 					String delSifPred = (String)TabelaPredmeti.inst.getValueAt(selectedPred, 0);
 					GlavniProzor.getControllerPredmet().obrisiPredmet(delSifPred);
-					TabelaPredmeti.inst.azurirajTabelu();
+					TabelaPredmeti.azurirajTabelu();
 				}
 			}
 			break;

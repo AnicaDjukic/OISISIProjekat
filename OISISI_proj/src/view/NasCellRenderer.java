@@ -11,9 +11,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class NasCellRenderer extends DefaultTableCellRenderer{
 	
-	public static final int STUDENT_RENDER = 0;
-	public static final int PROFESOR_RENDER = 1;
-	public static final int PREDMET_RENDER = 2;
+	public static final int studentRenderer = 0;
+	public static final int profesorRenderer = 1;
+	public static final int predmetRenderer = 2;
 	
 	private int mod;
 	
@@ -30,18 +30,18 @@ public class NasCellRenderer extends DefaultTableCellRenderer{
 		super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		
 		switch(mod) {
-		case NasCellRenderer.STUDENT_RENDER:{
+		case NasCellRenderer.studentRenderer:{
 			if(column == 3 || column == 4 ||column == 5)
 				setHorizontalAlignment(SwingConstants.CENTER);
 			else
 				setHorizontalAlignment(SwingConstants.LEFT);
 			break;
 		}
-		case NasCellRenderer.PROFESOR_RENDER:{
+		case NasCellRenderer.profesorRenderer:{
 			this.setHorizontalAlignment(SwingConstants.LEFT);
 			break;
 		}
-		case NasCellRenderer.PREDMET_RENDER:{
+		case NasCellRenderer.predmetRenderer:{
 			if(column == 2 || column == 3 || column == 4)
 				this.setHorizontalAlignment(SwingConstants.CENTER);
 			else

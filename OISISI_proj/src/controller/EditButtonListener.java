@@ -26,7 +26,7 @@ public class EditButtonListener implements ActionListener{
 			break;
 		case 1:
 			//Edit za profesore
-			aoed = new AddOrEditDialog(AddOrEditDialog.edit_mode);
+			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
 			aoed.setVisible(true);
 			break;
 		case 2:

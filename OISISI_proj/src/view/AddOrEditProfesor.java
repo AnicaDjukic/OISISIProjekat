@@ -101,7 +101,7 @@ public class AddOrEditProfesor extends JPanel{
 		donji.add(cancel);	
 		
 		
-		if(mode == AddOrEditDialog.add_mode) {
+		if(mode == AddOrEditDialog.addMode) {
 			add(gornji,BorderLayout.NORTH);
 			add(donji,BorderLayout.SOUTH);
 		}
@@ -119,7 +119,7 @@ public class AddOrEditProfesor extends JPanel{
 		txtTitula.addFocusListener(new ProfesorFocusListeners());
 		txtZvanje.addFocusListener(new ProfesorFocusListeners());
 		
-		if(currMode == AddOrEditDialog.edit_mode) {
+		if(currMode == AddOrEditDialog.editMode) {
 			
 			rowNumEdited = TabelaProfesora.inst.getSelectedRow();
 			String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0); 
@@ -213,7 +213,7 @@ public class AddOrEditProfesor extends JPanel{
 				
 				d.setVisible(false);
 				
-				if(AddOrEditDialog.add_mode == currMode) {
+				if(AddOrEditDialog.addMode == currMode) {
 					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
 					if(!cp.dodajProfesora(p)) 
 						er = new ErrorDialog(GlobalConstants.errAddProf);

@@ -70,7 +70,7 @@ public class ControllerProfesor {
 	
 	public void dodajProfPred(Profesor p, Predmet pr) {
 		for(Predmet temp : p.getSpisPred())
-			if(temp.getSif_pred().equals(pr.getSif_pred()))
+			if(temp.getSifPred().equals(pr.getSifPred()))
 				return;
 		p.getSpisPred().add(pr);
 	}
@@ -78,7 +78,7 @@ public class ControllerProfesor {
 	public void obrisiPredmetKodSvihProf(String spr) {
 		for(Profesor p : listaProfesora) 
 			for(Predmet pr : p.getSpisPred())
-				if(pr.getSif_pred().equals(spr)) {
+				if(pr.getSifPred().equals(spr)) {
 					p.getSpisPred().remove(pr);
 					break;
 				}
@@ -105,10 +105,9 @@ public class ControllerProfesor {
 		ArrayList<Predmet> prds = new ArrayList<Predmet>();
 		for(String id : pids) {
 			for(Predmet pr : GlavniProzor.getControllerPredmet().getListaPredmeta())
-				if(pr.getSif_pred().equals(id))
+				if(pr.getSifPred().equals(id))
 					prds.add(pr);
 		}
-		System.out.println(prds.size());
 		for(Profesor p : listaProfesora)
 			if(p.getBrLicKart().equals(brLic))
 				for(Predmet pr : prds)
@@ -118,13 +117,13 @@ public class ControllerProfesor {
 	//AddOrEditProfesor panel create : 
 	public JPanel createPanel(JLabel lab, JTextField txt, String ime) {
 		JPanel ret = new JPanel();
-		Dimension lbl_dims = new Dimension(150,25);
+		Dimension lblDims = new Dimension(150,25);
 		lab = new JLabel(ime);
-		lab.setPreferredSize(lbl_dims);
+		lab.setPreferredSize(lblDims);
 		ret.add(lab);
 		
-		Dimension txt_dims = new Dimension(200,25);
-		txt.setPreferredSize(txt_dims);
+		Dimension txtDims = new Dimension(200,25);
+		txt.setPreferredSize(txtDims);
 		ret.add(txt);
 		
 		return ret;
