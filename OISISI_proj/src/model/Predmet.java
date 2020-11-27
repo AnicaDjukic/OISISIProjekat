@@ -21,11 +21,11 @@ public class Predmet {
 	
 	//auto generisani geteri i seteri za polja :
 	
-	public String getSif_pred() {
+	public String getSifPred() {
 		return sifPred;
 	}
-	public void setSif_pred(String sif_pred) {
-		this.sifPred = sif_pred;
+	public void setSifPred(String sifPred) {
+		this.sifPred = sifPred;
 	}
 	public String getNaziv() {
 		return naziv;
@@ -51,11 +51,11 @@ public class Predmet {
 	public void setProf(Profesor prof) {
 		this.prof = prof;
 	}
-	public int getEspb_bod() {
+	public int getEspbBod() {
 		return espbBod;
 	}
-	public void setEspb_bod(int espb_bod) {
-		this.espbBod = espb_bod;
+	public void setEspbBod(int espbBod) {
+		this.espbBod = espbBod;
 	}
 	
 	//konstruktori :
