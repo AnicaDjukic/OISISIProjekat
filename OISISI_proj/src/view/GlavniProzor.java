@@ -19,7 +19,7 @@ public class GlavniProzor extends JFrame {
 		
 		setSize(screenWidth,screenHeight);
 		
-		setTitle("Studentska sluûba");
+		setTitle("Studentska slu≈æba");
 		
 		addWindowListener(new MyWindowListener());
 		
@@ -49,7 +49,7 @@ public class GlavniProzor extends JFrame {
 		
 			JFrame mainFrame = (JFrame) e.getComponent();
 			String [] options = {"Da","Ne"};
-			int code = JOptionPane.showOptionDialog(mainFrame, "Da li ste sigurni da ûelite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			int code = JOptionPane.showOptionDialog(mainFrame, "Da li ste sigurni da ≈æelite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			
 			if(code == JOptionPane.YES_OPTION) {
 				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

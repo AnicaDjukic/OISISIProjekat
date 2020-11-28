@@ -3,17 +3,17 @@ package view;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -32,7 +32,7 @@ public class MenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String [] options = {"Da","Ne"};
-				int code = JOptionPane.showOptionDialog(null, "Da li ste sigurni da �elite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				int code = JOptionPane.showOptionDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 
 		         if(code == JOptionPane.YES_OPTION){
 		        	System.exit(0);
@@ -66,18 +66,18 @@ public class MenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JLabel label1 = new JLabel("Aplikacija 'Studentska slu�ba' se sastoji od Menu bara, Tool bara i Status bara.\n");
-		    	JLabel label2 = new JLabel("Menu bar se sastoji od slede�ih stavki:\n");
+				JLabel label1 = new JLabel("Aplikacija \"Studentska služba\" se sastoji od Menu bara, Tool bara i Status bara.\n");
+		    	JLabel label2 = new JLabel("Menu bar se sastoji od sledećih stavki:\n");
 		    	JLabel label3 = new JLabel(new ImageIcon("images/Menu_Bar.png"));
 		    	JLabel label4 = new JLabel("\t 1. File (Alt + F)\n");
 		    	JLabel label5 = new JLabel(" New (Ctrl + N) - Dodavanje novog entiteta u sistem (studenta, profesora ili predmeta).\n", new ImageIcon("images/add_button.png"), SwingConstants.LEFT);
 		    	JLabel label6 = new JLabel(" Close (Ctrl + C) - Zatvaranje aplikacije.\n", new ImageIcon("images/close_button.png"), SwingConstants.LEFT);
 		    	JLabel label7 = new JLabel("\t 2. Edit (Alt + E)\n");
-		    	JLabel label8 = new JLabel(" Edit (Ctrl + E) - Izmena postoje�eg entiteta (studenta, profesora ili predmeta).\n", new ImageIcon("images/edit_button.png"), SwingConstants.LEFT);
-		    	JLabel label9 = new JLabel(" Delete (Ctrl + D) - Brisanje postoje�eg entiteta (studenta, profesora ili predmeta).\n", new ImageIcon("images/bin_button.png"), SwingConstants.LEFT);
+		    	JLabel label8 = new JLabel(" Edit (Ctrl + E) - Izmena postojećeg entiteta (studenta, profesora ili predmeta).\n", new ImageIcon("images/edit_button.png"), SwingConstants.LEFT);
+		    	JLabel label9 = new JLabel(" Delete (Ctrl + D) - Brisanje postojećeg entiteta (studenta, profesora ili predmeta).\n", new ImageIcon("images/bin_button.png"), SwingConstants.LEFT);
 		    	JLabel label10 = new JLabel("\t 3. Help (Alt + H)\n");
-		    	JLabel label11 = new JLabel(" Help (Ctrl + H) - Prikaz informacije neophodne za kori��enje aplikacije.\n", new ImageIcon("images/help_button.png"), SwingConstants.LEFT);
-		    	JLabel label12 = new JLabel(" About (Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sa�eta biografija svakog autora.\n", new ImageIcon("images/about_button.png"), SwingConstants.LEFT);
+		    	JLabel label11 = new JLabel(" Help (Ctrl + H) -  Prikaz informacija neophodnih za korišćenje aplikacije.\n", new ImageIcon("images/help_button.png"), SwingConstants.LEFT);
+		    	JLabel label12 = new JLabel(" About (Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sažeta biografija autora.\n", new ImageIcon("images/about_button.png"), SwingConstants.LEFT);
 		    	JLabel label13 = new JLabel("Svaka stavka menija ima svoju ikonicu koja se nalazi odmah pored njenog naziva.\n ");
 		    	JLabel label14 = new JLabel("Neke od tih ikonica se nalaze i u Tool baru:\n");
 		    	JLabel label15 = new JLabel(new ImageIcon("images/Tool_Bar.png"));
@@ -86,7 +86,7 @@ public class MenuBar extends JMenuBar {
 		    	JLabel label18 = new JLabel("\t 3. Delete (Ctrl + D)\n", new ImageIcon("images/bin_button.png"), SwingConstants.LEFT);
 		    	JLabel label19 = new JLabel("Njihovim izborom se ostvaruju iste funkcionalnosti kao i izborom stavki menu bara sa istim imenom.");
 		    	JLabel label20 = new JLabel("Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.");
-		    	JLabel label21 = new JLabel("Kako se aplikacija bude dalje razvijala tako �e ovaj Help dijalog biti naknadno pro�iren.");
+		    	JLabel label21 = new JLabel("Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.");
 		    	
 		    	JLabel[] arr = {label1, label2, label3, label4, label5, label6, label7,
 		    					label8, label9, label10, label11, label12, label13, label14,
@@ -106,6 +106,32 @@ public class MenuBar extends JMenuBar {
 		
 		JMenuItem miAbout = new JMenuItem("About", new ImageIcon("images/about_button.png"));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		miAbout.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String text = "Aplikacija \"Studentska služba\"  \n"
+					    + "Verzija: 1.0\n"
+					    + "Aplikacija \"Studentska služba\" omogućava evidenciju studenata,"
+					    + " profesora i predmeta,\n"
+					    + "kako bi olakšala rad šalterskim radnicima studentske službe Fakulteta tehničkih nauka,\n"
+					    + "Univerziteta u Novom Sadu.\n\n"
+					    + "Autori: Anica Đukić i Nikola Milosavljević \n"
+					    + "Studenti 3. godine smera \"Računarstvo i automatika\" Fakulteta tehničkih nauka,\n"
+					    + "Univerziteta u Novom Sadu.\n";
+					
+				JTextArea textArea = new JTextArea(6, 25);
+				textArea.setText(text);
+				textArea.setEditable(false);
+
+				JScrollPane scrollPane = new JScrollPane(textArea);
+				scrollPane.setPreferredSize(new Dimension(500, scrollPane.getPreferredSize().height));
+				     
+				JOptionPane.showMessageDialog(null, scrollPane, "About", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+			
+		});
 		
 		mHelp.setMnemonic(KeyEvent.VK_H);
 		mHelp.add(miHelp);
