@@ -39,8 +39,6 @@ public class MenuBar extends JMenuBar {
 		         if(code == JOptionPane.YES_OPTION){
 		        	System.exit(0);
 		         }
-		        	 
-				
 			}
 		});
 		
@@ -81,28 +79,12 @@ public class MenuBar extends JMenuBar {
 		miAbout.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				String text = "Aplikacija \"Studentska služba\"  \n"
-					    + "Verzija: 1.0\n"
-					    + "Aplikacija \"Studentska služba\" omogućava evidenciju studenata,"
-					    + " profesora i predmeta,\n"
-					    + "kako bi olakšala rad šalterskim radnicima studentske službe Fakulteta tehničkih nauka,\n"
-					    + "Univerziteta u Novom Sadu.\n\n"
-					    + "Autori: Anica Đukić i Nikola Milosavljević \n"
-					    + "Studenti 3. godine smera \"Računarstvo i automatika\" Fakulteta tehničkih nauka,\n"
-					    + "Univerziteta u Novom Sadu.\n";
-					
-				JTextArea textArea = new JTextArea(6, 25);
-				textArea.setText(text);
-				textArea.setEditable(false);
-
-				JScrollPane scrollPane = new JScrollPane(textArea);
-				scrollPane.setPreferredSize(new Dimension(500, scrollPane.getPreferredSize().height));
-				     
-				JOptionPane.showMessageDialog(null, scrollPane, "About", JOptionPane.INFORMATION_MESSAGE);
-				
+			public void actionPerformed(ActionEvent e) {	
+				AboutDialog about = new AboutDialog();
+				about.pack();
+				about.setLocationRelativeTo(null);
+				about.setVisible(true);
 			}
-			
 		});
 		
 		mHelp.setMnemonic(KeyEvent.VK_H);
