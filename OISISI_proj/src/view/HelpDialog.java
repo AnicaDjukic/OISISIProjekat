@@ -12,12 +12,13 @@ public class HelpDialog extends JDialog {
 				   label18, label19, label20, label21;
 	private JPanel panel;
 	private JPanel buttom;
+	private JButton ok;
 	
 	public HelpDialog() {
 		super();
 		
-		label1 = new JLabel("\t Aplikacija \"Studentska služba\" se sastoji od Menu bara, Tool bara i Status bara.\n");
-    	label2 = new JLabel("\t Menu bar se sastoji od sledećih stavki:\n");
+		label1 = new JLabel("\t Aplikacija \"Studentska služba\" se sastoji od Menu bara, Tool bara i Status bara.");
+    	label2 = new JLabel("\t Menu bar se sastoji od sledećih stavki:");
     	label3 = new JLabel(new ImageIcon("images/Menu_Bar.png"));
     	label4 = new JLabel("\t 1. File (Alt + F)\n");
     	label5 = new JLabel("\t New (Ctrl + N) - Dodavanje novog entiteta u sistem (studenta, profesora ili predmeta).\n", new ImageIcon("images/add_button.png"), SwingConstants.LEFT);
@@ -40,8 +41,8 @@ public class HelpDialog extends JDialog {
 		JLabel[] arr = {label1, label2, label3, label4, label5, label6, label7,
 						label8, label9, label10, label11, label12, label13, label14,
 						label15, label16, label17, label18, label19, label20, label21};
-		Font font = new Font("Arial", Font.PLAIN, 16);
-	
+		
+		Font font = new Font("Arial", Font.ITALIC, 16);
 		for(JLabel l : arr) {
 			l.setFont(font);
 		}
@@ -53,7 +54,7 @@ public class HelpDialog extends JDialog {
 	    }
 		
 		buttom = new JPanel();
-		JButton ok = new JButton("OK");
+		ok = new JButton("OK");
 		ok.addActionListener(new ActionListener() {
 			
 			@Override
