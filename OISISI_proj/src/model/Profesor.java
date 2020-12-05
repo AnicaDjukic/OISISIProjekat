@@ -36,17 +36,17 @@ public class Profesor {
 	public void setDrp(String drp) {
 		this.drp = drp;
 	}
-	public String getAdr_stan() {
+	public String getAdrStan() {
 		return adrStan;
 	}
-	public void setAdr_stan(String adr_stan) {
-		this.adrStan = adr_stan;
+	public void setAdrStan(String adrStan) {
+		this.adrStan = adrStan;
 	}
-	public String getKon_tel() {
+	public String getKonTel() {
 		return konTel;
 	}
-	public void setKon_tel(String kon_tel) {
-		this.konTel = kon_tel;
+	public void setKonTel(String konTel) {
+		this.konTel = konTel;
 	}
 	public String getEmail() {
 		return email;
@@ -54,17 +54,17 @@ public class Profesor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdr_kanc() {
+	public String getAdrKanc() {
 		return adrKanc;
 	}
-	public void setAdr_kanc(String adr_kanc) {
-		this.adrKanc = adr_kanc;
+	public void setAdrKanc(String adrKanc) {
+		this.adrKanc = adrKanc;
 	}
-	public String getBr_lic_kart() {
+	public String getBrLicKart() {
 		return brLicKart;
 	}
-	public void setBr_lic_kart(String br_lic_kart) {
-		this.brLicKart = br_lic_kart;
+	public void setBrLicKart(String brLicKart) {
+		this.brLicKart = brLicKart;
 	}
 	public String getTitula() {
 		return titula;
