@@ -103,13 +103,7 @@ public class GlavniProzor extends JFrame {
 			int code = JOptionPane.showOptionDialog(mainFrame, GlobalConstants.upitZatvaranjeMF, GlobalConstants.upitZatvaranjeTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			
 			if(code == JOptionPane.YES_OPTION) {
-				try {
-					cProf.serialize();
-					cPred.serialize();
-					cStud.serialize();
-				}catch(Exception exc){
-					exc.printStackTrace();
-				}
+				serialize();
 				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			} else
 				mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -128,5 +122,15 @@ public class GlavniProzor extends JFrame {
 
 		@Override
 		public void windowDeactivated(WindowEvent e) {}
+	}
+	
+	public static void serialize() {
+		try {
+			cProf.serialize();
+			cPred.serialize();
+			cStud.serialize();
+		}catch(Exception exc){
+			exc.printStackTrace();
+		}
 	}
 }

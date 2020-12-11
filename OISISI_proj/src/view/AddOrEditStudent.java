@@ -72,11 +72,11 @@ public class AddOrEditStudent extends JPanel {
 		tGodUpisa.setToolTipText(GlobalConstants.godUpisaToolTip);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
-		String[] godStud = {"I (prva)", "II (druga)", "III (treæa)", "IV (èetvrta)"};
+		String[] godStud = {"I (prva)", "II (druga)", "III (treï¿½a)", "IV (ï¿½etvrta)"};
 		tTrenutnaGod = new JComboBox<String>(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
-		String[] data = {"Budžet", "Samofinansiranje"};
+		String[] data = {"Budï¿½et", "Samofinansiranje"};
 		tFinans = new JComboBox<String>(data);
 		
 		glavni.add(control.createPanel(lIme, tIme));
@@ -147,8 +147,8 @@ public class AddOrEditStudent extends JPanel {
 				switch((String) tTrenutnaGod.getSelectedItem()) {
 					case "I (prva)" : student.setTrenutnaGodStud(1); break;
 					case "II (druga)" : student.setTrenutnaGodStud(2); break;
-					case "III (treæa)" : student.setTrenutnaGodStud(3); break;
-					case "IV (èetvrta)" : student.setTrenutnaGodStud(4); break;
+					case "III (treï¿½a)" : student.setTrenutnaGodStud(3); break;
+					case "IV (ï¿½etvrta)" : student.setTrenutnaGodStud(4); break;
 				}
 				String finans = (String)(tFinans.getSelectedItem());
 				student.setStatus(finans);
@@ -159,6 +159,8 @@ public class AddOrEditStudent extends JPanel {
 				
 				if(!TabelaStudenti.dodajStudentaUTabelu(student,control))
 					err = new ErrorDialog(GlobalConstants.errAddStud);
+				
+				GlavniProzor.serialize();
 				
 			}
 		});

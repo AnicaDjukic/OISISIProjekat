@@ -103,9 +103,7 @@ public class ControllerStudent {
 		try(FileOutputStream fos = new FileOutputStream(profesori);
 			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
 			for(Student p : listaStudenti)
-				dos.writeUTF(p.toString() + "\n");
-			
-			dos.writeUTF("Cisto proba");
+				dos.writeBytes(p.toString() + "\n");
 		}
 	}
 }

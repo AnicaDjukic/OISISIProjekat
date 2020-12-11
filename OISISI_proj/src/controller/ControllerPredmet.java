@@ -83,9 +83,7 @@ public class ControllerPredmet {
 		try(FileOutputStream fos = new FileOutputStream(profesori);
 			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
 			for(Predmet p : listaPredmeta)
-				dos.writeUTF(p.toString() + "\n");
-			
-			dos.writeUTF("Cisto proba");
+				dos.writeBytes(p.toString() + "\n");
 		}
 	}
 	

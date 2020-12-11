@@ -37,6 +37,7 @@ public class DeleteButtonListener implements ActionListener{
 					String delSifPred = (String)TabelaPredmeti.inst.getValueAt(selectedPred, 0);
 					GlavniProzor.getControllerPredmet().obrisiPredmet(delSifPred);
 					TabelaPredmeti.azurirajTabelu();
+					GlavniProzor.serialize();
 				}
 			}
 			break;

@@ -144,9 +144,7 @@ public class ControllerProfesor {
 		try(FileOutputStream fos = new FileOutputStream(profesori);
 			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
 			for(Profesor p : listaProfesora)
-				dos.writeUTF(p.toString() + "\n");
-			
-			dos.writeUTF("Cisto proba");
+				dos.writeBytes(p.toString() + "\n");
 		}
 	}
 }
