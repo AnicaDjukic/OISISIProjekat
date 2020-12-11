@@ -1,12 +1,20 @@
 package controller;
 
-import java.awt.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
-import model.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import model.Predmet;
+import model.Profesor;
 import view.GlavniProzor;
 
 public class ControllerProfesor {
@@ -127,6 +135,19 @@ public class ControllerProfesor {
 		ret.add(txt);
 		
 		return ret;
+	}
+	
+	public void serialize() throws FileNotFoundException, IOException {
+		File profesori = new File("resources\\Profesori.txt");
+		profesori.delete();
+		profesori.createNewFile();
+		try(FileOutputStream fos = new FileOutputStream(profesori);
+			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
+			for(Profesor p : listaProfesora)
+				dos.writeUTF(p.toString() + "\n");
+			
+			dos.writeUTF("Cisto proba");
+		}
 	}
 }
 

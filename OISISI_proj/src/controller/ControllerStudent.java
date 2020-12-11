@@ -1,11 +1,19 @@
 package controller;
 
 import java.awt.*;
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.*;
 import javax.swing.*;
 
 import model.Ocena;
 import model.Predmet;
+import model.Profesor;
 import model.Student;
 
 public class ControllerStudent {
@@ -86,5 +94,18 @@ public class ControllerStudent {
 		panel.add(text);
 		
 		return panel;
+	}
+	
+	public void serialize() throws FileNotFoundException, IOException {
+		File profesori = new File("resources\\Studenti.txt");
+		profesori.delete();
+		profesori.createNewFile();
+		try(FileOutputStream fos = new FileOutputStream(profesori);
+			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
+			for(Student p : listaStudenti)
+				dos.writeUTF(p.toString() + "\n");
+			
+			dos.writeUTF("Cisto proba");
+		}
 	}
 }

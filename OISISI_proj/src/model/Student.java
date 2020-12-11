@@ -174,33 +174,21 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		String out =  "Student Ime: " + ime + "\n";
-		out += "Prezime: " + prezime + "\n"; 
-		out += "Datum rodjenja: " + datumRodj + "\n";
-		out += "Adresa stanovanja: " + adresaStan + "\n";
-		out += "Kontakt telefon: " + konTel + "\n";
-		out += "E-mail adresa: " +  email + "\n";
-		out += "Broj indeksa: " + brIndexa + "\n";
-		out += "Godina upisa: " + godUpisa + "\n";
-		out += "Trenutna godina studija: " + trenutnaGodStud + "\n";
-		out += "Status: " + status + "\n";
-		out += "Prosecna ocena: " + posecnaOcena + "\n";
-		if(!polozeniIspiti.isEmpty()) {
-			out += "Spisak polozenih ispita: \n";
-			for(Ocena o: polozeniIspiti) {
-				out += o.getPredmet().getNaziv() + "\n";
-			}
-		} else {
-			out += "Nema polozenih ispita.\n"; 
-		}
-		if(!nepolozeniIspiti.isEmpty()) {
-			out += "Spisak nepolozenih ispita: \n";
-			for(Predmet p: nepolozeniIspiti) {
-				out += p.getNaziv() + "\n";
-			}
-		} else {
-			out += "Nema nepolozenih ispita.\n"; 
-		}
+		String out = "";
+		
+		out = this.getIme() + "|" + this.getPrezime() + "|" + this.getDatumRodj() + "|" + this.getAdresaStan() + "|" + this.getKonTel() + "|";
+		out += this.getEmail() + "|" + this.getBrIndexa() + "|" + this.getGodUpisa() + "|" + this.getTrenutnaGodStud() + "|";
+		out += this.getStatus() + "|" + this.getPosecnaOcena() + "|";
+		for(Ocena o : this.getPolozeniIspiti())
+			out += o.getPredmet().getSifPred() + "-" + o.getBrVrednost() + "-" + o.getDatumPolaganja() + ",";
+		
+		out += "|";
+		
+		for(Predmet p : this.getNepolozeniIspiti())
+			out += p.getSifPred() + ",";
+		
+		out += ";";		
+		
 		return out;
 	}
 }

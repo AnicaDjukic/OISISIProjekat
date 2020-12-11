@@ -1,7 +1,14 @@
 package controller;
 
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 import model.Predmet;
+import model.Profesor;
 import view.GlavniProzor;
 
 public class ControllerPredmet {
@@ -67,6 +74,19 @@ public class ControllerPredmet {
 			if(p.getSifPred().toLowerCase().indexOf(text) != -1)
 				foundSifPred.add(p.getSifPred());
 		return foundSifPred;
+	}
+	
+	public void serialize() throws FileNotFoundException, IOException {
+		File profesori = new File("resources\\Predmeti.txt");
+		profesori.delete();
+		profesori.createNewFile();
+		try(FileOutputStream fos = new FileOutputStream(profesori);
+			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
+			for(Predmet p : listaPredmeta)
+				dos.writeUTF(p.toString() + "\n");
+			
+			dos.writeUTF("Cisto proba");
+		}
 	}
 	
 }
