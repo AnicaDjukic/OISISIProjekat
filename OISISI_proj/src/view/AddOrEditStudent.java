@@ -105,6 +105,7 @@ public class AddOrEditStudent extends JPanel {
 		JPanel dugmad = new JPanel();
 		
 		potvrdi = new JButton(GlobalConstants.btnOkName);
+		potvrdi.setEnabled(false);
 		dugmad.add(potvrdi);
 		
 		odustani = new JButton(GlobalConstants.btnCncName);
