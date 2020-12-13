@@ -6,7 +6,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ControllerStudent;
-import model.Profesor;
 import model.Student;
 
 public class TabelaStudenti extends JTable {
