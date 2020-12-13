@@ -72,11 +72,11 @@ public class AddOrEditStudent extends JPanel {
 		tGodUpisa.setToolTipText(GlobalConstants.godUpisaToolTip);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
-		String[] godStud = {"I (prva)", "II (druga)", "III (treæa)", "IV (èetvrta)"};
+		String[] godStud = {"I (prva)", "II (druga)", "III (treÄ‡a)", "IV (Äetvrta)"};
 		tTrenutnaGod = new JComboBox<String>(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
-		String[] data = {"Budet", "Samofinansiranje"};
+		String[] data = {"BudÅ¾et", "Samofinansiranje"};
 		tFinans = new JComboBox<String>(data);
 		
 		glavni.add(createPanel(lIme, tIme));
@@ -148,8 +148,8 @@ public class AddOrEditStudent extends JPanel {
 				switch((String) tTrenutnaGod.getSelectedItem()) {
 				case "I (prva)" : student.setTrenutnaGodStud(1); break;
 				case "II (druga)" : student.setTrenutnaGodStud(2); break;
-				case "III (treæa)" : student.setTrenutnaGodStud(3); break;
-				case "IV (èetvrta)" : student.setTrenutnaGodStud(4); break;
+				case "III (treÄ‡a)" : student.setTrenutnaGodStud(3); break;
+				case "IV (Äetvrta)" : student.setTrenutnaGodStud(4); break;
 				}
 				
 				String finans = (String)(tFinans.getSelectedItem());
