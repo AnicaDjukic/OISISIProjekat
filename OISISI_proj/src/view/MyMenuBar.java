@@ -34,7 +34,7 @@ public class MyMenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String [] options = {"Da","Ne"};
-				int code = JOptionPane.showOptionDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				int code = JOptionPane.showOptionDialog(null, "Da li ste sigurni da Å¾elite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 
 		         if(code == JOptionPane.YES_OPTION){
 		        	System.exit(0);
