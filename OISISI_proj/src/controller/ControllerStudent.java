@@ -1,14 +1,12 @@
 package controller;
 
-import java.awt.*;
 import java.util.*;
-import javax.swing.*;
 
 import model.Student;
 
 public class ControllerStudent {
 	
-	//Sluzi za upravljanjem globalne liste studenata
+	//Sluzi za upravljanje listom studenata
 	
 	ArrayList<Student> listaStudenti;
 	
@@ -18,7 +16,7 @@ public class ControllerStudent {
 		//Initialize();
 	}
 	
-	public ArrayList<Student> getListaStudenta() {
+	public ArrayList<Student> getListaStudenata() {
 		return this.listaStudenti;
 	}
 	
@@ -45,30 +43,6 @@ public class ControllerStudent {
 
 		listaStudenti.add(s);
 		return true;
-	}
-	
-	public JPanel createPanel(JLabel label, JTextField text) {
-		JPanel panel = new JPanel();
-		
-		label.setPreferredSize(new Dimension(150, 25));
-		panel.add(label);
-		
-		text.setPreferredSize(new Dimension(200, 25));
-		panel.add(text);
-		
-		return panel;
-	}
-	
-	public JPanel createListPanel(JLabel label, JComboBox<String> text) {
-		JPanel panel = new JPanel();
-		
-		label.setPreferredSize(new Dimension(150, 25));
-		panel.add(label);
-		
-		text.setPreferredSize(new Dimension(200, 25));
-		panel.add(text);
-		
-		return panel;
 	}
 	
 }

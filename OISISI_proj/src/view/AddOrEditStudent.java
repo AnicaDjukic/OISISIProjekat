@@ -4,28 +4,28 @@ package view;
 import model.*;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.*;
 
-
 import javax.swing.*;
-import javax.swing.SpringLayout.Constraints;
 
 import controller.ControllerStudent;
 import controller.StudentFocusListeners;
 
 public class AddOrEditStudent extends JPanel {
 	
+	private Student student;
+	private ControllerStudent controller;
+	
 	public static JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
 	private JLabel lIme, lPrezime, lDatRodj, lAdrStan, lBrTel, lEmail, lBrIndexa, lGodUpisa, lTrenutnaGod, lFinans;
 	private JComboBox<String>  tTrenutnaGod, tFinans;
-	private Student student;
 	public static JButton potvrdi, odustani;
-	private ControllerStudent control;
 	private ErrorDialog err;
 	
 	
-	public AddOrEditStudent(int mode, AddOrEditDialog d) {
-		control = GlavniProzor.getControllerStudent();
+	public AddOrEditStudent(int mode, AddOrEditDialog dialog) {
+		controller = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
 				
 		JPanel glavni = new JPanel();
@@ -79,16 +79,16 @@ public class AddOrEditStudent extends JPanel {
 		String[] data = {"Budžet", "Samofinansiranje"};
 		tFinans = new JComboBox<String>(data);
 		
-		glavni.add(control.createPanel(lIme, tIme));
-		glavni.add(control.createPanel(lPrezime, tPrezime));
-		glavni.add(control.createPanel(lDatRodj, tDatRodj));
-		glavni.add(control.createPanel(lAdrStan, tAdrStan));
-		glavni.add(control.createPanel(lBrTel, tBrTel));
-		glavni.add(control.createPanel(lEmail, tEmail));
-		glavni.add(control.createPanel(lBrIndexa, tBrIndexa));
-		glavni.add(control.createPanel(lGodUpisa, tGodUpisa));
-		glavni.add(control.createListPanel(lTrenutnaGod, tTrenutnaGod));
-		glavni.add(control.createListPanel(lFinans, tFinans));
+		glavni.add(createPanel(lIme, tIme));
+		glavni.add(createPanel(lPrezime, tPrezime));
+		glavni.add(createPanel(lDatRodj, tDatRodj));
+		glavni.add(createPanel(lAdrStan, tAdrStan));
+		glavni.add(createPanel(lBrTel, tBrTel));
+		glavni.add(createPanel(lEmail, tEmail));
+		glavni.add(createPanel(lBrIndexa, tBrIndexa));
+		glavni.add(createPanel(lGodUpisa, tGodUpisa));
+		glavni.add(createListPanel(lTrenutnaGod, tTrenutnaGod));
+		glavni.add(createListPanel(lFinans, tFinans));
 		
 		add(glavni, BorderLayout.NORTH);
 		
@@ -116,7 +116,7 @@ public class AddOrEditStudent extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				d.setVisible(false);
+				dialog.setVisible(false);
 			}
 		});
 		
@@ -140,6 +140,7 @@ public class AddOrEditStudent extends JPanel {
 					else
 						break;
 				}
+				
 				broj = broj.substring(brNula);
 				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
@@ -149,19 +150,46 @@ public class AddOrEditStudent extends JPanel {
 				case "III (treæa)" : student.setTrenutnaGodStud(3); break;
 				case "IV (èetvrta)" : student.setTrenutnaGodStud(4); break;
 				}
+				
 				String finans = (String)(tFinans.getSelectedItem());
 				student.setStatus(finans);
+				
 				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
 				student.setPosecnaOcena(9.5);
 				
-				d.setVisible(false);
+				dialog.setVisible(false);
 				
-				if(!TabelaStudenti.dodajStudentaUTabelu(student,control))
+				if(!controller.dodajStudenta(student))
 					err = new ErrorDialog(GlobalConstants.errAddStud);
-				
+				else 
+					TabelaStudenti.updateTable();
 			}
 		});
 		
+	}
+	
+	public JPanel createPanel(JLabel label, JTextField text) {
+		JPanel panel = new JPanel();
+		
+		label.setPreferredSize(new Dimension(150, 25));
+		panel.add(label);
+		
+		text.setPreferredSize(new Dimension(200, 25));
+		panel.add(text);
+		
+		return panel;
+	}
+	
+	public JPanel createListPanel(JLabel label, JComboBox<String> text) {
+		JPanel panel = new JPanel();
+		
+		label.setPreferredSize(new Dimension(150, 25));
+		panel.add(label);
+		
+		text.setPreferredSize(new Dimension(200, 25));
+		panel.add(text);
+		
+		return panel;
 	}
 	
 }
