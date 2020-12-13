@@ -25,7 +25,7 @@ public class AddOrEditDialog extends JDialog{
 		case 0 : 
 			//za studente
 			if(mode == addMode)
-				this.setTitle(GlobalConstants.dodajStud);
+				this.setTitle(GlobalConstants.studAdd);
 			else 
 				this.setTitle(GlobalConstants.editStud);
 		
@@ -40,7 +40,12 @@ public class AddOrEditDialog extends JDialog{
 			this.add(new AddOrEditProfesor(mode, this));
 			break;
 		case 2 :
-			//za predmete
+			if(mode == addMode)
+				this.setTitle(GlobalConstants.predAdd);
+			else
+				this.setTitle(GlobalConstants.predEdit);
+			this.add(new AddOrEditPredmet(mode, this));
+				
 			break;
 		}
 		

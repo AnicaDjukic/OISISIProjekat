@@ -16,6 +16,12 @@ public class GlobalConstants {
 	public static String emailLab = "Email : ";
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
+	public static String sifraLab = "Šifra predmeta : ";
+	public static String nazivLab = "Naziv predmeta : ";
+	public static String semestarLab = "Semestar : ";
+	public static String godIzvLab = "Godina izvođenja :";
+	public static String profLab = "Profesor : ";
+	public static String espbLab = "ESPB : ";
 	
 	public static String indexLab = "Broj indeksa : ";
 	public static String upisLab = "Godina upisa : ";
@@ -74,9 +80,11 @@ public class GlobalConstants {
 	public static String tabPredmetName = "Predmeti";
 	
 	public static String profAdd = "Dodavanje profesora";
-	public static String profEdit = "Izmeni profeosra";
-	public static String dodajStud = "Dodavanje studenta";
+	public static String profEdit = "Izmeni profesora";
+	public static String studAdd = "Dodavanje studenta";
 	public static String editStud = "Izmeni studenta";
+	public static String predAdd = "Dodavanje predmeta";
+	public static String predEdit = "Izmeni predmet";
 	public static String errName = "Greška";
 	
 	//Clomun names predmet : 
