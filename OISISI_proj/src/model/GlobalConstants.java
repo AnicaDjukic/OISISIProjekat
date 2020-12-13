@@ -51,11 +51,20 @@ public class GlobalConstants {
 	public static String predmetiTekst = "Predmeti :";
 	
 	//Button toolips : 
-	public static String addBtnToolTipTxt = "Dodaj novog";
-	public static String editBtnToolTipTxt = "Izmeni";
-	public static String delBtnToolTipTxt = "Obriši";
-	public static String srchBtnToolTipTxt = "Pretraži";
+	public static String addBtnToolTipTxt = "New";
+	public static String editBtnToolTipTxt = "Edit";
+	public static String delBtnToolTipTxt = "Delete";
+	public static String srchBtnToolTipTxt = "Search";
 	public static String srchFieldToolTipTxt = "";
+	
+	
+	public static String menuFile = "File"; 
+	public static String menuNew = "New";
+	public static String menuClose = "Close";
+	public static String menuEdit = "Edit";
+	public static String menuDelete = "Delete";
+	public static String menuHelp = "Help";
+	public static String menuAbout = "About";
 	
 	//Frame names : 
 	public static String mfName = "Studentska služba";
@@ -79,8 +88,11 @@ public class GlobalConstants {
 	
 	//Image usage : 
 	public static String addImg = "images/add_button.png";
+	public static String closeImg = "images/close_button.png";
 	public static String editImg = "images/edit_button.png";
 	public static String delImg = "images/bin_button.png";
+	public static String helpImg = "images/help_button.png";
+	public static String aboutImg = "images/about_button.png";
 	public static String srcImg = "images/search_button.png";
 	
 	//Button txts : 

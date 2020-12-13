@@ -18,7 +18,7 @@ public class StatusBar extends JPanel {
 		JLabel lab = new JLabel("  Studentska služba");
 		
 		
-		DateFormat timeFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy  ");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy.  ");
 		
 		String currentTime = timeFormat.format(Calendar.getInstance().getTime());
 		JLabel timeLab = new JLabel(currentTime);
