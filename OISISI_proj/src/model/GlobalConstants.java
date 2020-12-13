@@ -94,6 +94,8 @@ public class GlobalConstants {
 	public static String helpImg = "images/help_button.png";
 	public static String aboutImg = "images/about_button.png";
 	public static String srcImg = "images/search_button.png";
+	public static String menuBarImg = "images/Menu_Bar.png";
+	public static String toolBarImg = "images/Tool_bar.png";
 	
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
