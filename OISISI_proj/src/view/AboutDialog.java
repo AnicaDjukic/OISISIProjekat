@@ -37,6 +37,7 @@ public class AboutDialog extends JDialog {
 		for(JLabel l : labels)
 			panel.add(l);
 		
+		setModal(true);
 		add(panel, BorderLayout.CENTER);
 	    setTitle("About");
 		
