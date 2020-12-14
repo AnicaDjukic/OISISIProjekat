@@ -164,6 +164,8 @@ public class AddOrEditStudent extends JPanel {
 					err = new ErrorDialog(GlobalConstants.errAddStud);
 				else 
 					TabelaStudenti.updateTable();
+				
+				GlavniProzor.serialize();
 			}
 		});
 		

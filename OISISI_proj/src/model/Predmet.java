@@ -58,6 +58,13 @@ public class Predmet {
 		this.espbBod = espbBod;
 	}
 	
+	public ArrayList<Student> getListaPolozenih() {
+		return listaPolozenih;
+	}
+	public ArrayList<Student> getListaNepolozenih() {
+		return listaNepolozenih;
+	}
+	
 	//konstruktori :
 	
 	public Predmet() {
@@ -142,38 +149,32 @@ public class Predmet {
 	}
 	
 	public String toString() {
-		String out = "Naziv : " + this.naziv + "\n";
-		out += "Sifra predmeta : " + this.sifPred + "\n";
-		out += "Semestar : ";
-		if(this.semestar.equals(Semestar.LETNJI))
-			out += "Letnji" + "\n";
+		String out = "";
+		
+		out = this.getSifPred() + "|" + this.getNaziv() + "|";
+		if(this.getSemestar() == Semestar.LETNJI)
+			out += "LETNJI";
 		else
-			out += "Zimski" + "\n";
-		out += "Godina izvodjenja : " + this.outGodIzv(this.godIzv) + "\n";
-		out += "Profesor : " + this.prof.getIme() + " " + prof.getPrezime() + "\n";
-		out += "Espb : " + this.espbBod + "\n";
+			out += "ZIMSKI";
 		
-		out += "Studenti koji su položili (" + listaPolozenih.size() + ") : ";
-		if(!listaPolozenih.isEmpty()) {
-			for(Student s : listaPolozenih)
-				out += s.getBrIndexa() + ", ";
-			
-			out = out.substring(0,out.length() - 2);              //Odseca poslednji zarez
-			out += "\n";
-		} else {
-			out += "Niko nije položio predmet\n";
-		}
+		out += "|";
+		out += this.outGodIzv(this.getGodIzv()) + "|" + this.getProf().getBrLicKart() + "|" + this.getEspbBod() + "|";
+		for(Student s : this.getListaPolozenih())
+			out += s.getBrIndexa() + ",";
 		
-		out += "Studenti koji nisu položili (" + listaNepolozenih.size() + ") : ";
-		if(!listaNepolozenih.isEmpty()) {
-			for(Student s : listaNepolozenih)
-				out += s.getBrIndexa() + ", ";
-			
-			out = out.substring(0,out.length() - 2);
-			out += "\n";
-		} else {
-			out += "Niko nije pao predmet\n";
-		}
+		if(!this.getListaPolozenih().isEmpty())
+			out = out.substring(0,out.length() - 1);
+		
+		out += "|";
+		
+		for(Student s : this.getListaNepolozenih())
+			out += s.getBrIndexa() + ",";
+		
+		if(!this.getListaNepolozenih().isEmpty())
+			out = out.substring(0,out.length() - 1);
+		
+		out += ";";
+		
 		return out;
 	}
 	

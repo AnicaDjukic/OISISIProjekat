@@ -1,6 +1,17 @@
 package controller;
 
-import java.util.*;
+import java.awt.Dimension;
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import model.Ocena;
 import model.Predmet;
@@ -62,4 +73,27 @@ public class ControllerStudent {
 		}
 	}
 	
+	public JPanel createListPanel(JLabel label, JComboBox<String> text) {
+		JPanel panel = new JPanel();
+		
+		label.setPreferredSize(new Dimension(150, 25));
+		panel.add(label);
+		
+		text.setPreferredSize(new Dimension(200, 25));
+		panel.add(text);
+		
+		return panel;
+	}
+	
+	public void serialize() throws FileNotFoundException, IOException {
+		File profesori = new File("resources\\Studenti.txt");
+		profesori.delete();
+		profesori.createNewFile();
+		try(FileOutputStream fos = new FileOutputStream(profesori);
+			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
+			for(Student p : listaStudenti)
+				dos.writeBytes(p.toString() + "\n");
+		}
+	}
+
 }

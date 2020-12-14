@@ -224,26 +224,17 @@ public class Profesor {
 	}
 	
 	public String toString() {
-		String out = "Ime : " + this.ime + "\n";
-		out += "Prezime : " + this.prezime + "\n";
-		out += "Datum rodjenja : " + this.drp + "\n";
-		out += "Adresa stanovanja : " + this.adrStan + "\n";
-		out += "Kontakt telefon : " + this.konTel + "\n";
-		out += "Email : " + this.email + "\n";
-		out += "Adresa kancelarije : " + this.adrKanc + "\n";
-		out += "Broj licne karte : " + this.brLicKart + "\n";
-		out += "Titula : " + this.titula + "\n";
-		out += "Zvanje : " + this.zvanje + "\n";
-		out += "Predmeti na kojima predaje : ";
-		if(!spisPred.isEmpty()) {
-			for(Predmet p : spisPred) {
-				out += p.getNaziv() + ", ";
-			}
-			out = out.substring(0,out.length() - 2);  //uklanjanje poslednjeg zareza
-			out += "\n";
-		} else {
-			out += "Ne predaje ni na jednom predmetu\n"; 
-		}
+		String out = "";
+		//pretvaranje u osnovna polja
+		out = this.getIme() + "|" + this.getPrezime() + "|" + this.getDrp() + "|" + this.getAdrStan() + "|" + this.getKonTel() + "|";
+		out += this.getEmail() + "|" + this.getAdrKanc() + "|" + this.getBrLicKart() + "|" + this.getTitula() + "|" + this.getZvanje() + "|";
+		for(Predmet p : this.getSpisPred())
+			out += p.getSifPred() + ",";
+		
+		if(!this.getSpisPred().isEmpty())
+			out = out.substring(0,out.length() - 1);
+		
+		out += ";";	
 		return out;
 	}	
 }

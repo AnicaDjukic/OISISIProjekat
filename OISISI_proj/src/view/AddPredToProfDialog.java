@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -117,6 +119,8 @@ public class AddPredToProfDialog extends JDialog{
 			GlavniProzor.getControllerProfesor().dodajVisePredmetaProf(currProf.getBrLicKart(), selectedPredIds);
 			
 			TabelaPredmeti.azurirajTabeluProf(currProf);
+			
+			GlavniProzor.serialize();
 			
 			inst.setVisible(false);
 		}
