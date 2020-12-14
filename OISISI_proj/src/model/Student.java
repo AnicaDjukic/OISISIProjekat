@@ -82,7 +82,7 @@ public class Student {
 		
 	}
 	public void setStatus(String status) {
-		if(status.toUpperCase().equals("B") || status.equals("Budžet"))
+		if(status.toUpperCase().equals("B") || status.equals("Budï¿½et"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;
@@ -182,13 +182,18 @@ public class Student {
 		for(Ocena o : this.getPolozeniIspiti())
 			out += o.getPredmet().getSifPred() + "-" + o.getBrVrednost() + "-" + o.getDatumPolaganja() + ",";
 		
+		if(!this.getPolozeniIspiti().isEmpty())
+			out = out.substring(0,out.length() - 1);
+		
 		out += "|";
 		
 		for(Predmet p : this.getNepolozeniIspiti())
 			out += p.getSifPred() + ",";
 		
-		out += ";";		
+		if(!this.getNepolozeniIspiti().isEmpty())
+			out = out.substring(0,out.length() - 1);
 		
+		out += ";";
 		return out;
 	}
 }

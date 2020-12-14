@@ -162,10 +162,16 @@ public class Predmet {
 		for(Student s : this.getListaPolozenih())
 			out += s.getBrIndexa() + ",";
 		
+		if(!this.getListaPolozenih().isEmpty())
+			out = out.substring(0,out.length() - 1);
+		
 		out += "|";
 		
 		for(Student s : this.getListaNepolozenih())
 			out += s.getBrIndexa() + ",";
+		
+		if(!this.getListaNepolozenih().isEmpty())
+			out = out.substring(0,out.length() - 1);
 		
 		out += ";";
 		

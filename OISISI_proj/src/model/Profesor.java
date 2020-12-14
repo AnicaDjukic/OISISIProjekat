@@ -231,6 +231,9 @@ public class Profesor {
 		for(Predmet p : this.getSpisPred())
 			out += p.getSifPred() + ",";
 		
+		if(!this.getSpisPred().isEmpty())
+			out = out.substring(0,out.length() - 1);
+		
 		out += ";";	
 		return out;
 	}	
