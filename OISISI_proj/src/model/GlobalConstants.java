@@ -16,12 +16,13 @@ public class GlobalConstants {
 	public static String emailLab = "Email : ";
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
-	public static String sifraLab = "Šifra predmeta : ";
-	public static String nazivLab = "Naziv predmeta : ";
+	
+	public static String sifraLab = "Šifra : ";
+	public static String nazivLab = "Naziv : ";
+	public static String godIzvLab = "Godina :";
 	public static String semestarLab = "Semestar : ";
-	public static String godIzvLab = "Godina izvođenja :";
-	public static String profLab = "Profesor : ";
 	public static String espbLab = "ESPB : ";
+	public static String profLab = "Profesor : ";
 	
 	public static String indexLab = "Broj indeksa : ";
 	public static String upisLab = "Godina upisa : ";
