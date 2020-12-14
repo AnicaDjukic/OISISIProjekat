@@ -16,6 +16,10 @@ import javax.swing.SwingConstants;
 import controller.ControllerPredmet;
 import model.GlobalConstants;
 import model.Predmet;
+import model.Predmet.GodIzv;
+import model.Predmet.Semestar;
+import model.Profesor;
+import model.Student;
 
 public class AddOrEditPredmet extends JPanel {
 
@@ -26,6 +30,7 @@ public class AddOrEditPredmet extends JPanel {
 	public static JTextField tSifra, tNaziv, tEspb, tProf;
 	private JComboBox<String> tGodIzv, tSemestar;
 	public static JButton plus, minus, potvrdi, odustani;
+	private ErrorDialog err;
 	
 	public AddOrEditPredmet(int mode, AddOrEditDialog dialog) {
 		
@@ -78,7 +83,6 @@ public class AddOrEditPredmet extends JPanel {
         JPanel dugmad = new JPanel();
 		
 		potvrdi = new JButton(GlobalConstants.btnOkName);
-		potvrdi.setEnabled(false);
 		dugmad.add(potvrdi);
 		
 		odustani = new JButton(GlobalConstants.btnCncName);
@@ -93,6 +97,41 @@ public class AddOrEditPredmet extends JPanel {
 				dialog.setVisible(false);
 			}
 			
+		});
+		
+		potvrdi.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				predmet = new Predmet();
+				predmet.setSifPred(tSifra.getText());
+				predmet.setNaziv(tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1));
+				
+				switch((String) tGodIzv.getSelectedItem()) {
+					case "1" : predmet.setGodIzv(GodIzv.PRVA); break;
+					case "2" : predmet.setGodIzv(GodIzv.DRUGA); break;
+					case "3" : predmet.setGodIzv(GodIzv.TRECA); break;
+					case "4" : predmet.setGodIzv(GodIzv.CETVRTA); break;
+				}
+				
+				switch((String) tSemestar.getSelectedItem()) {
+					case "zimski" : predmet.setSemestar(Semestar.ZIMSKI); break;
+					case "letnji" : predmet.setSemestar(Semestar.LETNJI); break;
+				}
+				
+				predmet.setEspbBod(Integer.parseInt(tEspb.getText()));
+				
+				/*predmet.setProf(new Profesor("Mikic","Mika","1.1.1990",
+					      "Micurinova 25","Micurinova 22","0655026516",
+					      "blabla@gmail.com","00756612","Doktor","Stalni profesor"));*/
+				
+				dialog.setVisible(false);
+				
+				if(!controller.dodajPredmet(predmet))
+					err = new ErrorDialog(GlobalConstants.errAddPred);
+				else 
+					TabelaPredmeti.azurirajTabelu();
+			}
 		});
 		
 	}
