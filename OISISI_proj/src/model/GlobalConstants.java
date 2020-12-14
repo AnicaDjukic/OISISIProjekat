@@ -43,6 +43,8 @@ public class GlobalConstants {
 	public static String srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
 	public static String srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
 	
+	
+	
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
@@ -121,7 +123,9 @@ public class GlobalConstants {
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
 	public static String regGodUpisa = "[1,2]{1}[0,9]{1}[0-9]{2}";
-
+	
+	public static String regExNazivPred = "[a-z]+[1-9]*";
+	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
 	
 	//Edit tab names :
 	public static String profEditTabOsnInf = "Informacije";

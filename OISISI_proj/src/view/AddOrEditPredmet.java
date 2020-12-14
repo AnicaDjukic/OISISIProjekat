@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.ControllerPredmet;
+import controller.PredmetFocusListeners;
+import controller.StudentFocusListeners;
 import model.GlobalConstants;
 import model.Predmet;
 import model.Predmet.GodIzv;
@@ -33,7 +35,7 @@ public class AddOrEditPredmet extends JPanel {
 	private ErrorDialog err;
 	
 	public AddOrEditPredmet(int mode, AddOrEditDialog dialog) {
-		
+		controller = GlavniProzor.getControllerPredmet();
 		setLayout(new BorderLayout());
 		
 		JPanel glavni = new JPanel();
@@ -77,8 +79,12 @@ public class AddOrEditPredmet extends JPanel {
 		glavni.add(createButtonPanel(lProf, tProf, plus, minus));
 		glavni.add(lab);
 		
-		
 		add(glavni, BorderLayout.NORTH);
+		
+		// Focus listeners
+		tSifra.addFocusListener(new PredmetFocusListeners());
+		tNaziv.addFocusListener(new PredmetFocusListeners());
+		tEspb.addFocusListener(new PredmetFocusListeners());
 		
         JPanel dugmad = new JPanel();
 		
@@ -120,10 +126,6 @@ public class AddOrEditPredmet extends JPanel {
 				}
 				
 				predmet.setEspbBod(Integer.parseInt(tEspb.getText()));
-				
-				/*predmet.setProf(new Profesor("Mikic","Mika","1.1.1990",
-					      "Micurinova 25","Micurinova 22","0655026516",
-					      "blabla@gmail.com","00756612","Doktor","Stalni profesor"));*/
 				
 				dialog.setVisible(false);
 				

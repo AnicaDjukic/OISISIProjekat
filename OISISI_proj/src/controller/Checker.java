@@ -24,7 +24,7 @@ public class Checker {
 		boolean suc = false;
 		try {
 	    	 d = dateValidaterCol.parse(str);
-	    	 if(d.after(new Date(0,0,1)))                        //Pošto je po novim kalendarima pa se na godinu doda 1900
+	    	 if(d.after(new Date(0,0,1)))                        //Poï¿½to je po novim kalendarima pa se na godinu doda 1900
 	    		 if(d.before(new Date()))
 	    			 suc = true;
 	     }
@@ -98,6 +98,22 @@ public class Checker {
 		int year = Integer.parseInt(str);
 		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
 		if(1990 <= year && year <= thisYear)
+			return true;
+		return false;
+	}
+	
+	public static boolean isValidNamePred(String str) {
+		str = str.toLowerCase();
+		String regEx = GlobalConstants.regExNazivPred;
+		if(str.matches(regEx))
+			return true;
+		return false;
+	}
+	
+	public static boolean isValidEspb(String str) {
+		str = str.toLowerCase();
+		String regEx = GlobalConstants.regExEspb;
+		if(str.matches(regEx))
 			return true;
 		return false;
 	}
