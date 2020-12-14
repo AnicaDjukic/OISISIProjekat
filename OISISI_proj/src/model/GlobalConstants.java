@@ -125,7 +125,7 @@ public class GlobalConstants {
 	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
 	public static String regGodUpisa = "[1,2]{1}[0,9]{1}[0-9]{2}";
 	
-	public static String regExNazivPred = "([a-z]+[\\s])+[0-9]{0,1}";
+	public static String regExNazivPred = "([a-z]+[\\s]{0,1})+[0-9]{0,1}";
 	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
 	
 	//Edit tab names :

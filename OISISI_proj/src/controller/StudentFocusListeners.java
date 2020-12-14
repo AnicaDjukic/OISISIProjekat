@@ -10,8 +10,6 @@ import model.GlobalConstants;
 import view.AddOrEditStudent;
 
 public class StudentFocusListeners implements FocusListener {
-
-	boolean smanjila;
 	
 	@Override
 	public void focusGained(FocusEvent e) {
