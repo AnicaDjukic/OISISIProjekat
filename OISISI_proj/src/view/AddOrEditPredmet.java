@@ -48,6 +48,7 @@ public class AddOrEditPredmet extends JPanel {
 		lNaziv = new JLabel(GlobalConstants.nazivLab);
 		tNaziv = new JTextField();
 		tNaziv.setName(GlobalConstants.nazivLab);
+		tNaziv.setToolTipText(GlobalConstants.nazivPredToolTip);
 		
 		lGodIzv = new JLabel(GlobalConstants.godIzvLab);
 		String[] godIzv = {"1", "2", "3", "4"};
@@ -60,6 +61,7 @@ public class AddOrEditPredmet extends JPanel {
 		lEspb = new JLabel(GlobalConstants.espbLab);
 		tEspb = new JTextField();
 		tEspb.setName(GlobalConstants.espbLab);
+		tEspb.setToolTipText(GlobalConstants.espbToolTip);
 		
 		lProf = new JLabel(GlobalConstants.profLab);
 		tProf = new JTextField();
