@@ -79,6 +79,9 @@ public class AddOrEditStudent extends JPanel {
 		String[] data = {"Budžet", "Samofinansiranje"};
 		tFinans = new JComboBox<String>(data);
 		
+		JLabel lab = new JLabel();
+		lab.setPreferredSize(new Dimension(150, 25));
+		
 		glavni.add(createPanel(lIme, tIme));
 		glavni.add(createPanel(lPrezime, tPrezime));
 		glavni.add(createPanel(lDatRodj, tDatRodj));
@@ -89,6 +92,7 @@ public class AddOrEditStudent extends JPanel {
 		glavni.add(createPanel(lGodUpisa, tGodUpisa));
 		glavni.add(createListPanel(lTrenutnaGod, tTrenutnaGod));
 		glavni.add(createListPanel(lFinans, tFinans));
+		glavni.add(lab);
 		
 		add(glavni, BorderLayout.NORTH);
 		
