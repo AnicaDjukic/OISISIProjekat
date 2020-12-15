@@ -72,6 +72,7 @@ public class AddOrEditPredmet extends JPanel {
 		
 		plus = new JButton("+");
 		minus = new JButton("-");
+		minus.setEnabled(false);
 		
 		JLabel lab = new JLabel();
 		lab.setPreferredSize(new Dimension(150, 25));

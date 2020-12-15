@@ -106,6 +106,8 @@ public class AddProfToPredDialog extends JDialog {
 					setVisible(false);
 					PredmetFocusListeners.enableOrDisableButton();
 					AddOrEditPredmet.tProf.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+					AddOrEditPredmet.minus.setEnabled(true);
+					AddOrEditPredmet.plus.setEnabled(false);
 				}
 				potvrdi.setEnabled(false);
 			}
