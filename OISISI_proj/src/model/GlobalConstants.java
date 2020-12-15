@@ -17,12 +17,12 @@ public class GlobalConstants {
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
 	
-	public static String sifraLab = "Šifra : ";
-	public static String nazivLab = "Naziv : ";
-	public static String godIzvLab = "Godina :";
-	public static String semestarLab = "Semestar : ";
-	public static String espbLab = "ESPB : ";
-	public static String profLab = "Profesor : ";
+	public static String sifraLab = "Šifra* : ";
+	public static String nazivLab = "Naziv* : ";
+	public static String godIzvLab = "Godina* :";
+	public static String semestarLab = "Semestar* : ";
+	public static String espbLab = "ESPB* : ";
+	public static String profLab = "Profesor* : ";
 	
 	public static String indexLab = "Broj indeksa : ";
 	public static String upisLab = "Godina upisa : ";
@@ -59,6 +59,7 @@ public class GlobalConstants {
 	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
 	public static String upitBrisanjePredTitle = "Brisanje predmeta";
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
+	public static String dodavanjeProfPredDialog = "Odaberi profesora";
 	public static String predmetiTekst = "Predmeti :";
 	
 	//Button toolips : 

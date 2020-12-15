@@ -18,6 +18,7 @@ public class PredmetFocusListeners implements FocusListener {
 		
 		txt.setForeground(Color.BLACK);
 		txt.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
 	}
 
 	@Override
@@ -32,11 +33,9 @@ public class PredmetFocusListeners implements FocusListener {
 			txt.setForeground(Color.RED);
 		}
 		
-		
-		
 		enableOrDisableButton();
 		
-		if(txt.getText().trim().equals("") || txt.getBorder() == BorderFactory.createLineBorder(Color.RED)) {
+		if(txt.getText().trim().equals("")) {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
 		
@@ -52,11 +51,14 @@ public class PredmetFocusListeners implements FocusListener {
 		if(name.equals(GlobalConstants.espbLab))
 			return Checker.isValidEspb(input);
 		
+		if(name.equals(GlobalConstants.profLab))
+			return true;
+		
 		return false;
 	}
 	
 	
-	private void enableOrDisableButton() {
+	public static void enableOrDisableButton() {
 		boolean enableButton = true;
 		
 		if(AddOrEditPredmet.tSifra.getForeground() == Color.red || AddOrEditPredmet.tSifra.getText().trim().equals(""))
@@ -66,6 +68,9 @@ public class PredmetFocusListeners implements FocusListener {
 			enableButton = false;
 		
 		if(AddOrEditPredmet.tEspb.getForeground() == Color.red || AddOrEditPredmet.tEspb.getText().trim().equals(""))
+			enableButton = false;
+		
+		if(AddOrEditPredmet.tProf.getText().trim().equals(""))
 			enableButton = false;
 		
 		AddOrEditPredmet.potvrdi.setEnabled(enableButton);

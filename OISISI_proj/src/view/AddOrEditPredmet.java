@@ -33,6 +33,9 @@ public class AddOrEditPredmet extends JPanel {
 	private JComboBox<String> tGodIzv, tSemestar;
 	public static JButton plus, minus, potvrdi, odustani;
 	private ErrorDialog err;
+	private AddProfToPredDialog addProf;
+	
+	public static AddOrEditPredmet inst;
 	
 	public AddOrEditPredmet(int mode, AddOrEditDialog dialog) {
 		controller = GlavniProzor.getControllerPredmet();
@@ -87,6 +90,7 @@ public class AddOrEditPredmet extends JPanel {
 		tSifra.addFocusListener(new PredmetFocusListeners());
 		tNaziv.addFocusListener(new PredmetFocusListeners());
 		tEspb.addFocusListener(new PredmetFocusListeners());
+		tProf.addFocusListener(new PredmetFocusListeners());
 		
         JPanel dugmad = new JPanel();
 		
@@ -108,11 +112,13 @@ public class AddOrEditPredmet extends JPanel {
 			
 		});
 		
+		predmet = new Predmet();
+		
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				predmet = new Predmet();
+				
 				predmet.setSifPred(tSifra.getText());
 				predmet.setNaziv(tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1));
 				
@@ -138,6 +144,17 @@ public class AddOrEditPredmet extends JPanel {
 					TabelaPredmeti.azurirajTabelu();
 			}
 		});
+		
+		plus.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				addProf = new AddProfToPredDialog(predmet);
+				addProf.setVisible(true);
+			}
+		});
+		
 		
 	}
 	
