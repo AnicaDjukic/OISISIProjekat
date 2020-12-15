@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -18,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
+import controller.ControllerProfesor;
 import controller.PredmetFocusListeners;
 import model.GlobalConstants;
 import model.Predmet;
@@ -25,11 +28,13 @@ import model.Profesor;
 
 public class AddProfToPredDialog extends JDialog {
 
+	ControllerProfesor controller;
 	JList<String> list;
 	JButton potvrdi, odustani;
 	
-	
 	public AddProfToPredDialog(Predmet predmet) {
+		
+		controller = GlavniProzor.getControllerProfesor();
 		
 		setResizable(true);
 		setSize(320,250);
@@ -40,39 +45,31 @@ public class AddProfToPredDialog extends JDialog {
 		JPanel glavni = new JPanel();
 		glavni.setLayout(new BoxLayout(glavni, BoxLayout.Y_AXIS));
 		
-		ArrayList<Profesor> profesori = GlavniProzor.getControllerProfesor().getListaProfesora(); 
+		ArrayList<Profesor> profesori = controller.getListaProfesora(); 
 		
 		String[] data  =  new String[profesori.size()];
+		HashMap<Integer, String> id = new HashMap<Integer, String>();
 		int i = 0;
 		for(Profesor prof : profesori) {
-			data[i] = prof.getBrLicKart() + " " + prof.getIme() + " " + prof.getPrezime();
+			data[i] = prof.getIme() + " " + prof.getPrezime();
+			id.put(i, prof.getBrLicKart());
 			i++;
 		}
 		
-		list = new JList<String>(data); //data has type Object[]
+		list = new JList<String>(data); 
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1);
-		//list.setPreferredSize(new Dimension(300,150));
 		
-		JScrollPane center = new JScrollPane(list);
-		center.setMaximumSize(new Dimension(300,150));
-		glavni.add(center,BorderLayout.CENTER);
+		JScrollPane scroll = new JScrollPane(list);
+		scroll.setMaximumSize(new Dimension(300,200));
+		glavni.add(scroll);
 		add(glavni);
-		
-		
-		//glavni.add(list, BorderLayout.CENTER);
-		
-		/*JLabel lab = new JLabel();
-		lab.setPreferredSize(new Dimension(150, 25));
-		glavni.add(lab, BorderLayout.CENTER);*/
 		
 		add(glavni);
 		
 		JPanel dugmad = new JPanel();
 		
 		potvrdi = new JButton(GlobalConstants.btnOkName);
-		//potvrdi.setEnabled(false);
 		dugmad.add(potvrdi);
 		
 		odustani = new JButton(GlobalConstants.btnCncName);
@@ -93,12 +90,10 @@ public class AddProfToPredDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String value = new String();
 				if(list.getSelectedIndex() != -1) {
-					value = list.getSelectedValue();
-					String id = value.substring(0,9);
+					int index = list.getSelectedIndex();
 					for(Profesor p : profesori)
-						if(id.equals(p.getBrLicKart())) {
+						if(id.get(index).equals(p.getBrLicKart())) {
 							predmet.setProf(p);
 							AddOrEditPredmet.tProf.setText(p.getIme() + " " + p.getPrezime());
 						}

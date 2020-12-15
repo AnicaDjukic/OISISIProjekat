@@ -1,5 +1,5 @@
 0-prof|0-profPrez|0-profDrp||||0profAdrS|000000000|0-profTit|0-profZva|0,4;
-1-prof|1-profPrez|1-profDrp||||1profAdrS|100000000|1-profTit|1-profZva|4,5,6;
+1-prof|1-profPrez|1-profDrp||||1profAdrS|100000000|1-profTit|1-profZva|1,4;
 2-prof|2-profPrez|2-profDrp||||2profAdrS|200000000|2-profTit|2-profZva|2,4;
 3-prof|3-profPrez|3-profDrp||||3profAdrS|300000000|3-profTit|3-profZva|3,4;
 4-prof|4-profPrez|4-profDrp||||4profAdrS|400000000|4-profTit|4-profZva|4;
