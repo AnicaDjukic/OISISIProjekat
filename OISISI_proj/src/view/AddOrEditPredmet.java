@@ -69,6 +69,7 @@ public class AddOrEditPredmet extends JPanel {
 		lProf = new JLabel(GlobalConstants.profLab);
 		tProf = new JTextField();
 		tProf.setName(GlobalConstants.profLab);
+		tProf.setToolTipText(GlobalConstants.profToolTip);
 		
 		plus = new JButton("+");
 		minus = new JButton("-");
