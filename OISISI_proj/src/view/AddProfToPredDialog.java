@@ -36,7 +36,7 @@ public class AddProfToPredDialog extends JDialog {
 		
 		controller = GlavniProzor.getControllerProfesor();
 		
-		setResizable(true);
+		setResizable(false);
 		setSize(320,250);
 		setModal(true);
 		setLocationRelativeTo(AddOrEditPredmet.inst);
@@ -63,9 +63,7 @@ public class AddProfToPredDialog extends JDialog {
 		JScrollPane scroll = new JScrollPane(list);
 		scroll.setMaximumSize(new Dimension(300,200));
 		glavni.add(scroll);
-		add(glavni);
-		
-		add(glavni);
+		add(glavni, BorderLayout.CENTER);
 		
 		JPanel dugmad = new JPanel();
 		
@@ -97,14 +95,12 @@ public class AddProfToPredDialog extends JDialog {
 							predmet.setProf(p);
 							AddOrEditPredmet.tProf.setText(p.getIme() + " " + p.getPrezime());
 						}
-					potvrdi.setEnabled(true);
 					setVisible(false);
 					PredmetFocusListeners.enableOrDisableButton();
 					AddOrEditPredmet.tProf.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 					AddOrEditPredmet.minus.setEnabled(true);
 					AddOrEditPredmet.plus.setEnabled(false);
 				}
-				potvrdi.setEnabled(false);
 			}
 			
 		});
