@@ -83,6 +83,16 @@ public class ControllerProfesor {
 		p.getSpisPred().add(pr);
 	}
 	
+	public Profesor dodajProfesoraNaPredmet(String idprof, Predmet predmet) {
+		Profesor ret = null;
+		for(Profesor p : listaProfesora)
+			if(idprof.equals(p.getBrLicKart())) {
+				predmet.setProf(p);
+				ret = p;
+			}
+		return ret;
+	}
+	
 	public void obrisiPredmetKodSvihProf(String spr) {
 		for(Profesor p : listaProfesora) 
 			for(Predmet pr : p.getSpisPred())

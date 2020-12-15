@@ -90,11 +90,9 @@ public class AddProfToPredDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if(list.getSelectedIndex() != -1) {
 					int index = list.getSelectedIndex();
-					for(Profesor p : profesori)
-						if(id.get(index).equals(p.getBrLicKart())) {
-							predmet.setProf(p);
-							AddOrEditPredmet.tProf.setText(p.getIme() + " " + p.getPrezime());
-						}
+					Profesor prof = controller.dodajProfesoraNaPredmet(id.get(index), predmet);
+					AddOrEditPredmet.tProf.setText(prof.getIme() + " " + prof.getPrezime());
+					
 					setVisible(false);
 					PredmetFocusListeners.enableOrDisableButton();
 					AddOrEditPredmet.tProf.setBorder(BorderFactory.createLineBorder(Color.BLACK));

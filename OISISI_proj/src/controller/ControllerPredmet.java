@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.*;
 import model.Predmet;
 import model.Profesor;
+import view.AddOrEditPredmet;
 import view.GlavniProzor;
 
 public class ControllerPredmet {
