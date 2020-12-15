@@ -17,6 +17,13 @@ public class GlobalConstants {
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
 	
+	public static String sifraLab = "Šifra* : ";
+	public static String nazivLab = "Naziv* : ";
+	public static String godIzvLab = "Godina* :";
+	public static String semestarLab = "Semestar* : ";
+	public static String espbLab = "ESPB* : ";
+	public static String profLab = "Profesor* : ";
+	
 	public static String indexLab = "Broj indeksa : ";
 	public static String upisLab = "Godina upisa : ";
 	public static String trenutnaLab = "Trenutna godina studija : ";
@@ -36,11 +43,16 @@ public class GlobalConstants {
 	public static String srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
 	public static String srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
 	
+	public static String nazivPredToolTip = "Mora početi slovom, može sadržati i jednu cifru";
+	public static String espbToolTip = "1 ili 2 cifre, prva cifra ne sme biti 0";
+	public static String profToolTip = "Odaberite profesora klikom na dugme '+'";
+	
 	//Misc texts :
 	public static String obvPolje = "Obavezno polje!";
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
 	public static String errEditProf = "Neuspešna izmena profesora!";
 	public static String errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
+	public static String errAddPred = "Neuspešno dodavanje predmeta, postoji predmet sa istom šifrom!";
 	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
 	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
 	public static String yesOpt = "Da";
@@ -48,6 +60,7 @@ public class GlobalConstants {
 	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
 	public static String upitBrisanjePredTitle = "Brisanje predmeta";
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
+	public static String dodavanjeProfPredDialog = "Odaberi profesora";
 	public static String predmetiTekst = "Predmeti :";
 	
 	//Button toolips : 
@@ -74,9 +87,11 @@ public class GlobalConstants {
 	public static String tabPredmetName = "Predmeti";
 	
 	public static String profAdd = "Dodavanje profesora";
-	public static String profEdit = "Izmeni profeosra";
-	public static String dodajStud = "Dodavanje studenta";
+	public static String profEdit = "Izmeni profesora";
+	public static String studAdd = "Dodavanje studenta";
 	public static String editStud = "Izmeni studenta";
+	public static String predAdd = "Dodavanje predmeta";
+	public static String predEdit = "Izmeni predmet";
 	public static String errName = "Greška";
 	
 	//Clomun names predmet : 
@@ -111,7 +126,9 @@ public class GlobalConstants {
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
 	public static String regGodUpisa = "[1,2]{1}[0,9]{1}[0-9]{2}";
-
+	
+	public static String regExNazivPred = "([a-z]+[\\s]{0,1})+[0-9]{0,1}";
+	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
 	
 	//Edit tab names :
 	public static String profEditTabOsnInf = "Informacije";
