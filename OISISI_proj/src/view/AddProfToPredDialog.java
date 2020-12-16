@@ -28,11 +28,13 @@ import model.Profesor;
 
 public class AddProfToPredDialog extends JDialog {
 
-	ControllerProfesor controller;
-	JList<String> list;
-	JButton potvrdi, odustani;
+	private ControllerProfesor controller;
+	private JList<String> list;
+	private JButton potvrdi, odustani;
 	
-	public AddProfToPredDialog(Predmet predmet) {
+	public static Profesor prof;
+	
+	public AddProfToPredDialog() {
 		
 		controller = GlavniProzor.getControllerProfesor();
 		
@@ -90,7 +92,8 @@ public class AddProfToPredDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if(list.getSelectedIndex() != -1) {
 					int index = list.getSelectedIndex();
-					Profesor prof = controller.dodajProfesoraNaPredmet(id.get(index), predmet);
+					
+					prof = controller.nadjiProfesora(id.get(index));
 					AddOrEditPredmet.tProf.setText(prof.getIme() + " " + prof.getPrezime());
 					
 					setVisible(false);

@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.ControllerPredmet;
+import controller.ControllerProfesor;
 import controller.PredmetFocusListeners;
 import controller.StudentFocusListeners;
 import model.GlobalConstants;
@@ -70,6 +71,7 @@ public class AddOrEditPredmet extends JPanel {
 		tProf = new JTextField();
 		tProf.setName(GlobalConstants.profLab);
 		tProf.setToolTipText(GlobalConstants.profToolTip);
+		tProf.setEditable(false);
 		
 		plus = new JButton("+");
 		minus = new JButton("-");
@@ -114,13 +116,13 @@ public class AddOrEditPredmet extends JPanel {
 			
 		});
 		
-		predmet = new Predmet();
 		
 		potvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				predmet = new Predmet();
 				predmet.setSifPred(tSifra.getText());
 				predmet.setNaziv(tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1));
 				
@@ -138,6 +140,8 @@ public class AddOrEditPredmet extends JPanel {
 				
 				predmet.setEspbBod(Integer.parseInt(tEspb.getText()));
 				
+				GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
+				
 				dialog.setVisible(false);
 				
 				if(!controller.dodajPredmet(predmet))
@@ -154,11 +158,21 @@ public class AddOrEditPredmet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				addProf = new AddProfToPredDialog(predmet);
+				addProf = new AddProfToPredDialog();
 				addProf.setVisible(true);
 			}
 		});
 		
+		minus.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				tProf.setText("");
+				plus.setEnabled(true);
+				minus.setEnabled(false);
+			}
+		});
 		
 	}
 	
