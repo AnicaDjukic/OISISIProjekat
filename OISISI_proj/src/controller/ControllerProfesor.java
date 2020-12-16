@@ -148,7 +148,7 @@ public class ControllerProfesor {
 	}
 	
 	public void serialize() throws FileNotFoundException, IOException {
-		File profesori = new File("resources\\Profesori.txt");
+		File profesori = new File("resources" + File.separator + "Profesori.txt");
 		profesori.delete();
 		profesori.createNewFile();
 		try(FileOutputStream fos = new FileOutputStream(profesori);

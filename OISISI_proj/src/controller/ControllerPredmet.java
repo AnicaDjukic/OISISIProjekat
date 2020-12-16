@@ -78,7 +78,7 @@ public class ControllerPredmet {
 	}
 	
 	public void serialize() throws FileNotFoundException, IOException {
-		File profesori = new File("resources\\Predmeti.txt");
+		File profesori = new File("resources" + File.separator + "Predmeti.txt");
 		profesori.delete();
 		profesori.createNewFile();
 		try(FileOutputStream fos = new FileOutputStream(profesori);

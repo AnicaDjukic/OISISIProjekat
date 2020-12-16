@@ -144,6 +144,8 @@ public class AddOrEditPredmet extends JPanel {
 					err = new ErrorDialog(GlobalConstants.errAddPred);
 				else 
 					TabelaPredmeti.azurirajTabelu();
+				
+				GlavniProzor.serialize();
 			}
 		});
 		
