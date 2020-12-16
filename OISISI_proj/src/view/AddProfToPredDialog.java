@@ -57,7 +57,7 @@ public class AddProfToPredDialog extends JDialog {
 		}
 		
 		list = new JList<String>(data); 
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setVisibleRowCount(-1);
 		
 		JScrollPane scroll = new JScrollPane(list);
