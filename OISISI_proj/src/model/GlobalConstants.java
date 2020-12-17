@@ -6,23 +6,23 @@ public class GlobalConstants {
 	public static int aoedh = 500;  //addOrEditHeight
 	
 	//Label names :
-	public static String imeLab = "Ime* : ";
-	public static String przLab = "Prezime* : ";
-	public static String drLab = "Datum rođenja* : "; 
+	public static String imeLab = "Ime : ";
+	public static String przLab = "Prezime : ";
+	public static String drLab = "Datum rođenja : "; 
 	public static String adrKancLab = "Adresa kancelarije : ";
-	public static String adrStanLab = "Adresa stanovanja* : ";
-	public static String konTelLab = "Kontakt telefon* : ";
+	public static String adrStanLab = "Adresa stanovanja : ";
+	public static String konTelLab = "Kontakt telefon : ";
 	public static String brLicKartLab = "Broj lične karte : ";
-	public static String emailLab = "Email* : ";
+	public static String emailLab = "Email : ";
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
 	
-	public static String sifraLab = "Šifra* : ";
-	public static String nazivLab = "Naziv* : ";
-	public static String godIzvLab = "Godina* :";
-	public static String semestarLab = "Semestar* : ";
-	public static String espbLab = "ESPB* : ";
-	public static String profLab = "Profesor* : ";
+	public static String sifraLab = "Šifra : ";
+	public static String nazivLab = "Naziv : ";
+	public static String godIzvLab = "Godina :";
+	public static String semestarLab = "Semestar : ";
+	public static String espbLab = "ESPB : ";
+	public static String profLab = "Profesor : ";
 	
 	public static String indexLab = "Broj indeksa* : ";
 	public static String upisLab = "Godina upisa* : ";
