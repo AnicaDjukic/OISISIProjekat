@@ -17,7 +17,13 @@ import controller.*;
 
 public class AddOrEditProfesor extends JPanel{
 	
-	private JTextField txtPrezime,txtIme,txtDrp,txtAdrStan,txtKonTel,txtEmail,txtAdrKanc,txtBrLicKart,txtTitula,txtZvanje;
+	private JTextField txtPrezime,txtIme,txtDrp,txtAdrStan,txtKonTel,txtEmail,txtAdrKanc,txtBrLicKart;
+	
+	private String[] zvanje = {"docent", "vanredni profesor", "redovni profesor"};
+	private String[] titula = {"doktor nauka"};
+	
+	private JComboBox<String> zvCombo, titCombo;
+	
 	private JLabel labPrezime,labIme,labDrp,labAdrStan,labKonTel,labEmail,labAdrKanc,labBrLicKart,labTitula,labZvanje;
 	private Profesor p;
 	public static JButton ok,cancel;
@@ -26,12 +32,13 @@ public class AddOrEditProfesor extends JPanel{
 	private String ime,prz,drp,adrStan,konTel,email,adrKanc,brLic,tit,zva;
 	private ErrorDialog er;
 	
-	public static int brPraznihPolja = -10;
+	public static int brPraznihPolja = -8;
 	public static int rowNumEdited;
 	public static int currMode;
 	
 	public static AddOrEditProfesor inst;
 	
+	@SuppressWarnings("unchecked")
 	public AddOrEditProfesor(int mode, AddOrEditDialog d) {
 		inst = this;
 		currMode = mode;
@@ -75,13 +82,8 @@ public class AddOrEditProfesor extends JPanel{
 		txtBrLicKart.setName(GlobalConstants.brLicKartLab);
 		txtBrLicKart.setToolTipText(GlobalConstants.brLicKartToolTip);
 		
-		txtTitula = new JTextField();
-		txtTitula.setName(GlobalConstants.titulaLab);
-		txtTitula.setToolTipText(GlobalConstants.titZvToolTip);
-		
-		txtZvanje = new JTextField();
-		txtZvanje.setName(GlobalConstants.zvanjeLab);
-		txtZvanje.setToolTipText(GlobalConstants.titZvToolTip);
+		zvCombo = new JComboBox<String>(zvanje);
+		titCombo = new JComboBox<String>(titula);
 		
 		gornji.add(cp.createPanel(labPrezime, this.txtPrezime, GlobalConstants.przLab));
 		gornji.add(cp.createPanel(labIme, this.txtIme, GlobalConstants.imeLab));
@@ -91,8 +93,8 @@ public class AddOrEditProfesor extends JPanel{
 		gornji.add(cp.createPanel(labEmail, this.txtEmail, GlobalConstants.emailLab));
 		gornji.add(cp.createPanel(labAdrStan, this.txtAdrStan, GlobalConstants.adrStanLab));
 		gornji.add(cp.createPanel(labBrLicKart, this.txtBrLicKart, GlobalConstants.brLicKartLab));
-		gornji.add(cp.createPanel(labTitula, this.txtTitula, GlobalConstants.titulaLab));
-		gornji.add(cp.createPanel(labZvanje, this.txtZvanje, GlobalConstants.zvanjeLab));
+		gornji.add(cp.createComboBox(labTitula, this.zvCombo, GlobalConstants.titulaLab));
+		gornji.add(cp.createComboBox(labZvanje, this.titCombo, GlobalConstants.zvanjeLab));
 		
 		JPanel donji = new JPanel();
 		ok = new JButton(GlobalConstants.btnOkName);
@@ -117,8 +119,6 @@ public class AddOrEditProfesor extends JPanel{
 		txtKonTel.addFocusListener(new ProfesorFocusListeners());
 		txtEmail.addFocusListener(new ProfesorFocusListeners());
 		txtBrLicKart.addFocusListener(new ProfesorFocusListeners());
-		txtTitula.addFocusListener(new ProfesorFocusListeners());
-		txtZvanje.addFocusListener(new ProfesorFocusListeners());
 		
 		if(currMode == AddOrEditDialog.editMode) {
 			
@@ -135,8 +135,8 @@ public class AddOrEditProfesor extends JPanel{
 			txtKonTel.setText(p.getKonTel());
 			txtEmail.setText(p.getEmail());
 			txtBrLicKart.setText(p.getBrLicKart());
-			txtTitula.setText(p.getTitula());
-			txtZvanje.setText(p.getZvanje());
+			titCombo.setSelectedItem(p.getTitula());
+			zvCombo.setSelectedItem(p.getZvanje());
 			
 			//Provera tacnosti polja : 
 			numCorrectFields();
@@ -193,7 +193,7 @@ public class AddOrEditProfesor extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				d.setVisible(false);
-				brPraznihPolja = -10;
+				brPraznihPolja = -8;
 			}
 		});
 		
@@ -209,8 +209,8 @@ public class AddOrEditProfesor extends JPanel{
 				email = txtEmail.getText();
 				adrKanc = txtAdrKanc.getText();
 				brLic = txtBrLicKart.getText();
-				tit = txtTitula.getText();
-				zva = txtZvanje.getText();
+				tit = (String)titCombo.getSelectedItem();
+				zva = (String)zvCombo.getSelectedItem();
 				
 				d.setVisible(false);
 				
@@ -238,7 +238,7 @@ public class AddOrEditProfesor extends JPanel{
 				
 				GlavniProzor.serialize();
 				
-				brPraznihPolja = -10;
+				brPraznihPolja = -8;
 			}
 		});
 	}
@@ -259,10 +259,6 @@ public class AddOrEditProfesor extends JPanel{
 		if(Checker.isValidNumber(txtBrLicKart.getText(), 1))
 			brPraznihPolja++;
 		if(Checker.isValidNumber(txtKonTel.getText(), 0))
-			brPraznihPolja++;
-		if(Checker.isValidTitOrMaj(txtTitula.getText()))
-			brPraznihPolja++;
-		if(Checker.isValidTitOrMaj(txtZvanje.getText()))
 			brPraznihPolja++;		
 	}
 }

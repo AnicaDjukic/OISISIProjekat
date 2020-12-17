@@ -52,6 +52,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		
 		if(input.equals(""))
 			tx.setText(GlobalConstants.obvPolje);
+		System.out.println(AddOrEditProfesor.brPraznihPolja);
 	}
 	
 	public boolean getValue(String input0) {

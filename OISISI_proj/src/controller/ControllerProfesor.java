@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -134,6 +135,20 @@ public class ControllerProfesor {
 	
 	//AddOrEditProfesor panel create : 
 	public JPanel createPanel(JLabel lab, JTextField txt, String ime) {
+		JPanel ret = new JPanel();
+		Dimension lblDims = new Dimension(150,25);
+		lab = new JLabel(ime);
+		lab.setPreferredSize(lblDims);
+		ret.add(lab);
+		
+		Dimension txtDims = new Dimension(200,25);
+		txt.setPreferredSize(txtDims);
+		ret.add(txt);
+		
+		return ret;
+	}
+	
+	public JPanel createComboBox(JLabel lab, JComboBox<String> txt, String ime) {
 		JPanel ret = new JPanel();
 		Dimension lblDims = new Dimension(150,25);
 		lab = new JLabel(ime);
