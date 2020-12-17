@@ -76,8 +76,10 @@ public class PredmetFocusListeners implements FocusListener {
 			enableButton = false;
 		}
 			
-		if(AddOrEditPredmet.tProf.getText().trim().equals(""))
+		if(AddOrEditPredmet.tProf.getText().trim().equals("")) {
+			AddOrEditPredmet.tProf.setBorder(BorderFactory.createLineBorder(Color.RED));
 			enableButton = false;
+		}
 		
 		AddOrEditPredmet.potvrdi.setEnabled(enableButton);
 	}
