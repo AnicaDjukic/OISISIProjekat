@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
 import model.GlobalConstants;
@@ -17,9 +18,9 @@ public class ProfesorFocusListeners implements FocusListener{
 	@Override
 	public void focusGained(FocusEvent e) {
 		JTextField tx = (JTextField) e.getComponent();
-		if(tx.getForeground() == Color.RED) {
-			tx.setForeground(Color.BLACK);
-		}
+		
+		tx.setForeground(Color.BLACK);
+		tx.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		input = tx.getText();
 		name = tx.getName();
@@ -41,7 +42,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		
 		if(!check) {
 			AddOrEditProfesor.brPraznihPolja--;
-			tx.setForeground(Color.RED);
+			tx.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
 		
 		if(AddOrEditProfesor.brPraznihPolja == 0) 
@@ -50,7 +51,7 @@ public class ProfesorFocusListeners implements FocusListener{
 			AddOrEditProfesor.ok.setEnabled(false);
 		
 		if(input.equals(""))
-			tx.setText(GlobalConstants.obvPolje);
+			tx.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 	
 	public boolean getValue(String input0) {
