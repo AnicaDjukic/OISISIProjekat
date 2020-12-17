@@ -111,22 +111,16 @@ public class AddOrEditPredmet extends JPanel {
 			int selectedRow = TabelaPredmeti.inst.getSelectedRow();
 			if(selectedRow != -1) {
 				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
-				boolean enableButton = true;
+;
 				Predmet pred = controller.nadjiPredmet(sifraSelectedPred);
 				tSifra.setText(pred.getSifPred());
 				tNaziv.setText(pred.getNaziv());
-				if(!Checker.isValidNamePred(tNaziv.getText()))
-					enableButton = false;
 				
 				tGodIzv.setSelectedItem(pred.getGodIzv());
 				tSemestar.setSelectedItem(pred.getSemestar());
 				
 				String espb = String.valueOf(pred.getEspbBod());
 				tEspb.setText(espb);
-				if(!Checker.isValidEspb(tEspb.getText())) 
-					enableButton = false;
-				
-				potvrdi.setEnabled(enableButton);
 				
 				Profesor prof = pred.getProf();
 				tProf.setText(prof.getIme() + " " + prof.getPrezime());
