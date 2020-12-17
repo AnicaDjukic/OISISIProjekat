@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
 import model.GlobalConstants;
@@ -15,13 +16,8 @@ public class StudentFocusListeners implements FocusListener {
 	public void focusGained(FocusEvent e) {
 		JTextField txt = (JTextField) e.getComponent();
 	
-		if(txt.getForeground() == Color.RED)
-			txt.setForeground(Color.BLACK);
-		
-		if(txt.getText().trim().equals(GlobalConstants.obvPolje)) {
-			txt.setText("");
-			txt.setForeground(Color.BLACK);
-		}
+		txt.setForeground(Color.BLACK);
+		txt.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 
 	@Override
@@ -31,15 +27,15 @@ public class StudentFocusListeners implements FocusListener {
 		String name = txt.getName();
 		String input = txt.getText();
 		
-		if(!regularInput(name, input)) 
+		if(!regularInput(name, input)) {
+			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 			txt.setForeground(Color.RED);
+		}
 		
 		enableOrDisableButton();
 		
-		if(txt.getText().trim().equals("") || txt.getText().trim().equals(GlobalConstants.obvPolje)) {
-			txt.setText(GlobalConstants.obvPolje);
-			txt.setForeground(Color.RED);
-		}
+		if(txt.getText().trim().equals("")) 
+			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 	
 	public boolean regularInput(String name, String input) {

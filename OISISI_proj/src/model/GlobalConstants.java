@@ -6,21 +6,21 @@ public class GlobalConstants {
 	public static int aoedh = 500;  //addOrEditHeight
 	
 	//Label names :
-	public static String imeLab = "Ime : ";
-	public static String przLab = "Prezime : ";
-	public static String drLab = "Datum rođenja : "; 
+	public static String imeLab = "Ime* : ";
+	public static String przLab = "Prezime* : ";
+	public static String drLab = "Datum rođenja* : "; 
 	public static String adrKancLab = "Adresa kancelarije : ";
-	public static String adrStanLab = "Adresa stana : ";
-	public static String konTelLab = "Kontakt telefon : ";
+	public static String adrStanLab = "Adresa stanovanja* : ";
+	public static String konTelLab = "Kontakt telefon* : ";
 	public static String brLicKartLab = "Broj lične karte : ";
-	public static String emailLab = "Email : ";
+	public static String emailLab = "Email* : ";
 	public static String titulaLab = "Titula : ";
 	public static String zvanjeLab = "Zvanje : ";
 	
-	public static String indexLab = "Broj indeksa : ";
-	public static String upisLab = "Godina upisa : ";
-	public static String trenutnaLab = "Trenutna godina studija : ";
-	public static String finansLab = "Način finansiranja : ";
+	public static String indexLab = "Broj indeksa* : ";
+	public static String upisLab = "Godina upisa* : ";
+	public static String trenutnaLab = "Trenutna godina studija* : ";
+	public static String finansLab = "Način finansiranja* : ";
 	
 	//Label tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
