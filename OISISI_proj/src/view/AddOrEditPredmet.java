@@ -124,6 +124,10 @@ public class AddOrEditPredmet extends JPanel {
 				
 				Profesor prof = pred.getProf();
 				tProf.setText(prof.getIme() + " " + prof.getPrezime());
+				if(prof.getIme() != "") {
+					plus.setEnabled(false);
+					minus.setEnabled(true);
+				}
 
 			}
 		}
