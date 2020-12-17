@@ -15,9 +15,10 @@ public class EditButtonListener implements ActionListener{
 		int tab = GlavniProzor.getTabbedPane().getSelectedIndex();
 		AddOrEditDialog aoed;
 		
-		int rowCheck;
+		int rowCheck, rowCheckPred;
 		rowCheck = TabelaProfesora.inst.getSelectedRow();
-		if(rowCheck == -1)
+		rowCheckPred = TabelaPredmeti.inst.getSelectedRow();
+		if(rowCheck == -1 && rowCheckPred == -1)
 			return;
 		
 		switch(tab) {
@@ -31,6 +32,9 @@ public class EditButtonListener implements ActionListener{
 			break;
 		case 2:
 			//Edit za predmete
+			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+			aoed.pack();
+			aoed.setVisible(true);
 			break;
 		}
 		

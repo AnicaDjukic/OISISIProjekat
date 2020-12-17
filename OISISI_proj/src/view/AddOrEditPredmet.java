@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,18 +12,15 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
+import controller.Checker;
 import controller.ControllerPredmet;
-import controller.ControllerProfesor;
 import controller.PredmetFocusListeners;
-import controller.StudentFocusListeners;
 import model.GlobalConstants;
 import model.Predmet;
 import model.Predmet.GodIzv;
 import model.Predmet.Semestar;
 import model.Profesor;
-import model.Student;
 
 public class AddOrEditPredmet extends JPanel {
 
@@ -107,6 +105,35 @@ public class AddOrEditPredmet extends JPanel {
 		
 		add(dugmad,BorderLayout.SOUTH);
 		
+		
+		if(mode == AddOrEditDialog.editMode) {
+			
+			int selectedRow = TabelaPredmeti.inst.getSelectedRow();
+			if(selectedRow != -1) {
+				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
+				boolean enableButton = true;
+				Predmet pred = controller.nadjiPredmet(sifraSelectedPred);
+				tSifra.setText(pred.getSifPred());
+				tNaziv.setText(pred.getNaziv());
+				if(!Checker.isValidNamePred(tNaziv.getText()))
+					enableButton = false;
+				
+				tGodIzv.setSelectedItem(pred.getGodIzv());
+				tSemestar.setSelectedItem(pred.getSemestar());
+				
+				String espb = String.valueOf(pred.getEspbBod());
+				tEspb.setText(espb);
+				if(!Checker.isValidEspb(tEspb.getText())) 
+					enableButton = false;
+				
+				potvrdi.setEnabled(enableButton);
+				
+				Profesor prof = pred.getProf();
+				tProf.setText(prof.getIme() + " " + prof.getPrezime());
+
+			}
+		}
+		
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override
@@ -173,8 +200,7 @@ public class AddOrEditPredmet extends JPanel {
 				minus.setEnabled(false);
 			}
 		});
-		
-	}
+	}	
 	
 	public JPanel createPanel(JLabel label, JTextField text) {
 		JPanel panel = new JPanel();

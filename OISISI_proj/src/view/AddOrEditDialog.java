@@ -40,6 +40,7 @@ public class AddOrEditDialog extends JDialog{
 			this.add(new AddOrEditProfesor(mode, this));
 			break;
 		case 2 :
+			// za predmete
 			if(mode == addMode)
 				this.setTitle(GlobalConstants.predAdd);
 			else
