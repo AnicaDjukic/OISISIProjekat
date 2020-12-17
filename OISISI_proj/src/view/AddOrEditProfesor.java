@@ -19,8 +19,8 @@ public class AddOrEditProfesor extends JPanel{
 	
 	private JTextField txtPrezime,txtIme,txtDrp,txtAdrStan,txtKonTel,txtEmail,txtAdrKanc,txtBrLicKart;
 	
-	private String[] zvanje = {"docent", "vanredni profesor", "redovni profesor"};
-	private String[] titula = {"doktor nauka"};
+	private String[] zvanje = {"Docent", "Vanredni Profesor", "Redovni Profesor"};
+	private String[] titula = {"Doktor Nauka"};
 	
 	private JComboBox<String> zvCombo, titCombo;
 	
@@ -221,17 +221,18 @@ public class AddOrEditProfesor extends JPanel{
 				}else {
 					String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0);
 					Profesor ptemp = cp.nadjiProfesora(editProfBrLic);
-					cp.ukloniProfesora(editProfBrLic);
-					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
 					
-					for(Predmet pr : ptemp.getSpisPred())
-						cp.dodajProfPred(p, pr);
-						
+					ptemp.setIme(ime);
+					ptemp.setPrezime(prz);
+					ptemp.setDrp(drp);
+					ptemp.setAdrStan(adrStan);
+					ptemp.setKonTel(konTel);
+					ptemp.setEmail(email);
+					ptemp.setAdrKanc(adrKanc);
+					ptemp.setBrLicKart(brLic);
+					ptemp.setTitula(tit);
+					ptemp.setZvanje(zva);
 					
-					if(!cp.dodajProfesora(p)) {
-						cp.dodajProfesora(ptemp);
-						er = new ErrorDialog(GlobalConstants.errEditProf);
-					}
 				}
 				
 				TabelaProfesora.azurirajTabelu();
