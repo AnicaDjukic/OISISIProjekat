@@ -1,10 +1,12 @@
 package controller;
 
-import java.awt.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.util.ArrayList;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import model.Profesor;
 
@@ -45,6 +47,20 @@ public class ControllerProfesor {
 	
 	//AddOrEditProfesor panel create : 
 	public JPanel createPanel(JLabel lab, JTextField txt, String ime) {
+		JPanel ret = new JPanel();
+		Dimension lbl_dims = new Dimension(150,25);
+		lab = new JLabel(ime);
+		lab.setPreferredSize(lbl_dims);
+		ret.add(lab);
+		
+		Dimension txt_dims = new Dimension(200,25);
+		txt.setPreferredSize(txt_dims);
+		ret.add(txt);
+		
+		return ret;
+	}
+	
+	public JPanel createComboBox(JLabel lab, JComboBox<String> txt, String ime) {
 		JPanel ret = new JPanel();
 		Dimension lbl_dims = new Dimension(150,25);
 		lab = new JLabel(ime);
