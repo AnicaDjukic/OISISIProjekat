@@ -155,9 +155,6 @@ public class AddOrEditStudent extends JPanel {
 				String finans = (String)(tFinans.getSelectedItem());
 				student.setStatus(finans);
 				
-				// dodato za testiranje: ne znamo ocene pa ne mozemo da odredimo prosecnu ocenu
-				student.setPosecnaOcena(9.5);
-				
 				dialog.setVisible(false);
 				
 				if(!controller.dodajStudenta(student))
