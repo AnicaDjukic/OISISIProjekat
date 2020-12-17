@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controller.Checker;
 import controller.ControllerPredmet;
 import controller.PredmetFocusListeners;
 import model.GlobalConstants;
@@ -111,7 +109,6 @@ public class AddOrEditPredmet extends JPanel {
 			int selectedRow = TabelaPredmeti.inst.getSelectedRow();
 			if(selectedRow != -1) {
 				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
-;
 				Predmet pred = controller.nadjiPredmet(sifraSelectedPred);
 				tSifra.setText(pred.getSifPred());
 				tNaziv.setText(pred.getNaziv());
