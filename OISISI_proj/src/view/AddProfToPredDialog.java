@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
+import controller.Checker;
 import controller.ControllerProfesor;
 import controller.PredmetFocusListeners;
 import model.GlobalConstants;
@@ -97,10 +98,23 @@ public class AddProfToPredDialog extends JDialog {
 					AddOrEditPredmet.tProf.setText(prof.getIme() + " " + prof.getPrezime());
 					
 					setVisible(false);
-					PredmetFocusListeners.enableOrDisableButton();
 					AddOrEditPredmet.tProf.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 					AddOrEditPredmet.minus.setEnabled(true);
 					AddOrEditPredmet.plus.setEnabled(false);
+					boolean enableButton = true;
+					if(!Checker.isValidNamePred(AddOrEditPredmet.tNaziv.getText()) || AddOrEditPredmet.tNaziv.getText().trim().equals("")) {
+						AddOrEditPredmet.tNaziv.setBorder(BorderFactory.createLineBorder(Color.RED));
+						AddOrEditPredmet.tNaziv.setForeground(Color.RED);
+						enableButton = false;
+					}
+					
+					if(!Checker.isValidEspb(AddOrEditPredmet.tEspb.getText()) || AddOrEditPredmet.tEspb.getText().trim().equals("")) {
+						AddOrEditPredmet.tEspb.setBorder(BorderFactory.createLineBorder(Color.RED));
+						AddOrEditPredmet.tEspb.setForeground(Color.RED);
+						enableButton = false;
+					}
+
+					AddOrEditPredmet.potvrdi.setEnabled(enableButton);
 				}
 			}
 			

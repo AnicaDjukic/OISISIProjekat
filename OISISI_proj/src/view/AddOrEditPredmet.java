@@ -11,18 +11,14 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import controller.ControllerPredmet;
-import controller.ControllerProfesor;
 import controller.PredmetFocusListeners;
-import controller.StudentFocusListeners;
 import model.GlobalConstants;
 import model.Predmet;
 import model.Predmet.GodIzv;
 import model.Predmet.Semestar;
 import model.Profesor;
-import model.Student;
 
 public class AddOrEditPredmet extends JPanel {
 
@@ -107,6 +103,33 @@ public class AddOrEditPredmet extends JPanel {
 		
 		add(dugmad,BorderLayout.SOUTH);
 		
+		
+		if(mode == AddOrEditDialog.editMode) {
+			
+			int selectedRow = TabelaPredmeti.inst.getSelectedRow();
+			if(selectedRow != -1) {
+				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
+				predmet = controller.nadjiPredmet(sifraSelectedPred);
+				tSifra.setText(predmet.getSifPred());
+				tSifra.setEditable(false);
+				tNaziv.setText(predmet.getNaziv());
+				
+				tGodIzv.setSelectedItem(predmet.getGodIzv());
+				tSemestar.setSelectedItem(predmet.getSemestar());
+				
+				String espb = String.valueOf(predmet.getEspbBod());
+				tEspb.setText(espb);
+				
+				Profesor prof = predmet.getProf();
+				tProf.setText(prof.getIme() + " " + prof.getPrezime());
+				if(prof.getIme() != "") {
+					plus.setEnabled(false);
+					minus.setEnabled(true);
+				}
+
+			}
+		}
+		
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override
@@ -122,32 +145,52 @@ public class AddOrEditPredmet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				predmet = new Predmet();
-				predmet.setSifPred(tSifra.getText());
-				predmet.setNaziv(tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1));
+				String sifra = tSifra.getText();
+				String naziv = tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1);
+				
+				GodIzv god;
 				
 				switch((String) tGodIzv.getSelectedItem()) {
-					case "1" : predmet.setGodIzv(GodIzv.PRVA); break;
-					case "2" : predmet.setGodIzv(GodIzv.DRUGA); break;
-					case "3" : predmet.setGodIzv(GodIzv.TRECA); break;
-					case "4" : predmet.setGodIzv(GodIzv.CETVRTA); break;
+					case "1" : god = GodIzv.PRVA; break;
+					case "2" : god = GodIzv.DRUGA; break;
+					case "3" : god = GodIzv.TRECA; break;
+					default:   god = GodIzv.CETVRTA; break;
 				}
+			
+				Semestar sem = Semestar.ZIMSKI;
 				
-				switch((String) tSemestar.getSelectedItem()) {
-					case "zimski" : predmet.setSemestar(Semestar.ZIMSKI); break;
-					case "letnji" : predmet.setSemestar(Semestar.LETNJI); break;
-				}
+				if((String) tSemestar.getSelectedItem() != "zimski")
+					sem = Semestar.LETNJI;
 				
-				predmet.setEspbBod(Integer.parseInt(tEspb.getText()));
+				int espbBodovi = Integer.parseInt(tEspb.getText());
 				
-				GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
+				Profesor prof = AddProfToPredDialog.prof;
 				
 				dialog.setVisible(false);
 				
-				if(!controller.dodajPredmet(predmet))
-					err = new ErrorDialog(GlobalConstants.errAddPred);
-				else 
-					TabelaPredmeti.azurirajTabelu();
+				if(mode == AddOrEditDialog.addMode) {
+					predmet = new Predmet();
+					predmet.setSifPred(sifra); 
+					predmet.setNaziv(naziv);
+					predmet.setGodIzv(god);
+					predmet.setSemestar(sem);
+					predmet.setEspbBod(espbBodovi);
+					if(prof != null)
+						predmet.setProf(prof);
+					if(!controller.dodajPredmet(predmet))
+						err = new ErrorDialog(GlobalConstants.errAddPred);
+				
+				} else {
+					predmet.setNaziv(naziv);
+					predmet.setGodIzv(god);
+					predmet.setSemestar(sem);
+					predmet.setEspbBod(espbBodovi);
+					if(!tProf.getText().equals(""))
+						GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
+					
+				}
+				
+				TabelaPredmeti.azurirajTabelu();
 				
 				GlavniProzor.serialize();
 			}
@@ -173,8 +216,7 @@ public class AddOrEditPredmet extends JPanel {
 				minus.setEnabled(false);
 			}
 		});
-		
-	}
+	}	
 	
 	public JPanel createPanel(JLabel label, JTextField text) {
 		JPanel panel = new JPanel();

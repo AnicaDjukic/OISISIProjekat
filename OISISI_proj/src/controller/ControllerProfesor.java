@@ -88,10 +88,11 @@ public class ControllerProfesor {
 	public Profesor dodajProfesoraNaPredmet(Profesor prof, Predmet predmet) {
 		Profesor ret = null;
 		for(Profesor p : listaProfesora)
-			if(prof.getBrLicKart().equals(p.getBrLicKart())) {
-				predmet.setProf(p);
-				ret = p;
-			}
+			if(prof != null)
+				if(prof.getBrLicKart().equals(p.getBrLicKart())) {
+					predmet.setProf(p);
+					ret = p;
+				}
 		return ret;
 	}
 	
