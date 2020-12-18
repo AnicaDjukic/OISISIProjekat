@@ -109,17 +109,17 @@ public class AddOrEditPredmet extends JPanel {
 			int selectedRow = TabelaPredmeti.inst.getSelectedRow();
 			if(selectedRow != -1) {
 				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
-				Predmet pred = controller.nadjiPredmet(sifraSelectedPred);
-				tSifra.setText(pred.getSifPred());
-				tNaziv.setText(pred.getNaziv());
+				predmet = controller.nadjiPredmet(sifraSelectedPred);
+				tSifra.setText(predmet.getSifPred());
+				tNaziv.setText(predmet.getNaziv());
 				
-				tGodIzv.setSelectedItem(pred.getGodIzv());
-				tSemestar.setSelectedItem(pred.getSemestar());
+				tGodIzv.setSelectedItem(predmet.getGodIzv());
+				tSemestar.setSelectedItem(predmet.getSemestar());
 				
-				String espb = String.valueOf(pred.getEspbBod());
+				String espb = String.valueOf(predmet.getEspbBod());
 				tEspb.setText(espb);
 				
-				Profesor prof = pred.getProf();
+				Profesor prof = predmet.getProf();
 				tProf.setText(prof.getIme() + " " + prof.getPrezime());
 				if(prof.getIme() != "") {
 					plus.setEnabled(false);
@@ -144,32 +144,47 @@ public class AddOrEditPredmet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				predmet = new Predmet();
-				predmet.setSifPred(tSifra.getText());
-				predmet.setNaziv(tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1));
+				String sifra = tSifra.getText();
+				String naziv = tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1);
 				
-				switch((String) tGodIzv.getSelectedItem()) {
-					case "1" : predmet.setGodIzv(GodIzv.PRVA); break;
-					case "2" : predmet.setGodIzv(GodIzv.DRUGA); break;
-					case "3" : predmet.setGodIzv(GodIzv.TRECA); break;
-					case "4" : predmet.setGodIzv(GodIzv.CETVRTA); break;
-				}
+				int god = Integer.parseInt((String) tGodIzv.getSelectedItem());
 				
-				switch((String) tSemestar.getSelectedItem()) {
-					case "zimski" : predmet.setSemestar(Semestar.ZIMSKI); break;
-					case "letnji" : predmet.setSemestar(Semestar.LETNJI); break;
-				}
+				String sem = (String) tSemestar.getSelectedItem();
 				
-				predmet.setEspbBod(Integer.parseInt(tEspb.getText()));
+				int espbBodovi = Integer.parseInt(tEspb.getText());
 				
-				GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
+				Profesor prof = AddProfToPredDialog.prof;
 				
 				dialog.setVisible(false);
 				
-				if(!controller.dodajPredmet(predmet))
-					err = new ErrorDialog(GlobalConstants.errAddPred);
-				else 
-					TabelaPredmeti.azurirajTabelu();
+				if(mode == AddOrEditDialog.addMode) {
+					predmet = new Predmet(sifra, naziv, sem, god, prof, espbBodovi); 
+					if(!controller.dodajPredmet(predmet))
+						err = new ErrorDialog(GlobalConstants.errAddPred);
+				
+				} else {
+					
+					predmet.setSifPred(sifra);
+					predmet.setNaziv(naziv);
+					switch((String) tGodIzv.getSelectedItem()) {
+						case "1" : predmet.setGodIzv(GodIzv.PRVA); break;
+						case "2" : predmet.setGodIzv(GodIzv.DRUGA); break;
+						case "3" : predmet.setGodIzv(GodIzv.TRECA); break;
+						case "4" : predmet.setGodIzv(GodIzv.CETVRTA); break;
+					}
+					
+					switch((String) tSemestar.getSelectedItem()) {
+						case "zimski" : predmet.setSemestar(Semestar.ZIMSKI); break;
+						case "letnji" : predmet.setSemestar(Semestar.LETNJI); break;
+					}
+					
+					predmet.setEspbBod(espbBodovi);
+					
+					GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
+					
+				}
+				
+				TabelaPredmeti.azurirajTabelu();
 				
 				GlavniProzor.serialize();
 			}
