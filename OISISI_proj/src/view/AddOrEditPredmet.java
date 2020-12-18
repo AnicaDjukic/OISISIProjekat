@@ -111,6 +111,7 @@ public class AddOrEditPredmet extends JPanel {
 				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
 				predmet = controller.nadjiPredmet(sifraSelectedPred);
 				tSifra.setText(predmet.getSifPred());
+				tSifra.setEditable(false);
 				tNaziv.setText(predmet.getNaziv());
 				
 				tGodIzv.setSelectedItem(predmet.getGodIzv());
@@ -153,7 +154,7 @@ public class AddOrEditPredmet extends JPanel {
 					case "1" : god = GodIzv.PRVA; break;
 					case "2" : god = GodIzv.DRUGA; break;
 					case "3" : god = GodIzv.TRECA; break;
-					default: god = GodIzv.CETVRTA; break;
+					default:   god = GodIzv.CETVRTA; break;
 				}
 			
 				Semestar sem = Semestar.ZIMSKI;
@@ -180,11 +181,10 @@ public class AddOrEditPredmet extends JPanel {
 						err = new ErrorDialog(GlobalConstants.errAddPred);
 				
 				} else {
-					
-					predmet.setSifPred(sifra);
 					predmet.setNaziv(naziv);
+					predmet.setGodIzv(god);
+					predmet.setSemestar(sem);
 					predmet.setEspbBod(espbBodovi);
-					
 					if(!tProf.getText().equals(""))
 						GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
 					
