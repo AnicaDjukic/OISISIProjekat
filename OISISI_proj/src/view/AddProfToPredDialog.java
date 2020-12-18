@@ -48,14 +48,15 @@ public class AddProfToPredDialog extends JDialog {
 		JPanel glavni = new JPanel();
 		glavni.setLayout(new BoxLayout(glavni, BoxLayout.Y_AXIS));
 		
-		ArrayList<Profesor> profesori = controller.getListaProfesora(); 
+		ArrayList<Profesor> profesori = controller.getListaProfesora();
+		ArrayList<String> listaBrLic = new ArrayList<String>();
 		
 		String[] data  =  new String[profesori.size()];
-		HashMap<Integer, String> id = new HashMap<Integer, String>();
+		
 		int i = 0;
 		for(Profesor prof : profesori) {
-			data[i] = prof.getIme() + " " + prof.getPrezime();
-			id.put(i, prof.getBrLicKart());
+			data[i] = prof.getIme() + " " + prof.getPrezime() + " " + prof.getEmail();
+			listaBrLic.add(i,prof.getBrLicKart());
 			i++;
 		}
 		
@@ -94,7 +95,7 @@ public class AddProfToPredDialog extends JDialog {
 				if(list.getSelectedIndex() != -1) {
 					int index = list.getSelectedIndex();
 					
-					prof = controller.nadjiProfesora(id.get(index));
+					prof = controller.nadjiProfesora(listaBrLic.get(index));
 					AddOrEditPredmet.tProf.setText(prof.getIme() + " " + prof.getPrezime());
 					
 					setVisible(false);
