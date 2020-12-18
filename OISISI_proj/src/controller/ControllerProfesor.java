@@ -43,6 +43,7 @@ public class ControllerProfesor {
 			temp.setBrLicKart(""+i+"00000000");
 			temp.setZvanje(""+i+"-profZva");
 			temp.setTitula(""+i+"-profTit");
+			temp.setEmail(i + "@gmail.com");
 			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+i));
 			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+4));
 			dodajProfesora(temp);
@@ -55,7 +56,7 @@ public class ControllerProfesor {
 			return true;
 		}
 		for(Profesor temp : listaProfesora)
-			if(temp.getBrLicKart().equals(p.getBrLicKart()))
+			if(temp.getBrLicKart().equals(p.getBrLicKart()) || temp.getEmail().equals(p.getEmail()))
 				return false;
 		listaProfesora.add(p);		
 		return true;

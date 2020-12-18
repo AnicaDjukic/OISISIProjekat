@@ -221,17 +221,28 @@ public class AddOrEditProfesor extends JPanel{
 				}else {
 					String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0);
 					Profesor ptemp = cp.nadjiProfesora(editProfBrLic);
+					boolean checker = true;
 					
-					ptemp.setIme(ime);
-					ptemp.setPrezime(prz);
-					ptemp.setDrp(drp);
-					ptemp.setAdrStan(adrStan);
-					ptemp.setKonTel(konTel);
-					ptemp.setEmail(email);
-					ptemp.setAdrKanc(adrKanc);
-					ptemp.setBrLicKart(brLic);
-					ptemp.setTitula(tit);
-					ptemp.setZvanje(zva);
+					for(Profesor proft : GlavniProzor.getControllerProfesor().getListaProfesora()) {
+						if(!proft.equals(ptemp))
+							if(proft.getEmail().equals(email) || proft.getBrLicKart().equals(brLic))
+								checker = false;						
+					}
+					
+					if(!checker)
+						er = new ErrorDialog(GlobalConstants.errEditProf);
+					else {
+						ptemp.setIme(ime);
+						ptemp.setPrezime(prz);
+						ptemp.setDrp(drp);
+						ptemp.setAdrStan(adrStan);
+						ptemp.setKonTel(konTel);
+						ptemp.setEmail(email);
+						ptemp.setAdrKanc(adrKanc);
+						ptemp.setBrLicKart(brLic);
+						ptemp.setTitula(tit);
+						ptemp.setZvanje(zva);
+					}
 					
 				}
 				
