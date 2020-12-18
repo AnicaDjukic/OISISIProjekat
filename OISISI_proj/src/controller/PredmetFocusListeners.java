@@ -35,7 +35,7 @@ public class PredmetFocusListeners implements FocusListener {
 		
 		enableOrDisableButton();
 		
-		if(txt.getText().trim().equals("")) {
+		if(txt.getText().trim().equals("") && !txt.getName().equals(GlobalConstants.profLab)) {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
 		
@@ -70,8 +70,8 @@ public class PredmetFocusListeners implements FocusListener {
 		if(AddOrEditPredmet.tEspb.getForeground() == Color.RED || AddOrEditPredmet.tEspb.getText().trim().equals(""))
 			enableButton = false;
 			
-		if(AddOrEditPredmet.tProf.getText().trim().equals(""))
-			enableButton = false;
+		/*if(AddOrEditPredmet.tProf.getText().trim().equals(""))
+			enableButton = false;*/
 		
 		AddOrEditPredmet.potvrdi.setEnabled(enableButton);
 	}

@@ -147,9 +147,19 @@ public class AddOrEditPredmet extends JPanel {
 				String sifra = tSifra.getText();
 				String naziv = tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1);
 				
-				int god = Integer.parseInt((String) tGodIzv.getSelectedItem());
+				GodIzv god;
 				
-				String sem = (String) tSemestar.getSelectedItem();
+				switch((String) tGodIzv.getSelectedItem()) {
+					case "1" : god = GodIzv.PRVA; break;
+					case "2" : god = GodIzv.DRUGA; break;
+					case "3" : god = GodIzv.TRECA; break;
+					default: god = GodIzv.CETVRTA; break;
+				}
+			
+				Semestar sem = Semestar.ZIMSKI;
+				
+				if((String) tSemestar.getSelectedItem() != "zimski")
+					sem = Semestar.LETNJI;
 				
 				int espbBodovi = Integer.parseInt(tEspb.getText());
 				
@@ -158,7 +168,14 @@ public class AddOrEditPredmet extends JPanel {
 				dialog.setVisible(false);
 				
 				if(mode == AddOrEditDialog.addMode) {
-					predmet = new Predmet(sifra, naziv, sem, god, prof, espbBodovi); 
+					predmet = new Predmet();
+					predmet.setSifPred(sifra); 
+					predmet.setNaziv(naziv);
+					predmet.setGodIzv(god);
+					predmet.setSemestar(sem);
+					predmet.setEspbBod(espbBodovi);
+					if(prof != null)
+						predmet.setProf(prof);
 					if(!controller.dodajPredmet(predmet))
 						err = new ErrorDialog(GlobalConstants.errAddPred);
 				
@@ -166,21 +183,10 @@ public class AddOrEditPredmet extends JPanel {
 					
 					predmet.setSifPred(sifra);
 					predmet.setNaziv(naziv);
-					switch((String) tGodIzv.getSelectedItem()) {
-						case "1" : predmet.setGodIzv(GodIzv.PRVA); break;
-						case "2" : predmet.setGodIzv(GodIzv.DRUGA); break;
-						case "3" : predmet.setGodIzv(GodIzv.TRECA); break;
-						case "4" : predmet.setGodIzv(GodIzv.CETVRTA); break;
-					}
-					
-					switch((String) tSemestar.getSelectedItem()) {
-						case "zimski" : predmet.setSemestar(Semestar.ZIMSKI); break;
-						case "letnji" : predmet.setSemestar(Semestar.LETNJI); break;
-					}
-					
 					predmet.setEspbBod(espbBodovi);
 					
-					GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
+					if(!tProf.getText().equals(""))
+						GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
 					
 				}
 				
