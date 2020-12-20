@@ -105,6 +105,14 @@ public class ControllerProfesor {
 				}
 	}
 	
+	public void obrisiPredmetKodProf(Profesor p, Predmet pr) {
+		for(Predmet pred : p.getSpisPred())
+			if(pred.equals(pr)) {
+				p.getSpisPred().remove(pred);
+				return;
+			}
+	}
+	
 	public ArrayList<String> pretraziProf(String words[]) {
 		ArrayList<String> foundBrLicKart = new ArrayList<String>();
 		if(words.length == 1) {
@@ -128,11 +136,20 @@ public class ControllerProfesor {
 			for(Predmet pr : GlavniProzor.getControllerPredmet().getListaPredmeta())
 				if(pr.getSifPred().equals(id))
 					prds.add(pr);
-		}
+		}/*
 		for(Profesor p : listaProfesora)
 			if(p.getBrLicKart().equals(brLic))
-				for(Predmet pr : prds)
+				for(Predmet pr : prds) {
 					p.getSpisPred().add(pr);
+					//pr.setProf(p);
+				}
+		*/
+		Profesor pr = nadjiProfesora(brLic);
+		for(Predmet p : prds) {
+			obrisiPredmetKodSvihProf(p.getSifPred());
+			pr.getSpisPred().add(p);
+			p.setProf(pr);
+		}
 	}
 	
 	//AddOrEditProfesor panel create : 

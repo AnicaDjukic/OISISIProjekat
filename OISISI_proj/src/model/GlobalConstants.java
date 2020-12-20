@@ -5,6 +5,12 @@ public class GlobalConstants {
 	public static int aoedw = 400;  //addOrEditWidth
 	public static int aoedh = 500;  //addOrEditHeight
 	
+	//Tekst za predmete koji nemaju profesora:
+	public static String prdNemaProf = "Nema profesora";
+	
+	//Prof dummy:
+	public static Profesor dummy = new Profesor();
+	
 	//Label names :
 	public static String imeLab = "Ime : ";
 	public static String przLab = "Prezime : ";
@@ -58,6 +64,8 @@ public class GlobalConstants {
 	public static String yesOpt = "Da";
 	public static String noOpt = "Ne";
 	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
+	public static String upitSklanjanjeProfTitle = "Uklanjanje profesora";
+	public static String upitSklanjanjeProfSaPred = "Da li ste sigurni da želite da uklonite izabranog profesora sa predmeta?";
 	public static String upitBrisanjePredTitle = "Brisanje predmeta";
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
 	public static String dodavanjeProfPredDialog = "Odaberi profesora";

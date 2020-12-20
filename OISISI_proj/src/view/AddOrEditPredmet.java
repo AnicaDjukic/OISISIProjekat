@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -35,6 +36,7 @@ public class AddOrEditPredmet extends JPanel {
 	public static AddOrEditPredmet inst;
 	
 	public AddOrEditPredmet(int mode, AddOrEditDialog dialog) {
+		
 		controller = GlavniProzor.getControllerPredmet();
 		setLayout(new BorderLayout());
 		
@@ -103,6 +105,10 @@ public class AddOrEditPredmet extends JPanel {
 		
 		add(dugmad,BorderLayout.SOUTH);
 		
+		if(mode == AddOrEditDialog.addMode) {
+			tProf.setText(GlobalConstants.prdNemaProf);
+		}
+		
 		
 		if(mode == AddOrEditDialog.editMode) {
 			
@@ -121,8 +127,11 @@ public class AddOrEditPredmet extends JPanel {
 				tEspb.setText(espb);
 				
 				Profesor prof = predmet.getProf();
-				tProf.setText(prof.getIme() + " " + prof.getPrezime());
-				if(prof.getIme() != "") {
+				if(prof.getBrLicKart().equals(""))
+					tProf.setText(GlobalConstants.prdNemaProf);
+				else
+					tProf.setText(prof.getIme() + " " + prof.getPrezime());
+				if(!tProf.getText().equals(GlobalConstants.prdNemaProf)) {
 					plus.setEnabled(false);
 					minus.setEnabled(true);
 				}
@@ -164,8 +173,6 @@ public class AddOrEditPredmet extends JPanel {
 				
 				int espbBodovi = Integer.parseInt(tEspb.getText());
 				
-				Profesor prof = AddProfToPredDialog.prof;
-				
 				dialog.setVisible(false);
 				
 				if(mode == AddOrEditDialog.addMode) {
@@ -175,8 +182,16 @@ public class AddOrEditPredmet extends JPanel {
 					predmet.setGodIzv(god);
 					predmet.setSemestar(sem);
 					predmet.setEspbBod(espbBodovi);
+					
+					if(tProf.getText().equals(GlobalConstants.prdNemaProf))
+						predmet.setProf(GlobalConstants.dummy);
+					else {
+						predmet.setProf(AddProfToPredDialog.prof);
+					}
+					/*
 					if(prof != null)
 						predmet.setProf(prof);
+					*/
 					if(!controller.dodajPredmet(predmet))
 						err = new ErrorDialog(GlobalConstants.errAddPred);
 				
@@ -185,9 +200,12 @@ public class AddOrEditPredmet extends JPanel {
 					predmet.setGodIzv(god);
 					predmet.setSemestar(sem);
 					predmet.setEspbBod(espbBodovi);
-					if(!tProf.getText().equals(""))
-						GlavniProzor.getControllerProfesor().dodajProfesoraNaPredmet(AddProfToPredDialog.prof, predmet);
-					
+					if(!tProf.getText().equals(GlobalConstants.prdNemaProf)) {
+					}
+					else {
+						GlavniProzor.getControllerProfesor().obrisiPredmetKodProf(predmet.getProf(), predmet);
+						predmet.setProf(GlobalConstants.dummy);
+					}
 				}
 				
 				TabelaPredmeti.azurirajTabelu();
@@ -203,6 +221,7 @@ public class AddOrEditPredmet extends JPanel {
 
 				addProf = new AddProfToPredDialog();
 				addProf.setVisible(true);
+				
 			}
 		});
 		
@@ -210,10 +229,16 @@ public class AddOrEditPredmet extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				tProf.setText("");
-				plus.setEnabled(true);
-				minus.setEnabled(false);
+				
+				String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+				int code = JOptionPane.showOptionDialog(inst, GlobalConstants.upitSklanjanjeProfSaPred, GlobalConstants.upitSklanjanjeProfTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				
+				if(code == JOptionPane.YES_OPTION) {				
+					tProf.setText(GlobalConstants.prdNemaProf);
+					plus.setEnabled(true);
+					minus.setEnabled(false);
+					
+				}
 			}
 		});
 	}	

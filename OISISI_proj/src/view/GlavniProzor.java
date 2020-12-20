@@ -23,6 +23,8 @@ public class GlavniProzor extends JFrame {
 	static ControllerStudent cStud;
 	
 	public GlavniProzor() {
+		this.requestFocus();
+		
 		inst = this;
 		kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
