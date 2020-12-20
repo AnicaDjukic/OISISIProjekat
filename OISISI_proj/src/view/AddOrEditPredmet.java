@@ -92,7 +92,6 @@ public class AddOrEditPredmet extends JPanel {
 		tSifra.addFocusListener(new PredmetFocusListeners());
 		tNaziv.addFocusListener(new PredmetFocusListeners());
 		tEspb.addFocusListener(new PredmetFocusListeners());
-		tProf.addFocusListener(new PredmetFocusListeners());
 		
         JPanel dugmad = new JPanel();
 		
