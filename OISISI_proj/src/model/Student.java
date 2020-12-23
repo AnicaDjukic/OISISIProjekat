@@ -2,9 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
-enum StatusStudenta {B, S}
+
 
 public class Student {
+	
+	public enum StatusStudenta {B, S}
+	
 	private String prezime;
 	private String ime;
 	private String datumRodj;			// datum rodjenja

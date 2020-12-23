@@ -2,8 +2,10 @@ package view;
 
 
 import model.*;
+import model.Student.StatusStudenta;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 
@@ -138,7 +140,10 @@ public class AddOrEditStudent extends JPanel {
 				tBrIndexa.setText(student.getBrIndexa().split("/")[0]);
 				tGodUpisa.setText(student.getGodUpisa());
 				tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
-				tFinans.setSelectedItem(student.getStatus());
+				if(student.getStatus().equals("B"))
+					tFinans.setSelectedItem("Budžet");
+				else
+					tFinans.setSelectedItem("Samofinansiranje");
 				
 				tBrIndexa.setEditable(false);
 				tGodUpisa.setEditable(false);
@@ -172,13 +177,12 @@ public class AddOrEditStudent extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				student = new Student();
-				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1));
-				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1));
-				student.setDatumRodj(tDatRodj.getText());
-				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
-				student.setKonTel(tBrTel.getText());
-				student.setEmail(tEmail.getText());
+				String ime = tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase();
+				String prezime = tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase();
+				String datRodj = tDatRodj.getText();
+				String adresa = tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1);
+				String konTel = tBrTel.getText();
+				String email = tEmail.getText();
 				String smer = tBrIndexa.getText().substring(0,2);
 				String broj = tBrIndexa.getText().substring(2);
 				int brNula = 0;
@@ -190,25 +194,45 @@ public class AddOrEditStudent extends JPanel {
 				}
 				
 				broj = broj.substring(brNula);
-				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
-				student.setGodUpisa(tGodUpisa.getText());
+				String index = smer + broj + "/" + tGodUpisa.getText();
+				String godUpisa = tGodUpisa.getText();
+				int trenutnaGod;
 				switch((String) tTrenutnaGod.getSelectedItem()) {
-					case "I (prva)" : student.setTrenutnaGodStud(1); break;
-					case "II (druga)" : student.setTrenutnaGodStud(2); break;
-					case "III (treća)" : student.setTrenutnaGodStud(3); break;
-					case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
+					case "I (prva)" : trenutnaGod = 1; break;
+					case "II (druga)" : trenutnaGod = 2; break;
+					case "III (treća)" : trenutnaGod = 3; break;
+					default : trenutnaGod = 4;
 				}
 				
 				String finans = (String)(tFinans.getSelectedItem());
-				System.out.println(finans);
-				student.setStatus(finans);
+				
+				// za sada
+				double prosek = 0.0;
 				
 				dialog.setVisible(false);
 				
-				if(!controller.dodajStudenta(student))
-					err = new ErrorDialog(GlobalConstants.errAddStud);
-				else 
-					TabelaStudenti.updateTable();
+				if(mode == AddOrEditDialog.addMode) {
+					student = new Student(prezime, ime, datRodj, adresa, konTel, email, index, godUpisa, trenutnaGod, finans, prosek);
+					if(!controller.dodajStudenta(student))
+						err = new ErrorDialog(GlobalConstants.errAddStud);
+				}
+				
+				if(mode == AddOrEditDialog.editMode) {
+					student = controller.nadjiStudenta(index);
+					student.setIme(ime);
+					student.setPrezime(prezime);
+					student.setDatumRodj(datRodj);
+					student.setAdresaStan(adresa);
+					student.setKonTel(konTel);
+					student.setEmail(email);
+					student.setBrIndexa(index);
+					student.setGodUpisa(godUpisa);
+					student.setTrenutnaGodStud(trenutnaGod);
+					student.setStatus(finans);
+					student.setPosecnaOcena(prosek);
+				}
+				
+				TabelaStudenti.updateTable();
 				
 				GlavniProzor.serialize();
 			}
