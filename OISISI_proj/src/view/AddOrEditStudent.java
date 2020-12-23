@@ -126,8 +126,8 @@ public class AddOrEditStudent extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				student = new Student();
-				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1));
-				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1));
+				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase());
+				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase());
 				student.setDatumRodj(tDatRodj.getText());
 				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
 				student.setKonTel(tBrTel.getText());
@@ -146,10 +146,10 @@ public class AddOrEditStudent extends JPanel {
 				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
 				switch((String) tTrenutnaGod.getSelectedItem()) {
-				case "I (prva)" : student.setTrenutnaGodStud(1); break;
-				case "II (druga)" : student.setTrenutnaGodStud(2); break;
-				case "III (treća)" : student.setTrenutnaGodStud(3); break;
-				case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
+					case "I (prva)" : student.setTrenutnaGodStud(1); break;
+					case "II (druga)" : student.setTrenutnaGodStud(2); break;
+					case "III (treća)" : student.setTrenutnaGodStud(3); break;
+					case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
 				}
 				
 				String finans = (String)(tFinans.getSelectedItem());
