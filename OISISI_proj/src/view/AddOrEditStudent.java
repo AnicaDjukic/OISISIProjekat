@@ -140,6 +140,9 @@ public class AddOrEditStudent extends JPanel {
 				tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
 				tFinans.setSelectedItem(student.getStatus());
 				
+				tBrIndexa.setEditable(false);
+				tGodUpisa.setEditable(false);
+				
 				JPanel inf = new JPanel();
 				inf.setLayout(new BorderLayout());
 				inf.add(glavni,BorderLayout.NORTH);
