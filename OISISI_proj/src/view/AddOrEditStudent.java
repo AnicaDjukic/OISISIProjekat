@@ -94,7 +94,6 @@ public class AddOrEditStudent extends JPanel {
 		glavni.add(createListPanel(lFinans, tFinans));
 		glavni.add(lab);
 		
-		add(glavni, BorderLayout.NORTH);
 		
 		// Focus listeners
 		tIme.addFocusListener(new StudentFocusListeners());
@@ -115,7 +114,48 @@ public class AddOrEditStudent extends JPanel {
 		odustani = new JButton(GlobalConstants.btnCncName);
 		dugmad.add(odustani);
 		
-		add(dugmad,BorderLayout.SOUTH);
+		if(mode == AddOrEditDialog.addMode) {
+			add(glavni, BorderLayout.NORTH);
+			add(dugmad,BorderLayout.SOUTH);
+		}
+		
+		
+		if(mode == AddOrEditDialog.editMode) {
+			
+			if(TabelaStudenti.table.getSelectedRow() != -1) {
+				
+				int selectedStudent = TabelaStudenti.table.getSelectedRow();
+				String indexStudenta = (String) TabelaStudenti.table.getValueAt(selectedStudent, 0);
+				
+				Student student = controller.nadjiStudenta(indexStudenta);
+				
+				tIme.setText(student.getIme());
+				tPrezime.setText(student.getPrezime());
+				tDatRodj.setText(student.getDatumRodj());
+				tAdrStan.setText(student.getAdresaStan());
+				tBrTel.setText(student.getKonTel());
+				tEmail.setText(student.getEmail());
+				tBrIndexa.setText(student.getBrIndexa().split("/")[0]);
+				tGodUpisa.setText(student.getGodUpisa());
+				tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
+				tFinans.setSelectedItem(student.getStatus());
+				
+				JPanel inf = new JPanel();
+				inf.setLayout(new BorderLayout());
+				inf.add(glavni,BorderLayout.NORTH);
+				inf.add(dugmad, BorderLayout.SOUTH);
+				
+				JPanel polozeni = new JPanel();
+				JPanel nepolozeni = new JPanel();
+				
+				JTabbedPane tabs = new JTabbedPane();
+				tabs.addTab("Informacije", inf);
+				tabs.addTab("Položeni", polozeni);
+				tabs.addTab("Nepoloženi", nepolozeni);
+				add(tabs);
+			}
+			
+		}
 		
 		odustani.addActionListener(new ActionListener() {
 			
@@ -150,13 +190,14 @@ public class AddOrEditStudent extends JPanel {
 				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
 				switch((String) tTrenutnaGod.getSelectedItem()) {
-				case "I (prva)" : student.setTrenutnaGodStud(1); break;
-				case "II (druga)" : student.setTrenutnaGodStud(2); break;
-				case "III (treća)" : student.setTrenutnaGodStud(3); break;
-				case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
+					case "I (prva)" : student.setTrenutnaGodStud(1); break;
+					case "II (druga)" : student.setTrenutnaGodStud(2); break;
+					case "III (treća)" : student.setTrenutnaGodStud(3); break;
+					case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
 				}
 				
 				String finans = (String)(tFinans.getSelectedItem());
+				System.out.println(finans);
 				student.setStatus(finans);
 				
 				dialog.setVisible(false);
