@@ -1,8 +1,10 @@
 package controller;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
 
 import model.GlobalConstants;
 
@@ -19,14 +21,18 @@ public class Checker {
 	@SuppressWarnings("deprecation")
 	public static boolean isValidDate(String str) {
 		Date d;
-		SimpleDateFormat dateValidaterCol = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat dateValidaterDot = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat dateValidaterCol = new SimpleDateFormat("dd-MM-yyyy");
+		dateValidaterCol.setLenient(false);
+		DateFormat dateValidaterDot = new SimpleDateFormat("dd.MM.yyyy");
+		dateValidaterDot.setLenient(false);
+		
 		boolean suc = false;
 		try {
 	    	 d = dateValidaterCol.parse(str);
 	    	 if(d.after(new Date(0,0,1)))                        //Po�to je po novim kalendarima pa se na godinu doda 1900
 	    		 if(d.before(new Date()))
 	    			 suc = true;
+	    	
 	     }
 	     catch(ParseException e){
 	          suc = false;

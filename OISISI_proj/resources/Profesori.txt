@@ -8,4 +8,3 @@
 7-prof|7-profPrez|7-profDrp|||7@gmail.com|7profAdrS|700000000|7-profTit|7-profZva|7,4;
 8-prof|8-profPrez|8-profDrp|||8@gmail.com|8profAdrS|800000000|8-profTit|8-profZva|8,4;
 9-prof|9-profPrez|9-profDrp|||9@gmail.com|9profAdrS|900000000|9-profTit|9-profZva|9,4;
-Pera|Peric|12.1.1999.|Foiansfia 24|145112512|foansf@gmail.com|Ofgjahahnoagofa 24|123123123|Doktor Nauka|Docent|;
