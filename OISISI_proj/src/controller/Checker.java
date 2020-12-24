@@ -20,11 +20,13 @@ public class Checker {
 	public static boolean isValidDate(String str) {
 		Date d;
 		SimpleDateFormat dateValidaterCol = new SimpleDateFormat("dd-MM-yyyy");
+		dateValidaterCol.setLenient(false);
 		SimpleDateFormat dateValidaterDot = new SimpleDateFormat("dd.MM.yyyy");
+		dateValidaterDot.setLenient(false);
 		boolean suc = false;
 		try {
 	    	 d = dateValidaterCol.parse(str);
-	    	 if(d.after(new Date(0,0,1)))                        //Pošto je po novim kalendarima pa se na godinu doda 1900
+	    	 if(d.after(new Date(0,0,1)))                        //Poï¿½to je po novim kalendarima pa se na godinu doda 1900
 	    		 suc = true;
 	     }
 	     catch(ParseException e){
