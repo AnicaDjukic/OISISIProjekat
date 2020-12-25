@@ -1,19 +1,29 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import controller.AddPredToProfListener;
+import controller.Checker;
+import controller.ControllerProfesor;
+import controller.ProfesorFocusListeners;
 import model.GlobalConstants;
-import model.Predmet;
 import model.Profesor;
-import controller.*;
 
 public class AddOrEditProfesor extends JPanel{
 	
@@ -129,7 +139,10 @@ public class AddOrEditProfesor extends JPanel{
 			//Setting the text to selected prof:
 			txtPrezime.setText(p.getPrezime());
 			txtIme.setText(p.getIme());
-			txtDrp.setText(p.getDrp());
+			int day = p.getDrp().getDayOfMonth();
+			int month = p.getDrp().getMonthValue();
+			int year = p.getDrp().getYear();
+			txtDrp.setText(day + "." + month + "." + year + ".");
 			txtAdrKanc.setText(p.getAdrKanc());
 			txtAdrStan.setText(p.getAdrStan());
 			txtKonTel.setText(p.getKonTel());
@@ -212,10 +225,28 @@ public class AddOrEditProfesor extends JPanel{
 				tit = (String)titCombo.getSelectedItem();
 				zva = (String)zvCombo.getSelectedItem();
 				
+				DateTimeFormatter dtf;
+				LocalDate drpp = null;
+				boolean done = false;;
+				
+				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+					try {
+						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+						drpp = LocalDate.parse(drp, dtf);
+						done = true;
+						break;
+					}catch(Exception ex) {
+						done = false;
+					}
+					if(done)
+						break;
+				}
+				
+				
 				d.setVisible(false);
 				
 				if(AddOrEditDialog.addMode == currMode) {
-					p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
+					p = new Profesor(prz,ime,drpp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
 					if(!cp.dodajProfesora(p)) 
 						er = new ErrorDialog(GlobalConstants.errAddProf);
 				}else {
@@ -234,7 +265,7 @@ public class AddOrEditProfesor extends JPanel{
 					else {
 						ptemp.setIme(ime);
 						ptemp.setPrezime(prz);
-						ptemp.setDrp(drp);
+						ptemp.setDrp(drpp);
 						ptemp.setAdrStan(adrStan);
 						ptemp.setKonTel(konTel);
 						ptemp.setEmail(email);

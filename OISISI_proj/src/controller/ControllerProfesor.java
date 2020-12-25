@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -38,7 +39,7 @@ public class ControllerProfesor {
 			Profesor temp = new Profesor();
 			temp.setIme(""+i+"-prof");
 			temp.setPrezime(""+i+"-profPrez");
-			temp.setDrp(""+i+"-profDrp");
+			temp.setDrp(LocalDate.MIN);
 			temp.setAdrKanc(""+i+"profAdrS");
 			temp.setBrLicKart(""+i+"00000000");
 			temp.setZvanje(""+i+"-profZva");

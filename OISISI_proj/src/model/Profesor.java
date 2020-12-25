@@ -1,12 +1,13 @@
 package model;
 
+import java.time.LocalDate;
 //importi : 
 import java.util.ArrayList;
 
 public class Profesor {
 	private String prezime;
 	private String ime;
-	private String drp;                    //datum rodjenja prof
+	private LocalDate drp;                    //datum rodjenja prof
 	private String adrStan;               //adresa stanovanja
 	private String konTel;                //kontakt telefon
 	private String email;
@@ -34,11 +35,11 @@ public class Profesor {
 		this.ime = ime;
 	}
 
-	public String getDrp() {
+	public LocalDate getDrp() {
 		return drp;
 	}
 
-	public void setDrp(String drp) {
+	public void setDrp(LocalDate drp) {
 		this.drp = drp;
 	}
 
@@ -110,7 +111,7 @@ public class Profesor {
 	public Profesor() {
 		this.prezime = "";
 		this.ime = "";
-		this.drp = "";
+		this.drp = LocalDate.MIN;
 		this.adrStan = "";
 		this.adrKanc = "";
 		this.konTel = "";
@@ -121,7 +122,7 @@ public class Profesor {
 		this.spisPred = new ArrayList<Predmet>();
 	}
 	
-	public Profesor(String pr, String im, String dr, String ads,
+	public Profesor(String pr, String im, LocalDate dr, String ads,
 			String adk, String kt, String em, String blk, String tit, String zv) {
 		String temp;
 		String[] parts;
@@ -226,7 +227,7 @@ public class Profesor {
 	public String toString() {
 		String out = "";
 		//pretvaranje u osnovna polja
-		out = this.getIme() + "|" + this.getPrezime() + "|" + this.getDrp() + "|" + this.getAdrStan() + "|" + this.getKonTel() + "|";
+		out = this.getIme() + "|" + this.getPrezime() + "|" + this.getDrp().getDayOfMonth() + "." + this.getDrp().getMonthValue() + "." +this.getDrp().getYear() + "|" + this.getAdrStan() + "|" + this.getKonTel() + "|";
 		out += this.getEmail() + "|" + this.getAdrKanc() + "|" + this.getBrLicKart() + "|" + this.getTitula() + "|" + this.getZvanje() + "|";
 		for(Predmet p : this.getSpisPred())
 			out += p.getSifPred() + ",";

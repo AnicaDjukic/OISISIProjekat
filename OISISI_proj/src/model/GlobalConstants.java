@@ -138,6 +138,8 @@ public class GlobalConstants {
 	public static String regExNazivPred = "([a-z]+[\\s]{0,1})+[0-9]{0,1}";
 	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
 	
+	public static String[] regExDatePoss = {"dd.MM.yyyy.", "dd.MM.yyyy", "d.MM.yyyy.", "d.MM.yyyy", "dd.M.yyyy.", "dd.M.yyyy", "d.M.yyyy.", "d.M.yyyy"};
+	
 	//Edit tab names :
 	public static String profEditTabOsnInf = "Informacije";
 	public static String profEditTabPrd = "Predmeti";

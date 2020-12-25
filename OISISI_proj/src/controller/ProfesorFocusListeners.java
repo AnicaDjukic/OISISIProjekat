@@ -25,8 +25,9 @@ public class ProfesorFocusListeners implements FocusListener{
 		name = tx.getName();
 		
 		check = getValue(input);                               //Ocekuje da kad udje ce uslov sigurno biti netacan dok se ne ispravi
-		if(!check)
+		if(!check) {
 			AddOrEditProfesor.brPraznihPolja++;
+		}
 	}
 
 	@Override
