@@ -18,14 +18,17 @@ public class Checker {
 	
 	@SuppressWarnings("deprecation")
 	public static boolean isValidDate(String str) {
-		boolean suc = false;
+		boolean suc = false;		
+		
 		DateTimeFormatter dtf;
 		LocalDate d = null;
+		String[] parts = str.split("\\.");
 		
 		for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
 			try {
 				dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
 				d = LocalDate.parse(str, dtf);
+				System.out.println(parts.length);
 				suc = true;
 				break;
 			}catch(Exception ex) {
@@ -38,6 +41,40 @@ public class Checker {
 		if(suc)
 			if(d.getYear() < 1920)
 				suc = false;
+		
+		if(suc) {
+			switch(parts[1]) {
+			case "1" :
+			case "3" :
+			case "5" :
+			case "7" :
+			case "8" :
+			case "10" :
+			case "12" : {
+				if(Integer.parseInt(parts[0]) <= 0 || Integer.parseInt(parts[0]) >= 32)
+					suc = false;
+				break;
+			}
+			case "4" :
+			case "6" :
+			case "9" :
+			case "11" :{
+				if(Integer.parseInt(parts[0]) <= 0 || Integer.parseInt(parts[0]) >= 31)
+					suc = false;
+				break;
+			}
+			case "2" :{
+				if(d.getYear() % 4 == 0) {
+					if(Integer.parseInt(parts[0]) <= 0 || Integer.parseInt(parts[0]) >= 29)
+						suc = false;
+				}else {
+					if(Integer.parseInt(parts[0]) <= 0 || Integer.parseInt(parts[0]) >= 28)
+						suc = false;
+				}
+				break;
+			}	
+			}
+		}
 		
 		return suc;
 	}
