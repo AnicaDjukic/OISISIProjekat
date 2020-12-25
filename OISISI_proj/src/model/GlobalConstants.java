@@ -127,8 +127,8 @@ public class GlobalConstants {
 	public static String btnUklPred = "Ukloni predmet";
 	
 	//Regex :
-	public static String regExNameOrSurename = "[a-z]+";
-	public static String regExAddress = "([a-z]+[\\s])+[1-9][0-9]{0,2}";
+	public static String regExNameOrSurename = "\\p{L}+";
+	public static String regExAddress = "([\\p{L}]+[\\s])+[1-9][0-9]{0,2}";
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
