@@ -130,8 +130,25 @@ public class AddOrEditStudent extends JPanel {
 				student = new Student();
 				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase());
 				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase());
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-				student.setDatumRodj(LocalDate.parse(tDatRodj.getText(),dtf));
+				
+				DateTimeFormatter dtf;
+				LocalDate datRodj = null;
+				boolean done = false;;
+				
+				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+					try {
+						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+						datRodj = LocalDate.parse(tDatRodj.getText(), dtf);
+						done = true;
+						break;
+					}catch(Exception ex) {
+						done = false;
+					}
+					if(done)
+						break;
+				}
+				
+				student.setDatumRodj(datRodj);
 				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
 				student.setKonTel(tBrTel.getText());
 				student.setEmail(tEmail.getText());
