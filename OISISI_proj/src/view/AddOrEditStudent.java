@@ -6,6 +6,8 @@ import model.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.*;
 
@@ -128,12 +130,13 @@ public class AddOrEditStudent extends JPanel {
 				student = new Student();
 				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase());
 				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase());
-				student.setDatumRodj(tDatRodj.getText());
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				student.setDatumRodj(LocalDate.parse(tDatRodj.getText(),dtf));
 				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
 				student.setKonTel(tBrTel.getText());
 				student.setEmail(tEmail.getText());
-				String smer = tBrIndexa.getText().substring(0,2);
-				String broj = tBrIndexa.getText().substring(2);
+				String smer = tBrIndexa.getText().split("-")[0];
+				String broj = tBrIndexa.getText().split("-")[1];
 				int brNula = 0;
 				for(int i = 0; i < broj.length(); i++) {
 					if(broj.charAt(i) == '0')
@@ -141,15 +144,15 @@ public class AddOrEditStudent extends JPanel {
 					else
 						break;
 				}
-				
+				smer = smer.toLowerCase();
 				broj = broj.substring(brNula);
-				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
+				student.setBrIndexa(smer + "-" + broj + "-" + tGodUpisa.getText());
 				student.setGodUpisa(tGodUpisa.getText());
 				switch((String) tTrenutnaGod.getSelectedItem()) {
 					case "I (prva)" : student.setTrenutnaGodStud(1); break;
 					case "II (druga)" : student.setTrenutnaGodStud(2); break;
 					case "III (treća)" : student.setTrenutnaGodStud(3); break;
-					case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
+					default : student.setTrenutnaGodStud(4);
 				}
 				
 				String finans = (String)(tFinans.getSelectedItem());
