@@ -70,5 +70,6 @@ public class HelpDialog extends JDialog {
 	    add(panel, BorderLayout.NORTH);
 	    add(buttom, BorderLayout.SOUTH);
 	    setTitle("Help");
+	    setResizable(false);
 	}
 }
