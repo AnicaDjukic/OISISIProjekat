@@ -17,6 +17,7 @@ public class AddButtonListener implements ActionListener{
 		case 0:
 			//Add za studente
 			AddOrEditDialog dialog = new AddOrEditDialog(AddOrEditDialog.addMode);
+			dialog.pack();
 			dialog.setVisible(true);
 			break;
 		case 1:

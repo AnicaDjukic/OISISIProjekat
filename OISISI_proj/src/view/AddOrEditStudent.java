@@ -92,6 +92,11 @@ public class AddOrEditStudent extends JPanel {
 		glavni.add(createListPanel(lTrenutnaGod, tTrenutnaGod));
 		glavni.add(createListPanel(lFinans, tFinans));
 		
+		JLabel separator = new JLabel("");
+		separator.setPreferredSize(new Dimension(150, 25));
+		
+		glavni.add(separator);
+		
 		add(glavni, BorderLayout.NORTH);
 		
 		// Focus listeners
