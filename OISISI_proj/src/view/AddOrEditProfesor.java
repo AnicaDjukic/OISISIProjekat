@@ -135,8 +135,22 @@ public class AddOrEditProfesor extends JPanel{
 				tit = (String)titCombo.getSelectedItem();
 				zva = (String)zvCombo.getSelectedItem();
 				
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dddd.MM.yyyy");
-				LocalDate drpp = LocalDate.parse(drp,dtf);
+				DateTimeFormatter dtf;
+				LocalDate drpp = null;
+				boolean done = false;;
+				
+				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+					try {
+						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+						drpp = LocalDate.parse(drp, dtf);
+						done = true;
+						break;
+					}catch(Exception ex) {
+						done = false;
+					}
+					if(done)
+						break;
+				}
 				
 				d.setVisible(false);
 				

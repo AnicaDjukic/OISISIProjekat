@@ -101,4 +101,5 @@ public class GlobalConstants {
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 	public static String regExBrIndexa = "[a-zA-Z]{2}[-][0-9]{1,3}";
 	public static String regGodUpisa = "[1,2]{1}[0,9]{1}[0-9]{2}";
+	public static String[] regExDatePoss = {"dd.MM.yyyy.", "dd.MM.yyyy", "d.MM.yyyy.", "d.MM.yyyy", "dd.M.yyyy.", "dd.M.yyyy", "d.M.yyyy.", "d.M.yyyy"};
 }
