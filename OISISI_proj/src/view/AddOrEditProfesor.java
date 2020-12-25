@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import javax.swing.*;
 
@@ -132,9 +135,26 @@ public class AddOrEditProfesor extends JPanel{
 				tit = (String)titCombo.getSelectedItem();
 				zva = (String)zvCombo.getSelectedItem();
 				
+				DateTimeFormatter dtf;
+				LocalDate drpp = null;
+				boolean done = false;;
+				
+				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+					try {
+						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+						drpp = LocalDate.parse(drp, dtf);
+						done = true;
+						break;
+					}catch(Exception ex) {
+						done = false;
+					}
+					if(done)
+						break;
+				}
+				
 				d.setVisible(false);
 				
-				p = new Profesor(prz,ime,drp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
+				p = new Profesor(prz,ime,drpp,adrStan, adrKanc, konTel, email, brLic, tit, zva);
 				if(!cp.dodajProfesora(p)) 
 					er = new ErrorDialog(GlobalConstants.errAddProf);
 				

@@ -1,8 +1,8 @@
 package controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import model.GlobalConstants;
 
@@ -18,29 +18,26 @@ public class Checker {
 	
 	@SuppressWarnings("deprecation")
 	public static boolean isValidDate(String str) {
-		Date d;
-		SimpleDateFormat dateValidaterCol = new SimpleDateFormat("dd-MM-yyyy");
-		dateValidaterCol.setLenient(false);
-		SimpleDateFormat dateValidaterDot = new SimpleDateFormat("dd.MM.yyyy");
-		dateValidaterDot.setLenient(false);
 		boolean suc = false;
-		try {
-	    	 d = dateValidaterCol.parse(str);
-	    	 if(d.after(new Date(0,0,1)))                        //Po�to je po novim kalendarima pa se na godinu doda 1900
-	    		 suc = true;
-	     }
-	     catch(ParseException e){
-	          suc = false;
-	     }
+		DateTimeFormatter dtf;
+		LocalDate d = null;
 		
-		try {
-			d = dateValidaterDot.parse(str);
-			if(d.after(new Date(0,0,1)))
+		for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+			try {
+				dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+				d = LocalDate.parse(str, dtf);
 				suc = true;
-	     }
-	     catch(ParseException e){
-	          suc = false;
-	     }
+				break;
+			}catch(Exception ex) {
+				suc = false;
+			}
+			if(suc)
+				break;
+		}
+		
+		if(suc)
+			if(d.getYear() < 1920)
+				suc = false;
 		
 		return suc;
 	}
