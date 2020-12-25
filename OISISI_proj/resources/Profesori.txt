@@ -8,4 +8,3 @@
 7-prof|7-profPrez|1.1.-999999999|||7@gmail.com|7profAdrS|700000000|7-profTit|7-profZva|7,4;
 8-prof|8-profPrez|1.1.-999999999|||8@gmail.com|8profAdrS|800000000|8-profTit|8-profZva|8,4;
 9-prof|9-profPrez|1.1.-999999999|||9@gmail.com|9profAdrS|900000000|9-profTit|9-profZva|9,4;
-Pera|Peri|4.4.1939|Foiansfio 24|5327856|ofnasofa@gmail.com|Oanfosfa 24|123123123|Doktor Nauka|Docent|;
