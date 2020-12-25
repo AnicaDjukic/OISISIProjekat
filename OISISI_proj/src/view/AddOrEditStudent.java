@@ -167,7 +167,6 @@ public class AddOrEditStudent extends JPanel {
 					else
 						break;
 				}
-				smer = smer.toLowerCase();
 				broj = broj.substring(brNula);
 				student.setBrIndexa(smer + "-" + broj + "-" + godUpisa);
 				student.setGodUpisa(tGodUpisa.getText());
