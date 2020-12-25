@@ -137,6 +137,7 @@ public class AddOrEditStudent extends JPanel {
 				student.setEmail(tEmail.getText());
 				String smer = tBrIndexa.getText().split("-")[0];
 				String broj = tBrIndexa.getText().split("-")[1];
+				String godUpisa = tBrIndexa.getText().split("-")[2];
 				int brNula = 0;
 				for(int i = 0; i < broj.length(); i++) {
 					if(broj.charAt(i) == '0')
@@ -146,7 +147,7 @@ public class AddOrEditStudent extends JPanel {
 				}
 				smer = smer.toLowerCase();
 				broj = broj.substring(brNula);
-				student.setBrIndexa(smer + "-" + broj + "-" + tGodUpisa.getText());
+				student.setBrIndexa(smer + "-" + broj + "-" + godUpisa);
 				student.setGodUpisa(tGodUpisa.getText());
 				switch((String) tTrenutnaGod.getSelectedItem()) {
 					case "I (prva)" : student.setTrenutnaGodStud(1); break;
@@ -162,8 +163,8 @@ public class AddOrEditStudent extends JPanel {
 				
 				if(!controller.dodajStudenta(student))
 					err = new ErrorDialog(GlobalConstants.errAddStud);
-				else 
-					TabelaStudenti.updateTable();
+
+				TabelaStudenti.updateTable();
 			}
 		});
 		

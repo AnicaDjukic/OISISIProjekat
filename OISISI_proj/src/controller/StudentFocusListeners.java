@@ -5,6 +5,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import model.GlobalConstants;
@@ -50,10 +52,22 @@ public class StudentFocusListeners implements FocusListener {
 			return Checker.isValidNumber(input, 0);
 		if(name.equals(GlobalConstants.emailLab))
 			return Checker.isValidEmail(input);
-		if(name.equals(GlobalConstants.indexLab))
-			return Checker.isValidIndex(input);
-		if(name.equals(GlobalConstants.upisLab))
-			return Checker.isValidYear(input);
+		if(name.equals(GlobalConstants.indexLab)) {
+			if(!AddOrEditStudent.tGodUpisa.getText().equals("")) {
+				return (Checker.isValidIndex(input) && input.substring(input.length()-4).equals(AddOrEditStudent.tGodUpisa.getText()));
+			} else {
+				return Checker.isValidIndex(input);
+			} 
+		}
+		if(name.equals(GlobalConstants.upisLab)) {
+			if(!AddOrEditStudent.tBrIndexa.getText().equals("")) {
+				return (Checker.isValidYear(input) && AddOrEditStudent.tBrIndexa.getText().substring(AddOrEditStudent.tBrIndexa.getText().length()-4).equals(input));
+			}
+			else {
+				System.out.println(input);
+				return Checker.isValidYear(input);
+			}
+		}
 		
 		return false;
 	}
