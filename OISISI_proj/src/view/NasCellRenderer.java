@@ -31,10 +31,7 @@ public class NasCellRenderer extends DefaultTableCellRenderer{
 		
 		switch(mod) {
 		case NasCellRenderer.studentRenderer:{
-			if(column == 3 || column == 4 ||column == 5)
-				setHorizontalAlignment(SwingConstants.CENTER);
-			else
-				setHorizontalAlignment(SwingConstants.LEFT);
+			setHorizontalAlignment(SwingConstants.LEFT);
 			break;
 		}
 		case NasCellRenderer.profesorRenderer:{
