@@ -43,8 +43,10 @@ public class MyMenuBar extends JMenuBar {
 		});
 		
 		mFile.setMnemonic(KeyEvent.VK_F);
+		miNew.setMnemonic(KeyEvent.VK_N);
 		mFile.add(miNew);
 		mFile.addSeparator();
+		miClose.setMnemonic(KeyEvent.VK_C);
 		mFile.add(miClose);
 		
 		JMenu mEdit = new JMenu(GlobalConstants.menuEdit);
@@ -54,8 +56,10 @@ public class MyMenuBar extends JMenuBar {
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		
 		mEdit.setMnemonic(KeyEvent.VK_E);
+		miEdit.setMnemonic(KeyEvent.VK_E);
 		mEdit.add(miEdit);
 		mEdit.addSeparator();
+		miDelete.setMnemonic(KeyEvent.VK_D);
 		mEdit.add(miDelete);
 		
 		JMenu mHelp = new JMenu(GlobalConstants.menuHelp);
@@ -88,8 +92,10 @@ public class MyMenuBar extends JMenuBar {
 
 		
 		mHelp.setMnemonic(KeyEvent.VK_H);
+		miHelp.setMnemonic(KeyEvent.VK_H);
 		mHelp.add(miHelp);
 		mHelp.addSeparator();
+		miAbout.setMnemonic(KeyEvent.VK_A);
 		mHelp.add(miAbout);
 		
 		
