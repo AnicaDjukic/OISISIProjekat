@@ -36,6 +36,10 @@ public class Checker {
 				break;
 		}
 		
+		if(suc)
+			if(d.getYear() < 1920)
+				suc = false;
+		
 		return suc;
 	}
 	
