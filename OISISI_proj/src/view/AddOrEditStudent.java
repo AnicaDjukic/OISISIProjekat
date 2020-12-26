@@ -133,8 +133,8 @@ public class AddOrEditStudent extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				student = new Student();
-				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase());
-				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase());
+				student.setIme(tIme.getText().trim().substring(0,1).toUpperCase() + tIme.getText().trim().substring(1).toLowerCase());
+				student.setPrezime(tPrezime.getText().trim().substring(0,1).toUpperCase() + tPrezime.getText().trim().substring(1).toLowerCase());
 				
 				DateTimeFormatter dtf;
 				LocalDate datRodj = null;
@@ -143,7 +143,7 @@ public class AddOrEditStudent extends JPanel {
 				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
 					try {
 						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
-						datRodj = LocalDate.parse(tDatRodj.getText(), dtf);
+						datRodj = LocalDate.parse(tDatRodj.getText().trim(), dtf);
 						done = true;
 						break;
 					}catch(Exception ex) {
@@ -154,12 +154,12 @@ public class AddOrEditStudent extends JPanel {
 				}
 				
 				student.setDatumRodj(datRodj);
-				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
-				student.setKonTel(tBrTel.getText());
-				student.setEmail(tEmail.getText());
-				String smer = tBrIndexa.getText().split("-")[0];
-				String broj = tBrIndexa.getText().split("-")[1];
-				String godUpisa = tBrIndexa.getText().split("-")[2];
+				student.setAdresaStan(tAdrStan.getText().trim().substring(0,1).toUpperCase() + tAdrStan.getText().trim().substring(1));
+				student.setKonTel(tBrTel.getText().trim());
+				student.setEmail(tEmail.getText().trim());
+				String smer = tBrIndexa.getText().trim().split("-")[0];
+				String broj = tBrIndexa.getText().trim().split("-")[1];
+				String godUpisa = tBrIndexa.getText().trim().split("-")[2];
 				int brNula = 0;
 				for(int i = 0; i < broj.length(); i++) {
 					if(broj.charAt(i) == '0')

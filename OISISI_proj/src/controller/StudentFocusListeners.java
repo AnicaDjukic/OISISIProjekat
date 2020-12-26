@@ -27,7 +27,7 @@ public class StudentFocusListeners implements FocusListener {
 		JTextField txt = (JTextField) e.getComponent();
 		
 		String name = txt.getName();
-		String input = txt.getText();
+		String input = txt.getText().trim();
 		
 		if(!regularInput(name, input)) {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -54,14 +54,14 @@ public class StudentFocusListeners implements FocusListener {
 			return Checker.isValidEmail(input);
 		if(name.equals(GlobalConstants.indexLab)) {
 			if(!AddOrEditStudent.tGodUpisa.getText().equals("")) {
-				return (Checker.isValidIndex(input) && input.substring(input.length()-4).equals(AddOrEditStudent.tGodUpisa.getText()));
+				return (Checker.isValidIndex(input) && input.substring(input.length()-4).equals(AddOrEditStudent.tGodUpisa.getText().trim()));
 			} else {
 				return Checker.isValidIndex(input);
 			} 
 		}
 		if(name.equals(GlobalConstants.upisLab)) {
 			if(!AddOrEditStudent.tBrIndexa.getText().equals("")) {
-				return (Checker.isValidYear(input) && AddOrEditStudent.tBrIndexa.getText().substring(AddOrEditStudent.tBrIndexa.getText().length()-4).equals(input));
+				return (Checker.isValidYear(input) && AddOrEditStudent.tBrIndexa.getText().trim().substring(AddOrEditStudent.tBrIndexa.getText().trim().length()-4).equals(input));
 			}
 			else {
 				System.out.println(input);

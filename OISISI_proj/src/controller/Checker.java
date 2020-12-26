@@ -16,7 +16,6 @@ public class Checker {
 		return false;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static boolean isValidDate(String str) { 	
 		boolean suc = false;		
 		
