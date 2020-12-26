@@ -37,7 +37,7 @@ public class GlobalConstants {
 	
 	//Misc texts :
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
-	public static String errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
+	public static String errAddStud = "Neuspešno dodavanje studenta!";
 	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
 	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
 	public static String yesOpt = "Da";

@@ -35,7 +35,7 @@ public class ControllerStudent {
 		}
 		
 		for(Student student: listaStudenti) {
-			if(student.getBrIndexa().equals(s.getBrIndexa())) {
+			if(student.getBrIndexa().equals(s.getBrIndexa()) || student.getEmail().equals(s.getEmail())) {
 				return false;
 			}
 				
