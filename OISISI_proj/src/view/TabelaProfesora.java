@@ -17,12 +17,12 @@ import java.util.*;
 
 public class TabelaProfesora extends JTable { 
 	
-	private static Object[] colNames = {GlobalConstants.imeLab, GlobalConstants.przLab, GlobalConstants.titulaLab, GlobalConstants.zvanjeLab};
+	private static Object[] colNames = {GlobalConstants.imeLab.substring(0,GlobalConstants.imeLab.length() - 2), GlobalConstants.przLab.substring(0,GlobalConstants.przLab.length() - 2), GlobalConstants.titulaLab.substring(0,GlobalConstants.titulaLab.length() - 2), GlobalConstants.zvanjeLab.substring(0,GlobalConstants.zvanjeLab.length() - 2)};
 	static DefaultTableModel model;
 	static ControllerProfesor controllerProfesor;
 	static TabelaProfesora inst;
 	
-	public TabelaProfesora() {
+	public TabelaProfesora() {		
 		inst = this;
 		controllerProfesor = GlavniProzor.getControllerProfesor();
 		

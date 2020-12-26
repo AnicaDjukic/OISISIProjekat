@@ -19,8 +19,8 @@ public class AddOrEditProfesor extends JPanel{
 	
 	private JTextField txtPrezime,txtIme,txtDrp,txtAdrStan,txtKonTel,txtEmail,txtAdrKanc,txtBrLicKart;
 	
-	private String[] titula = {"Docent","Redovni Profesor","Vanredni Profesor"};
-	private String[] zvanje = {"Doktor Nauka"};
+	private String[] titula = GlobalConstants.titulaOptions;
+	private String[] zvanje = GlobalConstants.zvanjeOptions;
 	
 	private JComboBox<String> titCombo, zvCombo;
 	private JLabel labPrezime,labIme,labDrp,labAdrStan,labKonTel,labEmail,labAdrKanc,labBrLicKart,labTitula,labZvanje;
@@ -77,8 +77,8 @@ public class AddOrEditProfesor extends JPanel{
 		titCombo = new JComboBox<String>(titula);
 		zvCombo = new JComboBox<String>(zvanje);
 		
-		gornji.add(cp.createPanel(labPrezime, this.txtPrezime, GlobalConstants.przLab));
 		gornji.add(cp.createPanel(labIme, this.txtIme, GlobalConstants.imeLab));
+		gornji.add(cp.createPanel(labPrezime, this.txtPrezime, GlobalConstants.przLab));
 		gornji.add(cp.createPanel(labDrp, this.txtDrp, GlobalConstants.drLab));
 		gornji.add(cp.createPanel(labAdrKanc, this.txtAdrKanc, GlobalConstants.adrKancLab));
 		gornji.add(cp.createPanel(labKonTel, this.txtKonTel, GlobalConstants.konTelLab));
@@ -124,14 +124,14 @@ public class AddOrEditProfesor extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ime = txtIme.getText();
-				prz = txtPrezime.getText();
-				drp = txtDrp.getText();
-				adrStan = txtAdrStan.getText();
-				konTel = txtKonTel.getText();
-				email = txtEmail.getText();
-				adrKanc = txtAdrKanc.getText();
-				brLic = txtBrLicKart.getText();
+				ime = txtIme.getText().trim();
+				prz = txtPrezime.getText().trim();
+				drp = txtDrp.getText().trim();
+				adrStan = txtAdrStan.getText().trim();
+				konTel = txtKonTel.getText().trim();
+				email = txtEmail.getText().trim();
+				adrKanc = txtAdrKanc.getText().trim();
+				brLic = txtBrLicKart.getText().trim();
 				tit = (String)titCombo.getSelectedItem();
 				zva = (String)zvCombo.getSelectedItem();
 				

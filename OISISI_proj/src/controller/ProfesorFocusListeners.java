@@ -22,7 +22,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		tx.setForeground(Color.BLACK);
 		tx.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
-		input = tx.getText();
+		input = tx.getText().trim();
 		name = tx.getName();
 		
 		check = getValue(input);                               //Ocekuje da kad udje ce uslov sigurno biti netacan dok se ne ispravi
@@ -35,7 +35,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		
 		JTextField tx = (JTextField) e.getComponent();
 		
-		input = tx.getText();
+		input = tx.getText().trim();
 		name = tx.getName();
 		
 		check = getValue(input);

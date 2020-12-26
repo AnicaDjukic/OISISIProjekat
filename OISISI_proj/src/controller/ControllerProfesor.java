@@ -34,7 +34,7 @@ public class ControllerProfesor {
 			return true;
 		}
 		for(Profesor temp : listaProfesora)
-			if(temp.getBrLicKart().equals(p.getBrLicKart()))
+			if(temp.getBrLicKart().equals(p.getBrLicKart()) || temp.getEmail().equals(p.getEmail()))
 				return false;
 		listaProfesora.add(p);		
 		return true;

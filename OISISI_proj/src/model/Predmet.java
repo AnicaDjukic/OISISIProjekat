@@ -57,6 +57,19 @@ public class Predmet {
 	public void setEspbBod(int espb_bod) {
 		this.espbBod = espb_bod;
 	}
+	public ArrayList<Student> getListaPolozenih() {
+		return listaPolozenih;
+	}
+	public void setListaPolozenih(ArrayList<Student> listaPolozenih) {
+		this.listaPolozenih = listaPolozenih;
+	}
+	public ArrayList<Student> getListaNepolozenih() {
+		return listaNepolozenih;
+	}
+	public void setListaNepolozenih(ArrayList<Student> listaNepolozenih) {
+		this.listaNepolozenih = listaNepolozenih;
+	}
+	
 	
 	//konstruktori :
 	
@@ -92,42 +105,6 @@ public class Predmet {
 		this.listaPolozenih = new ArrayList<Student>();
 	}
 	
-	
-	//Dodatne metode :
-	
-	public boolean dodajUListPolo(Student s) {
-		if(!listaPolozenih.contains(s))                           //ako se vec ne nalazi u polozenim, onda se tek dodaje
-			if(listaPolozenih.add(s)) {                           //u listu polozenih i, paralelno, ako se nalazio u listi
-				if(listaNepolozenih.contains(s))                  //onih koji nisu polozili onda se iz te brise
-					listaNepolozenih.remove(s);
-				return true;
-			}
-		return false;
-	}
-	
-	public boolean dodajUListNepolo(Student s) {
-		if(!listaNepolozenih.contains(s))                         //Isto kao i gore, redosled akcija je isti samo su liste
-			if(listaNepolozenih.add(s)) {                         //zamenjene
-				if(listaPolozenih.contains(s))
-					listaPolozenih.remove(s);
-				return true;
-			}
-		return false;
-	}
-	
-	public boolean dodajStudenta(Student s) {
-		if(listaPolozenih.contains(s) || listaNepolozenih.contains(s))      //Ako nije ni u jednoj listi dodaje se inicijalno
-			return false;			                                        //u listu nepolozenih
-		return dodajUListNepolo(s);
-	}
-	
-	public boolean obrisiStudentaSaPredmeta(Student s) {
-		if(listaNepolozenih.remove(s) || listaPolozenih.remove(s))
-			return true;
-		return false;
-	}
-
-	
 	private String outGodIzv(GodIzv g) {
 		String out = "";
 		
@@ -153,7 +130,7 @@ public class Predmet {
 		out += "Profesor : " + this.prof.getIme() + " " + prof.getPrezime() + "\n";
 		out += "Espb : " + this.espbBod + "\n";
 		
-		out += "Studenti koji su položili (" + listaPolozenih.size() + ") : ";
+		out += "Studenti koji su poloï¿½ili (" + listaPolozenih.size() + ") : ";
 		if(!listaPolozenih.isEmpty()) {
 			for(Student s : listaPolozenih)
 				out += s.getBrIndexa() + ", ";
@@ -161,10 +138,10 @@ public class Predmet {
 			out = out.substring(0,out.length() - 2);              //Odseca poslednji zarez
 			out += "\n";
 		} else {
-			out += "Niko nije položio predmet\n";
+			out += "Niko nije poloï¿½io predmet\n";
 		}
 		
-		out += "Studenti koji nisu položili (" + listaNepolozenih.size() + ") : ";
+		out += "Studenti koji nisu poloï¿½ili (" + listaNepolozenih.size() + ") : ";
 		if(!listaNepolozenih.isEmpty()) {
 			for(Student s : listaNepolozenih)
 				out += s.getBrIndexa() + ", ";

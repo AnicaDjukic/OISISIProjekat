@@ -17,7 +17,7 @@ public class Checker {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static boolean isValidDate(String str) {
+	public static boolean isValidDate(String str) { 	
 		boolean suc = false;		
 		
 		DateTimeFormatter dtf;
@@ -28,7 +28,6 @@ public class Checker {
 			try {
 				dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
 				d = LocalDate.parse(str, dtf);
-				System.out.println(parts.length);
 				suc = true;
 				break;
 			}catch(Exception ex) {
@@ -39,7 +38,7 @@ public class Checker {
 		}
 		
 		if(suc)
-			if(d.getYear() < 1920)
+			if(d.getYear() < 1920 || d.getYear() > Calendar.getInstance().get(Calendar.YEAR))
 				suc = false;
 		
 		if(suc) {

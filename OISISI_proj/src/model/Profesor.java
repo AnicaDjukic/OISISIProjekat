@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 //importi : 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Date;   
 
 public class Profesor {
 	private String prezime;
@@ -160,28 +160,6 @@ public class Profesor {
 			adk += s + " ";
 		}
 		adk = adk.substring(0, adk.length() - 1);
-		
-		parts = tit.split(" ");
-		tit = "";
-		for(String s : parts) {
-			s = s.toLowerCase();
-			temp = s.substring(0,1);
-			temp = temp.toUpperCase();
-			s = temp + s.substring(1);
-			tit += s + " ";
-		}
-		tit = tit.substring(0, tit.length() - 1);
-		
-		parts = zv.split(" ");
-		zv = "";
-		for(String s : parts) {
-			s = s.toLowerCase();
-			temp = s.substring(0,1);
-			temp = temp.toUpperCase();
-			s = temp + s.substring(1);
-			zv += s + " ";
-		}
-		zv = zv.substring(0, zv.length() - 1);
 		
 		this.prezime = pr;
 		this.ime = im;

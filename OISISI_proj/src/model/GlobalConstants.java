@@ -8,21 +8,21 @@ public class GlobalConstants {
 	public static int aoedh = 500;  //addOrEditHeight
 	
 	//Label names :
-	public static String imeLab = "Ime : ";
-	public static String przLab = "Prezime : ";
-	public static String drLab = "Datum rođenja : "; 
-	public static String adrKancLab = "Adresa kancelarije : ";
-	public static String adrStanLab = "Adresa stanovanja : ";
-	public static String konTelLab = "Kontakt telefon : ";
-	public static String brLicKartLab = "Broj lične karte : ";
-	public static String emailLab = "Email : ";
-	public static String titulaLab = "Titula : ";
-	public static String zvanjeLab = "Zvanje : ";
+	public static String imeLab = "Ime* ";
+	public static String przLab = "Prezime* ";
+	public static String drLab = "Datum rođenja* "; 
+	public static String adrKancLab = "Adresa kancelarije* ";
+	public static String adrStanLab = "Adresa stanovanja* ";
+	public static String konTelLab = "Kontakt telefon* ";
+	public static String brLicKartLab = "Broj lične karte* ";
+	public static String emailLab = "Email* ";
+	public static String titulaLab = "Titula* ";
+	public static String zvanjeLab = "Zvanje* ";
 	
-	public static String indexLab = "Broj indeksa : ";
-	public static String upisLab = "Godina upisa : ";
-	public static String trenutnaLab = "Trenutna godina studija : ";
-	public static String finansLab = "Način finansiranja : ";
+	public static String indexLab = "Broj indeksa* ";
+	public static String upisLab = "Godina upisa* ";
+	public static String trenutnaLab = "Trenutna godina studija* ";
+	public static String finansLab = "Način finansiranja* ";
 	
 	//Label tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
@@ -36,7 +36,6 @@ public class GlobalConstants {
 	public static String godUpisaToolTip = "yyyy format, godine od 2000.";
 	
 	//Misc texts :
-	public static String obvPolje = "Obavezno polje!";
 	public static String errAddProf = "Neuspešno dodavanje profesora!";
 	public static String errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
 	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
@@ -51,7 +50,11 @@ public class GlobalConstants {
 	public static String srchBtnToolTipTxt = "Search";
 	public static String srchFieldToolTipTxt = "";
 	
+	//Titula and zvanje : 
+	public static String[] titulaOptions = {"BSc","MSc", "Magistar", "Doktor", "Profesor doktor"};
+	public static String[] zvanjeOptions = {"Saradnik u nastavi", "Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
 	
+	//Button names : 
 	public static String menuFile = "File"; 
 	public static String menuNew = "New";
 	public static String menuClose = "Close";
@@ -63,10 +66,12 @@ public class GlobalConstants {
 	//Frame names : 
 	public static String mfName = "Studentska služba";
 	
+	//Tab names : 
 	public static String tabStudentName = "Studenti";
 	public static String tabProfesorName = "Profesori";
 	public static String tabPredmetName = "Predmeti";
 	
+	//Dialog titles : 
 	public static String profAdd = "Dodavanje profesora";
 	public static String profEdit = "Izmeni profeosra";
 	public static String dodajStud = "Dodavanje studenta";
@@ -101,7 +106,6 @@ public class GlobalConstants {
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
-
 	public static String regExBrIndexa = "[a-z]{2}[-][0-9]{1,3}[-][2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	public static String regGodUpisa = "[2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	public static String[] regExDatePoss = {"dd.MM.yyyy.", "dd.MM.yyyy", "d.MM.yyyy.", "d.MM.yyyy", "dd.M.yyyy.", "dd.M.yyyy", "d.M.yyyy.", "d.M.yyyy"};
