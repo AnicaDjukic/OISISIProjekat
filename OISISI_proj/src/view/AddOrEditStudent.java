@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.*;
 
@@ -133,7 +135,8 @@ public class AddOrEditStudent extends JPanel {
 				
 				tIme.setText(student.getIme());
 				tPrezime.setText(student.getPrezime());
-				tDatRodj.setText(student.getDatumRodj());
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				tDatRodj.setText(dtf.format(student.getDatumRodj()));
 				tAdrStan.setText(student.getAdresaStan());
 				tBrTel.setText(student.getKonTel());
 				tEmail.setText(student.getEmail());
@@ -179,7 +182,25 @@ public class AddOrEditStudent extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String ime = tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase();
 				String prezime = tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase();
-				String datRodj = tDatRodj.getText();
+				tDatRodj.getText();
+				
+				DateTimeFormatter dtf;
+				LocalDate datRodj = null;
+				boolean done = false;;
+				
+				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+					try {
+						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+						datRodj = LocalDate.parse(tDatRodj.getText().trim(), dtf);
+						done = true;
+						break;
+					}catch(Exception ex) {
+						done = false;
+					}
+					if(done)
+						break;
+				}
+				
 				String adresa = tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1);
 				String konTel = tBrTel.getText();
 				String email = tEmail.getText();

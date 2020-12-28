@@ -127,16 +127,19 @@ public class GlobalConstants {
 	public static String btnUklPred = "Ukloni predmet";
 	
 	//Regex :
-	public static String regExNameOrSurename = "[a-z]+";
-	public static String regExAddress = "([a-z]+[\\s])+[1-9][0-9]{0,2}";
+	public static String regExNameOrSurename = "\\p{L}+";
+	public static String regExAddress = "([\\p{L}]+[\\s])+[1-9][0-9]{0,2}";
 	public static String regExNumber = "[0-9]+";
 	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
-	public static String regExBrIndexa = "[A-Z]{2}[0-9]{1,3}";
-	public static String regGodUpisa = "[1,2]{1}[0,9]{1}[0-9]{2}";
+	public static String regExBrIndexa = "[a-zA-Z]{2}[-][0-9]{1,3}[-][2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
+	public static String regGodUpisa = "[2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	
 	public static String regExNazivPred = "([a-z]+[\\s]{0,1})+[0-9]{0,1}";
 	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
+	
+	public static String[] regExDatePoss = {"dd.MM.yyyy.", "dd.MM.yyyy", "d.MM.yyyy.", "d.MM.yyyy", "dd.M.yyyy.", "dd.M.yyyy", "d.M.yyyy.", "d.M.yyyy"};
+
 	
 	//Edit tab names :
 	public static String profEditTabOsnInf = "Informacije";
