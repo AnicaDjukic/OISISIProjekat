@@ -102,10 +102,14 @@ public class Student {
 	public ArrayList<Predmet> getNepolozeniIspiti() {
 		return nepolozeniIspiti;
 	}	
-	
+	public void setPolozeniIspiti(ArrayList<Ocena> polozeniIspiti) {
+		this.polozeniIspiti = polozeniIspiti;
+	}
+	public void setNepolozeniIspiti(ArrayList<Predmet> nepolozeniIspiti) {
+		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
 	
 	// konstruktori
-	
 	public Student() {
 		super();
 		this.prezime = "";
@@ -141,38 +145,6 @@ public class Student {
 		this.posecnaOcena = posecnaOcena;
 		this.polozeniIspiti = new ArrayList<Ocena>();
 		this.nepolozeniIspiti = new ArrayList<Predmet>();
-	}
-	
-	// metode za dodavanje polozenih i nepolozenih ispita
-	public boolean dodajPolozenIspit(Ocena o) {				// kada ga doda u listu polozenih
-		if(!polozeniIspiti.contains(o))						// brise ga iz liste nepolozenih ispita
-			if(polozeniIspiti.add(o))
-				if(nepolozeniIspiti.contains(o.getPredmet()))
-					if(nepolozeniIspiti.remove(o.getPredmet()))
-						return true;
-		return false;
-	}
-	
-	public boolean dodajNepolozeniIspit(Predmet p) {		// dodaje u listu nepolozenih ispita
-		if(!nepolozeniIspiti.contains(p))
-			if(nepolozeniIspiti.add(p))
-				return true;
-		return false;
-	}
-	
-	// metode za brisanje polozenih i nepolozenih ispita
-	public boolean obrisiNepolozeniIspit(Predmet p) {		// brise iz liste nepolozenih ispita
-		if(nepolozeniIspiti.contains(p))                
-			if(nepolozeniIspiti.remove(p))
-				return true;
-		return false;
-	}
-	
-	public boolean obrisiPolozeniIspit(Ocena o) {			// brise ga iz liste polozenih ispita
-		if(polozeniIspiti.contains(o))
-			if(polozeniIspiti.remove(o))
-				return true;
-		return false;
 	}
 	
 	@Override
