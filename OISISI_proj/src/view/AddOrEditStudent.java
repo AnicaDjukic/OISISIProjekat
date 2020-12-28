@@ -180,9 +180,8 @@ public class AddOrEditStudent extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String ime = tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1).toLowerCase();
-				String prezime = tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1).toLowerCase();
-				tDatRodj.getText();
+				String ime = tIme.getText().trim().substring(0,1).toUpperCase() + tIme.getText().trim().substring(1).toLowerCase();
+				String prezime = tPrezime.getText().trim().substring(0,1).toUpperCase() + tPrezime.getText().trim().substring(1).toLowerCase();
 				
 				DateTimeFormatter dtf;
 				LocalDate datRodj = null;
@@ -201,11 +200,13 @@ public class AddOrEditStudent extends JPanel {
 						break;
 				}
 				
-				String adresa = tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1);
-				String konTel = tBrTel.getText();
-				String email = tEmail.getText();
-				String smer = tBrIndexa.getText().substring(0,2);
-				String broj = tBrIndexa.getText().substring(2);
+				String adresa = tAdrStan.getText().trim().substring(0,1).toUpperCase() + tAdrStan.getText().trim().substring(1);
+				String konTel = tBrTel.getText().trim();
+				String email = tEmail.getText().trim();
+				
+				String smer = tBrIndexa.getText().trim().split("-")[0];
+				String broj = tBrIndexa.getText().trim().split("-")[1];
+				String god = tBrIndexa.getText().trim().split("-")[2];
 				int brNula = 0;
 				for(int i = 0; i < broj.length(); i++) {
 					if(broj.charAt(i) == '0')
@@ -213,10 +214,11 @@ public class AddOrEditStudent extends JPanel {
 					else
 						break;
 				}
-				
+				smer = smer.toLowerCase();
 				broj = broj.substring(brNula);
-				String index = smer + broj + "/" + tGodUpisa.getText();
-				String godUpisa = tGodUpisa.getText();
+				String index = smer + "-" + broj + "-" + god;
+				
+				String godUpisa = tGodUpisa.getText().trim();
 				int trenutnaGod;
 				switch((String) tTrenutnaGod.getSelectedItem()) {
 					case "I (prva)" : trenutnaGod = 1; break;

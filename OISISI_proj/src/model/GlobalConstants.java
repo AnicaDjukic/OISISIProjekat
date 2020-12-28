@@ -45,8 +45,8 @@ public class GlobalConstants {
 	public static String emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
 	public static String brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
 	public static String titZvToolTip = "Dozvoljeno je jedna ili više reči";
-	public static String brIndexaToolTip = "SSxxx format, SS-smer, xxx-broj(najmanje 1 cifra)";
-	public static String godUpisaToolTip = "yyyy format";
+	public static String brIndexaToolTip = "<html>SS-xxx-yyyy format, SS-smer, xxx-broj (najmanje 1 cifra)<br>yyyy-godina upisa (godine od 2000.)</html>";
+    public static String godUpisaToolTip = "yyyy format, godine od 2000.";
 	
 	public static String srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
 	public static String srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
