@@ -1,5 +1,7 @@
 package model;
 
+import java.io.File;
+
 public class GlobalConstants {
 	//Some default sizes :
 	public static int aoedw = 400;  //addOrEditWidth
@@ -110,15 +112,15 @@ public class GlobalConstants {
 	public static String sem = "Semestar : ";
 	
 	//Image usage : 
-	public static String addImg = "images/add_button.png";
-	public static String closeImg = "images/close_button.png";
-	public static String editImg = "images/edit_button.png";
-	public static String delImg = "images/bin_button.png";
-	public static String helpImg = "images/help_button.png";
-	public static String aboutImg = "images/about_button.png";
-	public static String srcImg = "images/search_button.png";
-	public static String menuBarImg = "images/Menu_Bar.png";
-	public static String toolBarImg = "images/Tool_bar.png";
+	public static String addImg = "images" + File.separator + "add_button.png";
+	public static String closeImg = "images" + File.separator + "close_button.png";
+	public static String editImg = "images" + File.separator + "edit_button.png";
+	public static String delImg = "images" + File.separator + "bin_button.png";
+	public static String helpImg = "images" + File.separator + "help_button.png";
+	public static String aboutImg = "images" + File.separator + "about_button.png";
+	public static String srcImg = "images" + File.separator + "search_button.png";
+	public static String menuBarImg = "images" +  File.separator + "Menu_Bar.png";
+	public static String toolBarImg = "images" + File.separator + "Tool_Bar.png";
 	
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
