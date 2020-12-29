@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import model.Ocena;
 import model.Predmet;
+import model.Profesor;
 import model.Student;
 
 public class ControllerStudent {
@@ -56,6 +57,14 @@ public class ControllerStudent {
 
 		listaStudenti.add(s);
 		return true;
+	}
+	
+	public Student nadjiStudenta(String index) {
+		Student ret = null;
+		for(Student s : listaStudenti)
+			if(s.getBrIndexa().equals(index))
+				ret = s;
+		return ret;
 	}
 	
 	public void obrisiPredmetKodSvihStud(String spr) {

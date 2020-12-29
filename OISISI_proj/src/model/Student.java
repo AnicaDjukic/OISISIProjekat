@@ -1,13 +1,17 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-enum StatusStudenta {B, S}
+
 
 public class Student {
+	
+	public enum StatusStudenta {B, S}
+	
 	private String prezime;
 	private String ime;
-	private String datumRodj;			// datum rodjenja
+	private LocalDate datumRodj;			// datum rodjenja
 	private String adresaStan;			// adresa stanovanja
 	private String konTel;				// kontakt telefon
 	private String email;
@@ -33,10 +37,10 @@ public class Student {
 	public void setIme(String ime) {
 		this.ime = ime;
 	}
-	public String getDatumRodj() {
+	public LocalDate getDatumRodj() {
 		return datumRodj;
 	}
-	public void setDatumRodj(String datumRodj) {
+	public void setDatumRodj(LocalDate datumRodj) {
 		this.datumRodj = datumRodj;
 	}
 	public String getAdresaStan() {
@@ -82,7 +86,7 @@ public class Student {
 		
 	}
 	public void setStatus(String status) {
-		if(status.toUpperCase().equals("B") || status.equals("Bud�et"))
+		if(status.toUpperCase().equals("B") || status.equals("Budžet"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;
@@ -99,15 +103,19 @@ public class Student {
 	public ArrayList<Predmet> getNepolozeniIspiti() {
 		return nepolozeniIspiti;
 	}	
-	
+	public void setPolozeniIspiti(ArrayList<Ocena> polozeniIspiti) {
+		this.polozeniIspiti = polozeniIspiti;
+	}
+	public void setNepolozeniIspiti(ArrayList<Predmet> nepolozeniIspiti) {
+		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
 	
 	// konstruktori
-	
 	public Student() {
 		super();
 		this.prezime = "";
 		this.ime = "";
-		this.datumRodj = "";
+		this.datumRodj = LocalDate.MIN;
 		this.adresaStan = "";
 		this.konTel = "";
 		this.email = "";
@@ -119,7 +127,7 @@ public class Student {
 		this.polozeniIspiti = new ArrayList<Ocena>();
 		this.nepolozeniIspiti = new ArrayList<Predmet>();
 	}
-	public Student(String prezime, String ime, String datumRodj, String adresaStan, String konTel, String email,
+	public Student(String prezime, String ime, LocalDate datumRodj, String adresaStan, String konTel, String email,
 			String brIndexa, String godUpisa, int trenutnaGodStud, String status, double posecnaOcena) {
 		super();
 		this.prezime = prezime;
@@ -138,38 +146,6 @@ public class Student {
 		this.posecnaOcena = posecnaOcena;
 		this.polozeniIspiti = new ArrayList<Ocena>();
 		this.nepolozeniIspiti = new ArrayList<Predmet>();
-	}
-	
-	// metode za dodavanje polozenih i nepolozenih ispita
-	public boolean dodajPolozenIspit(Ocena o) {				// kada ga doda u listu polozenih
-		if(!polozeniIspiti.contains(o))						// brise ga iz liste nepolozenih ispita
-			if(polozeniIspiti.add(o))
-				if(nepolozeniIspiti.contains(o.getPredmet()))
-					if(nepolozeniIspiti.remove(o.getPredmet()))
-						return true;
-		return false;
-	}
-	
-	public boolean dodajNepolozeniIspit(Predmet p) {		// dodaje u listu nepolozenih ispita
-		if(!nepolozeniIspiti.contains(p))
-			if(nepolozeniIspiti.add(p))
-				return true;
-		return false;
-	}
-	
-	// metode za brisanje polozenih i nepolozenih ispita
-	public boolean obrisiNepolozeniIspit(Predmet p) {		// brise iz liste nepolozenih ispita
-		if(nepolozeniIspiti.contains(p))                
-			if(nepolozeniIspiti.remove(p))
-				return true;
-		return false;
-	}
-	
-	public boolean obrisiPolozeniIspit(Ocena o) {			// brise ga iz liste polozenih ispita
-		if(polozeniIspiti.contains(o))
-			if(polozeniIspiti.remove(o))
-				return true;
-		return false;
 	}
 	
 	@Override

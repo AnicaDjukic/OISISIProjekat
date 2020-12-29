@@ -2,10 +2,15 @@ package view;
 
 
 import model.*;
+import model.Student.StatusStudenta;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.ContainerOrderFocusTraversalPolicy;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.*;
 
@@ -94,7 +99,6 @@ public class AddOrEditStudent extends JPanel {
 		glavni.add(createListPanel(lFinans, tFinans));
 		glavni.add(lab);
 		
-		add(glavni, BorderLayout.NORTH);
 		
 		// Focus listeners
 		tIme.addFocusListener(new StudentFocusListeners());
@@ -115,7 +119,52 @@ public class AddOrEditStudent extends JPanel {
 		odustani = new JButton(GlobalConstants.btnCncName);
 		dugmad.add(odustani);
 		
-		add(dugmad,BorderLayout.SOUTH);
+		if(mode == AddOrEditDialog.addMode) {
+			add(glavni, BorderLayout.NORTH);
+			add(dugmad,BorderLayout.SOUTH);
+		}
+		
+		
+		if(mode == AddOrEditDialog.editMode) {
+			
+			if(TabelaStudenti.table.getSelectedRow() != -1) {
+				
+				int selectedStudent = TabelaStudenti.table.getSelectedRow();
+				String indexStudenta = (String) TabelaStudenti.table.getValueAt(selectedStudent, 0);
+				
+				student = controller.nadjiStudenta(indexStudenta);
+				
+				tIme.setText(student.getIme());
+				tPrezime.setText(student.getPrezime());
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+				tDatRodj.setText(dtf.format(student.getDatumRodj()));
+				tAdrStan.setText(student.getAdresaStan());
+				tBrTel.setText(student.getKonTel());
+				tEmail.setText(student.getEmail());
+				tBrIndexa.setText(student.getBrIndexa().split("/")[0]);
+				tGodUpisa.setText(student.getGodUpisa());
+				tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
+				if(student.getStatus().equals("B"))
+					tFinans.setSelectedItem("Budžet");
+				else
+					tFinans.setSelectedItem("Samofinansiranje");
+				
+				JPanel inf = new JPanel();
+				inf.setLayout(new BorderLayout());
+				inf.add(glavni,BorderLayout.NORTH);
+				inf.add(dugmad, BorderLayout.SOUTH);
+				
+				JPanel polozeni = new JPanel();
+				JPanel nepolozeni = new JPanel();
+				
+				JTabbedPane tabs = new JTabbedPane();
+				tabs.addTab("Informacije", inf);
+				tabs.addTab("Položeni", polozeni);
+				tabs.addTab("Nepoloženi", nepolozeni);
+				add(tabs);
+			}
+			
+		}
 		
 		odustani.addActionListener(new ActionListener() {
 			
@@ -129,15 +178,33 @@ public class AddOrEditStudent extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				student = new Student();
-				student.setIme(tIme.getText().substring(0,1).toUpperCase() + tIme.getText().substring(1));
-				student.setPrezime(tPrezime.getText().substring(0,1).toUpperCase() + tPrezime.getText().substring(1));
-				student.setDatumRodj(tDatRodj.getText());
-				student.setAdresaStan(tAdrStan.getText().substring(0,1).toUpperCase() + tAdrStan.getText().substring(1));
-				student.setKonTel(tBrTel.getText());
-				student.setEmail(tEmail.getText());
-				String smer = tBrIndexa.getText().substring(0,2);
-				String broj = tBrIndexa.getText().substring(2);
+				String ime = tIme.getText().trim().substring(0,1).toUpperCase() + tIme.getText().trim().substring(1).toLowerCase();
+				String prezime = tPrezime.getText().trim().substring(0,1).toUpperCase() + tPrezime.getText().trim().substring(1).toLowerCase();
+				
+				DateTimeFormatter dtf;
+				LocalDate datRodj = null;
+				boolean done = false;;
+				
+				for(int i = 0; i < GlobalConstants.regExDatePoss.length; i++) {
+					try {
+						dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
+						datRodj = LocalDate.parse(tDatRodj.getText().trim(), dtf);
+						done = true;
+						break;
+					}catch(Exception ex) {
+						done = false;
+					}
+					if(done)
+						break;
+				}
+				
+				String adresa = tAdrStan.getText().trim().substring(0,1).toUpperCase() + tAdrStan.getText().trim().substring(1);
+				String konTel = tBrTel.getText().trim();
+				String email = tEmail.getText().trim();
+				
+				String smer = tBrIndexa.getText().trim().split("-")[0];
+				String broj = tBrIndexa.getText().trim().split("-")[1];
+				String god = tBrIndexa.getText().trim().split("-")[2];
 				int brNula = 0;
 				for(int i = 0; i < broj.length(); i++) {
 					if(broj.charAt(i) == '0')
@@ -145,26 +212,55 @@ public class AddOrEditStudent extends JPanel {
 					else
 						break;
 				}
-				
+				smer = smer.toLowerCase();
 				broj = broj.substring(brNula);
-				student.setBrIndexa(smer + broj + "/" + tGodUpisa.getText());
-				student.setGodUpisa(tGodUpisa.getText());
+				String index = smer + "-" + broj + "-" + god;
+				
+				String godUpisa = tGodUpisa.getText().trim();
+				int trenutnaGod;
 				switch((String) tTrenutnaGod.getSelectedItem()) {
-				case "I (prva)" : student.setTrenutnaGodStud(1); break;
-				case "II (druga)" : student.setTrenutnaGodStud(2); break;
-				case "III (treća)" : student.setTrenutnaGodStud(3); break;
-				case "IV (četvrta)" : student.setTrenutnaGodStud(4); break;
+					case "I (prva)" : trenutnaGod = 1; break;
+					case "II (druga)" : trenutnaGod = 2; break;
+					case "III (treća)" : trenutnaGod = 3; break;
+					default : trenutnaGod = 4;
 				}
 				
 				String finans = (String)(tFinans.getSelectedItem());
-				student.setStatus(finans);
+				
+				// za sada
+				double prosek = 0.0;
 				
 				dialog.setVisible(false);
 				
-				if(!controller.dodajStudenta(student))
-					err = new ErrorDialog(GlobalConstants.errAddStud);
-				else 
-					TabelaStudenti.updateTable();
+				if(mode == AddOrEditDialog.addMode) {
+					student = new Student(prezime, ime, datRodj, adresa, konTel, email, index, godUpisa, trenutnaGod, finans, prosek);
+					if(!controller.dodajStudenta(student))
+						err = new ErrorDialog(GlobalConstants.errAddStud);
+				}
+				
+				if(mode == AddOrEditDialog.editMode) {
+					student.setIme(ime);
+					student.setPrezime(prezime);
+					student.setDatumRodj(datRodj);
+					student.setAdresaStan(adresa);
+					student.setKonTel(konTel);
+					student.setEmail(email);
+					student.setGodUpisa(godUpisa);
+					student.setTrenutnaGodStud(trenutnaGod);
+					student.setStatus(finans);
+					student.setPosecnaOcena(prosek);
+					
+					if(!index.equals(student.getBrIndexa()))
+						if(controller.nadjiStudenta(index) != null)
+							err = new ErrorDialog(GlobalConstants.errAddStud);
+						else
+							student.setBrIndexa(index);
+					else
+						student.setBrIndexa(index);
+					
+				}
+				
+				TabelaStudenti.updateTable();
 				
 				GlavniProzor.serialize();
 			}

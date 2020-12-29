@@ -15,7 +15,7 @@ public class TabelaStudenti extends JTable {
 	
 	private static String[] cols = {"Indeks", "Ime", "Prezime", "Godina studija", "Status", "Prosek"};
 	static DefaultTableModel model;
-	static TabelaStudenti table;
+	public static TabelaStudenti table;
 	
 	public TabelaStudenti() {
 		table = this;

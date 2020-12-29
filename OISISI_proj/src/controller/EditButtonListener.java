@@ -15,15 +15,18 @@ public class EditButtonListener implements ActionListener{
 		int tab = GlavniProzor.getTabbedPane().getSelectedIndex();
 		AddOrEditDialog aoed;
 		
-		int rowCheck, rowCheckPred;
+		int rowCheck, rowCheckPred, rowCheckStud;
 		rowCheck = TabelaProfesora.inst.getSelectedRow();
 		rowCheckPred = TabelaPredmeti.inst.getSelectedRow();
-		if(rowCheck == -1 && rowCheckPred == -1)
+		rowCheckStud = TabelaStudenti.table.getSelectedRow();
+		if(rowCheck == -1 && rowCheckPred == -1 && rowCheckStud == -1)
 			return;
 		
 		switch(tab) {
 		case 0:
-			//Edit za studente
+			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+			aoed.pack();
+			aoed.setVisible(true);
 			break;
 		case 1:
 			//Edit za profesore

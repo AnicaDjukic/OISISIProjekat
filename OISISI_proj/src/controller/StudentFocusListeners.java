@@ -25,7 +25,7 @@ public class StudentFocusListeners implements FocusListener {
 		JTextField txt = (JTextField) e.getComponent();
 		
 		String name = txt.getName();
-		String input = txt.getText();
+		String input = txt.getText().trim();
 		
 		if(!regularInput(name, input)) {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -50,41 +50,60 @@ public class StudentFocusListeners implements FocusListener {
 			return Checker.isValidNumber(input, 0);
 		if(name.equals(GlobalConstants.emailLab))
 			return Checker.isValidEmail(input);
-		if(name.equals(GlobalConstants.indexLab))
-			return Checker.isValidIndex(input);
-		if(name.equals(GlobalConstants.upisLab))
-			return Checker.isValidYear(input);
+		if(name.equals(GlobalConstants.indexLab)) {
+			if(!AddOrEditStudent.tGodUpisa.getText().equals("")) {
+				return (Checker.isValidIndex(input) && input.substring(input.length()-4).equals(AddOrEditStudent.tGodUpisa.getText().trim()));
+			} else {
+				return Checker.isValidIndex(input);
+			} 
+		}
+		if(name.equals(GlobalConstants.upisLab)) {
+			if(!AddOrEditStudent.tBrIndexa.getText().equals("")) {
+				return (Checker.isValidYear(input) && AddOrEditStudent.tBrIndexa.getText().trim().substring(AddOrEditStudent.tBrIndexa.getText().trim().length()-4).equals(input));
+			}
+			else {
+				System.out.println(input);
+				return Checker.isValidYear(input);
+			}
+		}
 		
 		return false;
 	}
 	
 	public void enableOrDisableButton() {
 		boolean enableButton = true;
-		if(AddOrEditStudent.tIme.getForeground() == Color.RED || AddOrEditStudent.tIme.getText().trim().equals(""))
+		if(!Checker.isNameOrSurename(AddOrEditStudent.tIme.getText().trim())  || AddOrEditStudent.tIme.getText().trim().equals("")) {
+			AddOrEditStudent.tIme.setForeground(Color.RED);
 			enableButton = false;
-		
-		if(AddOrEditStudent.tPrezime.getForeground() == Color.RED || AddOrEditStudent.tPrezime.getText().trim().equals(""))
+		}
+		if(!Checker.isNameOrSurename(AddOrEditStudent.tPrezime.getText().trim()) || AddOrEditStudent.tPrezime.getText().trim().equals("")) {
+			AddOrEditStudent.tPrezime.setForeground(Color.RED);
 			enableButton = false;
-		
-		if(AddOrEditStudent.tDatRodj.getForeground() == Color.RED || AddOrEditStudent.tDatRodj.getText().trim().equals(""))
+		}
+		if(!Checker.isValidDate(AddOrEditStudent.tDatRodj.getText().trim()) || AddOrEditStudent.tDatRodj.getText().trim().equals("")) {
+			AddOrEditStudent.tDatRodj.setForeground(Color.RED);
 			enableButton = false;
-		
-		if(AddOrEditStudent.tAdrStan.getForeground() == Color.RED || AddOrEditStudent.tAdrStan.getText().trim().equals(""))
+		}
+		if(!Checker.isValidAdrress(AddOrEditStudent.tAdrStan.getText().trim()) || AddOrEditStudent.tAdrStan.getText().trim().equals("")) {
+			AddOrEditStudent.tAdrStan.setForeground(Color.RED);
 			enableButton = false;
-		
-		if(AddOrEditStudent.tBrTel.getForeground() == Color.RED || AddOrEditStudent.tBrTel.getText().trim().equals(""))
+		}
+		if(!Checker.isValidNumber(AddOrEditStudent.tBrTel.getText().trim(),0) || AddOrEditStudent.tBrTel.getText().trim().equals("")) {
+			AddOrEditStudent.tBrTel.setForeground(Color.RED);
 			enableButton = false;
-			
-		if(AddOrEditStudent.tEmail.getForeground() == Color.RED || AddOrEditStudent.tEmail.getText().trim().equals(""))
+		}
+		if(!Checker.isValidEmail(AddOrEditStudent.tEmail.getText().trim()) || AddOrEditStudent.tEmail.getText().trim().equals("")) {
+			AddOrEditStudent.tEmail.setForeground(Color.RED);
 			enableButton = false;
-		
-		if(AddOrEditStudent.tBrIndexa.getForeground() == Color.RED || AddOrEditStudent.tBrIndexa.getText().trim().equals(""))
+		}
+		if(!regularInput(GlobalConstants.indexLab, AddOrEditStudent.tBrIndexa.getText().trim()) || AddOrEditStudent.tBrIndexa.getText().trim().equals("")) {
+			AddOrEditStudent.tBrIndexa.setForeground(Color.RED);
 			enableButton = false;
-		
-		if(AddOrEditStudent.tGodUpisa.getForeground() == Color.RED || AddOrEditStudent.tGodUpisa.getText().trim().equals(""))
+		}
+		if(!regularInput(GlobalConstants.upisLab, AddOrEditStudent.tGodUpisa.getText().trim()) || AddOrEditStudent.tGodUpisa.getText().trim().equals("")) {
+			AddOrEditStudent.tGodUpisa.setForeground(Color.RED);
 			enableButton = false;
-		
-		
+		}
 		AddOrEditStudent.potvrdi.setEnabled(enableButton);
 	}
 	
