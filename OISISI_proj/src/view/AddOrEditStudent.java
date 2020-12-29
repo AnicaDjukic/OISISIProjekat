@@ -1,18 +1,31 @@
 package view;
 
 
-import model.*;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 import controller.ControllerStudent;
 import controller.StudentFocusListeners;
+import model.GlobalConstants;
+import model.Student;
 
 public class AddOrEditStudent extends JPanel {
 	
@@ -25,8 +38,10 @@ public class AddOrEditStudent extends JPanel {
 	public static JButton potvrdi, odustani;
 	private ErrorDialog err;
 	
+	public static AddOrEditStudent inst;
 	
 	public AddOrEditStudent(int mode, AddOrEditDialog dialog) {
+		inst = this;
 		controller = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(400,500));
@@ -154,7 +169,9 @@ public class AddOrEditStudent extends JPanel {
 			
 			//Nepolozeni ispiti :
 			JButton dodajPredmet = new JButton(GlobalConstants.btnDodaj);
+			dodajPredmet.addActionListener(new MyDodajPredListener());
 			JButton obrisiPredmet = new JButton(GlobalConstants.btnObrisi);
+			obrisiPredmet.addActionListener(new MyObrisiPredListener());
 			JButton polaganjePredmeta = new JButton(GlobalConstants.btnPolaganje);
 			
 			JPanel topSep = new JPanel();
@@ -345,5 +362,42 @@ public class AddOrEditStudent extends JPanel {
 		
 		return panel;
 	}
+	
+	class MyDodajPredListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			DodajPredStudentu dps = new DodajPredStudentu(student); 
+			dps.setVisible(true);
+		}
+	}
+	
+	class MyObrisiPredListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			int[] selectedIndexes = TabelaPredmeti.instStud.getSelectedRows();
+			
+			ArrayList<String> selectedPreds = new ArrayList<String>();
+			String temp;
+			for(int i : selectedIndexes) {
+				temp = (String) TabelaPredmeti.instStud.getValueAt(i, 0);
+				selectedPreds.add(temp);
+			}
+			
+			String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+			int code = JOptionPane.showOptionDialog(AddOrEditStudent.inst, GlobalConstants.upitBrisanjePredKodStud, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+			if(code == JOptionPane.YES_OPTION) {	
+				GlavniProzor.getControllerStudent().obrisiPredmete(selectedPreds, student);
+				TabelaPredmeti.azurirajTabeluStud(student.getBrIndexa());
+			}
+			
+		}
+		
+	}
+	
 	
 }

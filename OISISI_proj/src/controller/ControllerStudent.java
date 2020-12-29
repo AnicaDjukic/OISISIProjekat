@@ -60,7 +60,37 @@ public class ControllerStudent {
 			s.getNepolozeniIspiti().add(new Predmet());
 		}
 	}
+	
+	//Provera da li predmet postoji bilo gde kod studenta :
+	public boolean proveriPred(Student s, Predmet p) {
+		for(Ocena o : s.getPolozeniIspiti())
+			if(o.getPredmet().equals(p))
+				return true;
 		
+		for(Predmet pred : s.getNepolozeniIspiti())
+			if(pred.equals(p))
+				return true;
+		
+		return false;
+	}
+	
+	
+	public void dodajNepolozenePredmete(ArrayList<String> newPreds, Student stud) {
+		for(String s : newPreds)
+			stud.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet(s));
+	}
+	
+	//Brisanje nepolozenih predmeta kod studenta :
+	public void obrisiPredmete(ArrayList<String> predIds, Student s) {
+		for(String str : predIds)
+			for(Predmet p : s.getNepolozeniIspiti()) {
+				if(p.getSifPred().equals(str)) {
+					s.getNepolozeniIspiti().remove(p);
+					break;
+				}
+			}
+	}
+	
 	public boolean dodajStudenta(Student s) {
 		if(listaStudenti.isEmpty()) {
 			listaStudenti.add(s);
