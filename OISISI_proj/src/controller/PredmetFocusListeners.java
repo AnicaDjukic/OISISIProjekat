@@ -31,6 +31,8 @@ public class PredmetFocusListeners implements FocusListener {
 		if(!regularInput(name, input)) {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 			txt.setForeground(Color.RED);
+		} else {
+			txt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 		
 		enableOrDisableButton();
@@ -62,13 +64,11 @@ public class PredmetFocusListeners implements FocusListener {
 			enableButton = false;
 		
 		if(!Checker.isValidNamePred(AddOrEditPredmet.tNaziv.getText()) || AddOrEditPredmet.tNaziv.getText().trim().equals("")) {
-			AddOrEditPredmet.tNaziv.setBorder(BorderFactory.createLineBorder(Color.RED));
 			AddOrEditPredmet.tNaziv.setForeground(Color.RED);
 			enableButton = false;
 		}
 		
 		if(!Checker.isValidEspb(AddOrEditPredmet.tEspb.getText()) || AddOrEditPredmet.tEspb.getText().trim().equals("")) {
-			AddOrEditPredmet.tEspb.setBorder(BorderFactory.createLineBorder(Color.RED));
 			AddOrEditPredmet.tEspb.setForeground(Color.RED);
 			enableButton = false;
 		}
