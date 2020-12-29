@@ -50,7 +50,7 @@ public class ControllerStudent {
 			s.setKonTel("12463278");
 			s.setEmail("gg@gmail.com");
 			s.setStatus("B");
-			s.setPosecnaOcena(0.0);
+			s.setProsecnaOcena(0.0);
 			dodajStudenta(s);
 		}
 	}
@@ -126,6 +126,25 @@ public class ControllerStudent {
 					break;
 				}
 		}
+	}
+	
+	public void sracunajProsecnuOcenu(Student s) {
+		double sum = 0;
+		int counter = 0;
+		for(Ocena o : s.getPolozeniIspiti()) {
+			counter++;
+			sum += o.getBrVrednost();
+		}
+		double d = sum/counter;
+		s.setProsecnaOcena(d);
+	}
+	
+	public void upisiOcenuStudentu(Student s, Ocena o) {
+		Predmet p = o.getPredmet();
+		s.getNepolozeniIspiti().remove(p);
+		s.getPolozeniIspiti().add(o);
+		
+		sracunajProsecnuOcenu(s);
 	}
 	
 	public JPanel createListPanel(JLabel label, JComboBox<String> text) {

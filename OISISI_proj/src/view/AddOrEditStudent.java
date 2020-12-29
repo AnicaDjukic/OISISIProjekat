@@ -20,11 +20,11 @@ import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 
 import controller.ControllerStudent;
 import controller.StudentFocusListeners;
 import model.GlobalConstants;
+import model.Predmet;
 import model.Student;
 
 public class AddOrEditStudent extends JPanel {
@@ -173,6 +173,7 @@ public class AddOrEditStudent extends JPanel {
 			JButton obrisiPredmet = new JButton(GlobalConstants.btnObrisi);
 			obrisiPredmet.addActionListener(new MyObrisiPredListener());
 			JButton polaganjePredmeta = new JButton(GlobalConstants.btnPolaganje);
+			polaganjePredmeta.addActionListener(new MyPolaganjeListener());
 			
 			JPanel topSep = new JPanel();
 			topSep.setMaximumSize(new Dimension(5,5));
@@ -319,7 +320,7 @@ public class AddOrEditStudent extends JPanel {
 					student.setGodUpisa(godUpisa);
 					student.setTrenutnaGodStud(trenutnaGod);
 					student.setStatus(finans);
-					student.setPosecnaOcena(prosek);
+					student.setProsecnaOcena(prosek);
 					
 					if(!index.equals(student.getBrIndexa()))
 						if(controller.nadjiStudenta(index) != null)
@@ -399,5 +400,29 @@ public class AddOrEditStudent extends JPanel {
 		
 	}
 	
+	class MyPolaganjeListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			int selectedIndex = TabelaPredmeti.instStud.getSelectedRow();
+			ErrorDialog err;
+			
+			if(selectedIndex == -1)
+				err = new ErrorDialog(GlobalConstants.greskaPriIzboruPredmeta);
+			else {
+				String temp = (String) TabelaPredmeti.instStud.getValueAt(selectedIndex, 0);
+				Predmet p = GlavniProzor.getControllerPredmet().nadjiPredmet(temp);
+				PolaganjeDijalog pd = new PolaganjeDijalog(p);
+				pd.setVisible(true);
+				
+			}
+		}
+		
+	}
+	
+	public Student getCurrStudent() {
+		return student;
+	}
 	
 }

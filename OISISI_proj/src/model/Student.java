@@ -19,7 +19,7 @@ public class Student {
 	private String godUpisa;			// godina upisa
 	private int trenutnaGodStud;		// trenutna godina studija
 	private StatusStudenta status;
-	private double posecnaOcena;
+	private double prosecnaOcena;
 	private ArrayList<Ocena> polozeniIspiti;		// spisak polozenih ispita (spisak ocena)
 	private ArrayList<Predmet> nepolozeniIspiti;	// spisak nepolozenih ispita
 	
@@ -91,11 +91,11 @@ public class Student {
 		else
 			this.status = StatusStudenta.S;
 	}
-	public double getPosecnaOcena() {
-		return posecnaOcena;
+	public double getProsecnaOcena() {
+		return prosecnaOcena;
 	}
-	public void setPosecnaOcena(double posecnaOcena) {
-		this.posecnaOcena = posecnaOcena;
+	public void setProsecnaOcena(double posecnaOcena) {
+		this.prosecnaOcena = posecnaOcena;
 	}
 	public ArrayList<Ocena> getPolozeniIspiti() {
 		return polozeniIspiti;
@@ -123,7 +123,7 @@ public class Student {
 		this.godUpisa = "";
 		this.trenutnaGodStud = 1;
 		this.status = StatusStudenta.B;
-		this.posecnaOcena = 0.0;
+		this.prosecnaOcena = 0.0;
 		this.polozeniIspiti = new ArrayList<Ocena>();
 		this.nepolozeniIspiti = new ArrayList<Predmet>();
 	}
@@ -143,7 +143,7 @@ public class Student {
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;
-		this.posecnaOcena = posecnaOcena;
+		this.prosecnaOcena = posecnaOcena;
 		this.polozeniIspiti = new ArrayList<Ocena>();
 		this.nepolozeniIspiti = new ArrayList<Predmet>();
 	}
@@ -154,7 +154,7 @@ public class Student {
 		
 		out = this.getIme() + "|" + this.getPrezime() + "|" + this.getDatumRodj() + "|" + this.getAdresaStan() + "|" + this.getKonTel() + "|";
 		out += this.getEmail() + "|" + this.getBrIndexa() + "|" + this.getGodUpisa() + "|" + this.getTrenutnaGodStud() + "|";
-		out += this.getStatus() + "|" + this.getPosecnaOcena() + "|";
+		out += this.getStatus() + "|" + String.format("%.2f", this.getProsecnaOcena()) + "|";
 		for(Ocena o : this.getPolozeniIspiti())
 			out += o.getPredmet().getSifPred() + "-" + o.getBrVrednost() + "-" + o.getDatumPolaganja() + ",";
 		

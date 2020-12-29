@@ -35,7 +35,9 @@ public class GlobalConstants {
 	public static String godIzvLab = "Godina*";
 	public static String semestarLab = "Semestar* ";
 	public static String espbLab = "ESPB* ";
-	public static String profLab = "Profesor";
+	public static String profLab = "Profesor*";
+	public static String ocenaLab = "Ocena*";
+	public static String datLab = "Datum*";
 	
 	//TextField tooltips :
 	public static String przImeToolTip = "Samo slova su dozvoljena";
@@ -76,6 +78,7 @@ public class GlobalConstants {
 	public static String btnObrisi = "Obriši";
 	public static String btnPolaganje = "Polaganje";
 	public static String upitBrisanjePredKodStud = "Da li ste sigurni da želite da obrišete izabrane predmete?";
+	public static String greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "New";
@@ -107,6 +110,7 @@ public class GlobalConstants {
 	public static String predAdd = "Dodavanje predmeta";
 	public static String predEdit = "Izmeni predmet";
 	public static String errName = "Greška";
+	public static String unosOcene = "Unos ocene";
 	
 	//Clomun names predmet : 
 	public static String spr = "Šifra predmeta : ";
@@ -149,5 +153,8 @@ public class GlobalConstants {
 	//Edit tab names :
 	public static String profEditTabOsnInf = "Informacije";
 	public static String profEditTabPrd = "Predmeti";
+	
+	//Possible marks :
+	public static String[] ocene = {"6","7","8","9","10"};
 	
 }
