@@ -6,6 +6,7 @@ import model.Student.StatusStudenta;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.ContainerOrderFocusTraversalPolicy;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.time.LocalDate;
@@ -131,7 +132,7 @@ public class AddOrEditStudent extends JPanel {
 				int selectedStudent = TabelaStudenti.table.getSelectedRow();
 				String indexStudenta = (String) TabelaStudenti.table.getValueAt(selectedStudent, 0);
 				
-				Student student = controller.nadjiStudenta(indexStudenta);
+				student = controller.nadjiStudenta(indexStudenta);
 				
 				tIme.setText(student.getIme());
 				tPrezime.setText(student.getPrezime());
@@ -147,9 +148,6 @@ public class AddOrEditStudent extends JPanel {
 					tFinans.setSelectedItem("Budžet");
 				else
 					tFinans.setSelectedItem("Samofinansiranje");
-				
-				tBrIndexa.setEditable(false);
-				tGodUpisa.setEditable(false);
 				
 				JPanel inf = new JPanel();
 				inf.setLayout(new BorderLayout());
@@ -241,18 +239,25 @@ public class AddOrEditStudent extends JPanel {
 				}
 				
 				if(mode == AddOrEditDialog.editMode) {
-					student = controller.nadjiStudenta(index);
 					student.setIme(ime);
 					student.setPrezime(prezime);
 					student.setDatumRodj(datRodj);
 					student.setAdresaStan(adresa);
 					student.setKonTel(konTel);
 					student.setEmail(email);
-					student.setBrIndexa(index);
 					student.setGodUpisa(godUpisa);
 					student.setTrenutnaGodStud(trenutnaGod);
 					student.setStatus(finans);
 					student.setPosecnaOcena(prosek);
+					
+					if(!index.equals(student.getBrIndexa()))
+						if(controller.nadjiStudenta(index) != null)
+							err = new ErrorDialog(GlobalConstants.errAddStud);
+						else
+							student.setBrIndexa(index);
+					else
+						student.setBrIndexa(index);
+					
 				}
 				
 				TabelaStudenti.updateTable();
