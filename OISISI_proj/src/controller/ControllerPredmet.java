@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+
+import model.GlobalConstants;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
@@ -95,6 +97,12 @@ public class ControllerPredmet {
 					p.getListaNepolozenih().remove(s);
 					break;
 				}
+	}
+	
+	public void obrisiProfSaSvihPredmeta(String brLicKart) {
+		for(Predmet p : listaPredmeta)
+			if(p.getProf().getBrLicKart().equals(brLicKart))
+				p.setProf(GlobalConstants.dummy);
 	}
 	
 	public void serialize() throws FileNotFoundException, IOException {

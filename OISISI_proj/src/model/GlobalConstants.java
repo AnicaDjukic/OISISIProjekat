@@ -79,8 +79,10 @@ public class GlobalConstants {
 	public static String btnPolaganje = "Polaganje";
 	public static String upitBrisanjePredKodStud = "Da li ste sigurni da želite da obrišete izabrane predmete?";
 	public static String greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
-	public static Object upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
+	public static String upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
 	public static String upitBrisanjeStudTitle = "Brisanje studenta";
+	public static String upitBrisanjeProf = "Da li ste sigurni da želite da obrišete izabranog profesora?";
+	public static String upitBrisanjeProfTitle = "Brisanje profesora";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "New";

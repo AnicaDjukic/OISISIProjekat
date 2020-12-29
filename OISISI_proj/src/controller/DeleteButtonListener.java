@@ -39,6 +39,20 @@ public class DeleteButtonListener implements ActionListener{
 			break;
 		case 1:
 			//brisanje profesora
+			int selectedProf = TabelaProfesora.inst.getSelectedRow();
+			
+			if(selectedProf != -1) {
+				String [] options = {GlobalConstants.yesOpt, GlobalConstants.noOpt};
+				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjeProf, GlobalConstants.upitBrisanjeProfTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+				if(code == JOptionPane.YES_OPTION) {
+					String brLicKart = (String)TabelaProfesora.inst.getValueAt(selectedProf, 0);
+					GlavniProzor.getControllerPredmet().obrisiProfSaSvihPredmeta(brLicKart);
+					GlavniProzor.getControllerProfesor().ukloniProfesora(brLicKart);
+					TabelaProfesora.azurirajTabelu();
+					GlavniProzor.serialize();
+				}
+			}
 			break;
 		case 2:
 			//brisanje predmeta
