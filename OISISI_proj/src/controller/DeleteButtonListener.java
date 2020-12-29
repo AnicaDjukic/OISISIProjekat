@@ -21,6 +21,17 @@ public class DeleteButtonListener implements ActionListener{
 		switch(tab) {
 		case 0 :
 			//brisanje studenta
+			int selectedStud = TabelaStudenti.table.getSelectedRow();
+			
+			if(selectedStud != -1) {
+				String [] options = {GlobalConstants.yesOpt, GlobalConstants.noOpt};
+				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjePred, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+				if(code == JOptionPane.YES_OPTION) {
+					
+					//GlavniProzor.getControllerStudent()
+				}
+			}
 			break;
 		case 1:
 			//brisanje profesora
