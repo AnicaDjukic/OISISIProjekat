@@ -44,6 +44,7 @@ public class AddOrEditStudent extends JPanel {
 		inst = this;
 		controller = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(400,450));
 				
 		JPanel glavni = new JPanel();
 		glavni.setLayout(new BoxLayout(glavni, BoxLayout.Y_AXIS));
