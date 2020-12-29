@@ -199,15 +199,17 @@ public class AddOrEditStudent extends JPanel {
 				String smer = tBrIndexa.getText().trim().split("-")[0];
 				String broj = tBrIndexa.getText().trim().split("-")[1];
 				String god = tBrIndexa.getText().trim().split("-")[2];
-				int brNula = 0;
-				for(int i = 0; i < broj.length(); i++) {
-					if(broj.charAt(i) == '0')
-						brNula++;
-					else
-						break;
+				if(!broj.equals("0")) {
+					int brNula = 0;
+					for(int i = 0; i < broj.length(); i++) {
+						if(broj.charAt(i) == '0')
+							brNula++;
+						else
+							break;
+					}
+					broj = broj.substring(brNula);
 				}
 				smer = smer.toLowerCase();
-				broj = broj.substring(brNula);
 				String index = smer + "-" + broj + "-" + god;
 				
 				String godUpisa = tGodUpisa.getText().trim();

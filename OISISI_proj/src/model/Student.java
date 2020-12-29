@@ -139,7 +139,7 @@ public class Student {
 		this.brIndexa = brIndexa;
 		this.godUpisa = godUpisa;
 		this.trenutnaGodStud = trenutnaGodStud;
-		if(status.toUpperCase().equals("B") || status.toUpperCase().equals("Budzet"))
+		if(status.toUpperCase().equals("B") || status.equals("Budžet"))
 			this.status = StatusStudenta.B;
 		else
 			this.status = StatusStudenta.S;

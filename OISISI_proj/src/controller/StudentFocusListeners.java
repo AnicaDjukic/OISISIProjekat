@@ -17,7 +17,7 @@ public class StudentFocusListeners implements FocusListener {
 		JTextField txt = (JTextField) e.getComponent();
 	
 		txt.setForeground(Color.BLACK);
-		txt.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		txt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 	}
 
 	@Override

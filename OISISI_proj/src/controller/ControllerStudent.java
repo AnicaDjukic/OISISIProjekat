@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -17,6 +18,7 @@ import model.Ocena;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
+import model.Predmet.GodIzv;
 
 public class ControllerStudent {
 	
@@ -27,7 +29,7 @@ public class ControllerStudent {
 	public ControllerStudent() {
 		listaStudenti = new ArrayList<Student>();
 			
-		//Initialize();
+		Initialize();
 	}
 		
 	public ArrayList<Student> getListaStudenata() {
@@ -35,26 +37,33 @@ public class ControllerStudent {
 	}
 		
 	public void Initialize() {
-		/*for(int i = 0; i < 10; i++) {
-			Student p = new Student();
-			p.setIme("" + i);
-			listaStudenti.add(p);
-         }*/
+		for(int i = 0; i < 10; i++) {
+			Student s = new Student();
+			s.setIme("ime ");
+			s.setPrezime("prz ");
+			s.setBrIndexa("ra-" + i + "-2018");
+			s.setGodUpisa("2019");
+			s.setTrenutnaGodStud(3);
+			s.setDatumRodj(LocalDate.parse("1999-01-01"));
+			s.setAdresaStan("gshasg 12");
+			s.setKonTel("12463278");
+			s.setEmail("gg@gmail.com");
+			s.setStatus("B");
+			s.setPosecnaOcena(0.0);
+			dodajStudenta(s);
+		}
 	}
 		
 	public boolean dodajStudenta(Student s) {
 		if(listaStudenti.isEmpty()) {
 			listaStudenti.add(s);
 			return true;
-		}
-			
+		}	
 		for(Student student: listaStudenti) {
 			if(student.getBrIndexa().equals(s.getBrIndexa())) {
 				return false;
-			}
-					
+			}			
 		}
-
 		listaStudenti.add(s);
 		return true;
 	}

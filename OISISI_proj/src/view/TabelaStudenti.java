@@ -22,12 +22,8 @@ public class TabelaStudenti extends JTable {
 		controller = GlavniProzor.getControllerStudent();
 		
 		initializeTable(table);		
-		
-		// Primer
-		/*Object[] prvi = {"RA15/2018", "Pera", "Peric", "3", "B" , "9.5"};
-		tabela.addRow(prvi);
-		
-		azurirajTabelu();*/
+
+		updateTable();
 	}
 	
 	public static void initializeTable(TabelaStudenti table) {
