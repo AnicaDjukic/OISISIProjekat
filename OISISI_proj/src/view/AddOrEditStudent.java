@@ -2,11 +2,8 @@ package view;
 
 
 import model.*;
-import model.Student.StatusStudenta;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.ContainerOrderFocusTraversalPolicy;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.time.LocalDate;
@@ -113,7 +110,6 @@ public class AddOrEditStudent extends JPanel {
 		JPanel dugmad = new JPanel();
 		
 		potvrdi = new JButton(GlobalConstants.btnOkName);
-		potvrdi.setEnabled(false);
 		dugmad.add(potvrdi);
 		
 		odustani = new JButton(GlobalConstants.btnCncName);
@@ -122,48 +118,46 @@ public class AddOrEditStudent extends JPanel {
 		if(mode == AddOrEditDialog.addMode) {
 			add(glavni, BorderLayout.NORTH);
 			add(dugmad,BorderLayout.SOUTH);
+			potvrdi.setEnabled(false);
 		}
 		
-		
 		if(mode == AddOrEditDialog.editMode) {
+				
+			int selectedStudent = TabelaStudenti.table.getSelectedRow();
+			String indexStudenta = (String) TabelaStudenti.table.getValueAt(selectedStudent, 0);
+				
+			student = controller.nadjiStudenta(indexStudenta);
+				
+			tIme.setText(student.getIme());
+			tPrezime.setText(student.getPrezime());
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+			tDatRodj.setText(dtf.format(student.getDatumRodj()));
+			tAdrStan.setText(student.getAdresaStan());
+			tBrTel.setText(student.getKonTel());
+			tEmail.setText(student.getEmail());
+			tBrIndexa.setText(student.getBrIndexa().split("/")[0]);
+			tGodUpisa.setText(student.getGodUpisa());
+			tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
+			if(student.getStatus().equals("B"))
+				tFinans.setSelectedItem("Budžet");
+			else
+				tFinans.setSelectedItem("Samofinansiranje");
+				
+			JPanel inf = new JPanel();
+			inf.setLayout(new BorderLayout());
+			inf.add(glavni,BorderLayout.NORTH);
+			inf.add(dugmad, BorderLayout.SOUTH);
+				
+			JPanel polozeni = new JPanel();
+			JPanel nepolozeni = new JPanel();
+				
+			JTabbedPane tabs = new JTabbedPane();
+			tabs.addTab("Informacije", inf);
+			tabs.addTab("Položeni", polozeni);
+			tabs.addTab("Nepoloženi", nepolozeni);
+			add(tabs);
 			
-			if(TabelaStudenti.table.getSelectedRow() != -1) {
-				
-				int selectedStudent = TabelaStudenti.table.getSelectedRow();
-				String indexStudenta = (String) TabelaStudenti.table.getValueAt(selectedStudent, 0);
-				
-				student = controller.nadjiStudenta(indexStudenta);
-				
-				tIme.setText(student.getIme());
-				tPrezime.setText(student.getPrezime());
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-				tDatRodj.setText(dtf.format(student.getDatumRodj()));
-				tAdrStan.setText(student.getAdresaStan());
-				tBrTel.setText(student.getKonTel());
-				tEmail.setText(student.getEmail());
-				tBrIndexa.setText(student.getBrIndexa().split("/")[0]);
-				tGodUpisa.setText(student.getGodUpisa());
-				tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
-				if(student.getStatus().equals("B"))
-					tFinans.setSelectedItem("Budžet");
-				else
-					tFinans.setSelectedItem("Samofinansiranje");
-				
-				JPanel inf = new JPanel();
-				inf.setLayout(new BorderLayout());
-				inf.add(glavni,BorderLayout.NORTH);
-				inf.add(dugmad, BorderLayout.SOUTH);
-				
-				JPanel polozeni = new JPanel();
-				JPanel nepolozeni = new JPanel();
-				
-				JTabbedPane tabs = new JTabbedPane();
-				tabs.addTab("Informacije", inf);
-				tabs.addTab("Položeni", polozeni);
-				tabs.addTab("Nepoloženi", nepolozeni);
-				add(tabs);
-			}
-			
+			potvrdi.setEnabled(true);
 		}
 		
 		odustani.addActionListener(new ActionListener() {

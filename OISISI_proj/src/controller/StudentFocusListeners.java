@@ -62,7 +62,6 @@ public class StudentFocusListeners implements FocusListener {
 				return (Checker.isValidYear(input) && AddOrEditStudent.tBrIndexa.getText().trim().substring(AddOrEditStudent.tBrIndexa.getText().trim().length()-4).equals(input));
 			}
 			else {
-				System.out.println(input);
 				return Checker.isValidYear(input);
 			}
 		}
@@ -72,6 +71,7 @@ public class StudentFocusListeners implements FocusListener {
 	
 	public void enableOrDisableButton() {
 		boolean enableButton = true;
+		
 		if(!Checker.isNameOrSurename(AddOrEditStudent.tIme.getText().trim())  || AddOrEditStudent.tIme.getText().trim().equals("")) {
 			AddOrEditStudent.tIme.setForeground(Color.RED);
 			enableButton = false;
@@ -99,10 +99,16 @@ public class StudentFocusListeners implements FocusListener {
 		if(!regularInput(GlobalConstants.indexLab, AddOrEditStudent.tBrIndexa.getText().trim()) || AddOrEditStudent.tBrIndexa.getText().trim().equals("")) {
 			AddOrEditStudent.tBrIndexa.setForeground(Color.RED);
 			enableButton = false;
+		} else {
+			AddOrEditStudent.tBrIndexa.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			AddOrEditStudent.tBrIndexa.setForeground(Color.BLACK);
 		}
 		if(!regularInput(GlobalConstants.upisLab, AddOrEditStudent.tGodUpisa.getText().trim()) || AddOrEditStudent.tGodUpisa.getText().trim().equals("")) {
 			AddOrEditStudent.tGodUpisa.setForeground(Color.RED);
 			enableButton = false;
+		} else {
+			AddOrEditStudent.tGodUpisa.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			AddOrEditStudent.tGodUpisa.setForeground(Color.BLACK);
 		}
 		AddOrEditStudent.potvrdi.setEnabled(enableButton);
 	}

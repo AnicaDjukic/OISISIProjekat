@@ -28,7 +28,6 @@ public class Checker {
 			try {
 				dtf = DateTimeFormatter.ofPattern(GlobalConstants.regExDatePoss[i]);
 				d = LocalDate.parse(str, dtf);
-				System.out.println(parts.length);
 				suc = true;
 				break;
 			}catch(Exception ex) {
