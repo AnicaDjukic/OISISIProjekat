@@ -38,7 +38,7 @@ public class StudentFocusListeners implements FocusListener {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 	
-	public boolean regularInput(String name, String input) {
+	public static boolean regularInput(String name, String input) {
 
 		if(name.equals(GlobalConstants.imeLab) || name.equals(GlobalConstants.przLab))
 			return Checker.isNameOrSurename(input);
@@ -69,7 +69,7 @@ public class StudentFocusListeners implements FocusListener {
 		return false;
 	}
 	
-	public void enableOrDisableButton() {
+	public static void enableOrDisableButton() {
 		boolean enableButton = true;
 		
 		if(!Checker.isNameOrSurename(AddOrEditStudent.tIme.getText().trim())  || AddOrEditStudent.tIme.getText().trim().equals("")) {
@@ -100,14 +100,14 @@ public class StudentFocusListeners implements FocusListener {
 			AddOrEditStudent.tBrIndexa.setForeground(Color.RED);
 			enableButton = false;
 		} else {
-			AddOrEditStudent.tBrIndexa.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			AddOrEditStudent.tBrIndexa.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 			AddOrEditStudent.tBrIndexa.setForeground(Color.BLACK);
 		}
 		if(!regularInput(GlobalConstants.upisLab, AddOrEditStudent.tGodUpisa.getText().trim()) || AddOrEditStudent.tGodUpisa.getText().trim().equals("")) {
 			AddOrEditStudent.tGodUpisa.setForeground(Color.RED);
 			enableButton = false;
 		} else {
-			AddOrEditStudent.tGodUpisa.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			AddOrEditStudent.tGodUpisa.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 			AddOrEditStudent.tGodUpisa.setForeground(Color.BLACK);
 		}
 		AddOrEditStudent.potvrdi.setEnabled(enableButton);

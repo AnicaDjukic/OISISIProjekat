@@ -118,7 +118,6 @@ public class AddOrEditStudent extends JPanel {
 		if(mode == AddOrEditDialog.addMode) {
 			add(glavni, BorderLayout.NORTH);
 			add(dugmad,BorderLayout.SOUTH);
-			potvrdi.setEnabled(false);
 		}
 		
 		if(mode == AddOrEditDialog.editMode) {
@@ -157,8 +156,9 @@ public class AddOrEditStudent extends JPanel {
 			tabs.addTab("Nepoloženi", nepolozeni);
 			add(tabs);
 			
-			potvrdi.setEnabled(true);
 		}
+		
+		StudentFocusListeners.enableOrDisableButton();
 		
 		odustani.addActionListener(new ActionListener() {
 			
