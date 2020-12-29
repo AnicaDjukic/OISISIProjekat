@@ -55,6 +55,7 @@ public class MyMenuBar extends JMenuBar {
 		miEdit.addActionListener(new EditButtonListener());
 		JMenuItem miDelete = new JMenuItem(GlobalConstants.menuDelete, new ImageIcon(GlobalConstants.delImg));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+		miDelete.addActionListener(new DeleteButtonListener());
 		
 		mEdit.setMnemonic(KeyEvent.VK_E);
 		miEdit.setMnemonic(KeyEvent.VK_E);

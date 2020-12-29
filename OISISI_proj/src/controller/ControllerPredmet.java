@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.*;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 import view.AddOrEditPredmet;
 import view.GlavniProzor;
 
@@ -75,6 +76,25 @@ public class ControllerPredmet {
 			if(p.getSifPred().toLowerCase().indexOf(text) != -1)
 				foundSifPred.add(p.getSifPred());
 		return foundSifPred;
+	}
+	
+	
+	public void obrisiStudentaIzSvihListaPolozenih(String index) {
+		for(Predmet p: listaPredmeta) 
+			for(Student s: p.getListaPolozenih())
+				if(s.getBrIndexa().equals(index)) { 
+					p.getListaPolozenih().remove(s);
+					break;
+				}
+	}
+	
+	public void obrisiStudentaIzSvihListaNepolozenih(String index) {
+		for(Predmet p: listaPredmeta) 
+			for(Student s: p.getListaNepolozenih())
+				if(s.getBrIndexa().equals(index)) {
+					p.getListaNepolozenih().remove(s);
+					break;
+				}
 	}
 	
 	public void serialize() throws FileNotFoundException, IOException {
