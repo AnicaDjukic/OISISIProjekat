@@ -18,6 +18,7 @@ import model.Ocena;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
+import view.GlavniProzor;
 import model.Predmet.GodIzv;
 
 public class ControllerStudent {
@@ -51,6 +52,12 @@ public class ControllerStudent {
 			s.setStatus("B");
 			s.setPosecnaOcena(0.0);
 			dodajStudenta(s);
+		}
+	}
+	//Testiranje za prikaz nepolozenih ispita : 
+	public void testAddNepo() {
+		for(Student s : listaStudenti) {
+			s.getNepolozeniIspiti().add(new Predmet());
 		}
 	}
 		

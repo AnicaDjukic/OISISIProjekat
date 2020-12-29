@@ -29,6 +29,7 @@ public class AddOrEditStudent extends JPanel {
 	public AddOrEditStudent(int mode, AddOrEditDialog dialog) {
 		controller = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(400,500));
 				
 		JPanel glavni = new JPanel();
 		glavni.setLayout(new BoxLayout(glavni, BoxLayout.Y_AXIS));
@@ -149,6 +150,63 @@ public class AddOrEditStudent extends JPanel {
 				
 			JPanel polozeni = new JPanel();
 			JPanel nepolozeni = new JPanel();
+			nepolozeni.setLayout(new BoxLayout(nepolozeni, BoxLayout.Y_AXIS));
+			
+			//Nepolozeni ispiti :
+			JButton dodajPredmet = new JButton(GlobalConstants.btnDodaj);
+			JButton obrisiPredmet = new JButton(GlobalConstants.btnObrisi);
+			JButton polaganjePredmeta = new JButton(GlobalConstants.btnPolaganje);
+			
+			JPanel topSep = new JPanel();
+			topSep.setMaximumSize(new Dimension(5,5));
+			nepolozeni.add(topSep);
+			
+			JPanel buttons = new JPanel();
+			buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
+			JSeparator btnSep1 = new JSeparator(SwingConstants.VERTICAL);
+			btnSep1.setMaximumSize(new Dimension(20,0));
+			JSeparator btnSep2 = new JSeparator(SwingConstants.VERTICAL);
+			btnSep2.setMaximumSize(new Dimension(5,0));
+			JSeparator btnSep3 = new JSeparator(SwingConstants.VERTICAL);
+			btnSep3.setMaximumSize(new Dimension(5,0));
+			JSeparator btnSep4 = new JSeparator(SwingConstants.VERTICAL);
+			btnSep4.setMaximumSize(new Dimension(200,0));
+			
+			buttons.add(btnSep1);
+			buttons.add(dodajPredmet);
+			buttons.add(btnSep2);
+			buttons.add(obrisiPredmet);
+			buttons.add(btnSep3);
+			buttons.add(polaganjePredmeta);
+			buttons.add(btnSep4);
+			
+			nepolozeni.add(buttons);
+			
+			JPanel cenSep = new JPanel();
+			cenSep.setMaximumSize(new Dimension(5,5));
+			cenSep.setPreferredSize(new Dimension(5,5));
+			nepolozeni.add(cenSep);
+			
+			TabelaPredmeti nepoStud = new TabelaPredmeti(2);
+			
+			JScrollPane scrPane = new JScrollPane(nepoStud);
+			scrPane.setMaximumSize(new Dimension(350, 400));
+			TabelaPredmeti.azurirajTabeluStud(tBrIndexa.getText());
+			
+			JPanel centralni = new JPanel();
+			centralni.setLayout(new BoxLayout(centralni, BoxLayout.X_AXIS));
+			JPanel sepCen1 = new JPanel();
+			sepCen1.setPreferredSize(new Dimension(15,0));
+			
+			JPanel sepCen2 = new JPanel();
+			sepCen2.setPreferredSize(new Dimension(15,0));
+			
+			centralni.add(sepCen1);
+			centralni.add(scrPane);
+			centralni.add(sepCen2);
+			
+			nepolozeni.add(centralni);
+			
 				
 			JTabbedPane tabs = new JTabbedPane();
 			tabs.addTab("Informacije", inf);

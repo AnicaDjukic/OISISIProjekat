@@ -184,7 +184,7 @@ public class AddOrEditProfesor extends JPanel{
 			pom.setLayout(new BorderLayout());
 			pom.add(northPom, BorderLayout.NORTH);
 			
-			TabelaPredmeti tabelaPredmetaProf = new TabelaPredmeti(true);
+			TabelaPredmeti tabelaPredmetaProf = new TabelaPredmeti(1);
 			TabelaPredmeti.azurirajTabeluProf(p);
 			
 			JScrollPane listPane = new JScrollPane(tabelaPredmetaProf);

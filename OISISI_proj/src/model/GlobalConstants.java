@@ -65,13 +65,16 @@ public class GlobalConstants {
 	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
 	public static String yesOpt = "Da";
 	public static String noOpt = "Ne";
-	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
+	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani predmet?";
 	public static String upitSklanjanjeProfTitle = "Uklanjanje profesora";
 	public static String upitSklanjanjeProfSaPred = "Da li ste sigurni da želite da uklonite izabranog profesora sa predmeta?";
 	public static String upitBrisanjePredTitle = "Brisanje predmeta";
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
 	public static String dodavanjeProfPredDialog = "Odaberi profesora";
 	public static String predmetiTekst = "Predmeti :";
+	public static String btnDodaj = "Dodaj";
+	public static String btnObrisi = "Obriši";
+	public static String btnPolaganje = "Polaganje";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "New";
