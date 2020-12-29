@@ -17,7 +17,7 @@ public class StudentFocusListeners implements FocusListener {
 		JTextField txt = (JTextField) e.getComponent();
 	
 		txt.setForeground(Color.BLACK);
-		txt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		txt.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 
 	@Override
@@ -30,6 +30,8 @@ public class StudentFocusListeners implements FocusListener {
 		if(!regularInput(name, input)) {
 			txt.setBorder(BorderFactory.createLineBorder(Color.RED));
 			txt.setForeground(Color.RED);
+		} else {
+			txt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 		
 		enableOrDisableButton();
