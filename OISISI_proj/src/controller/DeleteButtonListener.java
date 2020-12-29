@@ -25,11 +25,15 @@ public class DeleteButtonListener implements ActionListener{
 			
 			if(selectedStud != -1) {
 				String [] options = {GlobalConstants.yesOpt, GlobalConstants.noOpt};
-				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjePred, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjeStud, GlobalConstants.upitBrisanjeStudTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			
 				if(code == JOptionPane.YES_OPTION) {
-					
-					//GlavniProzor.getControllerStudent()
+					String index = (String)TabelaStudenti.table.getValueAt(selectedStud, 0);
+					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaPolozenih(index);
+					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaNepolozenih(index);
+					GlavniProzor.getControllerStudent().obrisiStudenta(index);
+					TabelaStudenti.updateTable();
+					GlavniProzor.serialize();
 				}
 			}
 			break;

@@ -103,6 +103,14 @@ public class ControllerStudent {
 		return panel;
 	}
 	
+	public void obrisiStudenta(String index) {
+		for(Student s : listaStudenti)
+			if(s.getBrIndexa().equals(index)) {
+				listaStudenti.remove(s);
+				break;
+			}
+	}
+	
 	public void serialize() throws FileNotFoundException, IOException {
 		File profesori = new File("resources" + File.separator + "Studenti.txt");
 		profesori.delete();
@@ -113,5 +121,5 @@ public class ControllerStudent {
 				dos.writeBytes(p.toString() + "\n");
 		}
 	}
-
+	
 }

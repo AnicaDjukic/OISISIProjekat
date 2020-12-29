@@ -72,6 +72,8 @@ public class GlobalConstants {
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
 	public static String dodavanjeProfPredDialog = "Odaberi profesora";
 	public static String predmetiTekst = "Predmeti :";
+	public static Object upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
+	public static String upitBrisanjeStudTitle = "Brisanje studenta";
 	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "New";
