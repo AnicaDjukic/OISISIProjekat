@@ -76,8 +76,10 @@ public class ControllerStudent {
 	
 	
 	public void dodajNepolozenePredmete(ArrayList<String> newPreds, Student stud) {
-		for(String s : newPreds)
+		for(String s : newPreds) {
 			stud.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet(s));
+			GlavniProzor.getControllerPredmet().nadjiPredmet(s).getListaNepolozenih().add(stud);
+		}
 	}
 	
 	//Brisanje nepolozenih predmeta kod studenta :
@@ -86,6 +88,7 @@ public class ControllerStudent {
 			for(Predmet p : s.getNepolozeniIspiti()) {
 				if(p.getSifPred().equals(str)) {
 					s.getNepolozeniIspiti().remove(p);
+					p.getListaNepolozenih().remove(s);
 					break;
 				}
 			}
@@ -142,7 +145,9 @@ public class ControllerStudent {
 	public void upisiOcenuStudentu(Student s, Ocena o) {
 		Predmet p = o.getPredmet();
 		s.getNepolozeniIspiti().remove(p);
+		o.getPredmet().getListaNepolozenih().remove(s);
 		s.getPolozeniIspiti().add(o);
+		o.getPredmet().getListaPolozenih().add(s);
 		
 		sracunajProsecnuOcenu(s);
 	}

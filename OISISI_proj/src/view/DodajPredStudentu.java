@@ -100,6 +100,7 @@ public class DodajPredStudentu extends JDialog{
 			TabelaPredmeti.azurirajTabeluStud(stud.getBrIndexa());
 			
 			//Dodaj serijalizaciju
+			GlavniProzor.serialize();
 			
 			getter().setVisible(false);
 		}
