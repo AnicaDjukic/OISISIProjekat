@@ -21,11 +21,11 @@ public class TabelaPredmeti extends JTable {
 	private static Object[] colNames = {GlobalConstants.spr, GlobalConstants.npr, GlobalConstants.espb,GlobalConstants.god, GlobalConstants.sem};
 	static DefaultTableModel model;
 	static DefaultTableModel modelProf;
-	static DefaultTableModel modelStud;
+	static DefaultTableModel modelStudNepo;
 	static ControllerPredmet controllerPredmet;
 	public static TabelaPredmeti inst;
 	public static TabelaPredmeti instProf;
-	public static TabelaPredmeti instStud;
+	public static TabelaPredmeti instStudNepo;
 	
 	private static Object[] colNamesProf = {GlobalConstants.spr, GlobalConstants.npr, GlobalConstants.god, GlobalConstants.sem};
 	
@@ -38,8 +38,10 @@ public class TabelaPredmeti extends JTable {
 			instProf = this;
 			break;
 		case 2:
-			instStud = this;
+			instStudNepo = this;
 			break;
+		case 3:
+			//Instanca za polozene predmete :
 		}
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -85,14 +87,14 @@ public class TabelaPredmeti extends JTable {
 			for(int i = 0; i < colNamesProf.length; i++)
 				t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		} else if(sluc == 2) {
-			modelStud = new DefaultTableModel() {
+			modelStudNepo = new DefaultTableModel() {
 				@Override
 				public boolean isCellEditable(int row, int column) {
 					return false;
 				}
 			};
-			modelStud.setColumnIdentifiers(colNames);
-			t.setModel(modelStud);
+			modelStudNepo.setColumnIdentifiers(colNames);
+			t.setModel(modelStudNepo);
 			t.setRowHeight(20);
 			t.setAutoCreateRowSorter(true);
 			
@@ -105,10 +107,10 @@ public class TabelaPredmeti extends JTable {
 	
 	//Metoda za aruriranje tabele predmeta kod studenta :
 	
-	public static void azurirajTabeluStud(String brInd) {
+	public static void azurirajTabeluStudNepo(String brInd) {
 		ArrayList<Predmet> listaPredmeta = GlavniProzor.getControllerStudent().nadjiStudenta(brInd).getNepolozeniIspiti();
 		
-		tableInitialize(instStud,2);
+		tableInitialize(instStudNepo,2);
 		
 		String sifra,naziv,espb,godina,semestar;
 		Object[] row = {"", "", "","",""};
@@ -125,7 +127,7 @@ public class TabelaPredmeti extends JTable {
 			row[3] = godina;
 			row[4] = semestar;
 			
-			modelStud.addRow(row);
+			modelStudNepo.addRow(row);
 		}
 	}
 

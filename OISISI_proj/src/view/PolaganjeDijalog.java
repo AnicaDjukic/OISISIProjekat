@@ -182,7 +182,7 @@ public class PolaganjeDijalog extends JDialog{
 			Ocena oc = new Ocena(currStudent, pred, getSelectedOc(), typedDate);
 			GlavniProzor.getControllerStudent().upisiOcenuStudentu(currStudent, oc);
 			
-			TabelaPredmeti.instStud.azurirajTabeluStud(currStudent.getBrIndexa());
+			TabelaPredmeti.instStudNepo.azurirajTabeluStudNepo(currStudent.getBrIndexa());
 			TabelaStudenti.table.updateTable();
 			
 			getter().setVisible(false);

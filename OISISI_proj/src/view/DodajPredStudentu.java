@@ -97,7 +97,7 @@ public class DodajPredStudentu extends JDialog{
 			
 			GlavniProzor.getControllerStudent().dodajNepolozenePredmete(selectedPredIds, stud);
 			
-			TabelaPredmeti.azurirajTabeluStud(stud.getBrIndexa());
+			TabelaPredmeti.azurirajTabeluStudNepo(stud.getBrIndexa());
 			
 			//Dodaj serijalizaciju
 			GlavniProzor.serialize();

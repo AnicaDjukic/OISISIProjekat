@@ -209,7 +209,7 @@ public class AddOrEditStudent extends JPanel {
 			
 			JScrollPane scrPane = new JScrollPane(nepoStud);
 			scrPane.setMaximumSize(new Dimension(350, 400));
-			TabelaPredmeti.azurirajTabeluStud(tBrIndexa.getText());
+			TabelaPredmeti.azurirajTabeluStudNepo(tBrIndexa.getText());
 			
 			JPanel centralni = new JPanel();
 			centralni.setLayout(new BoxLayout(centralni, BoxLayout.X_AXIS));
@@ -379,12 +379,12 @@ public class AddOrEditStudent extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			int[] selectedIndexes = TabelaPredmeti.instStud.getSelectedRows();
+			int[] selectedIndexes = TabelaPredmeti.instStudNepo.getSelectedRows();
 			
 			ArrayList<String> selectedPreds = new ArrayList<String>();
 			String temp;
 			for(int i : selectedIndexes) {
-				temp = (String) TabelaPredmeti.instStud.getValueAt(i, 0);
+				temp = (String) TabelaPredmeti.instStudNepo.getValueAt(i, 0);
 				selectedPreds.add(temp);
 			}
 			
@@ -393,7 +393,7 @@ public class AddOrEditStudent extends JPanel {
 			
 			if(code == JOptionPane.YES_OPTION) {	
 				GlavniProzor.getControllerStudent().obrisiPredmete(selectedPreds, student);
-				TabelaPredmeti.azurirajTabeluStud(student.getBrIndexa());
+				TabelaPredmeti.azurirajTabeluStudNepo(student.getBrIndexa());
 			}
 			
 		}
@@ -405,13 +405,13 @@ public class AddOrEditStudent extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			int selectedIndex = TabelaPredmeti.instStud.getSelectedRow();
+			int selectedIndex = TabelaPredmeti.instStudNepo.getSelectedRow();
 			ErrorDialog err;
 			
 			if(selectedIndex == -1)
 				err = new ErrorDialog(GlobalConstants.greskaPriIzboruPredmeta);
 			else {
-				String temp = (String) TabelaPredmeti.instStud.getValueAt(selectedIndex, 0);
+				String temp = (String) TabelaPredmeti.instStudNepo.getValueAt(selectedIndex, 0);
 				Predmet p = GlavniProzor.getControllerPredmet().nadjiPredmet(temp);
 				PolaganjeDijalog pd = new PolaganjeDijalog(p);
 				pd.setVisible(true);
