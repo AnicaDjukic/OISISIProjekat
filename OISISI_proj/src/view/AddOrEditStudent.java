@@ -349,12 +349,10 @@ public class AddOrEditStudent extends JPanel {
 				
 				String finans = (String)(tFinans.getSelectedItem());
 				
-				// za sada
-				double prosek = 0.0;
-				
 				dialog.setVisible(false);
 				
 				if(mode == AddOrEditDialog.addMode) {
+					double prosek = 0.0;
 					student = new Student(prezime, ime, datRodj, adresa, konTel, email, index, godUpisa, trenutnaGod, finans, prosek);
 					if(!controller.dodajStudenta(student))
 						err = new ErrorDialog(GlobalConstants.errAddStud);
@@ -370,7 +368,6 @@ public class AddOrEditStudent extends JPanel {
 					student.setGodUpisa(godUpisa);
 					student.setTrenutnaGodStud(trenutnaGod);
 					student.setStatus(finans);
-					student.setProsecnaOcena(prosek);
 					
 					if(!index.equals(student.getBrIndexa()))
 						if(controller.nadjiStudenta(index) != null)
