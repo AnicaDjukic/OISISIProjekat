@@ -3,6 +3,7 @@ package view;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ControllerStudent;
@@ -41,6 +42,7 @@ public class TabelaStudenti extends JTable {
 		table.setRowHeight(35);
 		table.setAutoCreateRowSorter(true);
 		table.setFont(table.getFont().deriveFont(16f));
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		// Centriranje
 		NasCellRenderer prikaz = new NasCellRenderer(NasCellRenderer.studentRenderer);
