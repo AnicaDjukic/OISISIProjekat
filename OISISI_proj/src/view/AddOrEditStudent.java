@@ -3,12 +3,14 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,6 +26,7 @@ import javax.swing.SwingConstants;
 import controller.ControllerStudent;
 import controller.StudentFocusListeners;
 import model.GlobalConstants;
+import model.Ocena;
 import model.Predmet;
 import model.Student;
 
@@ -44,7 +47,8 @@ public class AddOrEditStudent extends JPanel {
 		inst = this;
 		controller = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(400,450));
+		if(mode == AddOrEditDialog.editMode)
+			setPreferredSize(new Dimension(400,450));
 				
 		JPanel glavni = new JPanel();
 		glavni.setLayout(new BoxLayout(glavni, BoxLayout.Y_AXIS));
@@ -224,6 +228,48 @@ public class AddOrEditStudent extends JPanel {
 			centralni.add(sepCen2);
 			
 			nepolozeni.add(centralni);
+			
+			// Polozeni ispiti :
+			polozeni.setLayout(new BoxLayout(polozeni, BoxLayout.Y_AXIS));
+			
+			JPanel btnPanel = new JPanel(new FlowLayout(10,15,10));
+			JButton ponistiOcenu = new JButton(GlobalConstants.btnPonisti);
+			btnPanel.add(ponistiOcenu);
+			polozeni.add(btnPanel);
+			
+			TabelaOcena ocene = new TabelaOcena(tBrIndexa.getText());
+			JScrollPane scroll = new JScrollPane(ocene);
+			scroll.setMaximumSize(new Dimension(350, 350));
+			TabelaOcena.updateTable(tBrIndexa.getText());
+			
+			JPanel tabelaPanel = new JPanel();
+			tabelaPanel.setLayout(new BoxLayout(tabelaPanel, BoxLayout.X_AXIS));
+			
+			JPanel sep1 = new JPanel();
+			sep1.setPreferredSize(new Dimension(15,0));
+			
+			JPanel sep2 = new JPanel();
+			sep2.setPreferredSize(new Dimension(15,0));
+			
+			tabelaPanel.add(sep1);
+			tabelaPanel.add(scroll);
+			tabelaPanel.add(sep2);
+			
+			polozeni.add(tabelaPanel);
+			
+			JPanel labPanel = new JPanel();
+			labPanel.setLayout(new BoxLayout(labPanel, BoxLayout.Y_AXIS));
+			JLabel prosek = new JLabel("Prosečna ocena: " + student.getProsecnaOcena());
+			int EspbBodovi = 0;
+			for(Ocena o : student.getPolozeniIspiti()) {
+				EspbBodovi += o.getPredmet().getEspbBod();
+			}
+			JLabel ukupnoEspb = new JLabel("Ukupno ESPB: " + EspbBodovi);
+
+			labPanel.add(prosek);
+			labPanel.add(ukupnoEspb);
+			
+			polozeni.add(labPanel);
 			
 			JTabbedPane tabs = new JTabbedPane();
 			tabs.addTab("Informacije", inf);

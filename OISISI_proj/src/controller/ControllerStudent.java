@@ -19,6 +19,7 @@ import model.Predmet;
 import model.Profesor;
 import model.Student;
 import view.GlavniProzor;
+import view.TabelaOcena;
 import model.Predmet.GodIzv;
 
 public class ControllerStudent {
@@ -36,7 +37,7 @@ public class ControllerStudent {
 	public ArrayList<Student> getListaStudenata() {
 		return this.listaStudenti;
 	}
-		
+
 	public void Initialize() {
 		for(int i = 0; i < 10; i++) {
 			Student s = new Student();
