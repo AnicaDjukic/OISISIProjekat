@@ -191,7 +191,7 @@ public class PolaganjeDijalog extends JDialog{
 			GlavniProzor.serialize();
 			
 			//VAZNO : postaviti update u panelu polozeni ispiti za prosek da ispisuje dobro
-			
+			AddOrEditStudent.inst.updateEspbAndPros(currStudent);
 		}
 		
 	}

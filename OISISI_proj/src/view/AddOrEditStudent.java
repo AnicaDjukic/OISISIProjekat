@@ -38,6 +38,8 @@ public class AddOrEditStudent extends JPanel {
 	public static JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
 	private JLabel lIme, lPrezime, lDatRodj, lAdrStan, lBrTel, lEmail, lBrIndexa, lGodUpisa, lTrenutnaGod, lFinans;
 	private JComboBox<String>  tTrenutnaGod, tFinans;
+	private JLabel prosek, ukupnoEspb;
+	JPanel polozeni;
 	public static JButton potvrdi, odustani;
 	private ErrorDialog err;
 	
@@ -167,7 +169,7 @@ public class AddOrEditStudent extends JPanel {
 			inf.add(glavni,BorderLayout.NORTH);
 			inf.add(dugmad, BorderLayout.SOUTH);
 				
-			JPanel polozeni = new JPanel();
+			polozeni = new JPanel();
 			JPanel nepolozeni = new JPanel();
 			nepolozeni.setLayout(new BoxLayout(nepolozeni, BoxLayout.Y_AXIS));
 			
@@ -259,13 +261,13 @@ public class AddOrEditStudent extends JPanel {
 			
 			JPanel labPanel = new JPanel();
 			labPanel.setLayout(new BoxLayout(labPanel, BoxLayout.Y_AXIS));
-			JLabel prosek = new JLabel("Prosečna ocena: " + student.getProsecnaOcena());
+			prosek = new JLabel("Prosečna ocena: " + student.getProsecnaOcena());
 			int EspbBodovi = 0;
 			for(Ocena o : student.getPolozeniIspiti()) {
 				EspbBodovi += o.getPredmet().getEspbBod();
 			}
 			
-			JLabel ukupnoEspb = new JLabel("Ukupno ESPB: " + EspbBodovi);
+			ukupnoEspb = new JLabel("Ukupno ESPB: " + EspbBodovi);
 
 			labPanel.add(prosek);
 			labPanel.add(ukupnoEspb);
@@ -410,6 +412,18 @@ public class AddOrEditStudent extends JPanel {
 		panel.add(text);
 		
 		return panel;
+	}
+	
+	public void updateEspbAndPros(Student student) {
+		
+		prosek.setText("Prosečna ocena: " + student.getProsecnaOcena());
+		int EspbBodovi = 0;
+		for(Ocena o : student.getPolozeniIspiti()) {
+			EspbBodovi += o.getPredmet().getEspbBod();
+		}
+		
+		ukupnoEspb.setText("Ukupno ESPB: " + EspbBodovi);
+		
 	}
 	
 	class MyDodajPredListener implements ActionListener{
