@@ -19,14 +19,17 @@ public class EditButtonListener implements ActionListener{
 		rowCheck = TabelaProfesora.inst.getSelectedRow();
 		rowCheckPred = TabelaPredmeti.inst.getSelectedRow();
 		rowCheckStud = TabelaStudenti.table.getSelectedRow();
-		if(rowCheck == -1 && rowCheckPred == -1 && rowCheckStud == -1)
+		if(rowCheck == -1 && rowCheckStud == -1 && rowCheckPred == -1)
 			return;
 		
 		switch(tab) {
 		case 0:
-			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
-			aoed.pack();
-			aoed.setVisible(true);
+			//Edit za studenta
+			if(rowCheckStud != -1) {
+				aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+				aoed.pack();
+				aoed.setVisible(true);
+			}
 			break;
 		case 1:
 			//Edit za profesore
@@ -35,9 +38,11 @@ public class EditButtonListener implements ActionListener{
 			break;
 		case 2:
 			//Edit za predmete
-			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
-			aoed.pack();
-			aoed.setVisible(true);
+			if(rowCheckPred != -1) {
+				aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+				aoed.pack();
+				aoed.setVisible(true);
+			}
 			break;
 		}
 		

@@ -184,6 +184,7 @@ public class PolaganjeDijalog extends JDialog{
 			
 			TabelaPredmeti.instStudNepo.azurirajTabeluStudNepo(currStudent.getBrIndexa());
 			TabelaStudenti.table.updateTable();
+			TabelaOcena.inst.updateTable(currStudent.getBrIndexa());
 			
 			getter().setVisible(false);
 			

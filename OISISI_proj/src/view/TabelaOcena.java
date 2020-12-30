@@ -51,10 +51,10 @@ public class TabelaOcena extends JTable {
 		initializeTable(inst);
 		
 		for(Ocena o : listaOcena) {
-			String[] data = { o.getPredmet().getSifPred(), o.getPredmet().getNaziv(), "", "", "", ""};
-			data[3] = Integer.toString(o.getPredmet().getEspbBod());
-			data[4] = Integer.toString(o.getBrVrednost());
-			data[5] = o.getDatumPolaganja();
+			String[] data = { o.getPredmet().getSifPred(), o.getPredmet().getNaziv(), "", "", ""};
+			data[2] = Integer.toString(o.getPredmet().getEspbBod());
+			data[3] = Integer.toString(o.getBrVrednost());
+			data[4] = o.getDatumPolaganja();
 			
 		    model.addRow(data);
 		}

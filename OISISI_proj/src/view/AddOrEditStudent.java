@@ -239,7 +239,7 @@ public class AddOrEditStudent extends JPanel {
 			
 			TabelaOcena ocene = new TabelaOcena(tBrIndexa.getText());
 			JScrollPane scroll = new JScrollPane(ocene);
-			scroll.setMaximumSize(new Dimension(350, 350));
+			scroll.setMaximumSize(new Dimension(350, 400));
 			TabelaOcena.updateTable(tBrIndexa.getText());
 			
 			JPanel tabelaPanel = new JPanel();
@@ -264,12 +264,15 @@ public class AddOrEditStudent extends JPanel {
 			for(Ocena o : student.getPolozeniIspiti()) {
 				EspbBodovi += o.getPredmet().getEspbBod();
 			}
+			
 			JLabel ukupnoEspb = new JLabel("Ukupno ESPB: " + EspbBodovi);
 
 			labPanel.add(prosek);
 			labPanel.add(ukupnoEspb);
 			
-			polozeni.add(labPanel);
+			JPanel buttomPanel = new JPanel(new FlowLayout(10,260,10));
+			buttomPanel.add(labPanel);
+			polozeni.add(buttomPanel);
 			
 			JTabbedPane tabs = new JTabbedPane();
 			tabs.addTab("Informacije", inf);
