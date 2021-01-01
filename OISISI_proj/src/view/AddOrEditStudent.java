@@ -139,7 +139,7 @@ public class AddOrEditStudent extends JPanel {
 			tAdrStan.setText(student.getAdresaStan());
 			tBrTel.setText(student.getKonTel());
 			tEmail.setText(student.getEmail());
-			tBrIndexa.setText(student.getBrIndexa().split("/")[0]);
+			tBrIndexa.setText(student.getBrIndexa());
 			tGodUpisa.setText(student.getGodUpisa());
 			tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
 			if(student.getStatus().equals("B"))
