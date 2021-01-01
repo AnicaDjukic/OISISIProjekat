@@ -184,12 +184,14 @@ public class PolaganjeDijalog extends JDialog{
 
 			TabelaPredmeti.instStudNepo.azurirajTabeluStudNepo(currStudent.getBrIndexa());
 			TabelaStudenti.table.updateTable();
-
+			TabelaOcena.inst.updateTable(currStudent.getBrIndexa());
+			
 			getter().setVisible(false);
 
 			GlavniProzor.serialize();
 
 			//VAZNO : postaviti update u panelu polozeni ispiti za prosek da ispisuje dobro
+			AddOrEditStudent.inst.updateEspbAndPros(currStudent);
 
 		}
 

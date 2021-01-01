@@ -24,20 +24,27 @@ public class EditButtonListener implements ActionListener{
 		
 		switch(tab) {
 		case 0:
-			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
-			aoed.pack();
-			aoed.setVisible(true);
+			//Edit za studenta
+			if(rowCheckStud != -1) {
+				aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+				aoed.pack();
+				aoed.setVisible(true);
+			}
 			break;
 		case 1:
 			//Edit za profesore
-			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
-			aoed.setVisible(true);
+			if(rowCheck != -1) {
+				aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+				aoed.setVisible(true);
+			}
 			break;
 		case 2:
 			//Edit za predmete
-			aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
-			aoed.pack();
-			aoed.setVisible(true);
+			if(rowCheckPred != -1) {
+				aoed = new AddOrEditDialog(AddOrEditDialog.editMode);
+				aoed.pack();
+				aoed.setVisible(true);
+			}
 			break;
 		}
 		

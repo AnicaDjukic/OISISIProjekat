@@ -35,6 +35,7 @@ public class ControllerPredmet {
 			Predmet p = new Predmet();
 			p.setNaziv(""+i);
 			p.setSifPred(""+i);
+			p.setEspbBod(i);
 			dodajPredmet(p);
 		}
 	}

@@ -79,6 +79,7 @@ public class GlobalConstants {
 	public static String upitBrisanjeProf = "Da li ste sigurni da želite da obrišete izabranog profesora?";
 	public static String upitBrisanjeProfTitle = "Brisanje profesora";
 	public static String greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
+	public static String btnPonisti = "Poništi ocenu";
 	
 	public static String btnDodaj = "Dodaj";
 	public static String btnObrisi = "Obriši";

@@ -5,6 +5,7 @@ import model.*;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,6 +24,8 @@ public class AddOrEditStudent extends JPanel {
 	public static JTextField tIme, tPrezime, tDatRodj, tAdrStan, tBrTel, tEmail, tBrIndexa, tGodUpisa;
 	private JLabel lIme, lPrezime, lDatRodj, lAdrStan, lBrTel, lEmail, lBrIndexa, lGodUpisa, lTrenutnaGod, lFinans;
 	private JComboBox<String>  tTrenutnaGod, tFinans;
+	private JLabel prosek, ukupnoEspb;
+	JPanel polozeni;
 	public static JButton potvrdi, odustani;
 	private ErrorDialog err;
 	
@@ -152,7 +155,7 @@ public class AddOrEditStudent extends JPanel {
 			inf.add(glavni,BorderLayout.NORTH);
 			inf.add(dugmad, BorderLayout.SOUTH);
 				
-			JPanel polozeni = new JPanel();
+			polozeni = new JPanel();
 			JPanel nepolozeni = new JPanel();
 			nepolozeni.setLayout(new BoxLayout(nepolozeni, BoxLayout.Y_AXIS));
 			//Nepolozeni :
@@ -212,7 +215,44 @@ public class AddOrEditStudent extends JPanel {
 			
 			nepolozeni.add(centralni);
 			
-			//Polozeni :
+			// Polozeni ispiti :
+			polozeni.setLayout(new BoxLayout(polozeni, BoxLayout.Y_AXIS));
+			JPanel btnPanel = new JPanel(new FlowLayout(10,15,10));
+			JButton ponistiOcenu = new JButton(GlobalConstants.btnPonisti);
+			btnPanel.add(ponistiOcenu);
+			polozeni.add(btnPanel);
+
+			TabelaOcena ocene = new TabelaOcena(tBrIndexa.getText());
+			JScrollPane scroll = new JScrollPane(ocene);
+			scroll.setMaximumSize(new Dimension(350, 350));
+			TabelaOcena.updateTable(tBrIndexa.getText());
+			JPanel tabelaPanel = new JPanel();
+			tabelaPanel.setLayout(new BoxLayout(tabelaPanel, BoxLayout.X_AXIS));
+			JPanel sep1 = new JPanel();
+			sep1.setPreferredSize(new Dimension(15,0));
+
+			JPanel sep2 = new JPanel();
+			sep2.setPreferredSize(new Dimension(15,0));
+
+			tabelaPanel.add(sep1);
+			tabelaPanel.add(scroll);
+			tabelaPanel.add(sep2);
+
+			polozeni.add(tabelaPanel);
+
+			JPanel labPanel = new JPanel();
+			labPanel.setLayout(new BoxLayout(labPanel, BoxLayout.Y_AXIS));
+			
+			double zaokruzenProsek = Math.round(student.getProsecnaOcena() * 100.0) / 100.0;
+			prosek = new JLabel("Prosečna ocena: " + zaokruzenProsek);
+			ukupnoEspb = new JLabel("Ukupno ESPB: " + controller.izracunajUkupnoEspb(student.getBrIndexa()));
+			labPanel.add(prosek);
+			labPanel.add(ukupnoEspb);
+			
+			JPanel buttomPanel = new JPanel(new FlowLayout(10,260,10));
+			buttomPanel.add(labPanel);
+			polozeni.add(buttomPanel);
+
 				
 			JTabbedPane tabs = new JTabbedPane();
 			tabs.addTab("Informacije", inf);
@@ -287,12 +327,10 @@ public class AddOrEditStudent extends JPanel {
 				
 				String finans = (String)(tFinans.getSelectedItem());
 				
-				// za sada
-				double prosek = 0.0;
-				
 				dialog.setVisible(false);
 				
 				if(mode == AddOrEditDialog.addMode) {
+					double prosek = 0.0;
 					student = new Student(prezime, ime, datRodj, adresa, konTel, email, index, godUpisa, trenutnaGod, finans, prosek);
 					if(!controller.dodajStudenta(student))
 						err = new ErrorDialog(GlobalConstants.errAddStud);
@@ -308,7 +346,6 @@ public class AddOrEditStudent extends JPanel {
 					student.setGodUpisa(godUpisa);
 					student.setTrenutnaGodStud(trenutnaGod);
 					student.setStatus(finans);
-					student.setProsecnaOcena(prosek);
 					
 					if(!index.equals(student.getBrIndexa()))
 						if(controller.nadjiStudenta(index) != null)
@@ -350,6 +387,12 @@ public class AddOrEditStudent extends JPanel {
 		panel.add(text);
 		
 		return panel;
+	}
+	
+	public void updateEspbAndPros(Student student) {
+		double zaokruzenProsek = Math.round(student.getProsecnaOcena() * 100.0) / 100.0;
+		prosek.setText("Prosečna ocena: " + zaokruzenProsek);
+		ukupnoEspb.setText("Ukupno ESPB: " + controller.izracunajUkupnoEspb(student.getBrIndexa()));
 	}
 	
 	//Polaganje listener :

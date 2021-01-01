@@ -98,6 +98,15 @@ public class ControllerStudent {
 		}
 	}
 	
+	public int izracunajUkupnoEspb(String index) {
+		Student student = nadjiStudenta(index);
+		int espb = 0;
+		for(Ocena o : student.getPolozeniIspiti()) {
+			espb += o.getPredmet().getEspbBod();
+		}
+		return espb;
+	}
+	
 	public JPanel createListPanel(JLabel label, JComboBox<String> text) {
 		JPanel panel = new JPanel();
 		
