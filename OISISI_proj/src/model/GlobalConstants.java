@@ -75,6 +75,10 @@ public class GlobalConstants {
 	public static Object upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
 	public static String upitBrisanjeStudTitle = "Brisanje studenta";
 	
+	public static String btnDodaj = "Dodaj";
+	public static String btnObrisi = "Obriši";
+	public static String btnPolaganje = "Polaganje";
+	
 	//Button toolips : 
 	public static String addBtnToolTipTxt = "New";
 	public static String editBtnToolTipTxt = "Edit";

@@ -53,6 +53,12 @@ public class ControllerStudent {
 			dodajStudenta(s);
 		}
 	}
+	//Testiranje za prikaz nepolozenih ispita : 
+	public void testAddNepo() {
+		for(Student s : listaStudenti) {
+			s.getNepolozeniIspiti().add(new Predmet());
+		}
+	}
 		
 	public boolean dodajStudenta(Student s) {
 		if(listaStudenti.isEmpty()) {
