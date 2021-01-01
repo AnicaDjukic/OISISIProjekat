@@ -13,6 +13,7 @@ import javax.swing.*;
 
 import controller.ControllerStudent;
 import controller.StudentFocusListeners;
+import model.Predmet;
 
 public class AddOrEditStudent extends JPanel {
 	
@@ -25,8 +26,10 @@ public class AddOrEditStudent extends JPanel {
 	public static JButton potvrdi, odustani;
 	private ErrorDialog err;
 	
+	public static AddOrEditStudent inst;
 	
 	public AddOrEditStudent(int mode, AddOrEditDialog dialog) {
+		inst = this;
 		controller = GlavniProzor.getControllerStudent();
 		setLayout(new BorderLayout());
 		if(mode == AddOrEditDialog.editMode)
@@ -157,6 +160,7 @@ public class AddOrEditStudent extends JPanel {
 			JButton dodajPredmet = new JButton(GlobalConstants.btnDodaj);
 			JButton obrisiPredmet = new JButton(GlobalConstants.btnObrisi);
 			JButton polaganjePredmeta = new JButton(GlobalConstants.btnPolaganje);
+			polaganjePredmeta.addActionListener(new MyPolaganjeListener());
 			
 			JPanel topSep = new JPanel();
 			topSep.setMaximumSize(new Dimension(5,5));
@@ -304,7 +308,7 @@ public class AddOrEditStudent extends JPanel {
 					student.setGodUpisa(godUpisa);
 					student.setTrenutnaGodStud(trenutnaGod);
 					student.setStatus(finans);
-					student.setPosecnaOcena(prosek);
+					student.setProsecnaOcena(prosek);
 					
 					if(!index.equals(student.getBrIndexa()))
 						if(controller.nadjiStudenta(index) != null)
@@ -346,6 +350,32 @@ public class AddOrEditStudent extends JPanel {
 		panel.add(text);
 		
 		return panel;
+	}
+	
+	//Polaganje listener :
+	class MyPolaganjeListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			int selectedIndex = TabelaPredmeti.instStudNepo.getSelectedRow();
+			ErrorDialog err;
+
+			if(selectedIndex == -1)
+				err = new ErrorDialog(GlobalConstants.greskaPriIzboruPredmeta);
+			else {
+				String temp = (String) TabelaPredmeti.instStudNepo.getValueAt(selectedIndex, 0);
+				Predmet p = GlavniProzor.getControllerPredmet().nadjiPredmet(temp);
+				PolaganjeDijalog pd = new PolaganjeDijalog(p);
+				pd.setVisible(true);
+
+			}
+		}
+
+	}
+
+	public Student getCurrStudent() {
+		return student;
 	}
 	
 }

@@ -58,7 +58,7 @@ public class TabelaStudenti extends JTable {
 			String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
 			data[3] = Integer.toString(s.getTrenutnaGodStud());;
 			data[4] = s.getStatus();
-			data[5] = Double.toString(s.getPosecnaOcena());
+			data[5] = String.format("%.2f", s.getProsecnaOcena());
 			
 		    model.addRow(data);
 		}

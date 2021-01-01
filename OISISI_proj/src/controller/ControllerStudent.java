@@ -18,6 +18,7 @@ import model.Ocena;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
+import view.GlavniProzor;
 import model.Predmet.GodIzv;
 
 public class ControllerStudent {
@@ -49,14 +50,14 @@ public class ControllerStudent {
 			s.setKonTel("12463278");
 			s.setEmail("gg@gmail.com");
 			s.setStatus("B");
-			s.setPosecnaOcena(0.0);
+			s.setProsecnaOcena(0.0);
 			dodajStudenta(s);
 		}
 	}
 	//Testiranje za prikaz nepolozenih ispita : 
 	public void testAddNepo() {
 		for(Student s : listaStudenti) {
-			s.getNepolozeniIspiti().add(new Predmet());
+			s.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet("1"));
 		}
 	}
 		
@@ -128,4 +129,24 @@ public class ControllerStudent {
 		}
 	}
 	
+	public void sracunajProsecnuOcenu(Student s) {
+		double sum = 0;
+		int counter = 0;
+		for(Ocena o : s.getPolozeniIspiti()) {
+			counter++;
+			sum += o.getBrVrednost();
+		}
+		double d = sum/counter;
+		s.setProsecnaOcena(d);
+	}
+
+	public void upisiOcenuStudentu(Student s, Ocena o) {
+		Predmet p = o.getPredmet();
+		s.getNepolozeniIspiti().remove(p);
+		o.getPredmet().getListaNepolozenih().remove(s);
+		s.getPolozeniIspiti().add(o);
+		o.getPredmet().getListaPolozenih().add(s);
+
+		sracunajProsecnuOcenu(s);
+	}
 }
