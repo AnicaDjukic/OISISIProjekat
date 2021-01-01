@@ -164,7 +164,7 @@ public class AddOrEditStudent extends JPanel {
 			JButton dodajPredmet = new JButton(GlobalConstants.btnDodaj);
 			dodajPredmet.addActionListener(new MyDodajPredListener());
 			JButton obrisiPredmet = new JButton(GlobalConstants.btnObrisi);
-			//obrisiPredmet.addActionListener(new MyObrisiPredListener());
+			obrisiPredmet.addActionListener(new MyObrisiPredListener());
 			JButton polaganjePredmeta = new JButton(GlobalConstants.btnPolaganje);
 			polaganjePredmeta.addActionListener(new MyPolaganjeListener());
 			
@@ -430,6 +430,37 @@ public class AddOrEditStudent extends JPanel {
 		}
 	}
 	
+	class MyObrisiPredListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			int selectedIndex = TabelaPredmeti.instStudNepo.getSelectedRow();
+			
+			if(selectedIndex == -1) {
+				err = new ErrorDialog(GlobalConstants.greskaPriIzboruPredmeta);
+				return;
+			}
+			
+			ArrayList<String> selectedPreds = new ArrayList<String>();
+			String temp;
+			
+			
+			temp = (String) TabelaPredmeti.instStudNepo.getValueAt(selectedIndex, 0);
+			selectedPreds.add(temp);
+			
+			String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+			int code = JOptionPane.showOptionDialog(AddOrEditStudent.inst, GlobalConstants.upitBrisanjePredKodStud, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+			if(code == JOptionPane.YES_OPTION) {	
+				GlavniProzor.getControllerStudent().obrisiPredmete(selectedPreds, student);
+				TabelaPredmeti.azurirajTabeluStudNepo(student.getBrIndexa());
+			}
+			
+		}
+		
+	}
+
 	
 	public Student getCurrStudent() {
 		return student;
