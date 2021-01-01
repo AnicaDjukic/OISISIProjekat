@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -161,7 +162,9 @@ public class AddOrEditStudent extends JPanel {
 			//Nepolozeni :
 			
 			JButton dodajPredmet = new JButton(GlobalConstants.btnDodaj);
+			dodajPredmet.addActionListener(new MyDodajPredListener());
 			JButton obrisiPredmet = new JButton(GlobalConstants.btnObrisi);
+			//obrisiPredmet.addActionListener(new MyObrisiPredListener());
 			JButton polaganjePredmeta = new JButton(GlobalConstants.btnPolaganje);
 			polaganjePredmeta.addActionListener(new MyPolaganjeListener());
 			
@@ -416,7 +419,18 @@ public class AddOrEditStudent extends JPanel {
 		}
 
 	}
+	
+	class MyDodajPredListener implements ActionListener{
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			DodajPredStudentu dps = new DodajPredStudentu(student); 
+			dps.setVisible(true);
+		}
+	}
+	
+	
 	public Student getCurrStudent() {
 		return student;
 	}

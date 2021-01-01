@@ -127,6 +127,49 @@ public class ControllerStudent {
 			}
 	}
 	
+	public boolean proveriPred(Student s, Predmet p) {
+        for(Ocena o : s.getPolozeniIspiti())
+            if(o.getPredmet().equals(p))
+                return true;
+
+        for(Predmet pred : s.getNepolozeniIspiti())
+            if(pred.equals(p))
+                return true;
+        
+        switch(p.getGodIzv()) {
+        case PRVA: break;
+        case DRUGA: if(s.getTrenutnaGodStud() < 2) 
+        				return true; 
+        			break;
+        case TRECA: if(s.getTrenutnaGodStud() < 3) 
+						return true; 
+					break;
+		default: if(s.getTrenutnaGodStud() < 4) 
+						return true; 
+					break;
+        }
+        
+        return false;
+    }
+	
+	public void dodajNepolozenePredmete(ArrayList<String> newPreds, Student stud) {
+        for(String s : newPreds) {
+            stud.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet(s));
+            GlavniProzor.getControllerPredmet().nadjiPredmet(s).getListaNepolozenih().add(stud);
+        }
+    }
+	
+	public void obrisiPredmete(ArrayList<String> predIds, Student s) {
+        for(String str : predIds)
+            for(Predmet p : s.getNepolozeniIspiti()) {
+                if(p.getSifPred().equals(str)) {
+                    s.getNepolozeniIspiti().remove(p);
+                    p.getListaNepolozenih().remove(s);
+                    break;
+                }
+            }
+    }
+	
 	public void serialize() throws FileNotFoundException, IOException {
 		File profesori = new File("resources" + File.separator + "Studenti.txt");
 		profesori.delete();

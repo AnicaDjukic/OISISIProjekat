@@ -74,12 +74,13 @@ public class GlobalConstants {
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
 	public static String dodavanjeProfPredDialog = "Odaberi profesora";
 	public static String predmetiTekst = "Predmeti :";
-	public static String upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
-	public static String upitBrisanjeStudTitle = "Brisanje studenta";
 	public static String upitBrisanjeProf = "Da li ste sigurni da želite da obrišete izabranog profesora?";
 	public static String upitBrisanjeProfTitle = "Brisanje profesora";
-	public static String greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
 	public static String btnPonisti = "Poništi ocenu";
+	public static String upitBrisanjePredKodStud = "Da li ste sigurni da želite da obrišete izabrane predmete?";
+    public static String greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
+    public static String upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
+    public static String upitBrisanjeStudTitle = "Brisanje studenta";
 	
 	public static String btnDodaj = "Dodaj";
 	public static String btnObrisi = "Obriši";
