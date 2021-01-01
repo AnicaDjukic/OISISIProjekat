@@ -2,7 +2,7 @@ ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-0-2018|2019|3|B|0.0||1;
 ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-1-2018|2019|3|B|0.0||1;
 ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-2-2018|2019|3|B|0.0||1;
 ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-3-2018|2019|3|B|0.0||1;
-ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-4-2018|2019|3|B|9.0|1-9-2.2.2020.|;
+ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-4-2018|2019|3|B|0.0||1;
 ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-5-2018|2019|3|B|0.0||1;
 ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-6-2018|2019|3|B|0.0||1;
 ime |prz |1999-01-01|gshasg 12|12463278|gg@gmail.com|ra-7-2018|2019|3|B|0.0||1;
