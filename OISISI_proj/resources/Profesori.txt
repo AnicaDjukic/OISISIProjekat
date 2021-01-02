@@ -1,7 +1,7 @@
-0-prof|0-profPrez|1.1.-999999999|||0@gmail.com|0profAdrS|000000000|0-profTit|0-profZva|0,4;
-1-prof|1-profPrez|1.1.-999999999|||1@gmail.com|1profAdrS|100000000|1-profTit|1-profZva|1,4;
+0-prof|0-profPrez|1.1.-999999999|||0@gmail.com|0profAdrS|000000000|0-profTit|0-profZva|4,0;
+1-prof|1-profPrez|1.1.-999999999|||1@gmail.com|1profAdrS|100000000|1-profTit|1-profZva|1,4,3;
 2-prof|2-profPrez|1.1.-999999999|||2@gmail.com|2profAdrS|200000000|2-profTit|2-profZva|2,4;
-3-prof|3-profPrez|1.1.-999999999|||3@gmail.com|3profAdrS|300000000|3-profTit|3-profZva|3,4;
+3-prof|3-profPrez|1.1.-999999999|||3@gmail.com|3profAdrS|300000000|3-profTit|3-profZva|4;
 4-prof|4-profPrez|1.1.-999999999|||4@gmail.com|4profAdrS|400000000|4-profTit|4-profZva|4;
 5-prof|5-profPrez|1.1.-999999999|||5@gmail.com|5profAdrS|500000000|5-profTit|5-profZva|5,4;
 6-prof|6-profPrez|1.1.-999999999|||6@gmail.com|6profAdrS|600000000|6-profTit|6-profZva|6,4;

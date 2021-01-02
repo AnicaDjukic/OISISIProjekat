@@ -143,12 +143,12 @@ public class ControllerPredmet {
 				
 				if(parts[1].equals("==")) {
 					for(Predmet p : listaPredmeta)
-						if(p.getSifPred().matches(parts[2]))
+						if(p.getSifPred().toLowerCase().matches(parts[2]))
 							ret.add(p);
 				}
 				else if(parts[1].equals("!=")) {
 					for(Predmet p : listaPredmeta)
-						if(!p.getSifPred().matches(parts[2]))
+						if(!p.getSifPred().toLowerCase().matches(parts[2]))
 							ret.add(p);
 				}
 			}else {
@@ -156,12 +156,12 @@ public class ControllerPredmet {
 				
 				if(parts[1].equals("==")) {
 					for(Predmet p : listaPredmeta)
-						if(p.getSifPred().equals(parts[2]))
+						if(p.getSifPred().toLowerCase().equals(parts[2]))
 							ret.add(p);
 				} 
 				else if(parts[1].equals("!=")) {
 					for(Predmet p : listaPredmeta)
-						if(!p.getSifPred().equals(parts[2]))
+						if(!p.getSifPred().toLowerCase().equals(parts[2]))
 							ret.add(p);
 				}
 			}
@@ -172,12 +172,12 @@ public class ControllerPredmet {
 				
 				if(parts[1].equals("==")) {
 					for(Predmet p : listaPredmeta)
-						if(p.getNaziv().matches(parts[2]))
+						if(p.getNaziv().toLowerCase().matches(parts[2]))
 							ret.add(p);
 				}
 				else if(parts[1].equals("!=")) {
 					for(Predmet p : listaPredmeta)
-						if(!p.getNaziv().matches(parts[2]))
+						if(!p.getNaziv().toLowerCase().matches(parts[2]))
 							ret.add(p);
 				}
 			}
@@ -186,12 +186,12 @@ public class ControllerPredmet {
 				
 				if(parts[1].equals("==")) {
 					for(Predmet p : listaPredmeta)
-						if(p.getNaziv().equals(parts[2]))
+						if(p.getNaziv().toLowerCase().equals(parts[2]))
 							ret.add(p);
 				}
 				else if(parts[1].equals("!=")) {
 					for(Predmet p : listaPredmeta)
-						if(!p.getNaziv().equals(parts[2]))
+						if(!p.getNaziv().toLowerCase().equals(parts[2]))
 							ret.add(p);
 				}
 			}

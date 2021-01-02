@@ -9,12 +9,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.GlobalConstants;
 import model.Predmet;
 import model.Profesor;
 import view.GlavniProzor;
@@ -180,6 +183,169 @@ public class ControllerProfesor {
 			for(Profesor p : listaProfesora)
 				dos.writeBytes(p.toString() + "\n");
 		}
+	}
+	
+	//Napredna pretraga :
+	public boolean advSrcTxt(String crit, ArrayList<Profesor> ret){
+		int critType;
+		String[] parts = crit.split(" ");
+		if(parts[2].startsWith("/")) {
+			if(!parts[2].endsWith("/"))
+				return false;
+			critType = 1;
+			parts[2] = parts[2].substring(1,parts[2].length()-1);
+		}
+		else if(parts[2].startsWith("\"")) {
+			if(!parts[2].endsWith("\""))
+				return false;
+			critType = 2;
+			parts[2] = parts[2].substring(1,parts[2].length()-1);
+		}
+		else {
+			return false;
+		}
+		
+		if(parts[0].equalsIgnoreCase("ime")){
+			if(critType == 1) {
+				//sifra po regexu
+				
+				if(parts[1].equals("==")) {
+					for(Profesor p : listaProfesora)
+						if(p.getIme().toLowerCase().matches(parts[2]))
+							ret.add(p);
+				}
+				else if(parts[1].equals("!=")) {
+					for(Profesor p : listaProfesora)
+						if(!p.getIme().toLowerCase().matches(parts[2]))
+							ret.add(p);
+				}
+			}else {
+				//sifra po imenu
+				
+				if(parts[1].equals("==")) {
+					for(Profesor p : listaProfesora)
+						if(p.getIme().toLowerCase().equals(parts[2]))
+							ret.add(p);
+				} 
+				else if(parts[1].equals("!=")) {
+					for(Profesor p : listaProfesora)
+						if(!p.getIme().toLowerCase().equals(parts[2]))
+							ret.add(p);
+				}
+			}
+		}
+		else if(parts[0].equalsIgnoreCase("prezime")) {
+			if(critType == 1) {
+				//Naziv po regexu
+				
+				if(parts[1].equals("==")) {
+					for(Profesor p : listaProfesora)
+						if(p.getPrezime().toLowerCase().matches(parts[2]))
+							ret.add(p);
+				}
+				else if(parts[1].equals("!=")) {
+					for(Profesor p : listaProfesora)
+						if(!p.getPrezime().toLowerCase().matches(parts[2]))
+							ret.add(p);
+				}
+			}
+			else {
+				//Naziv po jednakosti
+				
+				if(parts[1].equals("==")) {
+					for(Profesor p : listaProfesora)
+						if(p.getPrezime().toLowerCase().equals(parts[2]))
+							ret.add(p);
+				}
+				else if(parts[1].equals("!=")) {
+					for(Profesor p : listaProfesora)
+						if(!p.getPrezime().toLowerCase().equals(parts[2]))
+							ret.add(p);
+				}
+			}
+		}
+		else if(parts[0].equalsIgnoreCase("titula")) {
+			String tempTit = "";
+			for(String s : GlobalConstants.titule)
+				if(s.equalsIgnoreCase(parts[2])) {
+					tempTit = s;
+					break;
+				}
+			
+			if(tempTit.isBlank())
+				return false;
+			
+			if(critType == 1) {
+				return false;
+			}
+			else {
+				//Pretraga po jednakosti :
+				if(parts[1].equals("==")) {
+					for(Profesor p : listaProfesora)
+						if(p.getTitula().equals(tempTit))
+							ret.add(p);
+				}
+				else if(parts[1].equals("!=")) {
+					for(Profesor p : listaProfesora)
+						if(!p.getTitula().equals(tempTit))
+							ret.add(p);
+				}		
+			}	
+		}
+		else if(parts[0].equalsIgnoreCase("zvanje")) {
+			String tempTit = "";
+			for(String s : GlobalConstants.zvanja)
+				if(s.equalsIgnoreCase(parts[2])) {
+					tempTit = s;
+					break;
+				}
+			
+			if(tempTit.isBlank())
+				return false;
+			if(critType == 1) {
+				return false;
+			}
+			else {
+				//Pretraga po jednakosti :
+				if(parts[1].equals("==")) {
+					for(Profesor p : listaProfesora)
+						if(p.getZvanje().equals(tempTit))
+							ret.add(p);
+				}
+				else if(parts[1].equals("!=")) {
+					for(Profesor p : listaProfesora)
+						if(!p.getZvanje().equals(tempTit))
+							ret.add(p);
+				}		
+			}
+			
+		}
+		
+		return true;
+	}
+	
+	//Unija i presek :
+	public ArrayList<Profesor> union(ArrayList<ArrayList<Profesor>> listU){
+		Set<Profesor> set = new HashSet<Profesor>();
+		
+		for(ArrayList<Profesor> p : listU)
+			set.addAll(p);
+		
+		return new ArrayList<Profesor>(set);
+	}
+	
+	public ArrayList<Profesor> intersect(ArrayList<ArrayList<Profesor>> listU){
+		Set<Profesor> set = new HashSet<Profesor>();
+		set.addAll(listU.get(0));
+		
+		for(int i = 1; i < listU.size(); i++) {
+			Set<Profesor> temp = new HashSet<Profesor>();
+			temp.addAll(listU.get(i));
+			
+			set.retainAll(temp);
+		}
+		
+		return new ArrayList<Profesor>(set);
 	}
 }
 

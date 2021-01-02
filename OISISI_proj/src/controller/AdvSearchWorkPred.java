@@ -1,17 +1,18 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import com.bpodgursky.jbool_expressions.Expression;
 import com.bpodgursky.jbool_expressions.parsers.ExprParser;
 import com.bpodgursky.jbool_expressions.rules.RuleSet;
 
 import model.Predmet;
+import model.Profesor;
 import view.AdvSearDialog;
 import view.ErrorDialog;
 import view.GlavniProzor;
 import view.TabelaPredmeti;
+import view.TabelaProfesora;
 
 //predmeti = (sifra == '0' and naziv == '0')
 //predmeti = (sifra == a or godina == 2 and (sifra == 3 and semestar == letnji))
@@ -26,9 +27,7 @@ public class AdvSearchWorkPred {
 	char i;
 	
 	ArrayList<Var> vars;
-	
 	String myExp;
-	
 	ArrayList<Predmet> solution;
 
 	public AdvSearchWorkPred(String s) {
@@ -118,6 +117,35 @@ public class AdvSearchWorkPred {
 				else if(collection[k].equals(")")) {
 					myExp += " " + collection[k] + " ";
 					k++;
+				}
+				else if(collection[k].equalsIgnoreCase("profesori")) {
+					int helper = k;
+					myExpProf = "";
+					do {
+						myExpProf += collection[helper] + " ";
+						if(collection[helper].endsWith("}"))
+							break;
+						helper++;
+					}while(helper < collection.length);
+					//Dodaj da se izvrsi kod i da se napravi var ovako :
+					
+					Var temp = new Var(i,myExpProf);
+					
+					resolveProfesor();
+					if(hadError)
+						break;
+					for(Predmet p : GlavniProzor.getControllerPredmet().getListaPredmeta())
+						for(Profesor pr : psolution)
+							if(p.getProf().equals(pr))
+								temp.getSol().add(p);
+					
+					//predmeti = (profesori == {ime = "0"})
+					vars.add(temp);
+					
+					myExp += " " + i++ + " ";
+					
+					k = helper + 1;
+					
 				}
 				else if(collection[k].equalsIgnoreCase("sifra")) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
@@ -223,6 +251,8 @@ public class AdvSearchWorkPred {
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcNum(v.getV(), v.getSol());
 			else if(v.getV().toLowerCase().startsWith("semestar"))
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcSem(v.getV(), v.getSol());
+			else if(v.getV().toLowerCase().startsWith("profesori"))
+				noErrors &= true;
 			else
 				noErrors &= false;
 		}
@@ -242,16 +272,203 @@ public class AdvSearchWorkPred {
 	
 	public void executeExpression() {
 		String[] toInter = myExp.split("\\+");
-		System.out.println(toInter.length);
 		ArrayList<ArrayList<Predmet>> toDo = new ArrayList<ArrayList<Predmet>>();
 		ArrayList<ArrayList<Predmet>> toOr = new ArrayList<ArrayList<Predmet>>();
 		for(String s : toInter) {
-			for(char c : s.toCharArray())
-				toDo.add(getVbyName(c).getSol());
+			for(char c : s.toCharArray()) 
+					toDo.add(getVbyName(c).getSol());
 			toOr.add(GlavniProzor.getControllerPredmet().intersect(toDo));
 			toDo = new ArrayList<ArrayList<Predmet>>();
 		}
 		
 		solution = GlavniProzor.getControllerPredmet().union(toOr);
+	}
+	
+	//Nadalje sredjivanje ako postoji profesor deo:
+	String myExpProf;
+	String[] profCollection;
+	char ip;
+	boolean hadErrorProf;
+	
+	Expression<String> expProf;
+	
+	ArrayList<PVar> pvars;
+	
+	ArrayList<Profesor> psolution;
+	
+	public void resolveProfesor() {
+		hadErrorProf = false;
+		ip = 'A';
+		pvars = new ArrayList<PVar>();
+		
+		myExpProf = myExpProf.replaceAll("\\Q(\\E", " ( ");
+		myExpProf = myExpProf.replaceAll("\\Q)\\E", " ) ");
+		myExpProf = myExpProf.replaceAll("\\Q{\\E", " ( ");
+		myExpProf = myExpProf.replaceAll("\\Q}\\E", " ) ");
+		myExpProf = myExpProf.replaceAll("\\Q&&\\E", "and");
+		myExpProf = myExpProf.replaceAll("\\Q||\\E", "or");
+		myExpProf = myExpProf.replaceAll(" +", " ");
+		
+		
+		profCollection = myExpProf.split(" ");
+		profCollection[1] = "=";
+		
+		//predmeti = (profesori == {ime == "0"})
+		
+		
+		makePVars();
+		
+		if(!hadErrorProf) {
+			expProf = RuleSet.simplify(ExprParser.parse(myExpProf));	
+			expProf = RuleSet.toDNF(expProf);
+			myExpProf = expProf.toString();
+		}
+		
+		
+		//Sredjivanje u pogodan oblik forme :
+		
+		if(!hadErrorProf) {
+			myExpProf = myExpProf.replaceAll("\\Q(\\E", "");
+			myExpProf = myExpProf.replaceAll("\\Q)\\E", "");
+			myExpProf = myExpProf.replaceAll("\\Q & \\E", "");
+			myExpProf = myExpProf.replaceAll("\\Q | \\E", "+");
+			//System.out.println(myExpProf);
+		}
+		
+		//Za svaku nadjenu promenljivu izvrsi njen upit :
+		if(!hadErrorProf)
+			executePVarQuerries();
+		
+		//Izvrsi ceo izraz :
+		if(!hadErrorProf)
+			executePExpression();
+		
+		hadError = hadErrorProf;
+	}
+	
+	//Klasa promenljivih za profesore :
+	class PVar{
+		char name;
+		String value;
+		ArrayList<Profesor> sol;
+		
+		public PVar(char n, String v) {
+			name = n;
+			value = v;
+			sol = new ArrayList<Profesor>();
+		}
+		
+		public char getN() { return name; }
+		public String getV() { return value; }
+		public ArrayList<Profesor> getSol() {return sol;}
+	}
+	
+	public void makePVars() {
+		myExpProf = "";
+		if(!profCollection[0].toLowerCase().equals("profesori") || !profCollection[1].equals("=")) {
+			err = new ErrorDialog("Iskaz kod profesora ne počinje korektno");
+			hadErrorProf = true;
+			return;
+		}
+		else {
+			int k = 2;
+			do {
+				if(profCollection[k].equals("(")) {
+					myExpProf += " " + profCollection[k] + " ";
+					k++;
+				}
+				else if(profCollection[k].equals(")")) {
+					myExpProf += " " + profCollection[k] + " ";
+					k++;
+				}
+				else if(profCollection[k].equalsIgnoreCase("ime")) {
+					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
+					k+=3;
+				}
+				else if(profCollection[k].equalsIgnoreCase("prezime")) {
+					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
+					k+=3;
+				}
+				else if(profCollection[k].equalsIgnoreCase("titula")) {
+					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
+					k+=3;
+				}
+				else if(profCollection[k].equalsIgnoreCase("zvanje")) {
+					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
+					k+=3;
+				} 
+				else if(profCollection[k].equalsIgnoreCase("and")) {
+					myExpProf += " & ";
+					k++;
+				}
+				else if(profCollection[k].equalsIgnoreCase("or")) {
+					myExpProf += " | ";
+					k++;
+				}
+				else {
+					err = new ErrorDialog("Nije spojeno ni sa jednim tokenom, proverite izraz");
+					hadErrorProf = true;
+					break;
+				}
+				if(hadErrorProf) 
+					break;
+				
+			}while(k < profCollection.length);
+		}
+	}
+	
+	public boolean createPVar(String col, String exp, String val) {
+		
+		PVar temp;
+		String s = col + " " +  exp + " " + val;
+		if(col.equalsIgnoreCase("ime") || col.equalsIgnoreCase("prezime") || col.equalsIgnoreCase("titula") || col.equalsIgnoreCase("zvanje")) {
+			if(!exp.equals("==") && !exp.equals("!=")) {
+				err = new ErrorDialog("Tipovi za profesora mogu imati relacione operatore !=/==");
+				return false;
+			}
+			temp = new PVar(ip,s);
+			myExpProf += " " + ip++ + " ";
+			pvars.add(temp);
+		}
+		else {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public void executePVarQuerries() {
+		boolean noErrors = true;
+		for(PVar v : pvars) {
+			if(v.getV().toLowerCase().startsWith("ime") || v.getV().toLowerCase().startsWith("prezime") || v.getV().toLowerCase().startsWith("titula") || v.getV().toLowerCase().equals("zvanje"))
+				noErrors &= GlavniProzor.getControllerProfesor().advSrcTxt(v.getV(), v.getSol());
+			else	
+				noErrors &= false;
+		}
+		if(!noErrors) {
+			err = new ErrorDialog("Neuspešno izvršavanje pojedinačnih upita profesora");
+			hadErrorProf = true;
+		}
+	}
+	
+	public PVar getPVbyName(char a) {
+		for(PVar v : pvars)
+			if(v.getN() == a)
+				return v;
+		return null;
+	}
+	
+	public void executePExpression() {
+		String[] toInter = myExpProf.split("\\+");
+		ArrayList<ArrayList<Profesor>> toDo = new ArrayList<ArrayList<Profesor>>();
+		ArrayList<ArrayList<Profesor>> toOr = new ArrayList<ArrayList<Profesor>>();
+		for(String s : toInter) {
+			for(char c : s.toCharArray())
+				toDo.add(getPVbyName(c).getSol());
+			toOr.add(GlavniProzor.getControllerProfesor().intersect(toDo));
+			toDo = new ArrayList<ArrayList<Profesor>>();
+		}
+		
+		psolution = GlavniProzor.getControllerProfesor().union(toOr);
 	}
 }
