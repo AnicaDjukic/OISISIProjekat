@@ -166,36 +166,6 @@ public class Profesor {
 		}
 		adk = adk.substring(1,adk.length());
 		
-		parts = tit.split(" ");
-		tit = "";
-		for(String s : parts) {
-			s = s.toLowerCase();
-			temp = s.substring(0,1);
-			temp = temp.toUpperCase();
-			s = temp + s.substring(1);
-			if(parts.length != 1)
-				tit += " " + s;
-			else
-				tit = s;
-		}
-		if(parts.length != 1)
-			tit = tit.substring(1,tit.length());
-		
-		parts = zv.split(" ");
-		zv = "";
-		for(String s : parts) {
-			s = s.toLowerCase();
-			temp = s.substring(0,1);
-			temp = temp.toUpperCase();
-			s = temp + s.substring(1);
-			if(parts.length != 1)
-				zv += " " + s;
-			else
-				zv = s;
-		}
-		if(parts.length != 1)
-			zv = zv.substring(1,zv.length());
-		
 		this.prezime = pr;
 		this.ime = im;
 		this.drp = dr;

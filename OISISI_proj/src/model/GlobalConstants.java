@@ -92,6 +92,7 @@ public class GlobalConstants {
 	public static String delBtnToolTipTxt = "Delete";
 	public static String srchBtnToolTipTxt = "Search";
 	public static String srchFieldToolTipTxt = "";
+	public static String advSearchToolTip = "Napredna pretraga";
 	
 	
 	public static String menuFile = "File"; 
@@ -135,6 +136,7 @@ public class GlobalConstants {
 	public static String srcImg = "images" + File.separator + "search_button.png";
 	public static String menuBarImg = "images" +  File.separator + "Menu_Bar.png";
 	public static String toolBarImg = "images" + File.separator + "Tool_Bar.png";
+	public static String advSearImg = "images" + File.separator + "adv_search.png";
 	
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
@@ -160,7 +162,19 @@ public class GlobalConstants {
 	public static String profEditTabOsnInf = "Informacije";
 	public static String profEditTabPrd = "Predmeti";
 	
+	//Error za naprednu pretragu prof :
+	public static String errAdvSearProf = "Nije omogućena napredna pretraga profesora";
+	
+	//Naslovi napredne pretrage :
+	public static String advTitlePred = "Napredna pretraga predmeta";
+	
+	public static String labAdvSear = "Relacioni izraz :";
+	
 	//Possible marks :
 	public static String[] ocene = {"6","7","8","9","10"};
+	
+	//Titula i zvanje :
+	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeriturs"};
+	public static String[] titule = {"BSc", "MSc", "Magistat", "Doktor nauka", "Profesor dr."};
 	
 }

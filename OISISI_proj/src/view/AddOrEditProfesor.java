@@ -29,9 +29,6 @@ public class AddOrEditProfesor extends JPanel{
 	
 	private JTextField txtPrezime,txtIme,txtDrp,txtAdrStan,txtKonTel,txtEmail,txtAdrKanc,txtBrLicKart;
 	
-	private String[] zvanje = {"Docent", "Vanredni Profesor", "Redovni Profesor"};
-	private String[] titula = {"Doktor Nauka"};
-	
 	private JComboBox<String> zvCombo, titCombo;
 	
 	private JLabel labPrezime,labIme,labDrp,labAdrStan,labKonTel,labEmail,labAdrKanc,labBrLicKart,labTitula,labZvanje;
@@ -92,8 +89,8 @@ public class AddOrEditProfesor extends JPanel{
 		txtBrLicKart.setName(GlobalConstants.brLicKartLab);
 		txtBrLicKart.setToolTipText(GlobalConstants.brLicKartToolTip);
 		
-		zvCombo = new JComboBox<String>(zvanje);
-		titCombo = new JComboBox<String>(titula);
+		zvCombo = new JComboBox<String>(GlobalConstants.zvanja);
+		titCombo = new JComboBox<String>(GlobalConstants.titule);
 		
 		gornji.add(cp.createPanel(labIme, this.txtIme, GlobalConstants.imeLab));
 		gornji.add(cp.createPanel(labPrezime, this.txtPrezime, GlobalConstants.przLab));
