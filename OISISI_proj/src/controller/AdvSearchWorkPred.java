@@ -30,7 +30,7 @@ public class AdvSearchWorkPred {
 	String myExp;
 	
 	ArrayList<Predmet> solution;
-	
+
 	public AdvSearchWorkPred(String s) {
 		hadError = false;
 		i = 'A';
