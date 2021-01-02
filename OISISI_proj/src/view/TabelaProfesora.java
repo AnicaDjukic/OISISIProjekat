@@ -47,7 +47,7 @@ public class TabelaProfesora extends JTable {
 		t.setModel(model);
 		
 		t.setRowHeight(35);
-		//t.setAutoCreateRowSorter(true);
+		t.setAutoCreateRowSorter(true);
 		t.setFont(t.getFont().deriveFont(16F));
 
 		//Poravnanje :
