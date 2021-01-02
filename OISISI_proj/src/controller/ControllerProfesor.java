@@ -46,6 +46,7 @@ public class ControllerProfesor {
 			temp.setTitula(""+i+"-profTit");
 			temp.setEmail(i + "@gmail.com");
 			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+i));
+			GlavniProzor.getControllerPredmet().nadjiPredmet(""+i).setProf(temp);
 			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+4));
 			dodajProfesora(temp);
 		}
@@ -101,6 +102,15 @@ public class ControllerProfesor {
 				p.getSpisPred().remove(pred);
 				return;
 			}
+	}
+	
+	public void obrisiPredmeteKodProf(Profesor p, ArrayList<String> sifre) {
+		for(String str : sifre)
+			for(Predmet pred : p.getSpisPred())
+				if(pred.getSifPred().equals(str)) {
+					p.getSpisPred().remove(pred);
+					break;
+				}
 	}
 	
 	public ArrayList<String> pretraziProf(String words[]) {

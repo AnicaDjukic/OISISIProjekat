@@ -70,7 +70,7 @@ public class GlobalConstants {
 	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
 	public static String upitSklanjanjeProfTitle = "Uklanjanje profesora";
 	public static String upitSklanjanjeProfSaPred = "Da li ste sigurni da želite da uklonite izabranog profesora sa predmeta?";
-	public static String upitBrisanjePredTitle = "Brisanje predmeta";
+	public static String upitBrisanjePredTitle = "Uklanjanje predmeta";
 	public static String dodavanjePredProfDialog = "Dodaj predmet";
 	public static String dodavanjeProfPredDialog = "Odaberi profesora";
 	public static String predmetiTekst = "Predmeti :";
@@ -84,6 +84,7 @@ public class GlobalConstants {
     public static String greskaPriIzboruOcene = "Niste izabrali ni jednu ocenu";
     public static String upitPonistavenjeOceneTitle = "Poništavanje ocene";
     public static String upitPonistavenjeOcene = "Da li ste sigurni da želite da poništite ocenu?";
+    public static String upitBrisanjePredKodProf = "Da li ste sigurni?";
 	
 	public static String btnDodaj = "Dodaj";
 	public static String btnObrisi = "Obriši";

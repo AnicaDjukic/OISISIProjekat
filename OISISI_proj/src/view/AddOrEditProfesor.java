@@ -6,11 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -172,6 +174,7 @@ public class AddOrEditProfesor extends JPanel{
 			JButton dodajPred = new JButton(GlobalConstants.btnDodPred);
 			dodajPred.addActionListener(new AddPredToProfListener(p));
 			JButton uklPred = new JButton(GlobalConstants.btnUklPred);
+			uklPred.addActionListener(new MyUkloniPredmetListener());
 			JPanel northPom = new JPanel();
 			northPom.setLayout(new BoxLayout(northPom, BoxLayout.X_AXIS));
 			northPom.add(dodajPred);
@@ -303,5 +306,32 @@ public class AddOrEditProfesor extends JPanel{
 			brPraznihPolja++;
 		if(Checker.isValidNumber(txtKonTel.getText(), 0))
 			brPraznihPolja++;		
+	}
+	
+	class MyUkloniPredmetListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int[] selectedIndexes = TabelaPredmeti.instProf.getSelectedRows();
+			
+			ArrayList<String> selectedPreds = new ArrayList<String>();
+			String temp;
+			for(int i : selectedIndexes) {
+				temp = (String) TabelaPredmeti.instProf.getValueAt(i, 0);
+				selectedPreds.add(temp);
+			}
+			
+			String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+			int code = JOptionPane.showOptionDialog(AddOrEditProfesor.inst, GlobalConstants.upitBrisanjePredKodProf, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+			if(code == JOptionPane.YES_OPTION) {	
+				String editProfBrLic = (String)TabelaProfesora.inst.getValueAt(rowNumEdited, 0);
+				Profesor ptemp = cp.nadjiProfesora(editProfBrLic);
+				cp.obrisiPredmeteKodProf(ptemp, selectedPreds);
+				TabelaPredmeti.azurirajTabeluProf(ptemp);
+				GlavniProzor.getControllerPredmet().obrisiProfSaSvihPredmeta(ptemp.getBrLicKart());
+			}
+		}
+		
 	}
 }

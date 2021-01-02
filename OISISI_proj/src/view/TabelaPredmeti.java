@@ -79,6 +79,7 @@ public class TabelaPredmeti extends JTable {
 			t.setModel(modelProf);
 			t.setRowHeight(20);
 			t.setAutoCreateRowSorter(true);
+			t.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			
 			//Poravnanje : 
 			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
