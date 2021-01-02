@@ -159,15 +159,14 @@ public class ControllerStudent {
         }
     }
 	
-	public void obrisiPredmete(ArrayList<String> predIds, Student s) {
-        for(String str : predIds)
-            for(Predmet p : s.getNepolozeniIspiti()) {
-                if(p.getSifPred().equals(str)) {
-                    s.getNepolozeniIspiti().remove(p);
-                    p.getListaNepolozenih().remove(s);
-                    break;
-                }
-            }
+	public void obrisiPredmet(String predIds, Student s) {
+		for(Predmet p : s.getNepolozeniIspiti()) {
+			if(p.getSifPred().equals(predIds)) {
+				s.getNepolozeniIspiti().remove(p);
+                p.getListaNepolozenih().remove(s);
+                break;
+             }
+        }
     }
 	
 	public void serialize() throws FileNotFoundException, IOException {

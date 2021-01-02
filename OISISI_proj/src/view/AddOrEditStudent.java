@@ -442,25 +442,19 @@ public class AddOrEditStudent extends JPanel {
 				return;
 			}
 			
-			ArrayList<String> selectedPreds = new ArrayList<String>();
-			String temp;
-			
-			
-			temp = (String) TabelaPredmeti.instStudNepo.getValueAt(selectedIndex, 0);
-			selectedPreds.add(temp);
+			String temp = (String) TabelaPredmeti.instStudNepo.getValueAt(selectedIndex, 0);
 			
 			String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
 			int code = JOptionPane.showOptionDialog(AddOrEditStudent.inst, GlobalConstants.upitBrisanjePredKodStud, GlobalConstants.upitBrisanjePredTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			
 			if(code == JOptionPane.YES_OPTION) {	
-				GlavniProzor.getControllerStudent().obrisiPredmete(selectedPreds, student);
+				GlavniProzor.getControllerStudent().obrisiPredmet(temp, student);
 				TabelaPredmeti.azurirajTabeluStudNepo(student.getBrIndexa());
 			}
 			
 		}
 		
 	}
-
 	
 	public Student getCurrStudent() {
 		return student;
