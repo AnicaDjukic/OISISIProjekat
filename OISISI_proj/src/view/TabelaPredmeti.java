@@ -61,7 +61,7 @@ public class TabelaPredmeti extends JTable {
 			t.setModel(model);
 			
 			t.setRowHeight(35);
-			//t.setAutoCreateRowSorter(true);
+			t.setAutoCreateRowSorter(true);
 			t.setFont(t.getFont().deriveFont(16F));
 			
 			//Poravnanje :
@@ -78,7 +78,7 @@ public class TabelaPredmeti extends JTable {
 			modelProf.setColumnIdentifiers(colNamesProf);
 			t.setModel(modelProf);
 			t.setRowHeight(20);
-			//t.setAutoCreateRowSorter(true);
+			t.setAutoCreateRowSorter(true);
 			
 			//Poravnanje : 
 			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
@@ -94,7 +94,7 @@ public class TabelaPredmeti extends JTable {
 			modelStudNepo.setColumnIdentifiers(colNames);
 			t.setModel(modelStudNepo);
 			t.setRowHeight(20);
-			//t.setAutoCreateRowSorter(true);
+			t.setAutoCreateRowSorter(true);
 			
 			//Poravnanje :
 			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
