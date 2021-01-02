@@ -32,7 +32,7 @@ public class DeleteButtonListener implements ActionListener{
 					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaPolozenih(index);
 					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaNepolozenih(index);
 					GlavniProzor.getControllerStudent().obrisiStudenta(index);
-					TabelaStudenti.updateTable();
+					TabelaStudenti.table.updateTable();
 					GlavniProzor.serialize();
 				}
 			}

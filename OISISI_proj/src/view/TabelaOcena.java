@@ -28,7 +28,7 @@ public class TabelaOcena extends JTable {
 		updateTable(index);
 	}
 
-	public static void initializeTable(TabelaOcena table) {
+	public void initializeTable(TabelaOcena table) {
 
 		model = new DefaultTableModel() {
 
@@ -45,7 +45,7 @@ public class TabelaOcena extends JTable {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
-	public static void updateTable(String index) {
+	public void updateTable(String index) {
 		ArrayList<Ocena> listaOcena = controller.nadjiStudenta(index).getPolozeniIspiti();
 
 		initializeTable(inst);

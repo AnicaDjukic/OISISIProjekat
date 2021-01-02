@@ -154,9 +154,20 @@ public class ControllerStudent {
 	
 	public void dodajNepolozenePredmete(ArrayList<String> newPreds, Student stud) {
         for(String s : newPreds) {
-            stud.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet(s));
-            GlavniProzor.getControllerPredmet().nadjiPredmet(s).getListaNepolozenih().add(stud);
+        	Predmet p = GlavniProzor.getControllerPredmet().nadjiPredmet(s);
+        	if(p != null) {
+        		stud.getNepolozeniIspiti().add(p);
+        		p.getListaNepolozenih().add(stud);
+        	}
         }
+    }
+	
+	public void dodajNepolozenPredmet(String sifra, Student stud) {
+		Predmet pred = GlavniProzor.getControllerPredmet().nadjiPredmet(sifra);
+		if(pred != null) {
+			stud.getNepolozeniIspiti().add(pred);
+        	pred.getListaNepolozenih().add(stud);
+		}
     }
 	
 	public void obrisiPredmet(String predIds, Student s) {
@@ -187,7 +198,12 @@ public class ControllerStudent {
 			counter++;
 			sum += o.getBrVrednost();
 		}
-		double d = sum/counter;
+		double d = 0;
+		if(counter != 0)
+			d = sum/counter;
+		else
+			d = 0;
+		
 		s.setProsecnaOcena(d);
 	}
 
@@ -199,5 +215,15 @@ public class ControllerStudent {
 		o.getPredmet().getListaPolozenih().add(s);
 
 		sracunajProsecnuOcenu(s);
+	}
+	
+	public void obrisiOcenuIzListePolozenih(String sifra, Student s) {
+		for(Ocena o : s.getPolozeniIspiti()) {
+			if(o.getPredmet().getSifPred().equals(sifra)) {
+				s.getPolozeniIspiti().remove(o);
+				GlavniProzor.getControllerPredmet().nadjiPredmet(sifra).getListaPolozenih().remove(s.getBrIndexa());
+				break;
+			}
+		}
 	}
 }

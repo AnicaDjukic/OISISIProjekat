@@ -222,13 +222,14 @@ public class AddOrEditStudent extends JPanel {
 			polozeni.setLayout(new BoxLayout(polozeni, BoxLayout.Y_AXIS));
 			JPanel btnPanel = new JPanel(new FlowLayout(10,15,10));
 			JButton ponistiOcenu = new JButton(GlobalConstants.btnPonisti);
+			ponistiOcenu.addActionListener(new MyPonistiOcenuListener());
 			btnPanel.add(ponistiOcenu);
 			polozeni.add(btnPanel);
 
 			TabelaOcena ocene = new TabelaOcena(tBrIndexa.getText());
 			JScrollPane scroll = new JScrollPane(ocene);
 			scroll.setMaximumSize(new Dimension(350, 350));
-			TabelaOcena.updateTable(tBrIndexa.getText());
+			TabelaOcena.inst.updateTable(tBrIndexa.getText());
 			JPanel tabelaPanel = new JPanel();
 			tabelaPanel.setLayout(new BoxLayout(tabelaPanel, BoxLayout.X_AXIS));
 			JPanel sep1 = new JPanel();
@@ -360,7 +361,7 @@ public class AddOrEditStudent extends JPanel {
 					
 				}
 				
-				TabelaStudenti.updateTable();
+				TabelaStudenti.table.updateTable();
 				
 				GlavniProzor.serialize();
 			}
@@ -417,7 +418,6 @@ public class AddOrEditStudent extends JPanel {
 
 			}
 		}
-
 	}
 	
 	class MyDodajPredListener implements ActionListener{
@@ -451,11 +451,38 @@ public class AddOrEditStudent extends JPanel {
 				GlavniProzor.getControllerStudent().obrisiPredmet(temp, student);
 				TabelaPredmeti.azurirajTabeluStudNepo(student.getBrIndexa());
 			}
-			
 		}
-		
 	}
 	
+	class MyPonistiOcenuListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			int selectedIndex = TabelaOcena.inst.getSelectedRow();
+			
+			if(selectedIndex == -1) {
+				err = new ErrorDialog(GlobalConstants.greskaPriIzboruOcene);
+				return;
+			}
+			
+			String temp = (String) TabelaOcena.inst.getValueAt(selectedIndex, 0);
+			
+			String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+			int code = JOptionPane.showOptionDialog(AddOrEditStudent.inst, GlobalConstants.upitPonistavenjeOcene, GlobalConstants.upitPonistavenjeOceneTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+			
+			if(code == JOptionPane.YES_OPTION) {
+				GlavniProzor.getControllerStudent().obrisiOcenuIzListePolozenih(temp, student);
+				TabelaOcena.inst.updateTable(student.getBrIndexa());
+				GlavniProzor.getControllerStudent().dodajNepolozenPredmet(temp, student);
+				TabelaPredmeti.azurirajTabeluStudNepo(student.getBrIndexa());
+				GlavniProzor.getControllerStudent().sracunajProsecnuOcenu(student);
+				updateEspbAndPros(student);
+				TabelaStudenti.table.updateTable();
+			}
+		}
+	}
+
 	public Student getCurrStudent() {
 		return student;
 	}

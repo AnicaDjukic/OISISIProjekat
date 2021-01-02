@@ -27,7 +27,7 @@ public class TabelaStudenti extends JTable {
 		updateTable();
 	}
 	
-	public static void initializeTable(TabelaStudenti table) {
+	public void initializeTable(TabelaStudenti table) {
 		
 		model = new DefaultTableModel() {
 			
@@ -51,7 +51,7 @@ public class TabelaStudenti extends JTable {
 		}
 	}
 	
-	public static void updateTable() {
+	public void updateTable() {
 		ArrayList<Student> listaStudenata = controller.getListaStudenata();
 
 		initializeTable(table);
