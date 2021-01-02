@@ -40,10 +40,10 @@ public class ControllerStudent {
 	public void Initialize() {
 		for(int i = 0; i < 10; i++) {
 			Student s = new Student();
-			s.setIme("ime ");
-			s.setPrezime("prz ");
+			s.setIme("ime-" + i);
+			s.setPrezime("prz-" + i);
 			s.setBrIndexa("ra-" + i + "-2018");
-			s.setGodUpisa("2019");
+			s.setGodUpisa("2018");
 			s.setTrenutnaGodStud(3);
 			s.setDatumRodj(LocalDate.parse("1999-01-01"));
 			s.setAdresaStan("gshasg 12");
@@ -225,5 +225,32 @@ public class ControllerStudent {
 				break;
 			}
 		}
+	}
+
+	public ArrayList<String> pretraziStud(String[] parts) {
+		ArrayList<String> foundBrIndexa = new ArrayList<String>();
+		if(parts.length == 1) {
+			for(Student stud : listaStudenti) {
+				if(stud.getPrezime().toLowerCase().indexOf(parts[0]) != -1)
+					foundBrIndexa.add(stud.getBrIndexa());
+			}
+		}
+		
+		if(parts.length == 2) {
+			for(Student stud : listaStudenti)
+				if(stud.getPrezime().toLowerCase().indexOf(parts[0]) != -1)
+					if(stud.getIme().toLowerCase().indexOf(parts[1]) != -1)
+						foundBrIndexa.add(stud.getBrIndexa());
+		}
+		
+		if(parts.length == 3) {
+			for(Student stud : listaStudenti)
+				if(stud.getPrezime().toLowerCase().indexOf(parts[0]) != -1)
+					if(stud.getIme().toLowerCase().indexOf(parts[1]) != -1)
+						if(stud.getBrIndexa().toLowerCase().indexOf(parts[2]) != -1)
+							foundBrIndexa.add(stud.getBrIndexa());
+		}
+		
+		return foundBrIndexa;
 	}
 }

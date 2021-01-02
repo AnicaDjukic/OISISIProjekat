@@ -19,6 +19,7 @@ public class SearchButtonListener implements ActionListener{
 		switch(tab) {
 		case 0:
 			//Search za studente
+			prikaziStudente();
 			break;
 		case 1:
 			//Search za profesora
@@ -32,6 +33,21 @@ public class SearchButtonListener implements ActionListener{
 		
 	}
 	
+	private void prikaziStudente() {
+		String text = Toolbar.srchField.getText();
+		text = text.trim();
+		text = text.toLowerCase();
+		String parts[] = text.split(" ");
+		ArrayList<String> foundStudents = new ArrayList<String>();
+		foundStudents = GlavniProzor.getControllerStudent().pretraziStud(parts);
+		if(foundStudents.size() == 0)
+			Toolbar.srchField.setForeground(Color.red);
+		else
+			Toolbar.srchField.setForeground(Color.black);
+		
+		TabelaStudenti.table.izlistajStudente(foundStudents);
+	}
+
 	//Implementirane funkcije za prikaz :
 	void prikaziProfesore() {
 		String text = Toolbar.srchField.getText();

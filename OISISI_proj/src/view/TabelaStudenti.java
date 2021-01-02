@@ -65,5 +65,23 @@ public class TabelaStudenti extends JTable {
 		    model.addRow(data);
 		}
 	}
-	
+
+	public void izlistajStudente(ArrayList<String> foundStudents) {
+		ArrayList<Student> listaStudenata = controller.getListaStudenata();
+
+		initializeTable(table);
+		
+		for(Student stud : listaStudenata) {
+			for(String s : foundStudents) {
+				if(stud.getBrIndexa().equals(s)) {
+					String[] data = { stud.getBrIndexa(), stud.getIme(), stud.getPrezime(), "", "", ""};
+					data[3] = Integer.toString(stud.getTrenutnaGodStud());
+					data[4] = stud.getStatus();
+					data[5] = String.format("%.2f", stud.getProsecnaOcena());
+					
+				    model.addRow(data);
+				}
+			}
+		}
+	}
 }
