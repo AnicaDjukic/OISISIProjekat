@@ -33,7 +33,7 @@ public class AdvSearDialog extends JDialog {
 		inst = this;
 		
 		this.setModal(true);
-		this.setSize(350,150);
+		this.setSize(500,150);
 		this.setLocationRelativeTo(GlavniProzor.inst);
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
@@ -44,7 +44,7 @@ public class AdvSearDialog extends JDialog {
 		this.add(help1,BorderLayout.NORTH);
 		
 		field = new JTextField();
-		field.setPreferredSize(new Dimension(300,30));
+		field.setPreferredSize(new Dimension(450,30));
 		help2 = new JPanel();
 		help2.add(field);
 		this.add(help2, BorderLayout.CENTER);

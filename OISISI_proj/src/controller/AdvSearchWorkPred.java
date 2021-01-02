@@ -51,9 +51,14 @@ public class AdvSearchWorkPred {
 		makeVars();
 		
 		if(!hadError) {
+			try {
 			exp = RuleSet.simplify(ExprParser.parse(myExp));	
 			exp = RuleSet.toDNF(exp);
 			myExp = exp.toString();
+			} catch(Exception e) {
+				hadError = true;
+				err = new ErrorDialog("Nije uspelo parsiranje izraza");
+			}
 		}
 		
 		//Sredjivanje u pogodan oblik forme :
@@ -319,9 +324,14 @@ public class AdvSearchWorkPred {
 		makePVars();
 		
 		if(!hadErrorProf) {
+			try {
 			expProf = RuleSet.simplify(ExprParser.parse(myExpProf));	
 			expProf = RuleSet.toDNF(expProf);
 			myExpProf = expProf.toString();
+			} catch(Exception e) {
+				hadErrorProf = true;
+				err = new ErrorDialog("Nije uspelo parsiranje izraza u delu profesori");
+			}
 		}
 		
 		
