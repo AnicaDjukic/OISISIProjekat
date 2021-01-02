@@ -10,8 +10,12 @@ import com.bpodgursky.jbool_expressions.rules.RuleSet;
 import model.Predmet;
 import view.AdvSearDialog;
 import view.ErrorDialog;
+import view.GlavniProzor;
+import view.TabelaPredmeti;
 
 //predmeti = (sifra == '0' and naziv == '0')
+//predmeti = (sifra == a or godina == 2 and (sifra == 3 and semestar == letnji))
+//A | B & C & D
 
 public class AdvSearchWorkPred {	
 	
@@ -21,11 +25,11 @@ public class AdvSearchWorkPred {
 	String[] collection;
 	char i;
 	
-	Set<String> set;
-	
 	ArrayList<Var> vars;
 	
 	String myExp;
+	
+	ArrayList<Predmet> solution;
 	
 	public AdvSearchWorkPred(String s) {
 		hadError = false;
@@ -46,26 +50,41 @@ public class AdvSearchWorkPred {
 		
 		
 		makeVars();
-		if(!hadError) {			
-			System.out.println(myExp);
-			
-			for(Var v : vars) {
-				System.out.println("--------------------------");
-				System.out.println("Var : " + v.getN());
-				System.out.println("Value : " + v.getV());
-			}
-		}
-		System.out.println("Sad ide pravi test :");
 		
 		if(!hadError) {
 			exp = RuleSet.simplify(ExprParser.parse(myExp));	
-			AdvSearDialog.inst.getter().setVisible(false);
 			exp = RuleSet.toDNF(exp);
-			System.out.println(exp);
+			myExp = exp.toString();
+		}
+		
+		//Sredjivanje u pogodan oblik forme :
+		
+		if(!hadError) {
+			myExp = myExp.replaceAll("\\Q(\\E", "");
+			myExp = myExp.replaceAll("\\Q)\\E", "");
+			myExp = myExp.replaceAll("\\Q & \\E", "");
+			myExp = myExp.replaceAll("\\Q | \\E", "+");
+			//System.out.println(myExp);
+		}
+		//Za svaku nadjenu promenljivu izvrsi njen upit :
+		if(!hadError)
+			executeVarQuerries();
+			
+		//Izvrsi ceo izraz :
+		if(!hadError)
+			executeExpression();
+		
+		if(!hadError) {
+			ArrayList<String> foundSifs = new ArrayList<String>();
+			for(Predmet p : solution)
+				foundSifs.add(p.getSifPred());
+			
+			TabelaPredmeti.izlistajPredmete(foundSifs);
+			AdvSearDialog.inst.setVisible(false);
 		}
 		
 	}
-	
+	//Klasa promenljivih za predmete:
 	class Var{
 		char name;
 		String value;
@@ -74,10 +93,12 @@ public class AdvSearchWorkPred {
 		public Var(char n, String v) {
 			name = n;
 			value = v;
+			sol = new ArrayList<Predmet>();
 		}
 		
 		public char getN() { return name; }
 		public String getV() { return value; }
+		public ArrayList<Predmet> getSol() {return sol;}
 	}
 	
 	public void makeVars() {
@@ -127,12 +148,13 @@ public class AdvSearchWorkPred {
 					k++;
 				}
 				else {
-					err = new ErrorDialog("Nije spojeno ni sa jednim tokenom");
+					err = new ErrorDialog("Nije spojeno ni sa jednim tokenom, proverite izraz");
 					hadError = true;
 					break;
 				}
-				if(hadError)
+				if(hadError) 
 					break;
+				
 			}while(k < collection.length);
 		}
 	}
@@ -141,9 +163,7 @@ public class AdvSearchWorkPred {
 		
 		Var temp;
 		String s = col + " " +  exp + " " + val;
-		switch(col) {
-		case "sifra":
-		case "naziv":
+		if(col.equalsIgnoreCase("sifra") || col.equalsIgnoreCase("naziv")) {
 			if(!exp.equals("==") && !exp.equals("!=")) {
 				err = new ErrorDialog("Tipovi sifra i naziv mogu imati relacione operatore !=/==");
 				return false;
@@ -151,9 +171,8 @@ public class AdvSearchWorkPred {
 			temp = new Var(i,s);
 			myExp += " " + i++ + " ";
 			vars.add(temp);
-			return true;
-		case "ESPB":
-		case "godina":
+		}
+		else if(col.equalsIgnoreCase("espb") || col.equalsIgnoreCase("godina")) {
 			if(!checkExp(exp)) {
 				err = new ErrorDialog("Nije validan operator za tip ESPB/godina");
 				return false;
@@ -161,8 +180,8 @@ public class AdvSearchWorkPred {
 			temp = new Var(i,s);
 			myExp += " " + i++ + " ";
 			vars.add(temp);
-			break;
-		case "semestar":
+		}
+		else if(col.equalsIgnoreCase("semestar")) {
 			if(!exp.equals("==") && !exp.equals("!=")) {
 				err = new ErrorDialog("Tip semestar ne prihvata zadate relacione operatore");
 				return false;
@@ -174,10 +193,10 @@ public class AdvSearchWorkPred {
 			temp = new Var(i,s);
 			myExp += " " + i++ + " ";
 			vars.add(temp);
-			break;
-		default : return false;
 		}
-		
+		else {
+			return false;
+		}
 		
 		return true;
 	}
@@ -196,6 +215,43 @@ public class AdvSearchWorkPred {
 	}
 	
 	public void executeVarQuerries() {
+		boolean noErrors = true;
+		for(Var v : vars) {
+			if(v.getV().toLowerCase().startsWith("sifra") || v.getV().toLowerCase().startsWith("naziv"))
+				noErrors &= GlavniProzor.getControllerPredmet().advSrcTxt(v.getV(), v.getSol());
+			else if(v.getV().toLowerCase().startsWith("espb") || v.getV().toLowerCase().startsWith("godina"))
+				noErrors &= GlavniProzor.getControllerPredmet().advSrcNum(v.getV(), v.getSol());
+			else if(v.getV().toLowerCase().startsWith("semestar"))
+				noErrors &= GlavniProzor.getControllerPredmet().advSrcSem(v.getV(), v.getSol());
+			else
+				noErrors &= false;
+		}
+		if(!noErrors) {
+			err = new ErrorDialog("Neuspešno izvršavanje pojedinačnih upita");
+			hadError = true;
+		}
+	}
+	
+	//Nalazi promenljive po njihovom imenu tj slovu :
+	public Var getVbyName(char a) {
+		for(Var v : vars)
+			if(v.getN() == a)
+				return v;
+		return null;
+	}
+	
+	public void executeExpression() {
+		String[] toInter = myExp.split("\\+");
+		System.out.println(toInter.length);
+		ArrayList<ArrayList<Predmet>> toDo = new ArrayList<ArrayList<Predmet>>();
+		ArrayList<ArrayList<Predmet>> toOr = new ArrayList<ArrayList<Predmet>>();
+		for(String s : toInter) {
+			for(char c : s.toCharArray())
+				toDo.add(getVbyName(c).getSol());
+			toOr.add(GlavniProzor.getControllerPredmet().intersect(toDo));
+			toDo = new ArrayList<ArrayList<Predmet>>();
+		}
 		
+		solution = GlavniProzor.getControllerPredmet().union(toOr);
 	}
 }

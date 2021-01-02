@@ -178,4 +178,13 @@ public class Predmet {
 		return out;
 	}
 	
+	//Help metoda za godinu izvodjenja :
+	public int getNumGodina() {
+		switch(this.getGodIzv()) {
+		case PRVA : return 1;
+		case DRUGA : return 2;
+		case TRECA : return 3;
+		default : return 4;
+		}
+	}
 }
