@@ -42,6 +42,7 @@ public class TabelaStudenti extends JTable {
 		table.setRowHeight(35);
 		table.setFont(table.getFont().deriveFont(16f));
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setAutoCreateRowSorter(true);
 		
 		// Centriranje
 		NasCellRenderer prikaz = new NasCellRenderer(NasCellRenderer.studentRenderer);
