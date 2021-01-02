@@ -69,6 +69,7 @@ public class AdvSearDialog extends JDialog {
 		} else if (tab == 2) {
 			//Predmet pretraga 
 			this.setTitle(GlobalConstants.advTitlePred);
+			this.field.setToolTipText(GlobalConstants.advSearchToolTipPred);
 		} else  {
 			ErrorDialog err = new ErrorDialog(GlobalConstants.errAdvSearProf);
 			getter().setVisible(false);
