@@ -97,7 +97,11 @@ public class AdvSearDialog extends JDialog {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			AdvSearchWorkPred asw = new AdvSearchWorkPred(field.getText());
+			AdvSearchWorkPred asw;
+			
+			int tab = GlavniProzor.inst.getTabbedPane().getSelectedIndex();
+			if(tab == 2)
+				asw = new AdvSearchWorkPred(field.getText());
 			
 		}
 		
