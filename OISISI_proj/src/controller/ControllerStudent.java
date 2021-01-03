@@ -1,11 +1,15 @@
 package controller;
 
 import java.awt.Dimension;
+import java.awt.List;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,9 +38,13 @@ public class ControllerStudent {
 	public ArrayList<Student> getListaStudenata() {
 		return this.listaStudenti;
 	}
+	
+	public void setListaStudenata(ArrayList<Student> stud) {
+		this.listaStudenti = stud;
+	}
 		
 	public void Initialize() {
-		for(int i = 0; i < 10; i++) {
+		/*for(int i = 0; i < 10; i++) {
 			Student s = new Student();
 			s.setIme("ime-" + i);
 			s.setPrezime("prz-" + i);
@@ -50,6 +58,16 @@ public class ControllerStudent {
 			s.setStatus("B");
 			s.setProsecnaOcena(0.0);
 			dodajStudenta(s);
+		}*/
+		
+		try {
+			deserialize();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	//Testiranje za prikaz nepolozenih ispita : 
@@ -184,11 +202,29 @@ public class ControllerStudent {
 		studenti.createNewFile();
 		try(FileOutputStream fos = new FileOutputStream(studenti);
 			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
+			
 			for(Student p : listaStudenti)
 				oos.writeObject(p);
 			
 			oos.close();
 			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void deserialize() throws FileNotFoundException, IOException {
+		File studenti = new File("resources" + File.separator + "Studenti.txt");
+		try(FileInputStream fis = new FileInputStream(studenti);
+				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
+			
+			ArrayList<Student> lista;
+		    lista = (ArrayList) ois.readObject();
+			
+			setListaStudenata(lista);
+					
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
