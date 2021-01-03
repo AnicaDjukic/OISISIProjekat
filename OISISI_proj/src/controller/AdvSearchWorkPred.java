@@ -139,10 +139,23 @@ public class AdvSearchWorkPred {
 					resolveProfesor();
 					if(hadError)
 						break;
-					for(Predmet p : GlavniProzor.getControllerPredmet().getListaPredmeta())
-						for(Profesor pr : psolution)
-							if(p.getProf().equals(pr))
+					
+					if(collection[k+1].equals("==")) {
+						for(Predmet p : GlavniProzor.getControllerPredmet().getListaPredmeta())
+							for(Profesor pr : psolution)
+								if(p.getProf().equals(pr))
+									temp.getSol().add(p);
+					} else if(collection[k+1].equals("!=")) {
+						if(psolution.size() != 0) {
+							for(Predmet p : GlavniProzor.getControllerPredmet().getListaPredmeta())
+								for(Profesor pr : psolution)
+									if(!p.getProf().equals(pr))
+										temp.getSol().add(p);
+						} else {
+							for(Predmet p : GlavniProzor.getControllerPredmet().getListaPredmeta())
 								temp.getSol().add(p);
+						}
+					}
 					
 					//predmeti = (profesori == {ime = "0"})
 					vars.add(temp);
@@ -152,7 +165,7 @@ public class AdvSearchWorkPred {
 					k = helper + 1;
 					
 				}
-				else if(collection[k].equalsIgnoreCase("sifra")) {
+				else if(collection[k].equalsIgnoreCase("sifra") || collection[k].equalsIgnoreCase("šifra")) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				}
@@ -196,7 +209,7 @@ public class AdvSearchWorkPred {
 		
 		Var temp;
 		String s = col + " " +  exp + " " + val;
-		if(col.equalsIgnoreCase("sifra") || col.equalsIgnoreCase("naziv")) {
+		if(col.equalsIgnoreCase("sifra") || col.equalsIgnoreCase("šifra") || col.equalsIgnoreCase("naziv")) {
 			if(!exp.equals("==") && !exp.equals("!=")) {
 				err = new ErrorDialog("Tipovi sifra i naziv mogu imati relacione operatore !=/==");
 				return false;
@@ -219,7 +232,7 @@ public class AdvSearchWorkPred {
 				err = new ErrorDialog("Tip semestar ne prihvata zadate relacione operatore");
 				return false;
 			}
-			if(!val.toLowerCase().equals("zimski") && !val.toLowerCase().equals("letnji")) {
+			if(!(val.equalsIgnoreCase("\"zimski\"") || val.equalsIgnoreCase("\"letnji\"") || val.equalsIgnoreCase("zimski") || val.equalsIgnoreCase("letnji"))) {
 				err = new ErrorDialog("Tip semestar ne prihvata zadatu vrednost");
 				return false;
 			}
@@ -250,7 +263,7 @@ public class AdvSearchWorkPred {
 	public void executeVarQuerries() {
 		boolean noErrors = true;
 		for(Var v : vars) {
-			if(v.getV().toLowerCase().startsWith("sifra") || v.getV().toLowerCase().startsWith("naziv"))
+			if(v.getV().toLowerCase().startsWith("sifra") || v.getV().toLowerCase().startsWith("šifra") || v.getV().toLowerCase().startsWith("naziv"))
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcTxt(v.getV(), v.getSol());
 			else if(v.getV().toLowerCase().startsWith("espb") || v.getV().toLowerCase().startsWith("godina"))
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcNum(v.getV(), v.getSol());
@@ -316,7 +329,6 @@ public class AdvSearchWorkPred {
 		
 		
 		profCollection = myExpProf.split(" ");
-		profCollection[1] = "=";
 		
 		//predmeti = (profesori == {ime == "0"})
 		
@@ -375,7 +387,7 @@ public class AdvSearchWorkPred {
 	
 	public void makePVars() {
 		myExpProf = "";
-		if(!profCollection[0].toLowerCase().equals("profesori") || !profCollection[1].equals("=")) {
+		if(!profCollection[0].toLowerCase().equals("profesori") || !(profCollection[1].equals("==") || profCollection[1].equals("!="))) {
 			err = new ErrorDialog("Iskaz kod profesora ne počinje korektno");
 			hadErrorProf = true;
 			return;

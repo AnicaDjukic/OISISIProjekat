@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import model.GlobalConstants;
 import model.Predmet;
@@ -126,6 +127,11 @@ public class ControllerPredmet {
 				return false;
 			critType = 1;
 			parts[2] = parts[2].substring(1,parts[2].length()-1);
+			try {
+				Pattern.compile(parts[2]);
+			} catch (Exception e) {
+				return false;
+			}
 		}
 		else if(parts[2].startsWith("\"")) {
 			if(!parts[2].endsWith("\""))
@@ -137,7 +143,7 @@ public class ControllerPredmet {
 			return false;
 		}
 		
-		if(parts[0].equalsIgnoreCase("sifra")){
+		if(parts[0].equalsIgnoreCase("sifra") || parts[0].equalsIgnoreCase("šifra")){
 			if(critType == 1) {
 				//sifra po regexu
 				
@@ -282,7 +288,7 @@ public class ControllerPredmet {
 	public boolean advSrcSem(String crit, ArrayList<Predmet> ret) {
 		String[] parts = crit.split(" ");
 		
-		if(parts[2].equalsIgnoreCase("letnji")) {
+		if(parts[2].equalsIgnoreCase("letnji") || parts[2].equalsIgnoreCase("\"letnji\"")) {
 			if(parts[1].equals("==")) {
 				for(Predmet p : listaPredmeta)
 					if(p.getSemestar() == Predmet.Semestar.LETNJI)
@@ -294,7 +300,7 @@ public class ControllerPredmet {
 						ret.add(p);
 			}
 		}
-		else if(parts[2].equalsIgnoreCase("zimski")) {
+		else if(parts[2].equalsIgnoreCase("zimski") || parts[2].equalsIgnoreCase("\"zimski\"")) {
 			if(parts[1].equals("==")) {
 				for(Predmet p : listaPredmeta)
 					if(p.getSemestar() == Predmet.Semestar.ZIMSKI)

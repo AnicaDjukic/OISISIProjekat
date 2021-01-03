@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -194,6 +195,11 @@ public class ControllerProfesor {
 				return false;
 			critType = 1;
 			parts[2] = parts[2].substring(1,parts[2].length()-1);
+			try {
+				Pattern.compile(parts[2]);
+			} catch (Exception e) {
+				return false;
+			}
 		}
 		else if(parts[2].startsWith("\"")) {
 			if(!parts[2].endsWith("\""))
