@@ -1,12 +1,15 @@
 package controller;
 
 import java.awt.Dimension;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,7 +39,7 @@ public class ControllerProfesor {
 	
 	//Doimplementirati kada se bude imao data sample
 	public void Initialize() {
-		for(int i = 0; i < 10; i++) {
+		/*for(int i = 0; i < 10; i++) {
 			Profesor temp = new Profesor();
 			temp.setIme(""+i+"-prof");
 			temp.setPrezime(""+i+"-profPrez");
@@ -50,6 +53,16 @@ public class ControllerProfesor {
 			GlavniProzor.getControllerPredmet().nadjiPredmet(""+i).setProf(temp);
 			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+4));
 			dodajProfesora(temp);
+		}*/
+		
+		try {
+			deserialize();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -194,6 +207,19 @@ public class ControllerProfesor {
 			oos.close();
 			fos.close();
 		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings({ "unchecked"})
+	public void deserialize() throws FileNotFoundException, IOException {
+		File profesori = new File("resources" + File.separator + "Profesori.txt");
+		try(FileInputStream fis = new FileInputStream(profesori);
+				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
+			
+			listaProfesora = (ArrayList<Profesor>) ois.readObject();
+					
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

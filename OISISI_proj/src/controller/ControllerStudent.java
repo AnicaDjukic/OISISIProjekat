@@ -38,10 +38,6 @@ public class ControllerStudent {
 	public ArrayList<Student> getListaStudenata() {
 		return this.listaStudenti;
 	}
-	
-	public void setListaStudenata(ArrayList<Student> stud) {
-		this.listaStudenti = stud;
-	}
 		
 	public void Initialize() {
 		/*for(int i = 0; i < 10; i++) {
@@ -71,11 +67,11 @@ public class ControllerStudent {
 		}
 	}
 	//Testiranje za prikaz nepolozenih ispita : 
-	public void testAddNepo() {
+	/*public void testAddNepo() {
 		for(Student s : listaStudenti) {
 			s.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet("1"));
 		}
-	}
+	}*/
 		
 	public boolean dodajStudenta(Student s) {
 		if(listaStudenti.isEmpty()) {
@@ -213,16 +209,13 @@ public class ControllerStudent {
 		
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked"})
 	public void deserialize() throws FileNotFoundException, IOException {
 		File studenti = new File("resources" + File.separator + "Studenti.txt");
 		try(FileInputStream fis = new FileInputStream(studenti);
 				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
 			
-			ArrayList<Student> lista;
-		    lista = (ArrayList) ois.readObject();
-			
-			setListaStudenata(lista);
+			listaStudenti = (ArrayList<Student>) ois.readObject();
 					
 		} catch (Exception e) {
 			e.printStackTrace();

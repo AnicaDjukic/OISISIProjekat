@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -29,12 +32,22 @@ public class ControllerPredmet {
 	
 	//Doimplementirati kada se bude imao data sample
 	public void Initialize() {
-		for (int i = 0; i < 20; i++) {
+		/*for (int i = 0; i < 20; i++) {
 			Predmet p = new Predmet();
 			p.setNaziv(""+i);
 			p.setSifPred(""+i);
 			p.setEspbBod(i);
 			dodajPredmet(p);
+		}*/
+		
+		try {
+			deserialize();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -115,6 +128,19 @@ public class ControllerPredmet {
 			
 			oos.close();
 			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings({ "unchecked"})
+	public void deserialize() throws FileNotFoundException, IOException {
+		File predmeti = new File("resources" + File.separator + "Predmeti.txt");
+		try(FileInputStream fis = new FileInputStream(predmeti);
+				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
+			
+			listaPredmeta = (ArrayList<Predmet>) ois.readObject();
+					
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
