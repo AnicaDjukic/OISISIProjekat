@@ -175,7 +175,7 @@ public class GlobalConstants {
 	
 	//Titula i zvanje :
 	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeriturs"};
-	public static String[] titule = {"BSc", "MSc", "Magistat", "Doktor nauka", "Profesor dr."};
+	public static String[] titule = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
 	
 	//Tooltip za dodatni zadatak :
 	public static String advSearchToolTipPred = "<html>Početak iskaza mora biti formata \"predmeti = (...)\" <br>Lista podržanih polja za pretragu kod "
