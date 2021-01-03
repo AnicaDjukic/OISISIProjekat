@@ -202,6 +202,14 @@ public class ControllerProfesor {
 			}
 		}
 		else if(parts[2].startsWith("\"")) {
+			if(parts[0].equalsIgnoreCase("titula") || parts[0].equalsIgnoreCase("zvanje")) {
+				int i = 2;
+				do {
+					if(parts[i].matches(".*\"$"))
+						break;
+					parts[2] += " " + parts[++i];
+				}while(i < parts.length);
+			}
 			if(!parts[2].endsWith("\""))
 				return false;
 			critType = 2;
@@ -278,7 +286,7 @@ public class ControllerProfesor {
 					break;
 				}
 			
-			if(tempTit.isBlank())
+			if(tempTit.isEmpty())
 				return false;
 			
 			if(critType == 1) {
@@ -306,7 +314,7 @@ public class ControllerProfesor {
 					break;
 				}
 			
-			if(tempTit.isBlank())
+			if(tempTit.isEmpty())
 				return false;
 			if(critType == 1) {
 				return false;

@@ -412,12 +412,39 @@ public class AdvSearchWorkPred {
 					k+=3;
 				}
 				else if(profCollection[k].equalsIgnoreCase("titula")) {
-					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
-					k+=3;
+					int temp = k + 2;
+					
+					do {
+						if(profCollection[temp].matches(".*\"$"))
+							break;
+						temp++;						
+						//predmeti = (profesori == {titula == "doktor nauka"})
+					}while(temp < profCollection.length);
+					
+					String val = "";
+					for(int i = 2; i <= temp - k; i++)
+						val += " " + profCollection[k+i];
+					
+					val = val.substring(1);
+					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], val);
+					k = temp + 1;
 				}
 				else if(profCollection[k].equalsIgnoreCase("zvanje")) {
-					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
-					k+=3;
+					int temp = k + 2;
+					
+					do {
+						if(profCollection[temp].matches(".*\"$"))
+							break;
+						temp++;						
+						//predmeti = (profesori == {zvanje == "saradnik u nastavi" or zvanje == "asistent" or zvanje == "asistent sa doktoratom" || zvanje == "docent" OR zvanje == "vanredni profesor" || zvanje == "redovni profesor" || zvanje == "profesor emeritus"})
+					}while(temp < profCollection.length);
+					String val = "";
+					for(int i = 2; i <= temp - k; i++)
+						val += " " + profCollection[k+i];
+					
+					val = val.substring(1);
+					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], val);
+					k = temp + 1;
 				} 
 				else if(profCollection[k].equalsIgnoreCase("and")) {
 					myExpProf += " & ";
@@ -462,7 +489,7 @@ public class AdvSearchWorkPred {
 	public void executePVarQuerries() {
 		boolean noErrors = true;
 		for(PVar v : pvars) {
-			if(v.getV().toLowerCase().startsWith("ime") || v.getV().toLowerCase().startsWith("prezime") || v.getV().toLowerCase().startsWith("titula") || v.getV().toLowerCase().equals("zvanje"))
+			if(v.getV().toLowerCase().startsWith("ime") || v.getV().toLowerCase().startsWith("prezime") || v.getV().toLowerCase().startsWith("titula") || v.getV().toLowerCase().startsWith("zvanje"))
 				noErrors &= GlavniProzor.getControllerProfesor().advSrcTxt(v.getV(), v.getSol());
 			else	
 				noErrors &= false;

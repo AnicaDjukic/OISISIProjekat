@@ -174,7 +174,7 @@ public class GlobalConstants {
 	public static String[] ocene = {"6","7","8","9","10"};
 	
 	//Titula i zvanje :
-	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeriturs"};
+	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
 	public static String[] titule = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
 	
 	//Tooltip za dodatni zadatak :
