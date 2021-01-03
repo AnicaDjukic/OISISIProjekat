@@ -110,8 +110,8 @@ public class ControllerPredmet {
 		predmeti.createNewFile();
 		try(FileOutputStream fos = new FileOutputStream(predmeti);
 			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
-			for(Predmet p : listaPredmeta)
-				oos.writeObject(p);
+			
+			oos.writeObject(listaPredmeta);
 			
 			oos.close();
 			fos.close();

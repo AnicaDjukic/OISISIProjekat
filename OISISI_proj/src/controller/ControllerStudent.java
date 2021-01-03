@@ -203,8 +203,7 @@ public class ControllerStudent {
 		try(FileOutputStream fos = new FileOutputStream(studenti);
 			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
 			
-			for(Student p : listaStudenti)
-				oos.writeObject(p);
+			oos.writeObject(listaStudenti);
 			
 			oos.close();
 			fos.close();

@@ -188,8 +188,8 @@ public class ControllerProfesor {
 		profesori.createNewFile();
 		try(FileOutputStream fos = new FileOutputStream(profesori);
 			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
-			for(Profesor p : listaProfesora)
-				oos.writeObject(p);
+			
+			oos.writeObject(listaProfesora);
 			
 			oos.close();
 			fos.close();
