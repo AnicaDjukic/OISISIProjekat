@@ -1,18 +1,16 @@
 package controller;
 
 import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import model.GlobalConstants;
 import model.Predmet;
-import model.Profesor;
 import model.Student;
-import view.AddOrEditPredmet;
 import view.GlavniProzor;
 
 public class ControllerPredmet {
@@ -107,13 +105,18 @@ public class ControllerPredmet {
 	}
 	
 	public void serialize() throws FileNotFoundException, IOException {
-		File profesori = new File("resources" + File.separator + "Predmeti.txt");
-		profesori.delete();
-		profesori.createNewFile();
-		try(FileOutputStream fos = new FileOutputStream(profesori);
-			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
+		File predmeti = new File("resources" + File.separator + "Predmeti.txt");
+		predmeti.delete();
+		predmeti.createNewFile();
+		try(FileOutputStream fos = new FileOutputStream(predmeti);
+			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
 			for(Predmet p : listaPredmeta)
-				dos.writeBytes(p.toString() + "\n");
+				oos.writeObject(p);
+			
+			oos.close();
+			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

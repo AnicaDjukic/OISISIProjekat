@@ -1,10 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 //importi : 
 import java.util.ArrayList;
 
-public class Profesor {
+public class Profesor implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String prezime;
 	private String ime;
 	private LocalDate drp;                    //datum rodjenja prof

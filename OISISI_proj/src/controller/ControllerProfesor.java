@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -186,9 +187,14 @@ public class ControllerProfesor {
 		profesori.delete();
 		profesori.createNewFile();
 		try(FileOutputStream fos = new FileOutputStream(profesori);
-			DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(fos));){
+			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
 			for(Profesor p : listaProfesora)
-				dos.writeBytes(p.toString() + "\n");
+				oos.writeObject(p);
+			
+			oos.close();
+			fos.close();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -1,11 +1,17 @@
 package model;
 
+import java.io.Serializable;
 //importi :
 import java.util.ArrayList;
 
 //enum :
 
-public class Predmet {
+public class Predmet implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public enum Semestar {LETNJI,ZIMSKI};
 	public enum GodIzv {PRVA,DRUGA,TRECA,CETVRTA};
 	
