@@ -230,12 +230,12 @@ public class ControllerProfesor {
 				
 				if(parts[1].equals("==")) {
 					for(Profesor p : listaProfesora)
-						if(p.getIme().toLowerCase().equals(parts[2]))
+						if(p.getIme().equalsIgnoreCase(parts[2]))
 							ret.add(p);
 				} 
 				else if(parts[1].equals("!=")) {
 					for(Profesor p : listaProfesora)
-						if(!p.getIme().toLowerCase().equals(parts[2]))
+						if(!p.getIme().equalsIgnoreCase(parts[2]))
 							ret.add(p);
 				}
 			}
@@ -260,12 +260,12 @@ public class ControllerProfesor {
 				
 				if(parts[1].equals("==")) {
 					for(Profesor p : listaProfesora)
-						if(p.getPrezime().toLowerCase().equals(parts[2]))
+						if(p.getPrezime().equalsIgnoreCase(parts[2]))
 							ret.add(p);
 				}
 				else if(parts[1].equals("!=")) {
 					for(Profesor p : listaProfesora)
-						if(!p.getPrezime().toLowerCase().equals(parts[2]))
+						if(!p.getPrezime().equalsIgnoreCase(parts[2]))
 							ret.add(p);
 				}
 			}

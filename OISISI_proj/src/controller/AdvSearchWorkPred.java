@@ -107,7 +107,7 @@ public class AdvSearchWorkPred {
 	
 	public void makeVars() {
 		
-		if(!collection[0].toLowerCase().equals("predmeti") || !collection[1].equals("=")) {
+		if(!collection[0].equalsIgnoreCase("predmeti") || !collection[1].equals("=")) {
 			err = new ErrorDialog("Iskaz ne počinje korektno");
 			hadError = true;
 			return;
@@ -181,7 +181,7 @@ public class AdvSearchWorkPred {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				}
-				else if(collection[k].equals("semestar")) {
+				else if(collection[k].equalsIgnoreCase("semestar")) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				} 
