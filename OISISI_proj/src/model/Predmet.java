@@ -141,14 +141,14 @@ public class Predmet implements Serializable{
 	}
 
 	
-	private String outGodIzv(GodIzv g) {
+	public String outGodIzv(GodIzv g) {
 		String out = "";
 		
 		switch(g) {
-		case PRVA : out = "PRVA"; break;
-		case DRUGA : out = "DRUGA"; break;
-		case TRECA : out = "TRECA"; break;
-		case CETVRTA : out = "CETVRTA"; break;
+		case PRVA : out = "(1) - PRVA"; break;
+		case DRUGA : out = "(2) - DRUGA"; break;
+		case TRECA : out = "(3) - TREĆA"; break;
+		case CETVRTA : out = "(4) - ČETVRTA"; break;
 		}
 		
 		return out;

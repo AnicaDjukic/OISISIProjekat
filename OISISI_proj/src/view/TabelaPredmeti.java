@@ -117,7 +117,7 @@ public class TabelaPredmeti extends JTable {
 			sifra = p.getSifPred();
 			naziv = p.getNaziv();
 			espb = ""+p.getEspbBod();
-			godina = ""+p.getGodIzv();
+			godina = ""+p.outGodIzv(p.getGodIzv());
 			semestar = ""+p.getSemestar();
 				
 			row[0] = sifra;
@@ -144,7 +144,7 @@ public class TabelaPredmeti extends JTable {
 			sifra = p.getSifPred();
 			naziv = p.getNaziv();
 			espb = ""+p.getEspbBod();
-			godina = ""+p.getGodIzv();
+			godina = ""+p.outGodIzv(p.getGodIzv());
 			semestar = ""+p.getSemestar();
 				
 			row[0] = sifra;
@@ -167,7 +167,7 @@ public class TabelaPredmeti extends JTable {
 		for(Predmet pr : p.getSpisPred()) {
 			sifra = pr.getSifPred();
 			naziv = pr.getNaziv();
-			godina = ""+pr.getGodIzv();
+			godina = ""+pr.outGodIzv(pr.getGodIzv());
 			semestar = ""+pr.getSemestar();
 				
 			row[0] = sifra;
@@ -194,7 +194,7 @@ public class TabelaPredmeti extends JTable {
 					sifra = pr.getSifPred();
 					naziv = pr.getNaziv();
 					espb = ""+pr.getEspbBod();
-					godina = ""+pr.getGodIzv();
+					godina = ""+pr.outGodIzv(pr.getGodIzv());
 					semestar = ""+pr.getSemestar();
 					
 					row[0] = sifra;
