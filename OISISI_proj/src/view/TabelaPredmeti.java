@@ -1,20 +1,19 @@
 package view;
 
+import java.util.ArrayList;
+
 //Importi : 
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.DefaultRowSorter;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
+import controller.ControllerPredmet;
 import model.GlobalConstants;
 import model.Predmet;
 import model.Profesor;
-import controller.ControllerPredmet;
-
-import java.awt.Color;
-import java.util.*;
 
 public class TabelaPredmeti extends JTable { 
 	
@@ -51,7 +50,14 @@ public class TabelaPredmeti extends JTable {
 	//Inicijalizacija modela tabele :
 	public static void tableInitialize(TabelaPredmeti t, int sluc) {		
 		if(sluc == 0) {
-			model = new DefaultTableModel() {
+			model = new DefaultTableModel(new Object[0][], colNames) {
+				Class[] types = { String.class, String.class, Integer.class, String.class , String.class};
+				
+				@Override
+	            public Class getColumnClass(int columnIndex) {
+	                return this.types[columnIndex];
+	            }
+				
 				@Override
 				public boolean isCellEditable(int row, int column) {
 					return false;
@@ -69,7 +75,15 @@ public class TabelaPredmeti extends JTable {
 				for(int i = 0; i < colNames.length; i++)
 					t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		} else if(sluc == 1) {
-			modelProf = new DefaultTableModel() {
+			modelProf = new DefaultTableModel(new Object[0][], colNamesProf) {
+				
+				Class[] types = { String.class, String.class, Integer.class, String.class };
+				
+				@Override
+	            public Class getColumnClass(int columnIndex) {
+	                return this.types[columnIndex];
+	            }
+				
 				@Override
 				public boolean isCellEditable(int row, int column) {
 					return false;
@@ -79,14 +93,22 @@ public class TabelaPredmeti extends JTable {
 			t.setModel(modelProf);
 			t.setRowHeight(20);
 			t.setAutoCreateRowSorter(true);
-			t.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			//t.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			
 			//Poravnanje : 
 			NasCellRenderer poravnanje = new NasCellRenderer(NasCellRenderer.predmetRenderer);
 			for(int i = 0; i < colNamesProf.length; i++)
 				t.getColumnModel().getColumn(i).setCellRenderer(poravnanje);
 		} else if(sluc == 2) {
-			modelStudNepo = new DefaultTableModel() {
+			modelStudNepo = new DefaultTableModel(new Object[0][], colNames) {
+				
+				Class[] types = { String.class, String.class, Integer.class, String.class , String.class};
+				
+				@Override
+	            public Class getColumnClass(int columnIndex) {
+	                return this.types[columnIndex];
+	            }
+				
 				@Override
 				public boolean isCellEditable(int row, int column) {
 					return false;
@@ -111,13 +133,14 @@ public class TabelaPredmeti extends JTable {
 			
 		tableInitialize(instStudNepo,2);
 			
-		String sifra,naziv,espb,godina,semestar;
-		Object[] row = {"", "", "","",""};
+		String sifra,naziv,godina,semestar;
+		int espb;
+		Object[] row = {"", "", 0,"",""};
 		for(Predmet p : listaPredmeta) {
 			sifra = p.getSifPred();
 			naziv = p.getNaziv();
-			espb = ""+p.getEspbBod();
-			godina = ""+p.outGodIzv(p.getGodIzv());
+			espb = p.getEspbBod();
+			godina = p.outGodIzv(p.getGodIzv());
 			semestar = ""+p.getSemestar();
 				
 			row[0] = sifra;
@@ -137,14 +160,15 @@ public class TabelaPredmeti extends JTable {
 			
 		tableInitialize(inst,0);
 		
-		String sifra,naziv,espb,godina,semestar;
-		Object[] row = {"", "", "", "", ""};
+		String sifra,naziv,godina,semestar;
+		int espb;
+		Object[] row = {"", "", 0, "", ""};
 		
 		for(Predmet p : listaPredmeta) {
 			sifra = p.getSifPred();
 			naziv = p.getNaziv();
-			espb = ""+p.getEspbBod();
-			godina = ""+p.outGodIzv(p.getGodIzv());
+			espb = p.getEspbBod();
+			godina = p.outGodIzv(p.getGodIzv());
 			semestar = ""+p.getSemestar();
 				
 			row[0] = sifra;
@@ -167,7 +191,7 @@ public class TabelaPredmeti extends JTable {
 		for(Predmet pr : p.getSpisPred()) {
 			sifra = pr.getSifPred();
 			naziv = pr.getNaziv();
-			godina = ""+pr.outGodIzv(pr.getGodIzv());
+			godina = pr.outGodIzv(pr.getGodIzv());
 			semestar = ""+pr.getSemestar();
 				
 			row[0] = sifra;
@@ -186,15 +210,16 @@ public class TabelaPredmeti extends JTable {
 		
 		tableInitialize(inst, 0);
 		
-		String sifra,naziv,espb,godina,semestar;
-		Object[] row = {"", "", "", "", ""};
+		String sifra,naziv,godina,semestar;
+		int espb;
+		Object[] row = {"", "",0, "", "", };
 		for(Predmet pr : listaPredmeta) {
 			for(String sp : foundSifP) {
 				if(sp.equals(pr.getSifPred())) {
 					sifra = pr.getSifPred();
 					naziv = pr.getNaziv();
-					espb = ""+pr.getEspbBod();
-					godina = ""+pr.outGodIzv(pr.getGodIzv());
+					espb = pr.getEspbBod();
+					godina = pr.outGodIzv(pr.getGodIzv());
 					semestar = ""+pr.getSemestar();
 					
 					row[0] = sifra;
