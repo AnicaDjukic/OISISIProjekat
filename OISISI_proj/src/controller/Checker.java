@@ -1,8 +1,10 @@
 package controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 
 import model.GlobalConstants;
 
@@ -17,7 +19,7 @@ public class Checker {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public static boolean isValidDate(String str) {
+	public static boolean isValidDate(String str, int sluc) {
 		boolean suc = false;		
 		
 		DateTimeFormatter dtf;
@@ -40,6 +42,24 @@ public class Checker {
 		if(suc)
 			if(d.getYear() < 1920)
 				suc = false;
+		
+		if(suc)
+			if(sluc == 0)
+				if(d.getYear() > (LocalDateTime.now().getYear() - 24))
+					suc = false;
+		
+		if(suc)
+			if(sluc == 1)
+				if(d.getYear() > (LocalDateTime.now().getYear() - 16))
+					suc = false;
+		
+		if(suc)
+			if(sluc == 2) {
+				Date currDate = new Date(LocalDateTime.now().getYear(),LocalDateTime.now().getMonthValue(),LocalDateTime.now().getDayOfMonth());
+				Date inputDate = new Date(d.getYear(),d.getMonthValue(),d.getDayOfMonth());
+				if(inputDate.after(currDate))
+					suc = false;
+			}
 		
 		if(suc) {
 			switch(parts[1]) {

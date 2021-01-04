@@ -43,6 +43,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		if(!check) {
 			AddOrEditProfesor.brPraznihPolja--;
 			tx.setBorder(BorderFactory.createLineBorder(Color.RED));
+			tx.setForeground(Color.red);
 		}
 		
 		if(AddOrEditProfesor.brPraznihPolja == 0) 
@@ -57,7 +58,7 @@ public class ProfesorFocusListeners implements FocusListener{
 		if(name.equals(GlobalConstants.imeLab) || name.equals(GlobalConstants.przLab))
 			ret = Checker.isNameOrSurename(input);
 		if(name.equals(GlobalConstants.drLab))
-			ret = Checker.isValidDate(input);
+			ret = Checker.isValidDate(input,0);
 		if(name.equals(GlobalConstants.adrKancLab) || name.equals(GlobalConstants.adrStanLab))
 			ret = Checker.isValidAdrress(input);
 		if(name.equals(GlobalConstants.konTelLab))

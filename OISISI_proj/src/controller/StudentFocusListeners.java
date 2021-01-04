@@ -45,7 +45,7 @@ public class StudentFocusListeners implements FocusListener {
 		if(name.equals(GlobalConstants.imeLab) || name.equals(GlobalConstants.przLab))
 			return Checker.isNameOrSurename(input);
 		if(name.equals(GlobalConstants.drLab))
-			return Checker.isValidDate(input);
+			return Checker.isValidDate(input,1);
 		if(name.equals(GlobalConstants.adrStanLab))
 			return Checker.isValidAdrress(input);
 		if(name.equals(GlobalConstants.konTelLab))
@@ -82,7 +82,7 @@ public class StudentFocusListeners implements FocusListener {
 			AddOrEditStudent.tPrezime.setForeground(Color.RED);
 			enableButton = false;
 		}
-		if(!Checker.isValidDate(AddOrEditStudent.tDatRodj.getText().trim()) || AddOrEditStudent.tDatRodj.getText().trim().equals("")) {
+		if(!Checker.isValidDate(AddOrEditStudent.tDatRodj.getText().trim(),1) || AddOrEditStudent.tDatRodj.getText().trim().equals("")) {
 			AddOrEditStudent.tDatRodj.setForeground(Color.RED);
 			enableButton = false;
 		}

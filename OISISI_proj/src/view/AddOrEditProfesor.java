@@ -291,7 +291,7 @@ public class AddOrEditProfesor extends JPanel{
 			brPraznihPolja++;
 		if(Checker.isNameOrSurename(txtPrezime.getText()))
 			brPraznihPolja++;
-		if(Checker.isValidDate(txtDrp.getText()))
+		if(Checker.isValidDate(txtDrp.getText(),0))
 			brPraznihPolja++;
 		if(Checker.isValidAdrress(txtAdrStan.getText()))
 			brPraznihPolja++;

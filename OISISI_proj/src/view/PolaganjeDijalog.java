@@ -211,7 +211,7 @@ public class PolaganjeDijalog extends JDialog{
 
 			String input = f.getText();
 
-			if(!Checker.isValidDate(input)) {
+			if(!Checker.isValidDate(input,2)) {
 				disableOk();
 				f.setBorder(BorderFactory.createLineBorder(Color.RED));
 			} else {
