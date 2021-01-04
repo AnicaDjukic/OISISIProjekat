@@ -52,6 +52,7 @@ public class GlobalConstants {
 	
 	public static String srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
 	public static String srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
+	public static String srchStudToolTip =  "<html>Format : \"prezime\" \"ime\" \"broj indeksa\"<br>Pretraga je case insensitive</html>";
 	
 	public static String nazivPredToolTip = "Mora početi slovom, može sadržati i jednu cifru";
 	public static String espbToolTip = "1 ili 2 cifre, prva cifra ne sme biti 0";

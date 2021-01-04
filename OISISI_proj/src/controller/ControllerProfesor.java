@@ -425,6 +425,7 @@ public class ControllerProfesor {
 		
 			listaProfesora.add(tempProf);
 		}
+
 	}
 	
 	public void syncRef() {
@@ -436,6 +437,8 @@ public class ControllerProfesor {
 			for(Predmet pr : p.getSpisPred())
 				newP.getSpisPred().add(GlavniProzor.getControllerPredmet().nadjiPredmet(pr.getSifPred()));
 		}
+	
+		loadedProfesor.clear();
 	}
 }
 

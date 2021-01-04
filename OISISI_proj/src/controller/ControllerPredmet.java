@@ -396,5 +396,6 @@ public class ControllerPredmet {
 			listaPredmeta.add(tempPred);
 		}
 		
+		loadedPredmet.clear();
 	}
 }

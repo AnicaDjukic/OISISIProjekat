@@ -35,6 +35,7 @@ public class SearchFieldMouseListener implements MouseListener{
 		switch(tab) {
 		case 0:
 			//Student toolTip
+			Toolbar.srchField.setToolTipText(GlobalConstants.srchStudToolTip);
 			break;
 		case 1:
 			//Profesor toolTip
