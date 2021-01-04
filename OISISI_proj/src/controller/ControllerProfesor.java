@@ -30,9 +30,11 @@ import view.GlavniProzor;
 public class ControllerProfesor {
 	
 	private ArrayList<Profesor> listaProfesora;
+	ArrayList<Profesor> loadedProfesor;
  	
 	public ControllerProfesor() {
 		listaProfesora = new ArrayList<Profesor>();
+		loadedProfesor = new ArrayList<Profesor>();
 		
 		Initialize();
 	}
@@ -221,7 +223,7 @@ public class ControllerProfesor {
 		try(FileInputStream fis = new FileInputStream(profesori);
 				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
 			
-			listaProfesora = (ArrayList<Profesor>) ois.readObject();
+			loadedProfesor = (ArrayList<Profesor>) ois.readObject();
 					
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -402,6 +404,38 @@ public class ControllerProfesor {
 		}
 		
 		return new ArrayList<Profesor>(set);
+	}
+	
+	public void sync() {		
+		for(Profesor p : loadedProfesor) {
+			//Osnovna polja :
+			Profesor tempProf = new Profesor();
+			
+			tempProf.setAdrKanc(p.getAdrKanc());
+			tempProf.setAdrStan(p.getAdrStan());
+			tempProf.setBrLicKart(p.getBrLicKart());
+			tempProf.setDrp(p.getDrp());
+			tempProf.setEmail(p.getEmail());
+			tempProf.setIme(p.getIme());
+			tempProf.setKonTel(p.getKonTel());
+			tempProf.setPrezime(p.getPrezime());
+			tempProf.setTitula(p.getTitula());
+			tempProf.setZvanje(p.getZvanje());
+			
+		
+			listaProfesora.add(tempProf);
+		}
+	}
+	
+	public void syncRef() {
+		//Spisak predmeta :
+		
+		for(Profesor p : loadedProfesor) {
+			Profesor newP = GlavniProzor.getControllerProfesor().nadjiProfesora(p.getBrLicKart());
+			
+			for(Predmet pr : p.getSpisPred())
+				newP.getSpisPred().add(GlavniProzor.getControllerPredmet().nadjiPredmet(pr.getSifPred()));
+		}
 	}
 }
 

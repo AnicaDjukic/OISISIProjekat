@@ -41,6 +41,12 @@ public class GlavniProzor extends JFrame {
 		cProf = new ControllerProfesor();
 		cStud = new ControllerStudent();
 		
+		cStud.sync();
+		cProf.sync();
+		cPred.sync();
+		cStud.syncRef();
+		cProf.syncRef();
+		
 		//cStud.testAddNepo();
 		
 		//Menu bar :

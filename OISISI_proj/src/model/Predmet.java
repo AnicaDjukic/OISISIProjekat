@@ -193,4 +193,13 @@ public class Predmet implements Serializable{
 		default : return 4;
 		}
 	}
+	
+	public String getNumGodinaEdit() {
+		switch(this.getGodIzv()) {
+		case PRVA : return "1";
+		case DRUGA : return "2";
+		case TRECA : return "3";
+		default : return "4";
+		}
+	}
 }

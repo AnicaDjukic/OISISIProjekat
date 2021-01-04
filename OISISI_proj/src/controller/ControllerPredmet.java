@@ -20,9 +20,11 @@ import view.GlavniProzor;
 public class ControllerPredmet {
 	
 	private ArrayList<Predmet> listaPredmeta;
+	ArrayList<Predmet> loadedPredmet;
 	
 	public ControllerPredmet() {
 		listaPredmeta = new ArrayList<Predmet>();
+		loadedPredmet = new ArrayList<Predmet>();
 		
 		Initialize();		
 	}
@@ -86,7 +88,7 @@ public class ControllerPredmet {
 	public ArrayList<String> pretraziPred(String text) {
 		ArrayList<String> foundSifPred = new ArrayList<String>();
 		for(Predmet p : listaPredmeta)
-			if(p.getSifPred().toLowerCase().indexOf(text) != -1)
+			if(p.getNaziv().toLowerCase().indexOf(text) != -1)
 				foundSifPred.add(p.getSifPred());
 		return foundSifPred;
 	}
@@ -138,7 +140,7 @@ public class ControllerPredmet {
 		try(FileInputStream fis = new FileInputStream(predmeti);
 				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
 			
-			listaPredmeta = (ArrayList<Predmet>) ois.readObject();
+			loadedPredmet = (ArrayList<Predmet>) ois.readObject();
 					
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -364,5 +366,35 @@ public class ControllerPredmet {
 		}
 		
 		return new ArrayList<Predmet>(set);
+	}
+	
+	public void sync() {		
+		for(Predmet pr : loadedPredmet) {
+			//Osnovna polja :
+			Predmet tempPred = new Predmet();
+			
+			tempPred.setEspbBod(pr.getEspbBod());
+			tempPred.setGodIzv(pr.getGodIzv());
+			tempPred.setNaziv(pr.getNaziv());
+			tempPred.setSemestar(pr.getSemestar());
+			tempPred.setSifPred(pr.getSifPred());
+			
+			//Postavljanje korektnog profesora :
+			if(pr.getProf().getIme().equals(""))
+				tempPred.setProf(GlobalConstants.dummy);
+			else
+				tempPred.setProf(GlavniProzor.getControllerProfesor().nadjiProfesora(pr.getProf().getBrLicKart()));
+			
+			//Lista studenata koji su polozili :
+			for(Student s : pr.getListaPolozenih())
+				tempPred.getListaPolozenih().add(GlavniProzor.getControllerStudent().nadjiStudenta(s.getBrIndexa()));
+			
+			//Lista studenata koji nisu polozili :
+			for(Student s : pr.getListaNepolozenih())
+				tempPred.getListaNepolozenih().add(GlavniProzor.getControllerStudent().nadjiStudenta(s.getBrIndexa()));
+				
+			listaPredmeta.add(tempPred);
+		}
+		
 	}
 }

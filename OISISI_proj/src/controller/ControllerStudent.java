@@ -28,9 +28,11 @@ public class ControllerStudent {
 	//Sluzi za upravljanje listom studenata
 	
 	ArrayList<Student> listaStudenti;
+	ArrayList<Student> loadedStudents;
 		
 	public ControllerStudent() {
 		listaStudenti = new ArrayList<Student>();
+		loadedStudents = new ArrayList<Student>();
 			
 		Initialize();
 	}
@@ -215,7 +217,7 @@ public class ControllerStudent {
 		try(FileInputStream fis = new FileInputStream(studenti);
 				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
 			
-			listaStudenti = (ArrayList<Student>) ois.readObject();
+			loadedStudents = (ArrayList<Student>) ois.readObject();
 					
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -283,5 +285,54 @@ public class ControllerStudent {
 		}
 		
 		return foundBrIndexa;
+		
+	}
+	
+	public void sync() {
+		for(Student s : loadedStudents) {
+			//Sredjivanje osnovnih polja :
+			
+			Student tempStud = new Student();
+			
+			tempStud.setAdresaStan(s.getAdresaStan());
+			tempStud.setBrIndexa(s.getBrIndexa());
+			tempStud.setDatumRodj(s.getDatumRodj());
+			tempStud.setEmail(s.getEmail());
+			tempStud.setGodUpisa(s.getGodUpisa());
+			tempStud.setIme(s.getIme());
+			tempStud.setKonTel(s.getKonTel());
+			tempStud.setPrezime(s.getPrezime());
+			tempStud.setProsecnaOcena(s.getProsecnaOcena());
+			tempStud.setStatus(s.getStatus());
+			tempStud.setTrenutnaGodStud(s.getTrenutnaGodStud());
+			
+			//Sredjivanje polozenih :
+			for(Ocena o : s.getPolozeniIspiti()) {
+				Ocena tempo = new Ocena();
+				
+				tempo.setBrVrednost(o.getBrVrednost());
+				tempo.setDatumPolaganja(o.getDatumPolaganja());
+				tempo.setPolozioIspit(tempStud);
+				tempo.setPredmet(GlavniProzor.getControllerPredmet().nadjiPredmet(o.getPredmet().getSifPred()));
+				
+				tempStud.getPolozeniIspiti().add(o);
+			}
+			
+			//Dodaj u listu :
+			listaStudenti.add(tempStud);
+		}
+	}
+	
+	public void syncRef() {
+		
+		//Sredjivanje nepolozenih predmeta :
+		for(Student s : loadedStudents) {
+			Student newS = GlavniProzor.getControllerStudent().nadjiStudenta(s.getBrIndexa());
+			
+			for(Predmet pr : s.getNepolozeniIspiti())
+				newS.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet(pr.getSifPred()));
+			
+		}
+		
 	}
 }

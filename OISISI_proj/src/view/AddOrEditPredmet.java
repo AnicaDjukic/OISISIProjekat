@@ -115,11 +115,14 @@ public class AddOrEditPredmet extends JPanel {
 			if(selectedRow != -1) {
 				String sifraSelectedPred = (String) TabelaPredmeti.inst.getValueAt(selectedRow, 0);
 				predmet = controller.nadjiPredmet(sifraSelectedPred);
+				
+				AddProfToPredDialog.prof = predmet.getProf();
+				
 				tSifra.setText(predmet.getSifPred());
 				tSifra.setEditable(false);
 				tNaziv.setText(predmet.getNaziv());
 				
-				tGodIzv.setSelectedItem(predmet.getGodIzv());
+				tGodIzv.setSelectedItem(predmet.getNumGodinaEdit());
 				tSemestar.setSelectedItem(predmet.getSemestar());
 				
 				String espb = String.valueOf(predmet.getEspbBod());
@@ -208,6 +211,7 @@ public class AddOrEditPredmet extends JPanel {
 						//GlavniProzor.getControllerProfesor().obrisiPredmetKodProf(predmet.getProf(), predmet);
 						predmet.setProf(GlobalConstants.dummy);
 					}
+					
 				}
 				
 				TabelaPredmeti.azurirajTabelu();
