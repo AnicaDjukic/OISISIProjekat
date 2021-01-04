@@ -123,7 +123,7 @@ public class AdvSearchWorkPred {
 					myExp += " " + collection[k] + " ";
 					k++;
 				}
-				else if(collection[k].equalsIgnoreCase("profesori")) {
+				else if(collection[k].equalsIgnoreCase("profesori")) { 
 					int helper = k;
 					myExpProf = "";
 					do {
@@ -205,7 +205,7 @@ public class AdvSearchWorkPred {
 		}
 	}
 	
-	public boolean createVar(String col, String exp, String val) {
+	public boolean createVar(String col, String exp, String val) { 
 		
 		Var temp;
 		String s = col + " " +  exp + " " + val;
