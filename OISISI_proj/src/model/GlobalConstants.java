@@ -96,6 +96,7 @@ public class GlobalConstants {
 	public static String delBtnToolTipTxt = "Delete";
 	public static String srchBtnToolTipTxt = "Search";
 	public static String srchFieldToolTipTxt = "";
+	public static String advSearchToolTip = "Napredna pretraga";
 	
 	
 	public static String menuFile = "File"; 
@@ -139,6 +140,7 @@ public class GlobalConstants {
 	public static String srcImg = "images" + File.separator + "search_button.png";
 	public static String menuBarImg = "images" +  File.separator + "Menu_Bar.png";
 	public static String toolBarImg = "images" + File.separator + "Tool_Bar.png";
+	public static String advSearImg = "images" + File.separator + "adv_search.png";
 	
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
@@ -164,7 +166,27 @@ public class GlobalConstants {
 	public static String profEditTabOsnInf = "Informacije";
 	public static String profEditTabPrd = "Predmeti";
 	
+	//Error za naprednu pretragu prof :
+	public static String errAdvSearProf = "Nije omogućena napredna pretraga profesora";
+	
+	//Naslovi napredne pretrage :
+	public static String advTitlePred = "Napredna pretraga predmeta";
+	
+	public static String labAdvSear = "Relacioni izraz :";
+	
 	//Possible marks :
 	public static String[] ocene = {"6","7","8","9","10"};
+	
+	//Titula i zvanje :
+	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
+	public static String[] titule = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
+	
+	//Tooltip za dodatni zadatak :
+	public static String advSearchToolTipPred = "<html>Početak iskaza mora biti formata \"predmeti = (...)\" <br>Lista podržanih polja za pretragu kod "
+												+ "predmeta : <br>  *sifra - po vrednosti (izmedju \"\") i po regex-u (između / /)<br>  *naziv - po vrednosti (između \"\") i po regex-u(između / /)<br>"
+												+ "  *godina - po vrednosti<br>  *semestar - letnji/zimski<br>  *espb bodovima - po vrednosti<br>  *profesorima - profesori se unose"
+												+ " u upit u obliku \"profesori == {...}\"<br>   polja podržana kod profesora :<br>    *ime - po vrednosti (između \"\") i po regex-u (između / /)<br>"
+												+ "    *prezime - po vrednosti (između \" \") i po regex-u (između / /)<br>    *titula - jedna od titula iz ponuđenih<br>    *zvanje "
+												+ "- jedno iz ponuđenih </html>";
 	
 }

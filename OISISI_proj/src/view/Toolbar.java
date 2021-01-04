@@ -7,7 +7,7 @@ import controller.*;
 import model.GlobalConstants;
 
 public class Toolbar  extends JToolBar{
-	private JButton btnAdd,btnEdit,btnBin,btnSrch;
+	private JButton btnAdd,btnEdit,btnBin,btnSrch,btnAdvSearch;
 	public static JTextField srchField;
 	
 	ControllerProfesor cProf;
@@ -39,6 +39,14 @@ public class Toolbar  extends JToolBar{
 		btnBin.addActionListener(new DeleteButtonListener());
 		add(btnBin);
 		
+		addSeparator();
+		
+		btnAdvSearch = new JButton();
+		btnAdvSearch.addActionListener(new AdvSearchAl());
+		btnAdvSearch.setToolTipText(GlobalConstants.advSearchToolTip);
+		btnAdvSearch.setIcon(new ImageIcon(GlobalConstants.advSearImg));
+		add(btnAdvSearch);
+		
 		add(Box.createHorizontalGlue());
 		addSeparator();
 		
@@ -56,4 +64,6 @@ public class Toolbar  extends JToolBar{
 		btnSrch.addActionListener(new SearchButtonListener());
 		add(btnSrch);
 	}
+	
+	
 }

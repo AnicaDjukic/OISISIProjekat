@@ -14,6 +14,8 @@ public class SearchButtonListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+		Toolbar.srchField.setForeground(Color.black);
+		
 		int tab = GlavniProzor.getTabbedPane().getSelectedIndex();
 		
 		switch(tab) {
