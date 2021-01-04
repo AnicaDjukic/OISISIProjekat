@@ -306,17 +306,7 @@ public class ControllerStudent {
 			tempStud.setStatus(s.getStatus());
 			tempStud.setTrenutnaGodStud(s.getTrenutnaGodStud());
 			
-			//Sredjivanje polozenih :
-			for(Ocena o : s.getPolozeniIspiti()) {
-				Ocena tempo = new Ocena();
-				
-				tempo.setBrVrednost(o.getBrVrednost());
-				tempo.setDatumPolaganja(o.getDatumPolaganja());
-				tempo.setPolozioIspit(tempStud);
-				tempo.setPredmet(GlavniProzor.getControllerPredmet().nadjiPredmet(o.getPredmet().getSifPred()));
-				
-				tempStud.getPolozeniIspiti().add(o);
-			}
+			
 			
 			//Dodaj u listu :
 			listaStudenti.add(tempStud);
@@ -332,6 +322,17 @@ public class ControllerStudent {
 			for(Predmet pr : s.getNepolozeniIspiti())
 				newS.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet(pr.getSifPred()));
 			
+			//Sredjivanje polozenih :
+			for(Ocena o : s.getPolozeniIspiti()) {
+				Ocena tempo = new Ocena();
+				
+				tempo.setBrVrednost(o.getBrVrednost());
+				tempo.setDatumPolaganja(o.getDatumPolaganja());
+				tempo.setPolozioIspit(newS);
+				tempo.setPredmet(GlavniProzor.getControllerPredmet().nadjiPredmet(o.getPredmet().getSifPred()));
+				
+				newS.getPolozeniIspiti().add(tempo);
+			}
 		}
 		
 	}

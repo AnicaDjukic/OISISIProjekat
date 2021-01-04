@@ -157,7 +157,7 @@ public class GlobalConstants {
 	public static String regExBrIndexa = "[a-zA-Z]{2}[-][0-9]{1,3}[-][2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	public static String regGodUpisa = "[2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	
-	public static String regExNazivPred = "([a-z]+[\\s]{0,1})+[0-9]{0,1}";
+	public static String regExNazivPred = "([\\p{L}]+[\\s]{0,1})+[0-9]{0,1}";
 	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
 	
 	public static String[] regExDatePoss = {"dd.MM.yyyy.", "dd.MM.yyyy", "d.MM.yyyy.", "d.MM.yyyy", "dd.M.yyyy.", "dd.M.yyyy", "d.M.yyyy.", "d.M.yyyy"};
