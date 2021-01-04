@@ -36,6 +36,7 @@ public class AddOrEditPredmet extends JPanel {
 	public static AddOrEditPredmet inst;
 	
 	public AddOrEditPredmet(int mode, AddOrEditDialog dialog) {
+		inst = this;
 		
 		controller = GlavniProzor.getControllerPredmet();
 		setLayout(new BorderLayout());
