@@ -105,6 +105,7 @@ public class MyMenuBar extends JMenuBar {
 		mLanguage.setIcon(new ImageIcon(GlobalConstants.languageImg));
 		JMenuItem miSearch = new JMenuItem(GlobalConstants.menuSearch, new ImageIcon(GlobalConstants.advSearImg));
 		miSearch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		miSearch.addActionListener(new AdvSearchAl());
 		
 		mAdvanced.setMnemonic(KeyEvent.VK_A);
 		mLanguage.setMnemonic(KeyEvent.VK_L);
