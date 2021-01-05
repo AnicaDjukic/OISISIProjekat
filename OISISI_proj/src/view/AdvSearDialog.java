@@ -2,9 +2,11 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -32,6 +34,9 @@ public class AdvSearDialog extends JDialog {
 		
 		inst = this;
 		
+		Image img = new ImageIcon(GlobalConstants.advSearImg).getImage();
+		
+		this.setIconImage(img);
 		this.setModal(true);
 		this.setSize(500,150);
 		this.setLocationRelativeTo(GlavniProzor.inst);
@@ -70,11 +75,7 @@ public class AdvSearDialog extends JDialog {
 			//Predmet pretraga 
 			this.setTitle(GlobalConstants.advTitlePred);
 			this.field.setToolTipText(GlobalConstants.advSearchToolTipPred);
-		} else  {
-			ErrorDialog err = new ErrorDialog(GlobalConstants.errAdvSearProf);
-			getter().setVisible(false);
-		}
-		
+		} 
 	}
 	
 	public AdvSearDialog getter() {
