@@ -41,7 +41,7 @@ public class AboutDialog extends JDialog {
 		setModal(true);
 		add(panel, BorderLayout.CENTER);
 	    setTitle("About");
-		
+		setResizable(false);
 			
 	}
 }

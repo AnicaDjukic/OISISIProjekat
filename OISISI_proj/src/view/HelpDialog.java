@@ -41,15 +41,15 @@ public class HelpDialog extends JDialog {
     	label20 = new JLabel("\t 2. Edit (Ctrl + E) \n", new ImageIcon(GlobalConstants.editImg), SwingConstants.LEFT);
     	label21 = new JLabel("\t 3. Delete (Ctrl + D)\n", new ImageIcon(GlobalConstants.delImg), SwingConstants.LEFT);
     	label22 = new JLabel("\t 4. Search (Ctrl + S)\n", new ImageIcon(GlobalConstants.advSearImg), SwingConstants.LEFT);
-    	label23 = new JLabel("\t U Tool baru se takođe nalazi polje za pretragu entiteta:");
-    	label24 = new JLabel(new ImageIcon(GlobalConstants.searchFieldImg));
-    	label25 = new JLabel("\t Pozicioniranjem na odgovarajući tab (Studenti, Profesori, Predmeti) omogućena je pretraga:");
-    	label26 = new JLabel("\t - Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta,");
-    	label27 = new JLabel("\t druga, odnosno treća reč su opcione i odnose se na deo imena, odnosno broja indeksa studenta.");
-    	label28 = new JLabel("\t - Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,");
-    	label29 = new JLabel("\t druga reč je opciona i odnosi se na deo imena profesora.");
-    	label30 = new JLabel("\t - Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.");
-    	label31 = new JLabel("\t Njihovim izborom se ostvaruju iste funkcionalnosti kao i izborom stavki menu bara sa istim imenom.");
+    	label23 = new JLabel("\t Njihovim izborom se ostvaruju iste funkcionalnosti kao i izborom stavki menu bara sa istim imenom.");
+    	label24 = new JLabel("\t U Tool baru se takođe nalazi polje za pretragu entiteta:");
+    	label25 = new JLabel(new ImageIcon(GlobalConstants.searchFieldImg));
+    	label26 = new JLabel("\t Pozicioniranjem na odgovarajući tab (Studenti, Profesori, Predmeti) omogućena je pretraga:");
+    	label27 = new JLabel("\t - Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta,");
+    	label28 = new JLabel("\t druga, odnosno treća reč su opcione i odnose se na deo imena, odnosno broja indeksa studenta.");
+    	label29 = new JLabel("\t - Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,");
+    	label30 = new JLabel("\t druga reč je opciona i odnosi se na deo imena profesora.");
+    	label31 = new JLabel("\t - Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.");
     	label32 = new JLabel("\t Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.");
     	label33 = new JLabel("\t Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.");
 		JLabel[] arr = {label1, label2, label3, label4, label5, label6, label7,
@@ -73,6 +73,7 @@ public class HelpDialog extends JDialog {
 	    JScrollPane scrollPane = new JScrollPane();
 	    scrollPane.setViewportView(panel);
 	    getContentPane().add(scrollPane, BorderLayout.CENTER);
+	    scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 	    
 		buttom = new JPanel();
 		JButton ok = new JButton("OK");
@@ -88,6 +89,7 @@ public class HelpDialog extends JDialog {
 		
 	    setModal(true);
 	    setPreferredSize(new Dimension(800, 600));
+	    setResizable(false);
 	    setTitle("Help");
 	}
 }
