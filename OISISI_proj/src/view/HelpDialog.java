@@ -12,7 +12,7 @@ public class HelpDialog extends JDialog {
 	private JLabel label1, label2, label3, label4, label5, label6, label7, label8, label9,
 				   label10, label11, label12, label13, label14, label15, label16, label17,
 				   label18, label19, label20, label21, label22, label23, label24, label25,
-				   label26, label27, label28, label29, label30, label31, label32, label33;
+				   label26, label27, label28, label29, label30, label31;
 	private JPanel panel;
 	private JPanel buttom;
 	
@@ -45,17 +45,17 @@ public class HelpDialog extends JDialog {
     	label24 = new JLabel("\t U Tool baru se takođe nalazi polje za pretragu entiteta:");
     	label25 = new JLabel(new ImageIcon(GlobalConstants.searchFieldImg));
     	label26 = new JLabel("\t Pozicioniranjem na odgovarajući tab (Studenti, Profesori, Predmeti) omogućena je pretraga:");
-    	label27 = new JLabel("\t - Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta,");
-    	label28 = new JLabel("\t druga, odnosno treća reč su opcione i odnose se na deo imena, odnosno broja indeksa studenta.");
-    	label29 = new JLabel("\t - Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,");
-    	label30 = new JLabel("\t druga reč je opciona i odnosi se na deo imena profesora.");
-    	label31 = new JLabel("\t - Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.");
-    	label32 = new JLabel("\t Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.");
-    	label33 = new JLabel("\t Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.");
+    	label27 = new JLabel("<html> \t- Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta, "
+    						+ "<br> druga, odnosno treća reč su opcione i odnose se na deo imena, odnosno broja indeksa studenta.</hmtl>");
+    	label28 = new JLabel("<html> \t - Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,"
+    						+ "<br> druga reč je opciona i odnosi se na deo imena profesora.</hmtl>");
+    	label29 = new JLabel("- Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.");
+    	label30 = new JLabel("\t Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.");
+    	label31 = new JLabel("\t Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.");
 		JLabel[] arr = {label1, label2, label3, label4, label5, label6, label7,
 						label8, label9, label10, label11, label12, label13, label14,
 						label15, label16, label17, label18, label19, label20, label21, label22, label23, label24, label25,
-						label26, label27, label28, label29, label30, label31, label32, label33};
+						label26, label27, label28, label29, label30, label31};
 		
 		Font font = new Font("Arial", Font.PLAIN, 15);
 	
