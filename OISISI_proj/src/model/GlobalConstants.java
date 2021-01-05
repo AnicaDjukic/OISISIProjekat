@@ -142,6 +142,7 @@ public class GlobalConstants {
 	public static String menuBarImg = "images" +  File.separator + "Menu_Bar.png";
 	public static String toolBarImg = "images" + File.separator + "Tool_Bar.png";
 	public static String advSearImg = "images" + File.separator + "adv_search.png";
+	public static String searchFieldImg = "images" + File.separator + "search_field.png";;
 	
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";

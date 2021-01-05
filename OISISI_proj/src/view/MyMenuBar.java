@@ -86,7 +86,6 @@ public class MyMenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {	
 				AboutDialog about = new AboutDialog();
-				about.pack();
 				about.setLocationRelativeTo(null);
 				about.setVisible(true);
 			}
