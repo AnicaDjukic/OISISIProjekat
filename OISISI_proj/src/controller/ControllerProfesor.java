@@ -30,46 +30,13 @@ import view.GlavniProzor;
 public class ControllerProfesor {
 	
 	private ArrayList<Profesor> listaProfesora;
-	ArrayList<Profesor> loadedProfesor;
  	
 	public ControllerProfesor() {
 		listaProfesora = new ArrayList<Profesor>();
-		loadedProfesor = new ArrayList<Profesor>();
-		
-		Initialize();
 	}
 	
 	public ArrayList<Profesor> getListaProfesora(){
 		return this.listaProfesora;
-	}
-	
-	//Doimplementirati kada se bude imao data sample
-	public void Initialize() {
-		/*for(int i = 0; i < 10; i++) {
-			Profesor temp = new Profesor();
-			temp.setIme(""+i+"-prof");
-			temp.setPrezime(""+i+"-profPrez");
-			temp.setDrp(LocalDate.MIN);
-			temp.setAdrKanc(""+i+"profAdrS");
-			temp.setBrLicKart(""+i+"00000000");
-			temp.setZvanje(""+i+"-profZva");
-			temp.setTitula(""+i+"-profTit");
-			temp.setEmail(i + "@gmail.com");
-			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+i));
-			GlavniProzor.getControllerPredmet().nadjiPredmet(""+i).setProf(temp);
-			dodajProfPred(temp, GlavniProzor.getControllerPredmet().nadjiPredmet(""+4));
-			dodajProfesora(temp);
-		}*/
-		
-		try {
-			deserialize();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public boolean dodajProfesora(Profesor p) {
@@ -213,19 +180,6 @@ public class ControllerProfesor {
 			oos.close();
 			fos.close();
 		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@SuppressWarnings({ "unchecked"})
-	public void deserialize() throws FileNotFoundException, IOException {
-		File profesori = new File("resources" + File.separator + "Profesori.txt");
-		try(FileInputStream fis = new FileInputStream(profesori);
-				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
-			
-			loadedProfesor = (ArrayList<Profesor>) ois.readObject();
-					
-		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -406,7 +360,7 @@ public class ControllerProfesor {
 		return new ArrayList<Profesor>(set);
 	}
 	
-	public void sync() {		
+	/*public void sync() {		
 		for(Profesor p : loadedProfesor) {
 			//Osnovna polja :
 			Profesor tempProf = new Profesor();
@@ -439,6 +393,10 @@ public class ControllerProfesor {
 		}
 	
 		loadedProfesor.clear();
+	}*/
+
+	public void setL(ArrayList<Profesor> prof) {
+		listaProfesora = prof;
 	}
 }
 

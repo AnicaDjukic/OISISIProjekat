@@ -28,52 +28,14 @@ public class ControllerStudent {
 	//Sluzi za upravljanje listom studenata
 	
 	ArrayList<Student> listaStudenti;
-	ArrayList<Student> loadedStudents;
 		
 	public ControllerStudent() {
 		listaStudenti = new ArrayList<Student>();
-		loadedStudents = new ArrayList<Student>();
-			
-		Initialize();
 	}
 		
 	public ArrayList<Student> getListaStudenata() {
 		return this.listaStudenti;
 	}
-		
-	public void Initialize() {
-		/*for(int i = 0; i < 10; i++) {
-			Student s = new Student();
-			s.setIme("ime-" + i);
-			s.setPrezime("prz-" + i);
-			s.setBrIndexa("ra-" + i + "-2018");
-			s.setGodUpisa("2018");
-			s.setTrenutnaGodStud(3);
-			s.setDatumRodj(LocalDate.parse("1999-01-01"));
-			s.setAdresaStan("gshasg 12");
-			s.setKonTel("12463278");
-			s.setEmail("gg@gmail.com");
-			s.setStatus("B");
-			s.setProsecnaOcena(0.0);
-			dodajStudenta(s);
-		}*/
-		
-		try {
-			deserialize();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	//Testiranje za prikaz nepolozenih ispita : 
-	/*public void testAddNepo() {
-		for(Student s : listaStudenti) {
-			s.getNepolozeniIspiti().add(GlavniProzor.getControllerPredmet().nadjiPredmet("1"));
-		}
-	}*/
 		
 	public boolean dodajStudenta(Student s) {
 		if(listaStudenti.isEmpty()) {
@@ -211,19 +173,6 @@ public class ControllerStudent {
 		
 	}
 	
-	@SuppressWarnings({ "unchecked"})
-	public void deserialize() throws FileNotFoundException, IOException {
-		File studenti = new File("resources" + File.separator + "Studenti.txt");
-		try(FileInputStream fis = new FileInputStream(studenti);
-				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
-			
-			loadedStudents = (ArrayList<Student>) ois.readObject();
-					
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void sracunajProsecnuOcenu(Student s) {
 		double sum = 0;
 		int counter = 0;
@@ -288,7 +237,7 @@ public class ControllerStudent {
 		
 	}
 	
-	public void sync() {
+	/*public void sync() {
 		for(Student s : loadedStudents) {
 			//Sredjivanje osnovnih polja :
 			
@@ -336,5 +285,10 @@ public class ControllerStudent {
 		}
 		
 		loadedStudents.clear();
+	}*/
+
+	public void setL(ArrayList<Student> stud) {
+		listaStudenti = stud;
+		
 	}
 }

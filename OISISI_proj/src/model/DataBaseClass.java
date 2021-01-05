@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import view.GlavniProzor;
 
 public class DataBaseClass implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8688220035647563544L;
 	
 	private ArrayList<Predmet> listaPredmeta;
 	private ArrayList<Profesor> listaProfesora;
@@ -75,4 +80,26 @@ public class DataBaseClass implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
+	public void deserialize() throws FileNotFoundException, IOException{
+
+        File f = new File("resources" + File.separator + "newDB.txt");
+        try(FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
+
+            DataBaseClass temp = new DataBaseClass();
+
+            temp = (DataBaseClass) ois.readObject();
+
+            GlavniProzor.getControllerPredmet().setL(temp.getPred());
+            GlavniProzor.getControllerProfesor().setL(temp.getProf());
+            GlavniProzor.getControllerStudent().setL(temp.getStud());
+
+            ois.close();
+            fis.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

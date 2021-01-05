@@ -20,36 +20,13 @@ import view.GlavniProzor;
 public class ControllerPredmet {
 	
 	private ArrayList<Predmet> listaPredmeta;
-	ArrayList<Predmet> loadedPredmet;
 	
 	public ControllerPredmet() {
-		listaPredmeta = new ArrayList<Predmet>();
-		loadedPredmet = new ArrayList<Predmet>();
-		
-		Initialize();		
+		listaPredmeta = new ArrayList<Predmet>();	
 	}
 	
 	public ArrayList<Predmet> getListaPredmeta(){
 		return this.listaPredmeta;
-	}
-	
-	//Doimplementirati kada se bude imao data sample
-	public void Initialize() {
-		/*for (int i = 0; i < 20; i++) {
-			Predmet p = new Predmet();
-			p.setNaziv(""+i);
-			p.setSifPred(""+i);
-			p.setEspbBod(i);
-			dodajPredmet(p);
-		}*/
-		
-		try {
-			deserialize();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public boolean dodajPredmet(Predmet p) {
@@ -129,19 +106,6 @@ public class ControllerPredmet {
 			
 			oos.close();
 			fos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@SuppressWarnings({ "unchecked"})
-	public void deserialize() throws FileNotFoundException, IOException {
-		File predmeti = new File("resources" + File.separator + "Predmeti.txt");
-		try(FileInputStream fis = new FileInputStream(predmeti);
-				ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis));) {
-			
-			loadedPredmet = (ArrayList<Predmet>) ois.readObject();
-					
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -368,7 +332,7 @@ public class ControllerPredmet {
 		return new ArrayList<Predmet>(set);
 	}
 	
-	public void sync() {		
+	/*public void sync() {		
 		for(Predmet pr : loadedPredmet) {
 			//Osnovna polja :
 			Predmet tempPred = new Predmet();
@@ -397,5 +361,10 @@ public class ControllerPredmet {
 		}
 		
 		loadedPredmet.clear();
+	}*/
+
+	public void setL(ArrayList<Predmet> pred) {
+		listaPredmeta = pred;
+		
 	}
 }
