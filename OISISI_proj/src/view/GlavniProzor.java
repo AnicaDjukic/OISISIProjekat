@@ -1,12 +1,21 @@
 package view;
 
-//importi :
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import controller.*;
+//importi :
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
+import controller.ControllerPredmet;
+import controller.ControllerProfesor;
+import controller.ControllerStudent;
+import model.DataBaseClass;
 import model.GlobalConstants;
 
 public class GlavniProzor extends JFrame {
@@ -21,6 +30,8 @@ public class GlavniProzor extends JFrame {
 	static ControllerProfesor cProf;
 	static ControllerPredmet cPred;
 	static ControllerStudent cStud;
+	
+	static DataBaseClass db;
 	
 	public GlavniProzor() {
 		this.requestFocus();
@@ -37,9 +48,12 @@ public class GlavniProzor extends JFrame {
 		addWindowListener(new MyWindowListener());
 		
 		//Incijalizacija kontrolera:
+		db = new DataBaseClass();
+		
 		cPred = new ControllerPredmet();
 		cProf = new ControllerProfesor();
 		cStud = new ControllerStudent();
+		
 		
 		cStud.sync();
 		cProf.sync();
@@ -47,7 +61,6 @@ public class GlavniProzor extends JFrame {
 		cStud.syncRef();
 		cProf.syncRef();
 		
-		//cStud.testAddNepo();
 		
 		//Menu bar :
 	    menu = new MyMenuBar();
@@ -136,9 +149,7 @@ public class GlavniProzor extends JFrame {
 	
 	public static void serialize() {
 		try {
-			cProf.serialize();
-			cPred.serialize();
-			cStud.serialize();
+			db.serialize();
 		}catch(Exception exc){
 			exc.printStackTrace();
 		}
