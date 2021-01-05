@@ -166,9 +166,9 @@ public class ControllerProfesor {
 		*/
 		Profesor pr = nadjiProfesora(brLic);
 		for(Predmet p : prds) {
-			//obrisiPredmetKodSvihProf(p.getSifPred());
+			obrisiPredmetKodSvihProf(p.getSifPred());
 			pr.getSpisPred().add(p);
-			//p.setProf(pr);
+			p.setProf(pr);
 		}
 	}
 	

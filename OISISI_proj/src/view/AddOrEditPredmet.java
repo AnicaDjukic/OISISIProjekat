@@ -209,7 +209,7 @@ public class AddOrEditPredmet extends JPanel {
                         GlavniProzor.getControllerProfesor().dodajProfPred(AddProfToPredDialog.prof,predmet);
 					}
 					else {
-						//GlavniProzor.getControllerProfesor().obrisiPredmetKodProf(predmet.getProf(), predmet);
+						GlavniProzor.getControllerProfesor().obrisiPredmetKodProf(predmet.getProf(), predmet);
 						predmet.setProf(GlobalConstants.dummy);
 					}
 					
