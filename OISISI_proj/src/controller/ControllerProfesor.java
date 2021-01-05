@@ -123,14 +123,8 @@ public class ControllerProfesor {
 			for(Predmet pr : GlavniProzor.getControllerPredmet().getListaPredmeta())
 				if(pr.getSifPred().equals(id))
 					prds.add(pr);
-		}/*
-		for(Profesor p : listaProfesora)
-			if(p.getBrLicKart().equals(brLic))
-				for(Predmet pr : prds) {
-					p.getSpisPred().add(pr);
-					//pr.setProf(p);
-				}
-		*/
+		}
+		
 		Profesor pr = nadjiProfesora(brLic);
 		for(Predmet p : prds) {
 			obrisiPredmetKodSvihProf(p.getSifPred());
@@ -359,41 +353,6 @@ public class ControllerProfesor {
 		
 		return new ArrayList<Profesor>(set);
 	}
-	
-	/*public void sync() {		
-		for(Profesor p : loadedProfesor) {
-			//Osnovna polja :
-			Profesor tempProf = new Profesor();
-			
-			tempProf.setAdrKanc(p.getAdrKanc());
-			tempProf.setAdrStan(p.getAdrStan());
-			tempProf.setBrLicKart(p.getBrLicKart());
-			tempProf.setDrp(p.getDrp());
-			tempProf.setEmail(p.getEmail());
-			tempProf.setIme(p.getIme());
-			tempProf.setKonTel(p.getKonTel());
-			tempProf.setPrezime(p.getPrezime());
-			tempProf.setTitula(p.getTitula());
-			tempProf.setZvanje(p.getZvanje());
-			
-		
-			listaProfesora.add(tempProf);
-		}
-
-	}
-	
-	public void syncRef() {
-		//Spisak predmeta :
-		
-		for(Profesor p : loadedProfesor) {
-			Profesor newP = GlavniProzor.getControllerProfesor().nadjiProfesora(p.getBrLicKart());
-			
-			for(Predmet pr : p.getSpisPred())
-				newP.getSpisPred().add(GlavniProzor.getControllerPredmet().nadjiPredmet(pr.getSifPred()));
-		}
-	
-		loadedProfesor.clear();
-	}*/
 
 	public void setL(ArrayList<Profesor> prof) {
 		listaProfesora = prof;

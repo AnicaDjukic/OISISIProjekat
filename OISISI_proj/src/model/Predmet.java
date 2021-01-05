@@ -145,10 +145,10 @@ public class Predmet implements Serializable{
 		String out = "";
 		
 		switch(g) {
-		case PRVA : out = "(1) - PRVA"; break;
-		case DRUGA : out = "(2) - DRUGA"; break;
-		case TRECA : out = "(3) - TREĆA"; break;
-		case CETVRTA : out = "(4) - ČETVRTA"; break;
+		case PRVA : out = "(1) - PRVA"; break;                                   
+		case DRUGA : out = "(2) - DRUGA"; break;                                  
+		case TRECA : out = "(3) - TREĆA"; break;                                  
+		case CETVRTA : out = "(4) - ČETVRTA"; break;                                
 		}
 		
 		return out;
