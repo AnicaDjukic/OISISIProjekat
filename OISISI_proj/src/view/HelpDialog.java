@@ -45,11 +45,11 @@ public class HelpDialog extends JDialog {
     	label24 = new JLabel("\t U Tool baru se takođe nalazi polje za pretragu entiteta:");
     	label25 = new JLabel(new ImageIcon(GlobalConstants.searchFieldImg));
     	label26 = new JLabel("\t Pozicioniranjem na odgovarajući tab (Studenti, Profesori, Predmeti) omogućena je pretraga:");
-    	label27 = new JLabel("<html> \t- Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta, "
+    	label27 = new JLabel("<html> <&ensp> Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta, "
     						+ "<br> druga, odnosno treća reč su opcione i odnose se na deo imena, odnosno broja indeksa studenta.</hmtl>");
-    	label28 = new JLabel("<html> \t - Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,"
+    	label28 = new JLabel("<html> <&ensp> Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,"
     						+ "<br> druga reč je opciona i odnosi se na deo imena profesora.</hmtl>");
-    	label29 = new JLabel("- Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.");
+    	label29 = new JLabel("<html> <&ensp> Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.</hmtl>");
     	label30 = new JLabel("\t Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.");
     	label31 = new JLabel("\t Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.");
 		JLabel[] arr = {label1, label2, label3, label4, label5, label6, label7,
