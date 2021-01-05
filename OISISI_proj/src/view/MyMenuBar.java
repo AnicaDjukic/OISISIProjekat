@@ -3,6 +3,7 @@ package view;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
 
 import controller.*;
@@ -86,6 +87,7 @@ public class MyMenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {	
 				AboutDialog about = new AboutDialog();
+				about.pack();
 				about.setLocationRelativeTo(null);
 				about.setVisible(true);
 			}
@@ -98,9 +100,28 @@ public class MyMenuBar extends JMenuBar {
 		miAbout.setMnemonic(KeyEvent.VK_A);
 		mHelp.add(miAbout);
 		
+		JMenu mAdvanced = new JMenu(GlobalConstants.menuAdvanced);
+		JMenu mLanguage = new JMenu(GlobalConstants.menuLanguage);
+		mLanguage.setIcon(new ImageIcon(GlobalConstants.languageImg));
+		JMenuItem miSearch = new JMenuItem(GlobalConstants.menuSearch, new ImageIcon(GlobalConstants.advSearImg));
+		
+		mAdvanced.setMnemonic(KeyEvent.VK_A);
+		mLanguage.setMnemonic(KeyEvent.VK_L);
+		miSearch.setMnemonic(KeyEvent.VK_S);
+		mAdvanced.add(mLanguage);
+		JMenuItem miiSerbian = new JMenuItem(GlobalConstants.menuSerbian, new ImageIcon(GlobalConstants.serbianImg));
+		miiSerbian.setMnemonic(KeyEvent.VK_S);
+		mLanguage.add(miiSerbian);
+		mLanguage.addSeparator();
+		JMenuItem miiEnglish = new JMenuItem(GlobalConstants.menuEnglish, new ImageIcon(GlobalConstants.englishImg));
+		miiEnglish.setMnemonic(KeyEvent.VK_E);
+		mLanguage.add(miiEnglish);
+		mAdvanced.addSeparator();
+		mAdvanced.add(miSearch);
 		
 		add(mFile);
 		add(mEdit);
 		add(mHelp);
+		add(mAdvanced);
 	}
 }

@@ -2,6 +2,8 @@ package model;
 
 import java.io.File;
 
+import javax.swing.Icon;
+
 public class GlobalConstants {
 	//Some default sizes :
 	public static int aoedw = 400;  //addOrEditWidth
@@ -107,7 +109,11 @@ public class GlobalConstants {
 	public static String menuDelete = "Delete";
 	public static String menuHelp = "Help";
 	public static String menuAbout = "About";
-	
+	public static String menuAdvanced = "Advanced"; 
+	public static String menuLanguage = "Language";
+	public static String menuSearch = "Search";
+	public static String menuSerbian = "Serbian";
+	public static String menuEnglish = "English";
 	//Frame names : 
 	public static String mfName = "Studentska služba";
 	
@@ -142,7 +148,10 @@ public class GlobalConstants {
 	public static String menuBarImg = "images" +  File.separator + "Menu_Bar.png";
 	public static String toolBarImg = "images" + File.separator + "Tool_Bar.png";
 	public static String advSearImg = "images" + File.separator + "adv_search.png";
-	public static String searchFieldImg = "images" + File.separator + "search_field.png";;
+	public static String searchFieldImg = "images" + File.separator + "search_field.png";
+	public static String languageImg = "images" + File.separator + "language_image.png";
+	public static String serbianImg = "images" + File.separator + "serbian_img.png";
+	public static String englishImg = "images" + File.separator + "english_img.png";
 	
 	//Button txts : 
 	public static String btnOkName = "Potvrdi";
