@@ -95,22 +95,6 @@ public class ControllerPredmet {
 				p.setProf(GlobalConstants.dummy);
 	}
 	
-	public void serialize() throws FileNotFoundException, IOException {
-		File predmeti = new File("resources" + File.separator + "Predmeti.txt");
-		predmeti.delete();
-		predmeti.createNewFile();
-		try(FileOutputStream fos = new FileOutputStream(predmeti);
-			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
-			
-			oos.writeObject(listaPredmeta);
-			
-			oos.close();
-			fos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	//Napredna pretraga :
 	public boolean advSrcTxt(String crit, ArrayList<Predmet> ret){
 		int critType;
@@ -136,7 +120,7 @@ public class ControllerPredmet {
 			return false;
 		}
 		
-		if(parts[0].equalsIgnoreCase("sifra") || parts[0].equalsIgnoreCase("šifra")){
+		if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchSifTok1) || parts[0].equalsIgnoreCase(GlobalConstants.advSearchSifTok2)){
 			if(critType == 1) {
 				//sifra po regexu
 				
@@ -165,7 +149,7 @@ public class ControllerPredmet {
 				}
 			}
 		}
-		else if(parts[0].equalsIgnoreCase("naziv")) {
+		else if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchNazTok)) {
 			if(critType == 1) {
 				//Naziv po regexu
 				
@@ -211,7 +195,7 @@ public class ControllerPredmet {
 		}
 		
 		//Popunjavanje liste
-		if(parts[0].equalsIgnoreCase("godina")) {
+		if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchGodTok)) {
 			if(parts[1].equals("==")) {
 				for(Predmet p : listaPredmeta)
 					if(p.getNumGodina() == num)
@@ -243,7 +227,7 @@ public class ControllerPredmet {
 						ret.add(p);
 			}
 		}
-		else if(parts[0].equalsIgnoreCase("espb")) {
+		else if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchESPBTok)) {
 			if(parts[1].equals("==")) {
 				for(Predmet p : listaPredmeta)
 					if(p.getNumGodina() == num)
@@ -281,7 +265,7 @@ public class ControllerPredmet {
 	public boolean advSrcSem(String crit, ArrayList<Predmet> ret) {
 		String[] parts = crit.split(" ");
 		
-		if(parts[2].equalsIgnoreCase("letnji") || parts[2].equalsIgnoreCase("\"letnji\"")) {
+		if(parts[2].equalsIgnoreCase(GlobalConstants.advSearchSemPos2) || parts[2].equalsIgnoreCase(GlobalConstants.advSearchSemPos4)) {
 			if(parts[1].equals("==")) {
 				for(Predmet p : listaPredmeta)
 					if(p.getSemestar() == Predmet.Semestar.LETNJI)
@@ -293,7 +277,7 @@ public class ControllerPredmet {
 						ret.add(p);
 			}
 		}
-		else if(parts[2].equalsIgnoreCase("zimski") || parts[2].equalsIgnoreCase("\"zimski\"")) {
+		else if(parts[2].equalsIgnoreCase(GlobalConstants.advSearchSemPos1) || parts[2].equalsIgnoreCase(GlobalConstants.advSearchSemPos3)) {
 			if(parts[1].equals("==")) {
 				for(Predmet p : listaPredmeta)
 					if(p.getSemestar() == Predmet.Semestar.ZIMSKI)

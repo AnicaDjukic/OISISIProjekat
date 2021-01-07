@@ -6,6 +6,7 @@ import com.bpodgursky.jbool_expressions.Expression;
 import com.bpodgursky.jbool_expressions.parsers.ExprParser;
 import com.bpodgursky.jbool_expressions.rules.RuleSet;
 
+import model.GlobalConstants;
 import model.Predmet;
 import model.Profesor;
 import view.AdvSearDialog;
@@ -57,7 +58,7 @@ public class AdvSearchWorkPred {
 			myExp = exp.toString();
 			} catch(Exception e) {
 				hadError = true;
-				err = new ErrorDialog("Nije uspelo parsiranje izraza");
+				err = new ErrorDialog(GlobalConstants.advSearchErrParse);
 			}
 		}
 		
@@ -107,8 +108,8 @@ public class AdvSearchWorkPred {
 	
 	public void makeVars() {
 		
-		if(!collection[0].equalsIgnoreCase("predmeti") || !collection[1].equals("=")) {
-			err = new ErrorDialog("Iskaz ne počinje korektno");
+		if(!collection[0].equalsIgnoreCase(GlobalConstants.advSearchPredTok) || !collection[1].equals("=")) {
+			err = new ErrorDialog(GlobalConstants.advSearchErrBegin);
 			hadError = true;
 			return;
 		}
@@ -123,7 +124,7 @@ public class AdvSearchWorkPred {
 					myExp += " " + collection[k] + " ";
 					k++;
 				}
-				else if(collection[k].equalsIgnoreCase("profesori")) { 
+				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchProfTok)) { 
 					int helper = k;
 					myExpProf = "";
 					do {
@@ -165,23 +166,23 @@ public class AdvSearchWorkPred {
 					k = helper + 1;
 					
 				}
-				else if(collection[k].equalsIgnoreCase("sifra") || collection[k].equalsIgnoreCase("šifra")) {
+				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchSifTok1) || collection[k].equalsIgnoreCase(GlobalConstants.advSearchSifTok2)) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				}
-				else if(collection[k].equalsIgnoreCase("naziv")) {
+				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchNazTok)) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				}
-				else if(collection[k].equalsIgnoreCase("ESPB")) {
+				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchESPBTok)) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				}
-				else if(collection[k].equalsIgnoreCase("godina")) {
+				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchGodTok)) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				}
-				else if(collection[k].equalsIgnoreCase("semestar")) {
+				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchSemTok)) {
 					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
 					k+=3;
 				} 
@@ -194,7 +195,7 @@ public class AdvSearchWorkPred {
 					k++;
 				}
 				else {
-					err = new ErrorDialog("Nije spojeno ni sa jednim tokenom, proverite izraz");
+					err = new ErrorDialog(GlobalConstants.advSearchErrTokNotFound);
 					hadError = true;
 					break;
 				}
@@ -209,31 +210,31 @@ public class AdvSearchWorkPred {
 		
 		Var temp;
 		String s = col + " " +  exp + " " + val;
-		if(col.equalsIgnoreCase("sifra") || col.equalsIgnoreCase("šifra") || col.equalsIgnoreCase("naziv")) {
+		if(col.equalsIgnoreCase(GlobalConstants.advSearchSifTok1) || col.equalsIgnoreCase(GlobalConstants.advSearchSifTok2) || col.equalsIgnoreCase(GlobalConstants.advSearchNazTok)) {
 			if(!exp.equals("==") && !exp.equals("!=")) {
-				err = new ErrorDialog("Tipovi sifra i naziv mogu imati relacione operatore !=/==");
+				err = new ErrorDialog(GlobalConstants.advSearchErrRelOpsNS);
 				return false;
 			}
 			temp = new Var(i,s);
 			myExp += " " + i++ + " ";
 			vars.add(temp);
 		}
-		else if(col.equalsIgnoreCase("espb") || col.equalsIgnoreCase("godina")) {
+		else if(col.equalsIgnoreCase(GlobalConstants.advSearchESPBTok) || col.equalsIgnoreCase(GlobalConstants.advSearchGodTok)) {
 			if(!checkExp(exp)) {
-				err = new ErrorDialog("Nije validan operator za tip ESPB/godina");
+				err = new ErrorDialog(GlobalConstants.advSearchErrGodEspb);
 				return false;
 			}
 			temp = new Var(i,s);
 			myExp += " " + i++ + " ";
 			vars.add(temp);
 		}
-		else if(col.equalsIgnoreCase("semestar")) {
+		else if(col.equalsIgnoreCase(GlobalConstants.advSearchSemTok)) {
 			if(!exp.equals("==") && !exp.equals("!=")) {
-				err = new ErrorDialog("Tip semestar ne prihvata zadate relacione operatore");
+				err = new ErrorDialog(GlobalConstants.advSearchErrSemOps);
 				return false;
 			}
-			if(!(val.equalsIgnoreCase("\"zimski\"") || val.equalsIgnoreCase("\"letnji\"") || val.equalsIgnoreCase("zimski") || val.equalsIgnoreCase("letnji"))) {
-				err = new ErrorDialog("Tip semestar ne prihvata zadatu vrednost");
+			if(!(val.equalsIgnoreCase(GlobalConstants.advSearchSemPos1) || val.equalsIgnoreCase(GlobalConstants.advSearchSemPos2) || val.equalsIgnoreCase(GlobalConstants.advSearchSemPos3) || val.equalsIgnoreCase(GlobalConstants.advSearchSemPos4))) {
+				err = new ErrorDialog(GlobalConstants.advSearchErrSemVals);
 				return false;
 			}
 			temp = new Var(i,s);
@@ -263,19 +264,19 @@ public class AdvSearchWorkPred {
 	public void executeVarQuerries() {
 		boolean noErrors = true;
 		for(Var v : vars) {
-			if(v.getV().toLowerCase().startsWith("sifra") || v.getV().toLowerCase().startsWith("šifra") || v.getV().toLowerCase().startsWith("naziv"))
+			if(v.getV().toLowerCase().startsWith(GlobalConstants.advSearchSifTok1) || v.getV().toLowerCase().startsWith(GlobalConstants.advSearchSifTok2) || v.getV().toLowerCase().startsWith(GlobalConstants.advSearchNazTok))
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcTxt(v.getV(), v.getSol());
-			else if(v.getV().toLowerCase().startsWith("espb") || v.getV().toLowerCase().startsWith("godina"))
+			else if(v.getV().toLowerCase().startsWith(GlobalConstants.advSearchESPBTok) || v.getV().toLowerCase().startsWith(GlobalConstants.advSearchGodTok))
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcNum(v.getV(), v.getSol());
-			else if(v.getV().toLowerCase().startsWith("semestar"))
+			else if(v.getV().toLowerCase().startsWith(GlobalConstants.advSearchSemTok))
 				noErrors &= GlavniProzor.getControllerPredmet().advSrcSem(v.getV(), v.getSol());
-			else if(v.getV().toLowerCase().startsWith("profesori"))
+			else if(v.getV().toLowerCase().startsWith(GlobalConstants.advSearchProfTok))
 				noErrors &= true;
 			else
 				noErrors &= false;
 		}
 		if(!noErrors) {
-			err = new ErrorDialog("Neuspešno izvršavanje pojedinačnih upita");
+			err = new ErrorDialog(GlobalConstants.advSearchErrSingleExps);
 			hadError = true;
 		}
 	}
@@ -342,7 +343,7 @@ public class AdvSearchWorkPred {
 			myExpProf = expProf.toString();
 			} catch(Exception e) {
 				hadErrorProf = true;
-				err = new ErrorDialog("Nije uspelo parsiranje izraza u delu profesori");
+				err = new ErrorDialog(GlobalConstants.advSearchErrParseProf);
 			}
 		}
 		
@@ -387,8 +388,8 @@ public class AdvSearchWorkPred {
 	
 	public void makePVars() {
 		myExpProf = "";
-		if(!profCollection[0].toLowerCase().equals("profesori") || !(profCollection[1].equals("==") || profCollection[1].equals("!="))) {
-			err = new ErrorDialog("Iskaz kod profesora ne počinje korektno");
+		if(!profCollection[0].toLowerCase().equals(GlobalConstants.advSearchProfTok) || !(profCollection[1].equals("==") || profCollection[1].equals("!="))) {
+			err = new ErrorDialog(GlobalConstants.advSearchErrProfBegin);
 			hadErrorProf = true;
 			return;
 		}
@@ -403,15 +404,15 @@ public class AdvSearchWorkPred {
 					myExpProf += " " + profCollection[k] + " ";
 					k++;
 				}
-				else if(profCollection[k].equalsIgnoreCase("ime")) {
+				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchImeTok)) {
 					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
 					k+=3;
 				}
-				else if(profCollection[k].equalsIgnoreCase("prezime")) {
+				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchPrezTok)) {
 					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
 					k+=3;
 				}
-				else if(profCollection[k].equalsIgnoreCase("titula")) {
+				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchTitTok)) {
 					int temp = k + 2;
 					
 					do {
@@ -429,7 +430,7 @@ public class AdvSearchWorkPred {
 					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], val);
 					k = temp + 1;
 				}
-				else if(profCollection[k].equalsIgnoreCase("zvanje")) {
+				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchZvaTok)) {
 					int temp = k + 2;
 					
 					do {
@@ -455,7 +456,7 @@ public class AdvSearchWorkPred {
 					k++;
 				}
 				else {
-					err = new ErrorDialog("Nije spojeno ni sa jednim tokenom, proverite izraz");
+					err = new ErrorDialog(GlobalConstants.advSearchErrProfTokNotFound);
 					hadErrorProf = true;
 					break;
 				}
@@ -470,9 +471,9 @@ public class AdvSearchWorkPred {
 		
 		PVar temp;
 		String s = col + " " +  exp + " " + val;
-		if(col.equalsIgnoreCase("ime") || col.equalsIgnoreCase("prezime") || col.equalsIgnoreCase("titula") || col.equalsIgnoreCase("zvanje")) {
+		if(col.equalsIgnoreCase(GlobalConstants.advSearchImeTok) || col.equalsIgnoreCase(GlobalConstants.advSearchPrezTok) || col.equalsIgnoreCase(GlobalConstants.advSearchTitTok) || col.equalsIgnoreCase(GlobalConstants.advSearchZvaTok)) {
 			if(!exp.equals("==") && !exp.equals("!=")) {
-				err = new ErrorDialog("Tipovi za profesora mogu imati relacione operatore !=/==");
+				err = new ErrorDialog(GlobalConstants.advSearchErrProfRelOps);
 				return false;
 			}
 			temp = new PVar(ip,s);
@@ -489,13 +490,13 @@ public class AdvSearchWorkPred {
 	public void executePVarQuerries() {
 		boolean noErrors = true;
 		for(PVar v : pvars) {
-			if(v.getV().toLowerCase().startsWith("ime") || v.getV().toLowerCase().startsWith("prezime") || v.getV().toLowerCase().startsWith("titula") || v.getV().toLowerCase().startsWith("zvanje"))
+			if(v.getV().toLowerCase().startsWith(GlobalConstants.advSearchImeTok) || v.getV().toLowerCase().startsWith(GlobalConstants.advSearchPrezTok) || v.getV().toLowerCase().startsWith(GlobalConstants.advSearchTitTok) || v.getV().toLowerCase().startsWith(GlobalConstants.advSearchZvaTok))
 				noErrors &= GlavniProzor.getControllerProfesor().advSrcTxt(v.getV(), v.getSol());
 			else	
 				noErrors &= false;
 		}
 		if(!noErrors) {
-			err = new ErrorDialog("Neuspešno izvršavanje pojedinačnih upita profesora");
+			err = new ErrorDialog(GlobalConstants.advSearchErrProfSingleExps);
 			hadErrorProf = true;
 		}
 	}

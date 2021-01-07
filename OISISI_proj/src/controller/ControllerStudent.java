@@ -156,23 +156,6 @@ public class ControllerStudent {
         }
     }
 	
-	public void serialize() throws FileNotFoundException, IOException {
-		File studenti = new File("resources" + File.separator + "Studenti.txt");
-		studenti.delete();
-		studenti.createNewFile();
-		try(FileOutputStream fos = new FileOutputStream(studenti);
-			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
-			
-			oos.writeObject(listaStudenti);
-			
-			oos.close();
-			fos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
 	public void sracunajProsecnuOcenu(Student s) {
 		double sum = 0;
 		int counter = 0;

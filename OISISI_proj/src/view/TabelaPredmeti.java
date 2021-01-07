@@ -29,6 +29,17 @@ public class TabelaPredmeti extends JTable {
 	private static Object[] colNamesProf = {GlobalConstants.spr, GlobalConstants.npr, GlobalConstants.god, GlobalConstants.sem};
 	
 	public TabelaPredmeti(int sluc) {
+		
+		colNames[0] = GlobalConstants.spr;
+		colNames[1] = GlobalConstants.npr;
+		colNames[2] = GlobalConstants.espb;
+		colNames[3] = GlobalConstants.god;
+		colNames[4] = GlobalConstants.sem;
+		
+		colNamesProf[0] = GlobalConstants.spr;
+		colNamesProf[1] = GlobalConstants.npr;
+		colNamesProf[2] = GlobalConstants.god;
+		colNamesProf[3] = GlobalConstants.sem;
 		switch(sluc) {
 		case 0:
 			inst = this;

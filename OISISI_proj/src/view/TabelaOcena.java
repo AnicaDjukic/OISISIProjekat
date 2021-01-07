@@ -7,18 +7,25 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ControllerStudent;
+import model.GlobalConstants;
 import model.Ocena;
 
 public class TabelaOcena extends JTable {
 
 	static ControllerStudent controller;
 
-	private static String[] cols = {"Šifra predmeta", "Naziv predmeta", "ESPB", "Ocena", "Datum"};
+	private static String[] cols = {GlobalConstants.tabOcenaSif, GlobalConstants.tabOcenaNaz, GlobalConstants.advSearchESPBTok, GlobalConstants.tabOcenaOce, GlobalConstants.tabOcenaDat};
 	static DefaultTableModel model;
 	public static TabelaOcena inst;
 
 
 	public TabelaOcena(String index) {
+		cols[0] = GlobalConstants.tabOcenaSif;
+		cols[1] = GlobalConstants.tabOcenaNaz;
+		cols[2] = GlobalConstants.advSearchESPBTok;
+		cols[3] = GlobalConstants.tabOcenaOce;
+		cols[4] = GlobalConstants.tabOcenaDat;
+		
 		inst = this;
 
 		controller = GlavniProzor.getControllerStudent();

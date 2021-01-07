@@ -1,13 +1,19 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.Date;
-import java.text.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import javax.swing.*;
+import model.GlobalConstants;
 
 public class StatusBar extends JPanel {
 	
@@ -15,7 +21,7 @@ public class StatusBar extends JPanel {
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(10,23));
 		
-		JLabel lab = new JLabel("  Studentska služba");
+		JLabel lab = new JLabel("  " + GlobalConstants.mfName);
 		
 		
 		DateFormat timeFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy.  ");

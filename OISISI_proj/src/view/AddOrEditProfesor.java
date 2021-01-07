@@ -41,7 +41,7 @@ public class AddOrEditProfesor extends JPanel{
 	private String ime,prz,drp,adrStan,konTel,email,adrKanc,brLic,tit,zva;
 	private ErrorDialog er;
 	
-	public static int brPraznihPolja = -8;
+	public static int brPraznihPolja;
 	public static int rowNumEdited;
 	public static int currMode;
 	
@@ -49,6 +49,9 @@ public class AddOrEditProfesor extends JPanel{
 	
 	@SuppressWarnings("unchecked")
 	public AddOrEditProfesor(int mode, AddOrEditDialog d) {
+		
+		brPraznihPolja = -8;
+		
 		inst = this;
 		currMode = mode;
 		cp = GlavniProzor.getControllerProfesor();

@@ -1,20 +1,25 @@
 package view;
 
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.KeyStroke;
-
-import controller.*;
-import model.GlobalConstants;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+
+import controller.AddButtonListener;
+import controller.test_main;
+import controller.AdvSearchAl;
+import controller.ControllerPredmet;
+import controller.ControllerProfesor;
+import controller.ControllerStudent;
+import controller.DeleteButtonListener;
+import controller.EditButtonListener;
+import model.GlobalConstants;
 
 public class MyMenuBar extends JMenuBar {
 
@@ -34,8 +39,8 @@ public class MyMenuBar extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String [] options = {"Da","Ne"};
-				int code = JOptionPane.showOptionDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				String [] options = {GlobalConstants.yesOpt,GlobalConstants.noOpt};
+				int code = JOptionPane.showOptionDialog(null, GlobalConstants.upitZatvaranjeMF, GlobalConstants.upitZatvaranjeTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 
 		         if(code == JOptionPane.YES_OPTION){
 		        	System.exit(0);
@@ -113,10 +118,12 @@ public class MyMenuBar extends JMenuBar {
 		mAdvanced.add(mLanguage);
 		JMenuItem miiSerbian = new JMenuItem(GlobalConstants.menuSerbian, new ImageIcon(GlobalConstants.serbianImg));
 		miiSerbian.setMnemonic(KeyEvent.VK_S);
+		miiSerbian.addActionListener(new MySerbLangListener());
 		mLanguage.add(miiSerbian);
 		mLanguage.addSeparator();
 		JMenuItem miiEnglish = new JMenuItem(GlobalConstants.menuEnglish, new ImageIcon(GlobalConstants.englishImg));
 		miiEnglish.setMnemonic(KeyEvent.VK_E);
+		miiEnglish.addActionListener(new MyEnglLangListener());
 		mLanguage.add(miiEnglish);
 		mAdvanced.addSeparator();
 		mAdvanced.add(miSearch);
@@ -125,5 +132,42 @@ public class MyMenuBar extends JMenuBar {
 		add(mEdit);
 		add(mHelp);
 		add(mAdvanced);
+	}
+	
+	class MySerbLangListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(test_main.language != 1) {
+				GlobalConstants.setLangSerbian();
+				test_main.language = 1;
+				
+				GlavniProzor.serialize();
+				GlavniProzor.inst.setVisible(false);
+				GlavniProzor.inst = new GlavniProzor();
+				GlavniProzor.inst.setVisible(true);
+			}
+		}
+		
+	}
+	
+	class MyEnglLangListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(test_main.language != 2) {
+				GlobalConstants.setLangEnglish();
+				test_main.language = 2;
+				
+				GlavniProzor.serialize();
+				GlavniProzor.inst.setVisible(false);
+				GlavniProzor.inst = new GlavniProzor();
+				GlavniProzor.inst.setVisible(true);
+			}
+			
+		}
+		
 	}
 }

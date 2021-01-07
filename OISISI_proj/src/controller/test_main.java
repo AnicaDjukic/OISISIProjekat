@@ -8,10 +8,13 @@ import java.awt.*;
 
 public class test_main {
 
+	public static int language = 2;             //Srpski - 1, Engleski - 2;
+	
 	public static void main(String[] args) {		
 		
 		//Glavni prozor :
 		
+		GlobalConstants.setLangEnglish();
 		GlavniProzor glavniProzor = new GlavniProzor();
 		glavniProzor.setVisible(true);
 		

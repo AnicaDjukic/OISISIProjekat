@@ -58,7 +58,7 @@ public class AddOrEditPredmet extends JPanel {
 		tGodIzv = new JComboBox<String>(godIzv);
 		
 		lSemestar = new JLabel(GlobalConstants.semestarLab);
-		String[] semestar = {"zimski", "letnji"};
+		String[] semestar = {GlobalConstants.advSearchSemPos3, GlobalConstants.advSearchSemPos4};
 		tSemestar = new JComboBox<String>(semestar);
 		
 		lEspb = new JLabel(GlobalConstants.espbLab);
@@ -124,7 +124,7 @@ public class AddOrEditPredmet extends JPanel {
 				tNaziv.setText(predmet.getNaziv());
 				
 				tGodIzv.setSelectedItem(predmet.getNumGodinaEdit());
-				tSemestar.setSelectedItem(predmet.getSemestar());
+				tSemestar.setSelectedItem(predmet.getStrSem());
 				
 				String espb = String.valueOf(predmet.getEspbBod());
 				tEspb.setText(espb);
@@ -171,7 +171,7 @@ public class AddOrEditPredmet extends JPanel {
 			
 				Semestar sem = Semestar.ZIMSKI;
 				
-				if((String) tSemestar.getSelectedItem() != "zimski")
+				if((String) tSemestar.getSelectedItem() != GlobalConstants.advSearchSemPos3)
 					sem = Semestar.LETNJI;
 				
 				int espbBodovi = Integer.parseInt(tEspb.getText());

@@ -7,18 +7,24 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ControllerStudent;
-import model.Profesor;
+import model.GlobalConstants;
 import model.Student;
 
 public class TabelaStudenti extends JTable {
 	
 	static ControllerStudent controller;
 	
-	private static String[] cols = {"Indeks", "Ime", "Prezime", "Godina studija", "Status", "Prosek"};
+	private static String[] cols = {GlobalConstants.tabStudInd, GlobalConstants.tabStudIme, GlobalConstants.tabStudPrez, GlobalConstants.tabStudGS, GlobalConstants.tabStudStat, GlobalConstants.tabStudPros};
 	static DefaultTableModel model;
 	public static TabelaStudenti table;
 	
 	public TabelaStudenti() {
+		cols[0] = GlobalConstants.tabStudInd;
+		cols[1] = GlobalConstants.tabStudIme;
+		cols[2] = GlobalConstants.tabStudPrez;
+		cols[3] = GlobalConstants.tabStudGS;
+		cols[4] = GlobalConstants.tabStudStat;
+		cols[5] = GlobalConstants.tabStudPros;
 		table = this;
 		controller = GlavniProzor.getControllerStudent();
 		

@@ -162,22 +162,6 @@ public class ControllerProfesor {
 		return ret;
 	}
 	
-	public void serialize() throws FileNotFoundException, IOException {
-		File profesori = new File("resources" + File.separator + "Profesori.txt");
-		profesori.delete();
-		profesori.createNewFile();
-		try(FileOutputStream fos = new FileOutputStream(profesori);
-			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(fos));){
-			
-			oos.writeObject(listaProfesora);
-			
-			oos.close();
-			fos.close();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	//Napredna pretraga :
 	public boolean advSrcTxt(String crit, ArrayList<Profesor> ret){
 		int critType;
@@ -194,7 +178,7 @@ public class ControllerProfesor {
 			}
 		}
 		else if(parts[2].startsWith("\"")) {
-			if(parts[0].equalsIgnoreCase("titula") || parts[0].equalsIgnoreCase("zvanje")) {
+			if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchTitTok) || parts[0].equalsIgnoreCase(GlobalConstants.advSearchZvaTok)) {
 				int i = 2;
 				do {
 					if(parts[i].matches(".*\"$"))
@@ -211,7 +195,7 @@ public class ControllerProfesor {
 			return false;
 		}
 		
-		if(parts[0].equalsIgnoreCase("ime")){
+		if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchImeTok)){
 			if(critType == 1) {
 				//sifra po regexu
 				
@@ -240,7 +224,7 @@ public class ControllerProfesor {
 				}
 			}
 		}
-		else if(parts[0].equalsIgnoreCase("prezime")) {
+		else if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchPrezTok)) {
 			if(critType == 1) {
 				//Naziv po regexu
 				
@@ -270,7 +254,7 @@ public class ControllerProfesor {
 				}
 			}
 		}
-		else if(parts[0].equalsIgnoreCase("titula")) {
+		else if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchTitTok)) {
 			String tempTit = "";
 			for(String s : GlobalConstants.titule)
 				if(s.equalsIgnoreCase(parts[2])) {
@@ -298,7 +282,7 @@ public class ControllerProfesor {
 				}		
 			}	
 		}
-		else if(parts[0].equalsIgnoreCase("zvanje")) {
+		else if(parts[0].equalsIgnoreCase(GlobalConstants.advSearchZvaTok)) {
 			String tempTit = "";
 			for(String s : GlobalConstants.zvanja)
 				if(s.equalsIgnoreCase(parts[2])) {

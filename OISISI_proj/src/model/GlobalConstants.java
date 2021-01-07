@@ -9,133 +9,8 @@ public class GlobalConstants {
 	public static int aoedw = 400;  //addOrEditWidth
 	public static int aoedh = 500;  //addOrEditHeight
 	
-	//Tekst za predmete koji nemaju profesora:
-	public static String prdNemaProf = "Nema profesora";
-	
 	//Prof dummy:
 	public static Profesor dummy = new Profesor();
-	
-	//Label names :
-	public static String imeLab = "Ime* ";
-	public static String przLab = "Prezime* ";
-	public static String drLab = "Datum rođenja* "; 
-	public static String adrKancLab = "Adresa kancelarije* ";
-	public static String adrStanLab = "Adresa stanovanja* ";
-	public static String konTelLab = "Kontakt telefon* ";
-	public static String brLicKartLab = "Broj lične karte* ";
-	public static String emailLab = "Email* ";
-	public static String titulaLab = "Titula* ";
-	public static String zvanjeLab = "Zvanje* ";
-	
-	public static String indexLab = "Broj indeksa* ";
-	public static String upisLab = "Godina upisa* ";
-	public static String trenutnaLab = "Trenutna godina studija* ";
-	public static String finansLab = "Način finansiranja* ";
-	
-	public static String sifraLab = "Šifra* ";
-	public static String nazivLab = "Naziv* ";
-	public static String godIzvLab = "Godina*";
-	public static String semestarLab = "Semestar* ";
-	public static String espbLab = "ESPB* ";
-	public static String profLab = "Profesor";
-	public static String ocenaLab = "Ocena*";
-	public static String datLab = "Datum*";
-	
-	//TextField tooltips :
-	public static String przImeToolTip = "Samo slova su dozvoljena";
-	public static String drpToolTip = "dd.MM.yyyy format";
-	public static String adrToolTip = "Adresa se sastoji iz imena ulice i broja zgrade";
-	public static String konTelToolTip = "<html>Samo brojevi su dozvoljeni <br> izmedju 6 i 10 cifara</html>";
-	public static String emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
-	public static String brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
-	public static String titZvToolTip = "Dozvoljeno je jedna ili više reči";
-	public static String brIndexaToolTip = "<html>SS-xxx-yyyy format, SS-smer, xxx-broj (najmanje 1 cifra)<br>yyyy-godina upisa (godine od 2000.)</html>";
-    public static String godUpisaToolTip = "yyyy format, godine od 2000.";
-	
-	public static String srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
-	public static String srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
-	public static String srchStudToolTip =  "<html>Format : \"prezime\" \"ime\" \"broj indeksa\"<br>Pretraga je case insensitive</html>";
-	
-	public static String nazivPredToolTip = "Mora početi slovom, može sadržati i jednu cifru";
-	public static String espbToolTip = "1 ili 2 cifre, prva cifra ne sme biti 0";
-	public static String profToolTip = "Odaberite profesora klikom na dugme '+'";
-	
-	//Misc texts :
-	public static String obvPolje = "Obavezno polje!";
-	public static String errAddProf = "Neuspešno dodavanje profesora!";
-	public static String errEditProf = "Neuspešna izmena profesora!";
-	public static String errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
-	public static String errAddPred = "Neuspešno dodavanje predmeta, postoji predmet sa istom šifrom!";
-	public static String upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
-	public static String upitZatvaranjeTitle = "Zatvaranje aplikacije";
-	public static String yesOpt = "Da";
-	public static String noOpt = "Ne";
-	public static String upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani?";
-	public static String upitSklanjanjeProfTitle = "Uklanjanje profesora";
-	public static String upitSklanjanjeProfSaPred = "Da li ste sigurni da želite da uklonite izabranog profesora sa predmeta?";
-	public static String upitBrisanjePredTitle = "Uklanjanje predmeta";
-	public static String dodavanjePredProfDialog = "Dodaj predmet";
-	public static String dodavanjeProfPredDialog = "Odaberi profesora";
-	public static String predmetiTekst = "Predmeti :";
-	public static String upitBrisanjeProf = "Da li ste sigurni da želite da obrišete izabranog profesora?";
-	public static String upitBrisanjeProfTitle = "Brisanje profesora";
-	public static String btnPonisti = "Poništi ocenu";
-	public static String upitBrisanjePredKodStud = "Da li ste sigurni da želite da uklonite predmet?";
-    public static String greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
-    public static String upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
-    public static String upitBrisanjeStudTitle = "Brisanje studenta";
-    public static String greskaPriIzboruOcene = "Niste izabrali ni jednu ocenu";
-    public static String upitPonistavenjeOceneTitle = "Poništavanje ocene";
-    public static String upitPonistavenjeOcene = "Da li ste sigurni da želite da poništite ocenu?";
-    public static String upitBrisanjePredKodProf = "Da li ste sigurni?";
-	
-	public static String btnDodaj = "Dodaj";
-	public static String btnObrisi = "Obriši";
-	public static String btnPolaganje = "Polaganje";
-	
-	//Button toolips : 
-	public static String addBtnToolTipTxt = "New";
-	public static String editBtnToolTipTxt = "Edit";
-	public static String delBtnToolTipTxt = "Delete";
-	public static String srchBtnToolTipTxt = "Search";
-	public static String srchFieldToolTipTxt = "";
-	public static String advSearchToolTip = "Napredna pretraga";
-	
-	
-	public static String menuFile = "File"; 
-	public static String menuNew = "New";
-	public static String menuClose = "Close";
-	public static String menuEdit = "Edit";
-	public static String menuDelete = "Delete";
-	public static String menuHelp = "Help";
-	public static String menuAbout = "About";
-	public static String menuAdvanced = "Advanced"; 
-	public static String menuLanguage = "Language";
-	public static String menuSearch = "Search";
-	public static String menuSerbian = "Serbian";
-	public static String menuEnglish = "English";
-	//Frame names : 
-	public static String mfName = "Studentska služba";
-	
-	public static String tabStudentName = "Studenti";
-	public static String tabProfesorName = "Profesori";
-	public static String tabPredmetName = "Predmeti";
-	
-	public static String profAdd = "Dodavanje profesora";
-	public static String profEdit = "Izmeni profesora";
-	public static String studAdd = "Dodavanje studenta";
-	public static String editStud = "Izmeni studenta";
-	public static String predAdd = "Dodavanje predmeta";
-	public static String predEdit = "Izmeni predmet";
-	public static String errName = "Greška";
-	public static String unosOcene = "Unos ocene";
-	
-	//Clomun names predmet : 
-	public static String spr = "Šifra predmeta : ";
-	public static String npr = "Naziv predmeta : ";
-	public static String espb = "ESPB : ";
-	public static String god = "Godina : ";
-	public static String sem = "Semestar : ";
 	
 	//Image usage : 
 	public static String addImg = "images" + File.separator + "add_button.png";
@@ -153,12 +28,6 @@ public class GlobalConstants {
 	public static String serbianImg = "images" + File.separator + "serbian_img.png";
 	public static String englishImg = "images" + File.separator + "english_img.png";
 	
-	//Button txts : 
-	public static String btnOkName = "Potvrdi";
-	public static String btnCncName = "Odustani";
-	public static String btnDodPred = "Dodaj predmet";
-	public static String btnUklPred = "Ukloni predmet";
-	
 	//Regex :
 	public static String regExNameOrSurename = "\\p{L}+";
 	public static String regExAddress = "([\\p{L}]+[\\s])+[1-9][0-9]{0,2}";
@@ -167,37 +36,324 @@ public class GlobalConstants {
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 	public static String regExBrIndexa = "[a-zA-Z]{2}[-][0-9]{1,3}[-][2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	public static String regGodUpisa = "[2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
-	
 	public static String regExNazivPred = "([\\p{L}]+[\\s]{0,1})+[0-9]{0,1}";
 	public static String regExEspb = "[1-9]{1}[0-9]{0,1}";
-	
 	public static String[] regExDatePoss = {"dd.MM.yyyy.", "dd.MM.yyyy", "d.MM.yyyy.", "d.MM.yyyy", "dd.M.yyyy.", "dd.M.yyyy", "d.M.yyyy.", "d.M.yyyy"};
-	
-	//Edit tab names :
-	public static String profEditTabOsnInf = "Informacije";
-	public static String profEditTabPrd = "Predmeti";
-	
-	//Error za naprednu pretragu prof :
-	public static String errAdvSearProf = "Nije omogućena napredna pretraga profesora";
-	
-	//Naslovi napredne pretrage :
-	public static String advTitlePred = "Napredna pretraga predmeta";
-	
-	public static String labAdvSear = "Relacioni izraz :";
 	
 	//Possible marks :
 	public static String[] ocene = {"6","7","8","9","10"};
 	
-	//Titula i zvanje :
 	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
 	public static String[] titule = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
 	
-	//Tooltip za dodatni zadatak :
-	public static String advSearchToolTipPred = "<html>Početak iskaza mora biti formata \"predmeti = (...)\" <br>Lista podržanih polja za pretragu kod "
-												+ "predmeta : <br>  *sifra - po vrednosti (izmedju \"\") i po regex-u (između / /)<br>  *naziv - po vrednosti (između \"\") i po regex-u(između / /)<br>"
-												+ "  *godina - po vrednosti<br>  *semestar - letnji/zimski<br>  *espb bodovima - po vrednosti<br>  *profesorima - profesori se unose"
-												+ " u upit u obliku \"profesori == {...}\"<br>   polja podržana kod profesora :<br>    *ime - po vrednosti (između \"\") i po regex-u (između / /)<br>"
-												+ "    *prezime - po vrednosti (između \" \") i po regex-u (između / /)<br>    *titula - jedna od titula iz ponuđenih<br>    *zvanje "
-												+ "- jedno iz ponuđenih </html>";
+	//Konstante vrednosti polja :
+	public static String advSearchSemPos1 = "\"zimski\"";
+	public static String advSearchSemPos2 = "\"letnji\"";
+	public static String advSearchSemPos3 = "zimski";
+	public static String advSearchSemPos4 = "letnji";
+		
+	//Imena tokena u advSearchWorkPred :
+	public static String advSearchPredTok = "predmeti";
+	public static String advSearchProfTok = "profesori";
+	public static String advSearchSifTok1 = "sifra";
+	public static String advSearchSifTok2 = "šifra";
+	public static String advSearchNazTok = "naziv";
+	public static String advSearchESPBTok = "ESPB";
+	public static String advSearchGodTok = "godina";
+	public static String advSearchSemTok = "semestar";
+			
+	public static String advSearchImeTok = "ime";
+	public static String advSearchPrezTok = "prezime";
+	public static String advSearchTitTok = "titula";
+	public static String advSearchZvaTok = "zvanje";
 	
+	//AddOrEditStudent : 
+	public static String AOESgod1 = "I (prva)"; 
+	public static String AOESgod2 = "II (druga)";
+	public static String AOESgod3 = "III (treća)";
+	public static String AOESgod4 = "IV (četvrta)";
+			
+	public static String AOESBudz = "Budžet";
+	public static String AOESSamof = "Samofinansiranje";
+	
+	public static String prdNemaProf, imeLab,przLab,drLab,adrKancLab,adrStanLab,konTelLab,brLicKartLab,emailLab,titulaLab,zvanjeLab;
+	public static String indexLab,upisLab,trenutnaLab,finansLab;
+	public static String sifraLab,nazivLab,godIzvLab,semestarLab,espbLab,profLab,ocenaLab,datLab;
+	
+	public static String przImeToolTip,drpToolTip,adrToolTip,konTelToolTip,emailToolTip,brLicKartToolTip,titZvToolTip,brIndexaToolTip,godUpisaToolTip;
+	public static String srchProfToolTip,srchPredToolTip,srchStudToolTip,nazivPredToolTip,espbToolTip,profToolTip;
+	
+	public static String obvPolje,errAddProf,errEditProf,errAddStud,errAddPred,upitZatvaranjeMF,upitZatvaranjeTitle,yesOpt,noOpt;
+	public static String upitBrisanjePred,upitSklanjanjeProfTitle,upitSklanjanjeProfSaPred,upitBrisanjePredTitle,dodavanjePredProfDialog,dodavanjeProfPredDialog;
+	public static String predmetiTekst,upitBrisanjeProf,upitBrisanjeProfTitle,btnPonisti,upitBrisanjePredKodStud,greskaPriIzboruPredmeta,upitBrisanjeStud;
+	public static String upitBrisanjeStudTitle,greskaPriIzboruOcene,upitPonistavenjeOceneTitle,upitPonistavenjeOcene,upitBrisanjePredKodProf;
+	
+	public static String btnDodaj,btnObrisi,btnPolaganje,addBtnToolTipTxt,editBtnToolTipTxt,delBtnToolTipTxt,srchBtnToolTipTxt,srchFieldToolTipTxt;
+	public static String advSearchToolTip,menuFile,menuNew,menuClose,menuEdit,menuDelete,menuHelp,menuAbout,menuAdvanced,menuLanguage,menuSearch;
+	
+	public static String menuSerbian,menuEnglish,mfName,tabStudentName,tabProfesorName,tabPredmetName,profAdd,profEdit,studAdd,editStud,predAdd;
+	public static String predEdit,errName,unosOcene,spr,npr,espb,god,sem,btnOkName,btnCncName,btnDodPred,btnUklPred;
+	
+	public static String profEditTabOsnInf,profEditTabPrd,errAdvSearProf,advTitlePred,labAdvSear;
+	
+	public static String advSearchToolTipPred,advSearchErrParse,advSearchErrBegin,advSearchErrTokNotFound,advSearchErrRelOpsNS,advSearchErrGodEspb;
+	public static String advSearchErrSemOps,advSearchErrSemVals,advSearchErrSingleExps,advSearchErrParseProf,advSearchErrProfBegin,advSearchErrProfTokNotFound;
+	public static String advSearchErrProfRelOps,advSearchErrProfSingleExps;
+	
+	public static String predmetErrGod,predGodPrva,predGodDruga,predGodTreca,predGodCetvrta,aboutLab1,aboutLab2,aboutLab4,aboutLab5,aboutLab6,aboutLab8;
+	public static String aboutLab9,aboutLab10,aboutTitle,aOESProsOcLab,aOESUkEspbLab,aOESTabInfo,aOESTabPolozeni,aOESTabNepolozeni;
+	
+	public static String helpLab1,helpLab2,helpLab4,helpLab5,helpLab6,helpLab7,helpLab8,helpLab9,helpLab10,helpLab11,helpLab12,helpLab13,helpLab14;
+	public static String helpLab15,helpLab16,helpLab17,helpLab19,helpLab20,helpLab21,helpLab22,helpLab23,helpLab24,helpLab26,helpLab27,helpLab28;
+	public static String helpLab29,helpLab30,helpLab31,helpTitle,tabOcenaSif,tabOcenaNaz,tabOcenaOce,tabOcenaDat,tabStudInd,tabStudIme,tabStudPrez;
+	public static String tabStudGS,tabStudStat,tabStudPros,brLicKartCol,imeCol,przCol,titulaCol,zvanjeCol;
+
+	
+	public static void setLangSerbian() {
+		
+	} 
+	
+	public static void setLangEnglish() {
+		//Tekst predmeta koji nemaju profesora :
+		prdNemaProf = "Not assigned";
+				
+		//Imena labela :
+		imeLab = "Name* ";
+		przLab = "Surname* ";
+		drLab = "Date of birth* "; 
+		adrKancLab = "Work address* ";
+		adrStanLab = "Residence address* ";
+		konTelLab = "Phone number* ";
+		brLicKartLab = "Identifactional number* ";
+		emailLab = "Email* ";
+		titulaLab = "Title* ";
+		zvanjeLab = "Metier* ";
+				
+		indexLab = "Student ID* ";
+		upisLab = "Enrollment year* ";
+		trenutnaLab = "Current year of study* ";
+		finansLab = "Way of financing* ";
+				
+		sifraLab = "Subject ID* ";
+		nazivLab = "Subject name* ";
+		godIzvLab = "Year*";
+		semestarLab = "Semester* ";
+		espbLab = "ESPB* ";
+		profLab = "Professor";
+		ocenaLab = "Grade*";
+		datLab = "Date*";
+				
+		//TextField tooltips : 
+		przImeToolTip = "Only letters are allowed";
+		drpToolTip = "dd.MM.yyyy format";
+		adrToolTip = "Address is consisted of street name and the number of the building";
+		konTelToolTip = "<html>Only numbers are allowed<br> between 6 and 10 figures</html>";
+		emailToolTip = "<html>Standard email format : ...@domain <br>Supported domains : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
+		brLicKartToolTip = "<html>Only numbers are allowed<br>Exactly 9 figures</html>";
+		titZvToolTip = "One or more words is allowed";
+		brIndexaToolTip = "<html>SS-xxx-yyyy format, SS-orientation, xxx-number (atleast 1 figure)<br>yyyy-year of enrollment (years from 2000.)</html>";
+		godUpisaToolTip = "yyyy format, years from 2000.";
+		
+		srchProfToolTip = "<html>Format : \"surname\" \"name\"<br>Search is case insensitive</html>";
+		srchPredToolTip = "<html>Format : \"name\"<br>Search is case insensitive</html>";
+		srchStudToolTip =  "<html>Format : \"surname\" \"name\" \"student ID\"<br>Search is case insensitive</html>";
+		
+		nazivPredToolTip = "It has to begin with a letter and can contain one figure";
+		espbToolTip = "1 or 2 figures, first figure cannot be 0";
+		profToolTip = "To choose a professor click on the '+' button";
+		
+		//Mešani tekst :
+		obvPolje = "Required field!";
+		errAddProf = "Unsuccessful adding of a professor!";
+		errEditProf = "Unsuccessful editing of a professor!";
+		errAddStud = "Unsuccessful adding of a student, the student with that ID already exists!";
+		errAddPred = "Unsuccessful adding of a subject, the subject with that ID already exists!";
+		upitZatvaranjeMF = "Do you want to close the application?";
+		upitZatvaranjeTitle = "Application closing";
+		yesOpt = "Yes";
+		noOpt = "No";
+		upitBrisanjePred = "Delete the selected subject?";
+		upitSklanjanjeProfTitle = "Professor deleting";
+		upitSklanjanjeProfSaPred = "Delete the selecetd professor from subject?";
+		upitBrisanjePredTitle = "Subject removing";
+		dodavanjePredProfDialog = "Add subject";
+		dodavanjeProfPredDialog = "Choose the professor";
+		predmetiTekst = "Subjects :";
+		upitBrisanjeProf = "Delete the selected professor?";
+		upitBrisanjeProfTitle = "Professor deleting";
+		btnPonisti = "Cancel the grade";
+		upitBrisanjePredKodStud = "Remove the selected subject?";
+		greskaPriIzboruPredmeta = "You haven't chosen any subject";
+		upitBrisanjeStud = "Delete the selected student?";
+		upitBrisanjeStudTitle = "Student deleting";
+		greskaPriIzboruOcene = "You haven't chosen any grade";
+		upitPonistavenjeOceneTitle = "Grade canceling";
+		upitPonistavenjeOcene = "Cancel the selected grade?";
+		upitBrisanjePredKodProf = "Remove the selected subject(s)?";
+		btnDodaj = "Add";
+		btnObrisi = "Delete";
+		btnPolaganje = "Add grade";
+		
+		//Button tooltips :
+		addBtnToolTipTxt = "New";
+		editBtnToolTipTxt = "Edit";
+		delBtnToolTipTxt = "Delete";
+		srchBtnToolTipTxt = "Search";
+		srchFieldToolTipTxt = "";
+		advSearchToolTip = "Advanced search";
+		
+		//Menu stvari :
+		menuFile = "File"; 
+		menuNew = "New";
+		menuClose = "Close";
+		menuEdit = "Edit";
+		menuDelete = "Delete";
+		menuHelp = "Help";
+		menuAbout = "About";
+		menuAdvanced = "Advanced";
+		menuLanguage = "Language";
+		menuSearch = "Search";
+		menuSerbian = "Serbian";
+		menuEnglish = "English";
+		
+		//Frame names :
+		mfName = "Student service";
+		tabStudentName = "Students";
+		tabProfesorName = "Professors";
+		tabPredmetName = "Subjects";
+		profAdd = "Add professor";
+		profEdit = "Edit professor";
+		studAdd = "Add student";
+		editStud = "Edit student";
+		predAdd = "Add subject";
+		predEdit = "Edit subject";
+		errName = "Error";
+		unosOcene = "Grading";
+		
+		//Column names predmet :
+		spr = "Subject ID";
+		npr = "Subject name";
+		espb = "ESPB";
+		god = "Year";
+		sem = "Semester";
+		
+		//Button text :
+		btnOkName = "Confirm";
+		btnCncName = "Cancel";
+		btnDodPred = "Add subject";
+		btnUklPred = "Delete subject";
+		
+		//Edit tab names :
+		profEditTabOsnInf = "Informations";
+		profEditTabPrd = "Subjects";
+		
+		//Error za naprednu pretragu :
+		errAdvSearProf = "Advanced search for professors isn't implemented!";
+		
+		//Naslov napredne pretrage predmeta :
+		advTitlePred = "Advanced search of subjects";
+				
+		labAdvSear = "Relational expression:"; 
+		
+		//Tooltip za dodatni zadatak predmeta :
+		advSearchToolTipPred = "<html>The beggining of the expression must be formatted : \"predmeti = (...)\" <br>List of supported fields for search of subjects :"
+				+ " <br>  *sifra - by value (between \"\") and by regex (between / /)<br>  *naziv - by value (between \"\") and by regex (between / /)<br>"
+				+ "  *godina - by value<br>  *semestar - letnji/zimski<br>  *espb - by value<br>  *profesori - professors are inputted in format"
+				+ " \"profesori == {...}\"<br>   fields supported for professors :<br>    *ime - by value (between \"\") and by regex (between / /)<br>"
+				+ "    *prezime - by value (between \" \") and by regex (between / /)<br>    *titula - on of titles in professor add/edit dialog<br>    *zvanje "
+				+ "- on of metiers in professor add/edit dialog</html>";
+				
+		advSearchErrParse = "Parsing of the expression unsuccessful";
+		advSearchErrBegin = "The expression begining doesn't meet the required format";
+		advSearchErrTokNotFound = "Something hasn't matched with any tokens, check the expression";
+		advSearchErrRelOpsNS = "Types 'sifra' and 'naziv' can have relational operators : != / ==";
+		advSearchErrGodEspb = "Operator isn't valid for types 'ESPB'/'godina'";
+		advSearchErrSemOps = "Type 'semestar' doesn't accept written relational operators";
+		advSearchErrSemVals = "Type 'semestar' doesn't accept written value";
+		advSearchErrSingleExps = "Unsuccesful execution of individual subexpressions";
+		advSearchErrParseProf = "Parsing of expression for subtype 'profesori' unsuccessful";
+		advSearchErrProfBegin = "Expression begining for subtype 'profesori' doesn't meet the required format";
+		advSearchErrProfTokNotFound = "Something hasn't matched with any tokens, check the expression";
+		advSearchErrProfRelOps = "Types for 'profesori' can only have != / == operators";
+		advSearchErrProfSingleExps = "Unsuccessful execution of individual subexpression for subtype 'profesori'";
+		
+		predmetErrGod = "Non-existant semester! [letnji,zimski]";
+		
+		//Godine predmeta :
+		predGodPrva = "(1) - FIRST";
+		predGodDruga = "(2) - SECOND";
+		predGodTreca = "(3) - THIRD";
+		predGodCetvrta = "(4) - FORTH";
+				
+		//About dialog :
+		aboutLab1 = "\t Application \"Student service\"";
+		aboutLab2 = "\t Version: 1.0";
+		aboutLab4 = "\t Applicatoon \"Student service\" allows keeping record of students, professors and subjects \t ";
+		aboutLab5 = "\t in order to facilitate the work of tellers of Faculty of Tehnical science's student service \t ";
+		aboutLab6 = "\t University of Novi Sad.";
+		aboutLab8 = "\t Authors: Anica Đukić and Nikola Milosavljević";
+		aboutLab9 = "\t Students of 3rd year, orientation \"Računarstvo i automatika\" Faculty of Technical sciences,";
+		aboutLab10 = "\t University of Novi Sad.";
+		
+		aboutTitle = "About";
+		aOESProsOcLab = "Avarage grade: ";
+		aOESUkEspbLab = "Total ESPB: ";
+		aOESTabInfo = "Information";
+		aOESTabPolozeni = "Passed subjects";
+		aOESTabNepolozeni = "Other subjects";
+		
+		//Help dialog :
+		helpLab1 = "\t Application \"Studentska služba\" is consisted of Menubar, Toolbar and Statusbar.\n";
+		helpLab2 = "\t Menubar is consisted of the following :\n";
+		helpLab4 = "\t 1. File (Alt + F)\n";
+		helpLab5 = "\t New (Alt + N, Ctrl + N) - Creating the new entity for the system (student, professor or subject).\n";
+		helpLab6 = "\t Close (Alt + C, Ctrl + C) - Closing the application.\n";
+		helpLab7 = "\t 2. Edit (Alt + E)\n";
+		helpLab8 = "\t Edit (Alt + E, Ctrl + E) - Editing the existing entity (student, professor or subject).\n";
+		helpLab9 = "\t Delete (Alt + D, Ctrl + D) - Deleting the existing entity (student, professor or subject).\n";
+		helpLab10 = "\t 3. Help (Alt + H)\n";
+		helpLab11 = "\t Help (Alt + H, Ctrl + H) -  Displaying the information required for application usage.\n";
+		helpLab12 = "\t About (Alt + A, Ctrl + A) -  Displaying the application version, and providing with the short description, followed with the short biography of the authors.\n";
+		helpLab13 = "\t 4. Advanced (Alt + A) - Advanced options";
+		helpLab14 = "\t Language (Alt + L) - Allows to switch between desired languages (Serbian, English)";
+		helpLab15 = "\t Search (Alt + S, Ctrl + S) - Supports advanced search of entities using expressions";
+		helpLab16 = "\t Every menu item has its icon which is located right next to its name.\n ";
+		helpLab17 = "\t Some of those icons can be found in the Toolbar:\n";
+		helpLab19 = "\t 1. New (Ctrl + N) \n";
+		helpLab20 = "\t 2. Edit (Ctrl + E) \n";
+		helpLab21 = "\t 3. Delete (Ctrl + D)\n";
+		helpLab22 = "\t 4. Search (Ctrl + S)\n";
+		helpLab23 = "\t Their usage results grants same results as using the menu items with the same name.";
+		helpLab24 = "\t In the Toolbar a field for regular entity search can be found:";
+		helpLab26 = "\t Selected the desired tab (Students, Professors, Subjects) a search can be performed:";
+		helpLab27 = "<html> <&ensp> Students: Inputing one,two or three words, where the first is required and resembles the student surname, "
+				+ "<br> second, or third word areoptional and are linked with the name, or the student ID.</hmtl>";
+		helpLab28 = "<html> <&ensp> Professors: Inputing one or two words, where the first is required and is refering to professor's surname,"
+				+ "<br> second word is optional and resembles the name of a certain professor.</hmtl>";
+		helpLab29 = "<html> <&ensp> Subject: Inputing one word which resembles a part of the subject name.</hmtl>";
+		helpLab30 = "\t Statusbar is located in the bottom of the main frame and is made of the application name and has the displaying of date and time.";
+		helpLab31 = "\t With the further progress of this application this help dialog will become more complex.";
+		helpTitle = "Help";
+		
+		//Tabela ocena :
+		tabOcenaSif = "Subject ID";
+		tabOcenaNaz = "Subject name";
+		tabOcenaOce = "Grade";
+		tabOcenaDat = "Date";
+		
+		//Tabela studenti :
+		tabStudInd = "Student ID";
+		tabStudIme = "Name";
+		tabStudPrez = "Surname";
+		tabStudGS = "Year of study";
+		tabStudStat = "Status";
+		tabStudPros = "Average grade";
+		
+		//Titula profesori :
+		brLicKartCol = "Profesor ID";
+		imeCol = "Name";
+		przCol = "Surname";
+		titulaCol = "Title";
+		zvanjeCol = "Metier";
+	}
 }

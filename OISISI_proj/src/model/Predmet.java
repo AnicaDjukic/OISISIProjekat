@@ -87,12 +87,12 @@ public class Predmet implements Serializable{
 				   int gi,Profesor p,int eb) {
 		this.sifPred = s_p;
 		this.naziv = n;
-		if(sem.toLowerCase().equals("letnji"))
+		if(sem.toLowerCase().equals(GlobalConstants.advSearchSemPos4))
 			this.semestar = Semestar.LETNJI;
-		else if(sem.toLowerCase().equals("zimski"))
+		else if(sem.toLowerCase().equals(GlobalConstants.advSearchSemPos3))
 			this.semestar = Semestar.ZIMSKI;
 		else
-			System.out.println("Nepostojeci semestar! [letnji,zimski]");
+			System.out.println(GlobalConstants.predmetErrGod);
 		gi -= 1;
 		if(gi >= 0 && gi <= 3) {
 			//kastovanje ako je u opsegu postojecih godina
@@ -145,10 +145,10 @@ public class Predmet implements Serializable{
 		String out = "";
 		
 		switch(g) {
-		case PRVA : out = "(1) - PRVA"; break;                                   
-		case DRUGA : out = "(2) - DRUGA"; break;                                  
-		case TRECA : out = "(3) - TREĆA"; break;                                  
-		case CETVRTA : out = "(4) - ČETVRTA"; break;                                
+		case PRVA : out = GlobalConstants.predGodPrva; break;                                   
+		case DRUGA : out = GlobalConstants.predGodDruga; break;                                  
+		case TRECA : out = GlobalConstants.predGodTreca; break;                                  
+		case CETVRTA : out = GlobalConstants.predGodCetvrta; break;                                
 		}
 		
 		return out;
@@ -201,5 +201,11 @@ public class Predmet implements Serializable{
 		case TRECA : return "3";
 		default : return "4";
 		}
+	}
+	
+	public String getStrSem() {
+		if(this.semestar == Semestar.LETNJI)
+			return GlobalConstants.advSearchSemPos4;
+		return GlobalConstants.advSearchSemPos3;
 	}
 }

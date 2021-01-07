@@ -83,11 +83,11 @@ public class AddOrEditStudent extends JPanel {
 		tGodUpisa.setToolTipText(GlobalConstants.godUpisaToolTip);
 		
 		lTrenutnaGod = new JLabel(GlobalConstants.trenutnaLab);
-		String[] godStud = {"I (prva)", "II (druga)", "III (treća)", "IV (četvrta)"};
+		String[] godStud = {GlobalConstants.AOESgod1, GlobalConstants.AOESgod2, GlobalConstants.AOESgod3, GlobalConstants.AOESgod4};
 		tTrenutnaGod = new JComboBox<String>(godStud);
 		
 		lFinans = new JLabel(GlobalConstants.finansLab);
-		String[] data = {"Budžet", "Samofinansiranje"};
+		String[] data = {GlobalConstants.AOESBudz, GlobalConstants.AOESSamof};
 		tFinans = new JComboBox<String>(data);
 		
 		JLabel lab = new JLabel();
@@ -147,9 +147,9 @@ public class AddOrEditStudent extends JPanel {
 			tGodUpisa.setText(student.getGodUpisa());
 			tTrenutnaGod.setSelectedIndex(student.getTrenutnaGodStud() - 1);
 			if(student.getStatus().equals("B"))
-				tFinans.setSelectedItem("Budžet");
+				tFinans.setSelectedItem(GlobalConstants.AOESBudz);
 			else
-				tFinans.setSelectedItem("Samofinansiranje");
+				tFinans.setSelectedItem(GlobalConstants.AOESSamof);
 				
 			JPanel inf = new JPanel();
 			inf.setLayout(new BorderLayout());
@@ -248,8 +248,8 @@ public class AddOrEditStudent extends JPanel {
 			labPanel.setLayout(new BoxLayout(labPanel, BoxLayout.Y_AXIS));
 			
 			double zaokruzenProsek = Math.round(student.getProsecnaOcena() * 100.0) / 100.0;
-			prosek = new JLabel("Prosečna ocena: " + zaokruzenProsek);
-			ukupnoEspb = new JLabel("Ukupno ESPB: " + controller.izracunajUkupnoEspb(student.getBrIndexa()));
+			prosek = new JLabel(GlobalConstants.aOESProsOcLab + zaokruzenProsek);
+			ukupnoEspb = new JLabel(GlobalConstants.aOESUkEspbLab + controller.izracunajUkupnoEspb(student.getBrIndexa()));
 			labPanel.add(prosek);
 			labPanel.add(ukupnoEspb);
 			
@@ -259,9 +259,9 @@ public class AddOrEditStudent extends JPanel {
 
 				
 			JTabbedPane tabs = new JTabbedPane();
-			tabs.addTab("Informacije", inf);
-			tabs.addTab("Položeni", polozeni);
-			tabs.addTab("Nepoloženi", nepolozeni);
+			tabs.addTab(GlobalConstants.aOESTabInfo, inf);
+			tabs.addTab(GlobalConstants.aOESTabPolozeni, polozeni);
+			tabs.addTab(GlobalConstants.aOESTabNepolozeni, nepolozeni);
 			add(tabs);
 			
 		}
@@ -395,8 +395,8 @@ public class AddOrEditStudent extends JPanel {
 	
 	public void updateEspbAndPros(Student student) {
 		double zaokruzenProsek = Math.round(student.getProsecnaOcena() * 100.0) / 100.0;
-		prosek.setText("Prosečna ocena: " + zaokruzenProsek);
-		ukupnoEspb.setText("Ukupno ESPB: " + controller.izracunajUkupnoEspb(student.getBrIndexa()));
+		prosek.setText(GlobalConstants.aOESProsOcLab + zaokruzenProsek);
+		ukupnoEspb.setText(GlobalConstants.aOESUkEspbLab + controller.izracunajUkupnoEspb(student.getBrIndexa()));
 	}
 	
 	//Polaganje listener :
