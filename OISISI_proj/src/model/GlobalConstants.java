@@ -191,10 +191,10 @@ public class GlobalConstants {
 		btnPolaganje = "Polaganje";
 		
 		//Button tooltips :
-		addBtnToolTipTxt = "New";
-		editBtnToolTipTxt = "Edit";
-		delBtnToolTipTxt = "Delete";
-		srchBtnToolTipTxt = "Search";
+		addBtnToolTipTxt = "Dodaj";
+		editBtnToolTipTxt = "Izmeni";
+		delBtnToolTipTxt = "Obriši";
+		srchBtnToolTipTxt = "Pretraži";
 		srchFieldToolTipTxt = "";
 		advSearchToolTip = "Napredna pretraga";
 		
