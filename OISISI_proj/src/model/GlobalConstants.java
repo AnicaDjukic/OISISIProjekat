@@ -110,7 +110,248 @@ public class GlobalConstants {
 
 	
 	public static void setLangSerbian() {
+		//Tekst predmeta koji nemaju profesora :
+		prdNemaProf = "Nema profesora";
 		
+		//Imena labela :
+		imeLab = "Ime* ";
+		przLab = "Prezime* ";
+		drLab = "Datum rođenja* "; 
+		adrKancLab = "Adresa kancelarije* ";
+		adrStanLab = "Adresa stanovanja* ";
+		konTelLab = "Kontakt telefon* ";
+		brLicKartLab = "Broj lične karte* ";
+		emailLab = "Email* ";
+		titulaLab = "Titula* ";
+		zvanjeLab = "Zvanje* ";
+		
+		indexLab = "Broj indeksa* ";
+		upisLab = "Godina upisa* ";
+		trenutnaLab = "Trenutna godina studija* ";
+		finansLab = "Način finansiranja* ";
+		
+		sifraLab = "Šifra* ";
+		nazivLab = "Naziv* ";
+		godIzvLab = "Godina*";
+		semestarLab = "Semestar* ";
+		espbLab = "ESPB* ";
+		profLab = "Profesor";
+		ocenaLab = "Ocena*";
+		datLab = "Datum*";
+		
+		//TextField tooltips : 
+		przImeToolTip = "Samo slova su dozvoljena";
+		drpToolTip = "dd.MM.yyyy format";
+		adrToolTip = "Adresa se sastoji iz imena ulice i broja zgrade";
+		konTelToolTip = "<html>Samo brojevi su dozvoljeni <br> izmedju 6 i 10 cifara</html>";
+		emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
+		brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
+		titZvToolTip = "Dozvoljeno je jedna ili više reči";
+		brIndexaToolTip = "<html>SS-xxx-yyyy format, SS-smer, xxx-broj (najmanje 1 cifra)<br>yyyy-godina upisa (godine od 2000.)</html>";
+		godUpisaToolTip = "yyyy format, godine od 2000.";
+		
+		srchProfToolTip = "<html>Format : \"prezime\" \"ime\"<br>Pretraga je case insensitive</html>";
+		srchPredToolTip = "<html>Format : \"naziv\"<br>Pretraga je case insensitive</html>";
+		srchStudToolTip =  "<html>Format : \"prezime\" \"ime\" \"broj indeksa\"<br>Pretraga je case insensitive</html>";
+		
+		nazivPredToolTip = "Mora početi slovom, može sadržati i jednu cifru";
+		espbToolTip = "1 ili 2 cifre, prva cifra ne sme biti 0";
+		profToolTip = "Odaberite profesora klikom na dugme '+'";
+		
+		//Mešani tekst :
+		obvPolje = "Obavezno polje!";
+		errAddProf = "Neuspešno dodavanje profesora!";
+		errEditProf = "Neuspešna izmena profesora!";
+		errAddStud = "Neuspešno dodavanje studenta, postoji student sa istim brojem indeksa!";
+		errAddPred = "Neuspešno dodavanje predmeta, postoji predmet sa istom šifrom!";
+		upitZatvaranjeMF = "Da li ste sigurni da želite da zatvorite aplikaciju?";
+		upitZatvaranjeTitle = "Zatvaranje aplikacije";
+		yesOpt = "Da";
+		noOpt = "Ne";
+		upitBrisanjePred = "Da li ste sigurni da želite da obrišete izabrani predmet?";
+		upitSklanjanjeProfTitle = "Uklanjanje profesora";
+		upitSklanjanjeProfSaPred = "Da li ste sigurni da želite da uklonite izabranog profesora sa predmeta?";
+		upitBrisanjePredTitle = "Uklanjanje predmeta";
+		dodavanjePredProfDialog = "Dodaj predmet";
+		dodavanjeProfPredDialog = "Odaberi profesora";
+		predmetiTekst = "Predmeti :";
+		upitBrisanjeProf = "Da li ste sigurni da želite da obrišete izabranog profesora?";
+		upitBrisanjeProfTitle = "Brisanje profesora";
+		btnPonisti = "Poništi ocenu";
+		upitBrisanjePredKodStud = "Da li ste sigurni da želite da uklonite predmet?";
+		greskaPriIzboruPredmeta = "Niste izabrali ni jedan predmet";
+		upitBrisanjeStud = "Da li ste sigurni da želite da obrišete izabranog studenta?";
+		upitBrisanjeStudTitle = "Brisanje studenta";
+		greskaPriIzboruOcene = "Niste izabrali ni jednu ocenu";
+		upitPonistavenjeOceneTitle = "Poništavanje ocene";
+		upitPonistavenjeOcene = "Da li ste sigurni da želite da poništite ocenu?";
+		upitBrisanjePredKodProf = "Da li ste sigurni?";
+		btnDodaj = "Dodaj";
+		btnObrisi = "Obriši";
+		btnPolaganje = "Polaganje";
+		
+		//Button tooltips :
+		addBtnToolTipTxt = "New";
+		editBtnToolTipTxt = "Edit";
+		delBtnToolTipTxt = "Delete";
+		srchBtnToolTipTxt = "Search";
+		srchFieldToolTipTxt = "";
+		advSearchToolTip = "Napredna pretraga";
+		
+		//Menu stvari :
+		menuFile = "File"; 
+		menuNew = "Dodaj";
+		menuClose = "Zatvori";
+		menuEdit = "Izmeni";
+		menuDelete = "Obriši";
+		menuHelp = "Pomoć";
+		menuAbout = "O aplikaciji";
+		menuAdvanced = "Napredno";
+		menuLanguage = "Izaberi jezik";
+		menuSearch = "Pretraži";
+		menuSerbian = "Srpski";
+		menuEnglish = "Engleski";
+		
+		//Frame names :
+		mfName = "Studentska služba";
+		tabStudentName = "Studenti";
+		tabProfesorName = "Profesori";
+		tabPredmetName = "Predmeti";
+		profAdd = "Dodavanje profesora";
+		profEdit = "Izmeni profesora";
+		studAdd = "Dodavanje studenta";
+		editStud = "Izmeni studenta";
+		predAdd = "Dodavanje predmeta";
+		predEdit = "Izmeni predmet";
+		errName = "Greška";
+		unosOcene = "Unos ocene";
+		
+		//Column names predmet :
+		spr = "Šifra predmeta";
+		npr = "Naziv predmeta";
+		espb = "ESPB";
+		god = "Godina";
+		sem = "Semestar";
+		
+		//Button text :
+		btnOkName = "Potvrdi";
+		btnCncName = "Odustani";
+		btnDodPred = "Dodaj predmet";
+		btnUklPred = "Ukloni predmet";
+		
+		//Edit tab names :
+		profEditTabOsnInf = "Informacije";
+		profEditTabPrd = "Predmeti";
+		
+		//Error za naprednu pretragu :
+		errAdvSearProf = "Nije omogućena napredna pretraga profesora";
+		
+		//Naslov napredne pretrage predmeta :
+		advTitlePred = "Napredna pretraga predmeta";
+		
+		labAdvSear = "Relacioni izraz :"; 
+		
+		//Tooltip za dodatni zadatak predmeta :
+		advSearchToolTipPred = "<html>Početak iskaza mora biti formata \"predmeti = (...)\" <br>Lista podržanih polja za pretragu kod "
+				+ "predmeta : <br>  *sifra - po vrednosti (izmedju \"\") i po regex-u (između / /)<br>  *naziv - po vrednosti (između \"\") i po regex-u(između / /)<br>"
+				+ "  *godina - po vrednosti<br>  *semestar - letnji/zimski<br>  *espb bodovima - po vrednosti<br>  *profesorima - profesori se unose"
+				+ " u upit u obliku \"profesori == {...}\"<br>   polja podržana kod profesora :<br>    *ime - po vrednosti (između \"\") i po regex-u (između / /)<br>"
+				+ "    *prezime - po vrednosti (između \" \") i po regex-u (između / /)<br>    *titula - jedna od titula iz ponuđenih<br>    *zvanje "
+				+ "- jedno iz ponuđenih </html>";
+		
+		advSearchErrParse = "Nije uspelo parsiranje izraza";
+		advSearchErrBegin = "Iskaz ne počinje korektno";
+		advSearchErrTokNotFound = "Nije spojeno ni sa jednim tokenom, proverite izraz";
+		advSearchErrRelOpsNS = "Tipovi sifra i naziv mogu imati relacione operatore !=/==";
+		advSearchErrGodEspb = "Nije validan operator za tip ESPB/godina";
+		advSearchErrSemOps = "Tip semestar ne prihvata zadate relacione operatore";
+		advSearchErrSemVals = "Tip semestar ne prihvata zadatu vrednost";
+		advSearchErrSingleExps = "Neuspešno izvršavanje pojedinačnih upita";
+		advSearchErrParseProf = "Nije uspelo parsiranje izraza u delu profesori";
+		advSearchErrProfBegin = "Iskaz kod profesora ne počinje korektno";
+		advSearchErrProfTokNotFound = "Nije spojeno ni sa jednim tokenom, proverite izraz";
+		advSearchErrProfRelOps = "Tipovi za profesora mogu imati relacione operatore !=/==";
+		advSearchErrProfSingleExps = "Neuspešno izvršavanje pojedinačnih upita profesora";
+		
+		predmetErrGod = "Nepostojeci semestar! [letnji,zimski]";
+		
+		//Godine predmeta :
+		predGodPrva = "(1) - PRVA";
+		predGodDruga = "(2) - DRUGA";
+		predGodTreca = "(3) - TREĆA";
+		predGodCetvrta = "(4) - ČETVRTA";
+		
+		//About dialog :
+		aboutLab1 = "\t Aplikacija \"Studentska služba\"";
+		aboutLab2 = "\t Verzija: 1.0";
+		aboutLab4 = "\t Aplikacija \"Studentska služba\" omogućava evidenciju studenata, profesora i predmeta,\t ";
+		aboutLab5 = "\t kako bi olakšala rad šalterskim radnicima studentske službe Fakulteta tehničkih nauka,\t ";
+		aboutLab6 = "\t Univerziteta u Novom Sadu.";
+		aboutLab8 = "\t Autori: Anica Đukić i Nikola Milosavljević";
+		aboutLab9 = "\t Studenti 3. godine smera \"Računarstvo i automatika\" Fakulteta tehničkih nauka,";
+		aboutLab10 = "\t Univerziteta u Novom Sadu.";
+		
+		aboutTitle = "About";
+		
+		aOESProsOcLab = "Prosečna ocena: ";
+		aOESUkEspbLab = "Ukupno ESPB: ";
+		aOESTabInfo = "Informacije";
+		aOESTabPolozeni = "Položeni";
+		aOESTabNepolozeni = "Nepoloženi";
+		
+		//Help dialog :
+		helpLab1 = "\t Aplikacija \"Studentska služba\" se sastoji od Menu bara, Tool bara i Status bara.\n";
+		helpLab2 = "\t Menu bar se sastoji od sledećih stavki:\n";
+		helpLab4 = "\t 1. File (Alt + F)\n";
+		helpLab5 = "\t New (Alt + N, Ctrl + N) - Dodavanje novog entiteta u sistem (studenta, profesora ili predmeta).\n";
+		helpLab6 = "\t Close (Alt + C, Ctrl + C) - Zatvaranje aplikacije.\n";
+		helpLab7 = "\t 2. Edit (Alt + E)\n";
+		helpLab8 = "\t Edit (Alt + E, Ctrl + E) - Izmena postojećeg entiteta (studenta, profesora ili predmeta).\n";
+		helpLab9 = "\t Delete (Alt + D, Ctrl + D) - Brisanje postojećeg entiteta (studenta, profesora ili predmeta).\n";
+		helpLab10 = "\t 3. Help (Alt + H)\n";
+		helpLab11 = "\t Help (Alt + H, Ctrl + H) -  Prikaz informacija neophodnih za korišćenje aplikacije.\n";
+		helpLab12 = "\t About (Alt + A, Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sažeta biografija autora.\n";
+		helpLab13 = "\t 4. Advanced (Alt + A) - Napredne opcije";
+		helpLab14 = "\t Language (Alt + L) - Omogućava izbor jednog od jezika (Srpski, Engleski)";
+		helpLab15 = "\t Search (Alt + S, Ctrl + S) - Omogućava naprednu pretragu entiteta preko uslovnih iskaza";
+		helpLab16 = "\t Svaka stavka menija ima svoju ikonicu koja se nalazi odmah pored njenog naziva.\n ";
+		helpLab17 = "\t Neke od tih ikonica se nalaze i u Tool baru:\n";
+		helpLab19 = "\t 1. New (Ctrl + N) \n";
+		helpLab20 = "\t 2. Edit (Ctrl + E) \n";
+		helpLab21 = "\t 3. Delete (Ctrl + D)\n";
+		helpLab22 = "\t 4. Search (Ctrl + S)\n";
+		helpLab23 = "\t Njihovim izborom se ostvaruju iste funkcionalnosti kao i izborom stavki menu bara sa istim imenom.";
+		helpLab24 = "\t U Tool baru se takođe nalazi polje za pretragu entiteta:";
+		helpLab26 = "\t Pozicioniranjem na odgovarajući tab (Studenti, Profesori, Predmeti) omogućena je pretraga:";
+		helpLab27 = "<html> <&ensp> Studenata: Unošenjem jedne ili dve ili tri reči, gde je prva obavezna i odnosi se na deo prezimena studenta, "
+				+ "<br> druga, odnosno treća reč su opcione i odnose se na deo imena, odnosno broja indeksa studenta.</hmtl>";
+		helpLab28 = "<html> <&ensp> Profesora: Unošenjem jedne ili dve reči, gde je prva obavezna i odnosi se na deo prezimena profesora,"
+				+ "<br> druga reč je opciona i odnosi se na deo imena profesora.</hmtl>";
+		helpLab29 = "<html> <&ensp> Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.</hmtl>";
+		helpLab30 = "\t Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.";
+		helpLab31 = "\t Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.";
+		helpTitle = "Help";
+		
+		//Tabela ocena :
+		tabOcenaSif = "Šifra predmeta";
+		tabOcenaNaz = "Naziv predmeta";
+		tabOcenaOce = "Ocena";
+		tabOcenaDat = "Datum";
+		
+		//Tabela studenti :
+		tabStudInd = "Indeks";
+		tabStudIme = "Ime";
+		tabStudPrez = "Prezime";
+		tabStudGS = "Godina studija";
+		tabStudStat = "Status";
+		tabStudPros = "Prosek";
+		
+		//Titula profesori :
+		brLicKartCol = "Broj lične karte";
+		imeCol = "Ime";
+		przCol = "Prezime";
+		titulaCol = "Titula";
+		zvanjeCol = "Zvanje";
 	} 
 	
 	public static void setLangEnglish() {
