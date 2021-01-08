@@ -594,7 +594,7 @@ public class GlobalConstants {
 		tabStudPros = "Average grade";
 		
 		//Titula profesori :
-		brLicKartCol = "Profesor ID";
+		brLicKartCol = "Professor ID";
 		imeCol = "Name";
 		przCol = "Surname";
 		titulaCol = "Title";
