@@ -86,7 +86,7 @@ public class HelpDialog extends JDialog {
 		buttom.add(ok);
 		
 	    setModal(true);
-	    setPreferredSize(new Dimension(800, 600));
+	    setPreferredSize(new Dimension(850, 600));
 	    setResizable(false);
 	    setTitle(GlobalConstants.helpTitle);
 	}

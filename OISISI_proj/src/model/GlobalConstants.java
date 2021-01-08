@@ -110,6 +110,9 @@ public class GlobalConstants {
 
 	
 	public static void setLangSerbian() {
+		
+		menuBarImg = "images" +  File.separator + "Menu_Bar_srpski.png";
+		
 		//Tekst predmeta koji nemaju profesora :
 		prdNemaProf = "Nema profesora";
 		
@@ -303,23 +306,23 @@ public class GlobalConstants {
 		helpLab1 = "\t Aplikacija \"Studentska služba\" se sastoji od Menu bara, Tool bara i Status bara.\n";
 		helpLab2 = "\t Menu bar se sastoji od sledećih stavki:\n";
 		helpLab4 = "\t 1. File (Alt + F)\n";
-		helpLab5 = "\t New (Alt + N, Ctrl + N) - Dodavanje novog entiteta u sistem (studenta, profesora ili predmeta).\n";
-		helpLab6 = "\t Close (Alt + C, Ctrl + C) - Zatvaranje aplikacije.\n";
-		helpLab7 = "\t 2. Edit (Alt + E)\n";
-		helpLab8 = "\t Edit (Alt + E, Ctrl + E) - Izmena postojećeg entiteta (studenta, profesora ili predmeta).\n";
-		helpLab9 = "\t Delete (Alt + D, Ctrl + D) - Brisanje postojećeg entiteta (studenta, profesora ili predmeta).\n";
-		helpLab10 = "\t 3. Help (Alt + H)\n";
-		helpLab11 = "\t Help (Alt + H, Ctrl + H) -  Prikaz informacija neophodnih za korišćenje aplikacije.\n";
-		helpLab12 = "\t About (Alt + A, Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sažeta biografija autora.\n";
-		helpLab13 = "\t 4. Advanced (Alt + A) - Napredne opcije";
-		helpLab14 = "\t Language (Alt + L) - Omogućava izbor jednog od jezika (Srpski, Engleski)";
-		helpLab15 = "\t Search (Alt + S, Ctrl + S) - Omogućava naprednu pretragu entiteta preko uslovnih iskaza";
+		helpLab5 = "\t Dodaj (Alt + N, Ctrl + N) - Dodavanje novog entiteta u sistem (studenta, profesora ili predmeta).\n";
+		helpLab6 = "\t Zatvori (Alt + C, Ctrl + C) - Zatvaranje aplikacije.\n";
+		helpLab7 = "\t 2. Izmeni (Alt + E)\n";
+		helpLab8 = "\t Izmeni (Alt + E, Ctrl + E) - Izmena postojećeg entiteta (studenta, profesora ili predmeta).\n";
+		helpLab9 = "\t Obriši (Alt + D, Ctrl + D) - Brisanje postojećeg entiteta (studenta, profesora ili predmeta).\n";
+		helpLab10 = "\t 3. Pomoć (Alt + H)\n";
+		helpLab11 = "\t Pomoć (Alt + H, Ctrl + H) -  Prikaz informacija neophodnih za korišćenje aplikacije.\n";
+		helpLab12 = "\t O aplikaciji (Alt + A, Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sažeta biografija autora.\n";
+		helpLab13 = "\t 4. Napredno (Alt + A) - Napredne opcije";
+		helpLab14 = "\t Izaberi jezik (Alt + L) - Omogućava izbor jednog od jezika (Srpski, Engleski)";
+		helpLab15 = "\t Pretraži (Alt + S, Ctrl + S) - Omogućava naprednu pretragu entiteta preko uslovnih iskaza";
 		helpLab16 = "\t Svaka stavka menija ima svoju ikonicu koja se nalazi odmah pored njenog naziva.\n ";
 		helpLab17 = "\t Neke od tih ikonica se nalaze i u Tool baru:\n";
-		helpLab19 = "\t 1. New (Ctrl + N) \n";
-		helpLab20 = "\t 2. Edit (Ctrl + E) \n";
-		helpLab21 = "\t 3. Delete (Ctrl + D)\n";
-		helpLab22 = "\t 4. Search (Ctrl + S)\n";
+		helpLab19 = "\t 1. Dodaj (Ctrl + N) \n";
+		helpLab20 = "\t 2. Izmeni (Ctrl + E) \n";
+		helpLab21 = "\t 3. Obriši (Ctrl + D)\n";
+		helpLab22 = "\t 4. Napredna pretraga (Ctrl + S)\n";
 		helpLab23 = "\t Njihovim izborom se ostvaruju iste funkcionalnosti kao i izborom stavki menu bara sa istim imenom.";
 		helpLab24 = "\t U Tool baru se takođe nalazi polje za pretragu entiteta:";
 		helpLab26 = "\t Pozicioniranjem na odgovarajući tab (Studenti, Profesori, Predmeti) omogućena je pretraga:";
