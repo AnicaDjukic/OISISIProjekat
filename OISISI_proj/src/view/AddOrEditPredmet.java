@@ -254,10 +254,10 @@ public class AddOrEditPredmet extends JPanel {
 	public JPanel createPanel(JLabel label, JTextField text) {
 		JPanel panel = new JPanel();
 		
-		label.setPreferredSize(new Dimension(150, 25));
+		label.setPreferredSize(new Dimension(100, 25));
 		panel.add(label);
 		
-		text.setPreferredSize(new Dimension(200, 25));
+		text.setPreferredSize(new Dimension(250, 25));
 		panel.add(text);
 		
 		return panel;
@@ -266,10 +266,10 @@ public class AddOrEditPredmet extends JPanel {
 	public JPanel createListPanel(JLabel label, JComboBox<String> text) {
 		JPanel panel = new JPanel();
 		
-		label.setPreferredSize(new Dimension(150, 25));
+		label.setPreferredSize(new Dimension(100, 25));
 		panel.add(label);
 		
-		text.setPreferredSize(new Dimension(200, 25));
+		text.setPreferredSize(new Dimension(250, 25));
 		panel.add(text);
 		
 		return panel;
@@ -278,10 +278,10 @@ public class AddOrEditPredmet extends JPanel {
 	public JPanel createButtonPanel(JLabel label, JTextField text, JButton p, JButton m) {
 		JPanel panel = new JPanel();
 		
-		label.setPreferredSize(new Dimension(150, 25));
+		label.setPreferredSize(new Dimension(100, 25));
 		panel.add(label);
 		
-		text.setPreferredSize(new Dimension(100, 25));
+		text.setPreferredSize(new Dimension(150, 25));
 		panel.add(text);
 		
 		p.setPreferredSize(new Dimension(45,25));
