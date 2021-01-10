@@ -30,9 +30,10 @@ public class GlobalConstants {
 	
 	//Regex :
 	public static String regExNameOrSurename = "\\p{L}+";
-	public static String regExAddress = "([\\p{L}]+[\\s])+[1-9][0-9]{0,2}";
-	public static String regExNumber = "[0-9]+";
-	public static String regExEmail = ".+@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b))";
+	public static String regExAddress = "([\\p{L}]+[\\s])+[1-9][0-9]{0,3}[,][\\s]*([\\p{L}]+)([\\s]*([\\p{L}])+)*([,][\\s]*[\\p{L}]+[\\s]*[0-9]+)?";
+	public static String regExLicKart = "[0-9]+";
+	public static String regExNumber = "[0-9]{3}[/][0-9]{3,4}[-][0-9]{3,4}";
+	public static String regExEmail = "[a-zA-Z0-9]+([\\.][a-zA-Z0-9]+)*@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b)|(\\bmailinator.com\\b))";
 	public static String regExTitOrMaj = "[a-z]+([\\s][a-z]+)*";
 	public static String regExBrIndexa = "[a-zA-Z]{2}[-][0-9]{1,3}[-][2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
 	public static String regGodUpisa = "[2]{1}[0]{1}[0,1,2]{1}[0-9]{1}";
@@ -43,8 +44,8 @@ public class GlobalConstants {
 	//Possible marks :
 	public static String[] ocene = {"6","7","8","9","10"};
 	
-	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
-	public static String[] titule = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
+	public static String[] titule = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
+	public static String[] zvanja = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
 	
 	//Konstante vrednosti polja :
 	public static String advSearchSemPos1 = "\"zimski\"";
@@ -147,7 +148,7 @@ public class GlobalConstants {
 		drpToolTip = "dd.MM.yyyy format";
 		adrToolTip = "Adresa se sastoji iz imena ulice i broja zgrade";
 		konTelToolTip = "<html>Samo brojevi su dozvoljeni <br> izmedju 6 i 10 cifara</html>";
-		emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
+		emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs, mailinator.com</html>";
 		brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
 		titZvToolTip = "Dozvoljeno je jedna ili više reči";
 		brIndexaToolTip = "<html>SS-xxx-yyyy format, SS-smer, xxx-broj (najmanje 1 cifra)<br>yyyy-godina upisa (godine od 2000.)</html>";

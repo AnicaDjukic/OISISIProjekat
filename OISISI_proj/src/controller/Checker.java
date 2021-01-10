@@ -100,6 +100,7 @@ public class Checker {
 	
 	public static boolean isValidAdrress(String str) {
 		str = str.toLowerCase();
+		str = str.trim();
 		String regEx = GlobalConstants.regExAddress;
 		
 		if(str.matches(regEx))
@@ -108,13 +109,12 @@ public class Checker {
 	}
 	
 	public static boolean isValidNumber(String str, int isLicKart) {
-		String regEx = GlobalConstants.regExNumber;
 		
 		if(isLicKart == 0)
-			if(str.matches(regEx) && (str.length() >= 6 && str.length() <= 10))
+			if(str.matches(GlobalConstants.regExNumber))
 				return true;
 		if(isLicKart == 1)
-			if(str.matches(regEx) && str.length() == 9)
+			if(str.matches(GlobalConstants.regExLicKart) && str.length() == 9)
 				return true;
 			
 		return false;

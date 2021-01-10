@@ -190,6 +190,7 @@ public class AddOrEditPredmet extends JPanel {
 						predmet.setProf(GlobalConstants.dummy);
 					else {
 						predmet.setProf(AddProfToPredDialog.prof);
+						predmet.getProf().getSpisPred().add(predmet);
 					}
 					/*
 					if(prof != null)
