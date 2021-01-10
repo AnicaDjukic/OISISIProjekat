@@ -167,23 +167,23 @@ public class AdvSearchWorkPred {
 					
 				}
 				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchSifTok1) || collection[k].equalsIgnoreCase(GlobalConstants.advSearchSifTok2)) {
-					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
+					hadError = !createVar(collection[k].toLowerCase(), collection[k+1], collection[k+2]);
 					k+=3;
 				}
 				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchNazTok)) {
-					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
+					hadError = !createVar(collection[k].toLowerCase(), collection[k+1], collection[k+2]);
 					k+=3;
 				}
 				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchESPBTok)) {
-					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
+					hadError = !createVar(collection[k].toLowerCase(), collection[k+1], collection[k+2]);
 					k+=3;
 				}
 				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchGodTok)) {
-					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
+					hadError = !createVar(collection[k].toLowerCase(), collection[k+1], collection[k+2]);
 					k+=3;
 				}
 				else if(collection[k].equalsIgnoreCase(GlobalConstants.advSearchSemTok)) {
-					hadError = !createVar(collection[k], collection[k+1], collection[k+2]);
+					hadError = !createVar(collection[k].toLowerCase(), collection[k+1], collection[k+2]);
 					k+=3;
 				} 
 				else if(collection[k].equalsIgnoreCase("and")) {
@@ -405,11 +405,11 @@ public class AdvSearchWorkPred {
 					k++;
 				}
 				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchImeTok)) {
-					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
+					hadErrorProf = !createPVar(profCollection[k].toLowerCase(), profCollection[k+1], profCollection[k+2]);
 					k+=3;
 				}
 				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchPrezTok)) {
-					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], profCollection[k+2]);
+					hadErrorProf = !createPVar(profCollection[k].toLowerCase(), profCollection[k+1], profCollection[k+2]);
 					k+=3;
 				}
 				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchTitTok)) {
@@ -427,7 +427,7 @@ public class AdvSearchWorkPred {
 						val += " " + profCollection[k+i];
 					
 					val = val.substring(1);
-					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], val);
+					hadErrorProf = !createPVar(profCollection[k].toLowerCase(), profCollection[k+1], val);
 					k = temp + 1;
 				}
 				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchZvaTok)) {
@@ -444,7 +444,7 @@ public class AdvSearchWorkPred {
 						val += " " + profCollection[k+i];
 					
 					val = val.substring(1);
-					hadErrorProf = !createPVar(profCollection[k], profCollection[k+1], val);
+					hadErrorProf = !createPVar(profCollection[k].toLowerCase(), profCollection[k+1], val);
 					k = temp + 1;
 				} 
 				else if(profCollection[k].equalsIgnoreCase("and")) {

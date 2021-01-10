@@ -59,7 +59,7 @@ public class GlobalConstants {
 	public static String advSearchSifTok1 = "sifra";
 	public static String advSearchSifTok2 = "šifra";
 	public static String advSearchNazTok = "naziv";
-	public static String advSearchESPBTok = "ESPB";
+	public static String advSearchESPBTok = "espb";
 	public static String advSearchGodTok = "godina";
 	public static String advSearchSemTok = "semestar";
 			
