@@ -30,7 +30,7 @@ public class GlobalConstants {
 	
 	//Regex :
 	public static String regExNameOrSurename = "\\p{L}+";
-	public static String regExAddress = "([\\p{L}]+[\\s])+[1-9][0-9]{0,3}[,][\\s]*([\\p{L}]+)([\\s]*([\\p{L}])+)*([,][\\s]*[\\p{L}]+[\\s]*[0-9]+)?";
+	public static String regExAddress = "([\\p{L}]+[\\s])+[0-9]{0,4}[,][\\s]*([\\p{L}]+)([\\s]*([\\p{L}])+)*([,][\\s]*[\\p{L}]+[\\s]*[0-9]+)?";
 	public static String regExLicKart = "[0-9]+";
 	public static String regExNumber = "[0-9]{3}[/][0-9]{3,4}[-][0-9]{3,4}";
 	public static String regExEmail = "[a-zA-Z0-9]+([\\.][a-zA-Z0-9]+)*@((\\bgmail.com\\b)|(\\byahoo.com\\b)|(\\buns.ac.rs\\b)|(\\bhotmail.com\\b)|(\\bmailinator.com\\b))";
