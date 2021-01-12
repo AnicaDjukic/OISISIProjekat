@@ -44,8 +44,8 @@ public class GlobalConstants {
 	//Possible marks :
 	public static String[] ocene = {"6","7","8","9","10"};
 	
-	public static String[] titule = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
-	public static String[] zvanja = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
+	public static String[] zvanja = {"Saradnik u nastavi","Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
+	public static String[] titule = {"BSc", "MSc", "Magistar", "Doktor nauka", "Profesor dr."};
 	
 	//Konstante vrednosti polja :
 	public static String advSearchSemPos1 = "\"zimski\"";

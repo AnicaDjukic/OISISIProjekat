@@ -17,7 +17,7 @@ import java.util.*;
 
 public class TabelaProfesora extends JTable { 
 	
-	private static Object[] colNames = {GlobalConstants.brLicKartCol,GlobalConstants.imeCol, GlobalConstants.przCol, GlobalConstants.zvanjeCol,GlobalConstants.titulaCol};
+	private static Object[] colNames = {GlobalConstants.brLicKartCol,GlobalConstants.imeCol, GlobalConstants.przCol, GlobalConstants.titulaCol,GlobalConstants.zvanjeCol};
 	static DefaultTableModel model;
 	static ControllerProfesor controllerProfesor;
 	public static TabelaProfesora inst;
@@ -26,8 +26,8 @@ public class TabelaProfesora extends JTable {
 		colNames[0] = GlobalConstants.brLicKartCol;
 		colNames[1] = GlobalConstants.imeCol;
 		colNames[2] = GlobalConstants.przCol;
-		colNames[3] = GlobalConstants.zvanjeCol;
-		colNames[4] = GlobalConstants.titulaCol;
+		colNames[3] = GlobalConstants.titulaCol;
+		colNames[4] = GlobalConstants.zvanjeCol;
 		
 		inst = this;
 		controllerProfesor = GlavniProzor.getControllerProfesor();

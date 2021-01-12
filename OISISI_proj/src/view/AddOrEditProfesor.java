@@ -103,8 +103,8 @@ public class AddOrEditProfesor extends JPanel{
 		gornji.add(cp.createPanel(labEmail, this.txtEmail, GlobalConstants.emailLab));
 		gornji.add(cp.createPanel(labAdrKanc, this.txtAdrKanc, GlobalConstants.adrKancLab));
 		gornji.add(cp.createPanel(labBrLicKart, this.txtBrLicKart, GlobalConstants.brLicKartLab));
-		gornji.add(cp.createComboBox(labTitula, this.zvCombo, GlobalConstants.titulaLab));
-		gornji.add(cp.createComboBox(labZvanje, this.titCombo, GlobalConstants.zvanjeLab));
+		gornji.add(cp.createComboBox(labTitula, this.titCombo, GlobalConstants.titulaLab));
+		gornji.add(cp.createComboBox(labZvanje, this.zvCombo, GlobalConstants.zvanjeLab));
 		
 		JPanel donji = new JPanel();
 		ok = new JButton(GlobalConstants.btnOkName);
