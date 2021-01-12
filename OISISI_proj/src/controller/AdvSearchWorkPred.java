@@ -414,14 +414,20 @@ public class AdvSearchWorkPred {
 				}
 				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchTitTok)) {
 					int temp = k + 2;
+					boolean correct = false;
 					
 					do {
-						if(profCollection[temp].matches(".*\"$"))
+						if(profCollection[temp].matches(".*\"$")) {
+							correct = true;
 							break;
+						}
 						temp++;						
 						//predmeti = (profesori == {titula == "doktor nauka"})
 					}while(temp < profCollection.length);
 					
+					if(!correct) {
+						break;
+					}
 					String val = "";
 					for(int i = 2; i <= temp - k; i++)
 						val += " " + profCollection[k+i];
@@ -432,13 +438,18 @@ public class AdvSearchWorkPred {
 				}
 				else if(profCollection[k].equalsIgnoreCase(GlobalConstants.advSearchZvaTok)) {
 					int temp = k + 2;
-					
+					boolean correct = false;
 					do {
-						if(profCollection[temp].matches(".*\"$"))
+						if(profCollection[temp].matches(".*\"$")) {
+							correct = true;
 							break;
+						}
 						temp++;						
 						//predmeti = (profesori == {zvanje == "saradnik u nastavi" or zvanje == "asistent" or zvanje == "asistent sa doktoratom" || zvanje == "docent" OR zvanje == "vanredni profesor" || zvanje == "redovni profesor" || zvanje == "profesor emeritus"})
 					}while(temp < profCollection.length);
+					if(!correct) {
+						break;
+					}
 					String val = "";
 					for(int i = 2; i <= temp - k; i++)
 						val += " " + profCollection[k+i];
