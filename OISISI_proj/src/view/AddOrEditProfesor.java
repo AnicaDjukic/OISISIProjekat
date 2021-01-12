@@ -37,7 +37,6 @@ public class AddOrEditProfesor extends JPanel{
 	private Profesor p;
 	public static JButton ok,cancel;
 	private ControllerProfesor cp;
-	private AddOrEditDialog d;
 	private String ime,prz,drp,adrStan,konTel,email,adrKanc,brLic,tit,zva;
 	private ErrorDialog er;
 	
@@ -55,7 +54,6 @@ public class AddOrEditProfesor extends JPanel{
 		inst = this;
 		currMode = mode;
 		cp = GlavniProzor.getControllerProfesor();
-	    this.d = d;
 		setLayout(new BorderLayout());
 		setSize(400,500);
 		

@@ -104,41 +104,6 @@ public class Predmet implements Serializable{
 		this.listaNepolozenih = new ArrayList<Student>();
 		this.listaPolozenih = new ArrayList<Student>();
 	}
-	
-	
-	//Dodatne metode :
-	
-	public boolean dodajUListPolo(Student s) {
-		if(!listaPolozenih.contains(s))                           //ako se vec ne nalazi u polozenim, onda se tek dodaje
-			if(listaPolozenih.add(s)) {                           //u listu polozenih i, paralelno, ako se nalazio u listi
-				if(listaNepolozenih.contains(s))                  //onih koji nisu polozili onda se iz te brise
-					listaNepolozenih.remove(s);
-				return true;
-			}
-		return false;
-	}
-	
-	public boolean dodajUListNepolo(Student s) {
-		if(!listaNepolozenih.contains(s))                         //Isto kao i gore, redosled akcija je isti samo su liste
-			if(listaNepolozenih.add(s)) {                         //zamenjene
-				if(listaPolozenih.contains(s))
-					listaPolozenih.remove(s);
-				return true;
-			}
-		return false;
-	}
-	
-	public boolean dodajStudenta(Student s) {
-		if(listaPolozenih.contains(s) || listaNepolozenih.contains(s))      //Ako nije ni u jednoj listi dodaje se inicijalno
-			return false;			                                        //u listu nepolozenih
-		return dodajUListNepolo(s);
-	}
-	
-	public boolean obrisiStudentaSaPredmeta(Student s) {
-		if(listaNepolozenih.remove(s) || listaPolozenih.remove(s))
-			return true;
-		return false;
-	}
 
 	
 	public String outGodIzv(GodIzv g) {

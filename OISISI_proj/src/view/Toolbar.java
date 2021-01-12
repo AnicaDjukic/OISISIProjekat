@@ -10,10 +10,6 @@ public class Toolbar  extends JToolBar{
 	private JButton btnAdd,btnEdit,btnBin,btnSrch,btnAdvSearch;
 	public static JTextField srchField;
 	
-	ControllerProfesor cProf;
-	ControllerPredmet cPred;
-	ControllerStudent cStud;
-	
 	public Toolbar() {		
 		super(SwingConstants.HORIZONTAL);
 		

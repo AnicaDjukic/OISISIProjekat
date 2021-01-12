@@ -184,21 +184,6 @@ public class Profesor implements Serializable{
 		this.spisPred = new ArrayList<Predmet>();
 	}
 	
-	//Dodatne metode :
-	
-	public boolean dodajPredmet(Predmet p) {
-		if(spisPred.contains(p) == false)
-			if(spisPred.add(p))
-				return true;
-		return false;
-	}
-	public boolean ukloniPredmet(Predmet p) {
-		if(spisPred.contains(p) == true)
-			if(spisPred.remove(p))
-			return true;
-		return false;
-	}
-	
 	public String toString() {
 		String out = "";
 		//pretvaranje u osnovna polja
