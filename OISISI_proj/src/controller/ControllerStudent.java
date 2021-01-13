@@ -1,17 +1,6 @@
 package controller;
 
 import java.awt.Dimension;
-import java.awt.List;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -22,6 +11,7 @@ import model.Ocena;
 import model.Predmet;
 import model.Student;
 import view.GlavniProzor;
+import view.TabelaStudenti;
 
 public class ControllerStudent {
 	
@@ -64,6 +54,18 @@ public class ControllerStudent {
 			for(Ocena o : s.getPolozeniIspiti()) 
 				if(o.getPredmet().getSifPred().equals(spr)) {
 					s.getPolozeniIspiti().remove(o);
+					
+					double d = 0;
+					for(Ocena op : s.getPolozeniIspiti())
+						d += op.getBrVrednost();
+					
+					if(s.getPolozeniIspiti().size() == 0)
+						s.setProsecnaOcena(0.0);
+					else
+						s.setProsecnaOcena(d/s.getPolozeniIspiti().size());
+					
+					TabelaStudenti.table.updateTable();
+					
 					break;
 				}
 			for(Predmet p : s.getNepolozeniIspiti())
