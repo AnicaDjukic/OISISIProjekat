@@ -36,7 +36,7 @@ public class TabelaStudenti extends JTable {
 	public void initializeTable(TabelaStudenti table) {
 		
 		model = new DefaultTableModel(new Object[0][], cols) {
-		Class<?>[] types = { String.class, String.class, String.class, Integer.class, String.class, Double.class};
+		Class<?>[] types = { Index.class, String.class, String.class, Integer.class, String.class, Double.class};
 			
 			@Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -70,7 +70,7 @@ public class TabelaStudenti extends JTable {
 		initializeTable(table);
 		
 		for(Student s : listaStudenata) {
-			Object[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
+			Object[] data = { new Index(s.getBrIndexa()), s.getIme(), s.getPrezime(), "", "", ""};
 			data[3] = Integer.toString(s.getTrenutnaGodStud());;
 			data[4] = s.getStatus();
 			double zaokruzenProsek = Math.round(s.getProsecnaOcena() * 100.0) / 100.0;
@@ -88,14 +88,52 @@ public class TabelaStudenti extends JTable {
 		for(Student stud : listaStudenata) {
 			for(String s : foundStudents) {
 				if(stud.getBrIndexa().equals(s)) {
-					String[] data = { stud.getBrIndexa(), stud.getIme(), stud.getPrezime(), "", "", ""};
+					Object[] data = { new Index(stud.getBrIndexa()), stud.getIme(), stud.getPrezime(), "", "", ""};
 					data[3] = Integer.toString(stud.getTrenutnaGodStud());
 					data[4] = stud.getStatus();
-					data[5] = String.format("%.2f", stud.getProsecnaOcena());
+					double zaokruzenProsek = Math.round(stud.getProsecnaOcena() * 100.0) / 100.0;
+					data[5] = zaokruzenProsek;
 					
 				    model.addRow(data);
 				}
 			}
 		}
+	}
+	
+	class Index implements Comparable{
+		String smer;
+		Integer broj;
+		Integer godina;
+		
+		public String getSmer() { return smer;}
+		public Integer getBroj() {return broj;}
+		public Integer getGodina() {return godina;}
+		
+		public Index(String index) {
+			String parts[] = index.split("-");
+			this.smer = parts[0];
+			this.broj = Integer.parseInt(parts[1]);
+			this.godina = Integer.parseInt(parts[2]);
+		}
+		
+		@Override
+		public String toString() {
+			return smer + "-" + broj + "-" + godina;
+		}
+		@Override
+		public int compareTo(Object o) {
+			
+			Index temp = (Index) o;
+			if(this.getSmer().compareTo(temp.getSmer()) != 0)
+				return this.getSmer().compareTo(temp.getSmer());
+			else {
+				if(this.getGodina().compareTo(temp.getGodina()) != 0)
+					return this.getGodina().compareTo(temp.getGodina());
+				else
+					return this.getBroj().compareTo(temp.getBroj());
+			}
+		}
+		
+		
 	}
 }
