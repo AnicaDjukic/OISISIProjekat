@@ -391,8 +391,8 @@ public class GlobalConstants {
 		//TextField tooltips : 
 		przImeToolTip = "Only letters are allowed";
 		drpToolTip = "dd.MM.yyyy format";
-		adrToolTip = "Address is consisted of street name and the number of the building";
-		konTelToolTip = "<html>Only numbers are allowed<br> between 6 and 10 figures</html>";
+		adrToolTip = "<html>Address is consisted of street name and the number of the building<br> followed by a comma and then the name of the city</html>";
+		konTelToolTip = "<html>Only numbers are allowed<br> Format : xxx/yyy(y)-zzz(z)</html>";
 		emailToolTip = "<html>Standard email format : ...@domain <br>Supported domains : gmail.com, hotmail.com, yahoo.com, uns.ac.rs</html>";
 		brLicKartToolTip = "<html>Only numbers are allowed<br>Exactly 9 figures</html>";
 		titZvToolTip = "One or more words is allowed";
