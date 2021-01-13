@@ -146,8 +146,8 @@ public class GlobalConstants {
 		//TextField tooltips : 
 		przImeToolTip = "Samo slova su dozvoljena";
 		drpToolTip = "dd.MM.yyyy format";
-		adrToolTip = "Adresa se sastoji iz imena ulice i broja zgrade";
-		konTelToolTip = "<html>Samo brojevi su dozvoljeni <br> izmedju 6 i 10 cifara</html>";
+		adrToolTip = "Ime ulice (broj zgrade), Grad";
+		konTelToolTip = "<html>Samo brojevi su dozvoljeni <br> Format : xxx/yyy(y)-zzz(z) </html>";
 		emailToolTip = "<html>Standardni email format : ...@domen <br> Podržani domeni : gmail.com, hotmail.com, yahoo.com, uns.ac.rs, mailinator.com</html>";
 		brLicKartToolTip = "<html>Samo brojevi su dozvoljni <br> tacno 9 cifara obavezno</html>";
 		titZvToolTip = "Dozvoljeno je jedna ili više reči";
@@ -248,7 +248,7 @@ public class GlobalConstants {
 		profEditTabPrd = "Predmeti";
 		
 		//Error za naprednu pretragu :
-		errAdvSearProf = "Nije omogućena napredna pretraga profesora";
+		errAdvSearProf = "Nije omogućena napredna pretraga";
 		
 		//Naslov napredne pretrage predmeta :
 		advTitlePred = "Napredna pretraga predmeta";
@@ -316,7 +316,7 @@ public class GlobalConstants {
 		helpLab11 = "\t Pomoć (Alt + H, Ctrl + H) -  Prikaz informacija neophodnih za korišćenje aplikacije.\n";
 		helpLab12 = "\t O aplikaciji (Alt + A, Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sažeta biografija autora.\n";
 		helpLab13 = "\t 4. Napredno (Alt + A) - Napredne opcije";
-		helpLab14 = "\t Izaberi jezik (Alt + L) - Omogućava izbor jednog od jezika (Srpski, Engleski)";
+		helpLab14 = "\t Izaberi jezik (Alt + L) - Omogućava izbor jednog od jezika (Srpski - Alt + S, Engleski - Alt + E)";
 		helpLab15 = "\t Pretraži (Alt + S, Ctrl + S) - Omogućava naprednu pretragu entiteta preko uslovnih iskaza";
 		helpLab16 = "\t Svaka stavka menija ima svoju ikonicu koja se nalazi odmah pored njenog naziva.\n ";
 		helpLab17 = "\t Neke od tih ikonica se nalaze i u Tool baru:\n";
