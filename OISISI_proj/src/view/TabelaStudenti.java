@@ -36,10 +36,10 @@ public class TabelaStudenti extends JTable {
 	public void initializeTable(TabelaStudenti table) {
 		
 		model = new DefaultTableModel(new Object[0][], cols) {
-			Class[] types = { String.class, String.class, String.class, Integer.class, String.class, Double.class};
+		Class<?>[] types = { String.class, String.class, String.class, Integer.class, String.class, Double.class};
 			
 			@Override
-            public Class getColumnClass(int columnIndex) {
+            public Class<?> getColumnClass(int columnIndex) {
                 return this.types[columnIndex];
             }
 			
@@ -70,10 +70,11 @@ public class TabelaStudenti extends JTable {
 		initializeTable(table);
 		
 		for(Student s : listaStudenata) {
-			String[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
+			Object[] data = { s.getBrIndexa(), s.getIme(), s.getPrezime(), "", "", ""};
 			data[3] = Integer.toString(s.getTrenutnaGodStud());;
 			data[4] = s.getStatus();
-			data[5] = String.format("%.2f", s.getProsecnaOcena());
+			double zaokruzenProsek = Math.round(s.getProsecnaOcena() * 100.0) / 100.0;
+			data[5] = zaokruzenProsek;
 			
 		    model.addRow(data);
 		}
