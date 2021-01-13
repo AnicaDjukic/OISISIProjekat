@@ -1,6 +1,7 @@
 package controller;
 
 import view.*;
+import view.TabelaStudenti.Index;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,10 +29,10 @@ public class DeleteButtonListener implements ActionListener{
 				int code = JOptionPane.showOptionDialog(GlavniProzor.getGlavniProzor(), GlobalConstants.upitBrisanjeStud, GlobalConstants.upitBrisanjeStudTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			
 				if(code == JOptionPane.YES_OPTION) {
-					String index = (String)TabelaStudenti.table.getValueAt(selectedStud, 0);
-					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaPolozenih(index);
-					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaNepolozenih(index);
-					GlavniProzor.getControllerStudent().obrisiStudenta(index);
+					String indexStudenta = ((Index) TabelaStudenti.table.getValueAt(selectedStud, 0)).toString();
+					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaPolozenih(indexStudenta);
+					GlavniProzor.getControllerPredmet().obrisiStudentaIzSvihListaNepolozenih(indexStudenta);
+					GlavniProzor.getControllerStudent().obrisiStudenta(indexStudenta);
 					TabelaStudenti.table.updateTable();
 					GlavniProzor.serialize();
 				}
