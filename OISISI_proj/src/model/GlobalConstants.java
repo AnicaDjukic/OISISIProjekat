@@ -560,7 +560,7 @@ public class GlobalConstants {
 		helpLab11 = "\t Help (Alt + H, Ctrl + H) -  Displaying the information required for application usage.\n";
 		helpLab12 = "\t About (Alt + A, Ctrl + A) -  Displaying the application version, and providing with the short description, followed with the short biography of the authors.\n";
 		helpLab13 = "\t 4. Advanced (Alt + A) - Advanced options";
-		helpLab14 = "\t Language (Alt + L) - Allows to switch between desired languages (Serbian - Alt + S, English - Alt + E)";
+		helpLab14 = "\t Language (Alt + L) - Allows to switch between desired languages (Serbian - {Alt + S, Ctrl + R}, English - {Alt + E, Ctrl + L})";
 		helpLab15 = "\t Search (Alt + S, Ctrl + S) - Supports advanced search of entities using expressions";
 		helpLab16 = "\t Every menu item has its icon which is located right next to its name.\n ";
 		helpLab17 = "\t Some of those icons can be found in the Toolbar:\n";
