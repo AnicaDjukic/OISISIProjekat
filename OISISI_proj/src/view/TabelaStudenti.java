@@ -35,9 +35,16 @@ public class TabelaStudenti extends JTable {
 	
 	public void initializeTable(TabelaStudenti table) {
 		
-		model = new DefaultTableModel() {
+		model = new DefaultTableModel(new Object[0][], cols) {
+			Class[] types = { String.class, String.class, String.class, Integer.class, String.class, Double.class};
 			
-			public boolean isCellEditable(int row, int col) {
+			@Override
+            public Class getColumnClass(int columnIndex) {
+                return this.types[columnIndex];
+            }
+			
+			@Override
+			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
