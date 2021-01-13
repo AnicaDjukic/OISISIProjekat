@@ -218,10 +218,10 @@ public class AddOrEditProfesor extends JPanel{
 				ime = txtIme.getText();
 				prz = txtPrezime.getText();
 				drp = txtDrp.getText();
-				adrStan = txtAdrStan.getText();
+				adrStan = txtAdrStan.getText().replaceAll(" +", " ");
 				konTel = txtKonTel.getText();
 				email = txtEmail.getText();
-				adrKanc = txtAdrKanc.getText();
+				adrKanc = txtAdrKanc.getText().replaceAll(" +", " ");
 				brLic = txtBrLicKart.getText();
 				tit = (String)titCombo.getSelectedItem();
 				zva = (String)zvCombo.getSelectedItem();
