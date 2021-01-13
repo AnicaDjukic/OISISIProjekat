@@ -143,6 +143,7 @@ public class Profesor implements Serializable{
 		temp = temp.toUpperCase();
 		im = temp + im.substring(1);
 		
+		ads = ads.replaceAll(" +", " ");
 		parts = ads.split(" ");
 		ads = "";
 		for(String s : parts) {
@@ -157,6 +158,7 @@ public class Profesor implements Serializable{
 		}
 		ads = ads.substring(1,ads.length());
 		
+		adk = adk.replaceAll(" +", " ");
 		parts = adk.split(" ");
 		adk = "";
 		for(String s : parts) {
