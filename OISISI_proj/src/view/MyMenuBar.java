@@ -118,11 +118,13 @@ public class MyMenuBar extends JMenuBar {
 		mAdvanced.add(mLanguage);
 		JMenuItem miiSerbian = new JMenuItem(GlobalConstants.menuSerbian, new ImageIcon(GlobalConstants.serbianImg));
 		miiSerbian.setMnemonic(KeyEvent.VK_S);
+		miiSerbian.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
 		miiSerbian.addActionListener(new MySerbLangListener());
 		mLanguage.add(miiSerbian);
 		mLanguage.addSeparator();
 		JMenuItem miiEnglish = new JMenuItem(GlobalConstants.menuEnglish, new ImageIcon(GlobalConstants.englishImg));
 		miiEnglish.setMnemonic(KeyEvent.VK_E);
+		miiEnglish.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		miiEnglish.addActionListener(new MyEnglLangListener());
 		mLanguage.add(miiEnglish);
 		mAdvanced.addSeparator();

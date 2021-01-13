@@ -316,7 +316,7 @@ public class GlobalConstants {
 		helpLab11 = "\t Pomoć (Alt + H, Ctrl + H) -  Prikaz informacija neophodnih za korišćenje aplikacije.\n";
 		helpLab12 = "\t O aplikaciji (Alt + A, Ctrl + A) -  Prikaz verzije aplikacije, kao i kratak opis iste. Nakon toga sledi sažeta biografija autora.\n";
 		helpLab13 = "\t 4. Napredno (Alt + A) - Napredne opcije";
-		helpLab14 = "\t Izaberi jezik (Alt + L) - Omogućava izbor jednog od jezika (Srpski - Alt + S, Engleski - Alt + E)";
+		helpLab14 = "\t Izaberi jezik (Alt + L) - Omogućava izbor jednog od jezika (Srpski - {Alt + S, Ctrl + R}, Engleski - {Alt + E, Ctrl + L})";
 		helpLab15 = "\t Pretraži (Alt + S, Ctrl + S) - Omogućava naprednu pretragu entiteta preko uslovnih iskaza";
 		helpLab16 = "\t Svaka stavka menija ima svoju ikonicu koja se nalazi odmah pored njenog naziva.\n ";
 		helpLab17 = "\t Neke od tih ikonica se nalaze i u Tool baru:\n";
