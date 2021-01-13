@@ -493,7 +493,7 @@ public class GlobalConstants {
 		profEditTabPrd = "Subjects";
 		
 		//Error za naprednu pretragu :
-		errAdvSearProf = "Advanced search for professors isn't implemented!";
+		errAdvSearProf = "Advanced search isn't implemented for that entity!";
 		
 		//Naslov napredne pretrage predmeta :
 		advTitlePred = "Advanced search of subjects";

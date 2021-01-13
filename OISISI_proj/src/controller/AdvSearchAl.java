@@ -17,7 +17,7 @@ public class AdvSearchAl implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(GlavniProzor.getTabbedPane().getSelectedIndex() != 1) {
+		if(GlavniProzor.getTabbedPane().getSelectedIndex() == 2) {
 			adv = new AdvSearDialog();
 			adv.setVisible(true);
 		}
