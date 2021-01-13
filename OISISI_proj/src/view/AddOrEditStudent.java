@@ -16,6 +16,7 @@ import javax.swing.*;
 import controller.ControllerStudent;
 import controller.StudentFocusListeners;
 import model.Predmet;
+import view.TabelaStudenti.Index;
 
 public class AddOrEditStudent extends JPanel {
 	
@@ -132,7 +133,7 @@ public class AddOrEditStudent extends JPanel {
 		if(mode == AddOrEditDialog.editMode) {
 				
 			int selectedStudent = TabelaStudenti.table.getSelectedRow();
-			String indexStudenta = (String) TabelaStudenti.table.getValueAt(selectedStudent, 0);
+			String indexStudenta = ((Index) TabelaStudenti.table.getValueAt(selectedStudent, 0)).toString();
 				
 			student = controller.nadjiStudenta(indexStudenta);
 				
