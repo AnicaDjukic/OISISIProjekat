@@ -157,8 +157,8 @@ public class AddOrEditPredmet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String sifra = tSifra.getText();
-				String naziv = tNaziv.getText().substring(0,1).toUpperCase() + tNaziv.getText().substring(1);
+				String sifra = tSifra.getText().trim();
+				String naziv = tNaziv.getText().trim().substring(0,1).toUpperCase() + tNaziv.getText().trim().substring(1);
 				
 				GodIzv god;
 				
@@ -174,7 +174,7 @@ public class AddOrEditPredmet extends JPanel {
 				if((String) tSemestar.getSelectedItem() != GlobalConstants.advSearchSemPos3)
 					sem = Semestar.LETNJI;
 				
-				int espbBodovi = Integer.parseInt(tEspb.getText());
+				int espbBodovi = Integer.parseInt(tEspb.getText().trim());
 				
 				dialog.setVisible(false);
 				
