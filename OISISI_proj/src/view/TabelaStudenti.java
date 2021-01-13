@@ -100,7 +100,7 @@ public class TabelaStudenti extends JTable {
 		}
 	}
 	
-	class Index implements Comparable{
+	public class Index implements Comparable{
 		String smer;
 		Integer broj;
 		Integer godina;
