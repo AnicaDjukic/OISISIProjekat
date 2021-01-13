@@ -302,6 +302,7 @@ public class AddOrEditStudent extends JPanel {
 				}
 				
 				String adresa = tAdrStan.getText().trim().substring(0,1).toUpperCase() + tAdrStan.getText().trim().substring(1);
+				adresa = adresa.replaceAll(" +", " ");
 				String konTel = tBrTel.getText().trim();
 				String email = tEmail.getText().trim();
 				
