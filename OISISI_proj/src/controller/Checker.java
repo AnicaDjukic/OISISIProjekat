@@ -12,6 +12,7 @@ public class Checker {
 	
 	public static boolean isNameOrSurename(String str) {
 		str = str.toLowerCase();
+		str = str.trim();
 		String regEx = GlobalConstants.regExNameOrSurename;
 		if(str.matches(regEx))
 			return true;
@@ -21,7 +22,7 @@ public class Checker {
 	@SuppressWarnings("deprecation")
 	public static boolean isValidDate(String str, int sluc) {
 		boolean suc = false;		
-		
+		str = str.trim();
 		DateTimeFormatter dtf;
 		LocalDate d = null;
 		String[] parts = str.split("\\.");
@@ -109,7 +110,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidNumber(String str, int isLicKart) {
-		
+		str = str.trim();
 		if(isLicKart == 0)
 			if(str.matches(GlobalConstants.regExNumber))
 				return true;
@@ -121,6 +122,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidEmail(String str) {
+		str = str.trim();
 		str = str.toLowerCase();
 		String regEx = GlobalConstants.regExEmail;
 		if(str.matches(regEx))
@@ -137,6 +139,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidIndex(String str) {
+		str = str.trim();
 		String regEx = GlobalConstants.regExBrIndexa;
 		if(str.matches(regEx))
 			return true;
@@ -145,6 +148,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidYear(String str) {
+		str = str.trim();
 		String regEx = GlobalConstants.regGodUpisa;
 		if(!str.matches(regEx))
 			return false;
@@ -156,6 +160,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidNamePred(String str) {
+		str = str.trim();
 		str = str.toLowerCase();
 		String regEx = GlobalConstants.regExNazivPred;
 		if(str.matches(regEx))
@@ -164,6 +169,7 @@ public class Checker {
 	}
 	
 	public static boolean isValidEspb(String str) {
+		str = str.trim();
 		str = str.toLowerCase();
 		String regEx = GlobalConstants.regExEspb;
 		if(str.matches(regEx))

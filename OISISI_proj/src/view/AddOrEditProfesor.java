@@ -215,14 +215,16 @@ public class AddOrEditProfesor extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ime = txtIme.getText();
-				prz = txtPrezime.getText();
-				drp = txtDrp.getText();
+				ime = txtIme.getText().trim();
+				prz = txtPrezime.getText().trim();
+				drp = txtDrp.getText().trim();
 				adrStan = txtAdrStan.getText().replaceAll(" +", " ");
-				konTel = txtKonTel.getText();
-				email = txtEmail.getText();
+				adrStan = adrStan.trim();
+				konTel = txtKonTel.getText().trim();
+				email = txtEmail.getText().trim();
 				adrKanc = txtAdrKanc.getText().replaceAll(" +", " ");
-				brLic = txtBrLicKart.getText();
+				adrKanc = adrKanc.trim();
+				brLic = txtBrLicKart.getText().trim();
 				tit = (String)titCombo.getSelectedItem();
 				zva = (String)zvCombo.getSelectedItem();
 				
