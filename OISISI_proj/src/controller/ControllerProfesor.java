@@ -201,7 +201,7 @@ public class ControllerProfesor {
 				
 				if(parts[1].equals("==")) {
 					for(Profesor p : listaProfesora)
-						if(p.getIme().toLowerCase().matches(parts[2]))
+						if(p.getIme().matches(parts[2]))
 							ret.add(p);
 				}
 				else if(parts[1].equals("!=")) {

@@ -12,7 +12,8 @@ public class GlobalConstants {
 	//Prof dummy:
 	public static Profesor dummy = new Profesor();
 	
-	//Image usage : 
+	//Image usage :
+	public static String menuBarImg;
 	public static String addImg = "images" + File.separator + "add_button.png";
 	public static String closeImg = "images" + File.separator + "close_button.png";
 	public static String editImg = "images" + File.separator + "edit_button.png";
@@ -20,7 +21,6 @@ public class GlobalConstants {
 	public static String helpImg = "images" + File.separator + "help_button.png";
 	public static String aboutImg = "images" + File.separator + "about_button.png";
 	public static String srcImg = "images" + File.separator + "search_button.png";
-	public static String menuBarImg = "images" +  File.separator + "Menu_Bar.png";
 	public static String toolBarImg = "images" + File.separator + "Tool_Bar.png";
 	public static String advSearImg = "images" + File.separator + "adv_search.png";
 	public static String searchFieldImg = "images" + File.separator + "search_field.png";
@@ -295,7 +295,7 @@ public class GlobalConstants {
 		aboutLab9 = "\t Studenti 3. godine smera \"Računarstvo i automatika\" Fakulteta tehničkih nauka,";
 		aboutLab10 = "\t Univerziteta u Novom Sadu.";
 		
-		aboutTitle = "About";
+		aboutTitle = "O aplikaciji";
 		
 		aOESProsOcLab = "Prosečna ocena: ";
 		aOESUkEspbLab = "Ukupno ESPB: ";
@@ -334,7 +334,7 @@ public class GlobalConstants {
 		helpLab29 = "<html> <&ensp> Predmeta: Unošenjem jedne reči koja se odnosi na deo naziva predmeta.</hmtl>";
 		helpLab30 = "\t Status bar se nalazi na dnu glavnog prozora i sastoji od imena aplikacije i prikaza trenutnog vremena i datuma.";
 		helpLab31 = "\t Kako se aplikacija bude dalje razvijala tako će ovaj Help dijalog biti naknadno proširen.";
-		helpTitle = "Help";
+		helpTitle = "Pomoć";
 		
 		//Tabela ocena :
 		tabOcenaSif = "Šifra predmeta";
@@ -360,6 +360,8 @@ public class GlobalConstants {
 	
 	public static void setLangEnglish() {
 		//Tekst predmeta koji nemaju profesora :
+		menuBarImg = "images" +  File.separator + "Menu_Bar.png";
+		
 		prdNemaProf = "Not assigned";
 				
 		//Imena labela :

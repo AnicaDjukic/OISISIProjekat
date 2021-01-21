@@ -48,7 +48,7 @@ public class AdvSearchWorkPred {
 		
 		collection = s.split(" ");
 		
-		
+		//predmeti = (( sifra == /.*it.*/ or sifra == /.*p2.*/ ) and profesori == {ime == /.*Bran.*/ and zvanje == "Docent"})
 		makeVars();
 		
 		if(!hadError) {
@@ -61,7 +61,7 @@ public class AdvSearchWorkPred {
 				err = new ErrorDialog(GlobalConstants.advSearchErrParse);
 			}
 		}
-		
+		//predmeti = (sifra == /.* ( p|P ) .*/  and godina >= 3 or espb > 12 and espb < 16)
 		//Sredjivanje u pogodan oblik forme :
 		
 		if(!hadError) {
