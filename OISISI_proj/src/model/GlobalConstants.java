@@ -2,8 +2,6 @@ package model;
 
 import java.io.File;
 
-import javax.swing.Icon;
-
 public class GlobalConstants {
 	//Some default sizes :
 	public static int aoedw = 400;  //addOrEditWidth

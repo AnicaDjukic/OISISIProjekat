@@ -13,7 +13,6 @@ import view.AdvSearDialog;
 import view.ErrorDialog;
 import view.GlavniProzor;
 import view.TabelaPredmeti;
-import view.TabelaProfesora;
 
 //predmeti = (sifra == '0' and naziv == '0')
 //predmeti = (sifra == a or godina == 2 and (sifra == 3 and semestar == letnji))

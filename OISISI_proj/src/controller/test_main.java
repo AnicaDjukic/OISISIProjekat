@@ -4,8 +4,6 @@ package controller;
 import model.*;
 import view.*;
 
-import java.awt.*;
-
 public class test_main {
 
 	public static int language = 1;             //Srpski - 1, Engleski - 2;

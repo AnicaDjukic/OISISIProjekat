@@ -2,8 +2,6 @@ package view;
 
 
 import java.awt.Component;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import javax.swing.JTable;
 import javax.swing.SwingConstants;

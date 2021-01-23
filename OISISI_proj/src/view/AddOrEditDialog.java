@@ -1,9 +1,7 @@
 package view;
 
-import java.awt.Frame;
 import javax.swing.JDialog;
 
-import controller.*;
 import model.GlobalConstants;
 
 public class AddOrEditDialog extends JDialog{

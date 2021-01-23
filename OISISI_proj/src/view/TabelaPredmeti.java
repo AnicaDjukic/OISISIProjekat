@@ -3,11 +3,8 @@ package view;
 import java.util.ArrayList;
 
 //Importi : 
-import javax.swing.DefaultRowSorter;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 
 import controller.ControllerPredmet;

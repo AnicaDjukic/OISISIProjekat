@@ -184,6 +184,7 @@ public class ControllerStudent {
 		sracunajProsecnuOcenu(s);
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	public void obrisiOcenuIzListePolozenih(String sifra, Student s) {
 		for(Ocena o : s.getPolozeniIspiti()) {
 			if(o.getPredmet().getSifPred().equals(sifra)) {

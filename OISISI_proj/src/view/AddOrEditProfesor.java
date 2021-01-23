@@ -46,7 +46,6 @@ public class AddOrEditProfesor extends JPanel{
 	
 	public static AddOrEditProfesor inst;
 	
-	@SuppressWarnings("unchecked")
 	public AddOrEditProfesor(int mode, AddOrEditDialog d) {
 		
 		brPraznihPolja = -8;

@@ -3,16 +3,12 @@ package view;
 //Importi : 
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
 import model.GlobalConstants;
 import model.Profesor;
 import controller.ControllerProfesor;
 
-import java.awt.Color;
 import java.util.*;
 
 public class TabelaProfesora extends JTable { 

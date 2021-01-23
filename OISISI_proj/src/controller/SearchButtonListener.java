@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import view.*;
-import controller.*;
 
 public class SearchButtonListener implements ActionListener{
 

@@ -6,25 +6,19 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
 
 import controller.Checker;
 import controller.ControllerProfesor;
-import controller.PredmetFocusListeners;
 import model.GlobalConstants;
-import model.Predmet;
 import model.Profesor;
 
 public class AddProfToPredDialog extends JDialog {

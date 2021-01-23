@@ -3,8 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-
 import model.GlobalConstants;
 import view.AdvSearDialog;
 import view.ErrorDialog;
@@ -22,6 +20,7 @@ public class AdvSearchAl implements ActionListener{
 			adv.setVisible(true);
 		}
 		else {
+			@SuppressWarnings("unused")
 			ErrorDialog err = new ErrorDialog(GlobalConstants.errAdvSearProf);
 		}
 

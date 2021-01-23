@@ -3,11 +3,7 @@ package view;
 //importi
 
 import javax.swing.*;
-
-import controller.*;
 import model.GlobalConstants;
-
-import java.awt.*;
 
 public class TabbedPane extends JTabbedPane{
 	
